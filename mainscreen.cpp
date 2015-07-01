@@ -97,3 +97,8 @@ void MainScreen::on_pbPercentage_clicked()
 {
     ui->txtEditor->setText("%");
 }
+
+void MainScreen::on_tabMenu_tabBarClicked(int index)
+{
+
+}

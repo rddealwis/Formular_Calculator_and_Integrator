@@ -50,6 +50,8 @@ private slots:
 
     void on_pbPercentage_clicked();
 
+    void on_tabMenu_tabBarClicked(int index);
+
 private:
     Ui::MainScreen *ui;
 };
