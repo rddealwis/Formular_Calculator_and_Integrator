@@ -1,5 +1,7 @@
 #include "mainscreen.h"
 #include "ui_mainscreen.h"
+#include "help.h"
+#include <qmessagebox.h>
 
 MainScreen::MainScreen(QWidget *parent) :
     QMainWindow(parent),
@@ -15,10 +17,21 @@ MainScreen::~MainScreen()
 
 void MainScreen::ButtonClickEventHandler(std::string txt)
 {
-    QTextCursor prev_cursor = ui->txtEditor->textCursor();
-    ui->txtEditor->moveCursor(QTextCursor::End);
-    ui->txtEditor->insertPlainText(QString::fromStdString(txt));
-    ui->txtEditor->setTextCursor(prev_cursor);
+    if(ui->txtEditor->toPlainText()!= "0")
+    {
+        QTextCursor prev_cursor = ui->txtEditor->textCursor();
+        ui->txtEditor->moveCursor(QTextCursor::End);
+        ui->txtEditor->insertPlainText(QString::fromStdString(txt));
+        ui->txtEditor->setTextCursor(prev_cursor);
+    }
+    else
+    {
+        ui->txtEditor->clear();
+        QTextCursor prev_cursor = ui->txtEditor->textCursor();
+        ui->txtEditor->moveCursor(QTextCursor::End);
+        ui->txtEditor->insertPlainText(QString::fromStdString(txt));
+        ui->txtEditor->setTextCursor(prev_cursor);
+    }
 }
 
 void MainScreen::on_pbMultiply_clicked()
@@ -178,4 +191,52 @@ void MainScreen::on_pbPi_clicked()
 void MainScreen::on_pbPower_clicked()
 {
     this->ButtonClickEventHandler("^");
+}
+
+void MainScreen::on_pbOptions_clicked()
+{
+
+}
+
+void MainScreen::on_pbHelp_clicked()
+{
+    helpForm = new help(this);
+    helpForm->show();
+}
+
+void MainScreen::on_pbAboutUs_clicked()
+{
+
+}
+
+void MainScreen::on_pbExit_clicked()
+{
+
+}
+
+void MainScreen::on_pbCE_clicked()
+{
+    ui->txtEditor->clear();
+    ui->txtEditor->setText("0");
+}
+
+void MainScreen::on_pbC_clicked()
+{
+    ui->txtEditor->clear();
+    ui->txtEditor->setText("0");
+}
+
+void MainScreen::on_pbDel_clicked()
+{
+    if(ui->txtEditor->toPlainText()!= "0")
+    {
+        while(!ui->txtEditor->toPlainText().isEmpty())
+        {
+            ui->txtEditor->textCursor().deletePreviousChar();
+//            QTextCursor prev_cursor = ui->txtEditor->textCursor();
+//            ui->txtEditor->moveCursor(QTextCursor::End);
+//            //ui->txtEditor->insertPlainText(QString::fromStdString(txt));
+//            ui->txtEditor->setTextCursor(prev_cursor);
+        }
+    }
 }

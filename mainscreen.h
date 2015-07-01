@@ -2,6 +2,8 @@
 #define MAINSCREEN_H
 
 #include <QMainWindow>
+#include "help.h"
+
 namespace Ui {
 class MainScreen;
 }
@@ -78,8 +80,23 @@ private slots:
 
     void on_pbPower_clicked();
 
+    void on_pbOptions_clicked();
+
+    void on_pbHelp_clicked();
+
+    void on_pbAboutUs_clicked();
+
+    void on_pbExit_clicked();
+
+    void on_pbCE_clicked();
+
+    void on_pbC_clicked();
+
+    void on_pbDel_clicked();
+
 private:
     Ui::MainScreen *ui;
+    help *helpForm;
 };
 
 #endif // MAINSCREEN_H

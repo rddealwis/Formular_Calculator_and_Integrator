@@ -13,11 +13,17 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainscreen.cpp
+        mainscreen.cpp \
+    aboutcalculator.cpp \
+    help.cpp
 
-HEADERS  += mainscreen.h
+HEADERS  += mainscreen.h \
+    aboutcalculator.h \
+    help.h
 
-FORMS    += mainscreen.ui
+FORMS    += mainscreen.ui \
+    aboutcalculator.ui \
+    help.ui
 
 RESOURCES += \
     resources.qrc
