@@ -2,7 +2,6 @@
 #define MAINSCREEN_H
 
 #include <QMainWindow>
-
 namespace Ui {
 class MainScreen;
 }
@@ -16,6 +15,8 @@ public:
     ~MainScreen();
 
 private slots:
+    void ButtonClickEventHandler(std::string txt);
+
     void on_pbMultiply_clicked();
 
     void on_pbZero_clicked();
@@ -50,7 +51,32 @@ private slots:
 
     void on_pbPercentage_clicked();
 
-    void on_tabMenu_tabBarClicked(int index);
+    void on_pbDivide_clicked();
+
+    void on_pbSqRoot_clicked();
+
+    void on_pbOpenBrackets_clicked();
+
+    void on_pbCloseBrackets_clicked();
+
+    void on_pbLog_clicked();
+
+    void on_pbLn_clicked();
+
+    void on_pbSin_clicked();
+
+    void on_pbCos_clicked();
+
+    void on_pbTan_clicked();
+
+    void on_pbFactorial_clicked();
+
+
+    void on_pbSquare_clicked();
+
+    void on_pbPi_clicked();
+
+    void on_pbPower_clicked();
 
 private:
     Ui::MainScreen *ui;
