@@ -47,7 +47,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <property name="iconSize">
      <size>
@@ -66,6 +66,25 @@
      <attribute name="title">
       <string/>
      </attribute>
+     <widget class="QFrame" name="frame">
+      <property name="geometry">
+       <rect>
+        <x>-2</x>
+        <y>-1</y>
+        <width>130</width>
+        <height>440</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>true</bool>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_ScientificMenu">
      <attribute name="title">
