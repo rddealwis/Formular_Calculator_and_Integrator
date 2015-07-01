@@ -1375,6 +1375,9 @@
        <property name="text">
         <string>Degrees</string>
        </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
       </widget>
       <widget class="QRadioButton" name="rbRadians">
        <property name="geometry">
