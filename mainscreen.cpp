@@ -17,20 +17,20 @@ MainScreen::~MainScreen()
 
 void MainScreen::ButtonClickEventHandler(std::string txt)
 {
-    if(ui->txtEditor->toPlainText()!= "0")
+    if(ui->txtResultsEditor->toPlainText()!= "0")
     {
-        QTextCursor prev_cursor = ui->txtEditor->textCursor();
-        ui->txtEditor->moveCursor(QTextCursor::End);
-        ui->txtEditor->insertPlainText(QString::fromStdString(txt));
-        ui->txtEditor->setTextCursor(prev_cursor);
+        QTextCursor prev_cursor = ui->txtResultsEditor->textCursor();
+        ui->txtResultsEditor->moveCursor(QTextCursor::End);
+        ui->txtResultsEditor->insertPlainText(QString::fromStdString(txt));
+        ui->txtResultsEditor->setTextCursor(prev_cursor);
     }
     else
     {
-        ui->txtEditor->clear();
-        QTextCursor prev_cursor = ui->txtEditor->textCursor();
-        ui->txtEditor->moveCursor(QTextCursor::End);
-        ui->txtEditor->insertPlainText(QString::fromStdString(txt));
-        ui->txtEditor->setTextCursor(prev_cursor);
+        ui->txtResultsEditor->clear();
+        QTextCursor prev_cursor = ui->txtResultsEditor->textCursor();
+        ui->txtResultsEditor->moveCursor(QTextCursor::End);
+        ui->txtResultsEditor->insertPlainText(QString::fromStdString(txt));
+        ui->txtResultsEditor->setTextCursor(prev_cursor);
     }
 }
 
@@ -178,7 +178,7 @@ void MainScreen::on_pbSquare_clicked()
 
 void MainScreen::on_pbPi_clicked()
 {
-    if(sizeof(ui->txtEditor->size())>2)
+    if(sizeof(ui->txtResultsEditor->size())>2)
     {
         this->ButtonClickEventHandler("3.1416");
     }
@@ -216,27 +216,27 @@ void MainScreen::on_pbExit_clicked()
 
 void MainScreen::on_pbCE_clicked()
 {
-    ui->txtEditor->clear();
-    ui->txtEditor->setText("0");
+    ui->txtResultsEditor->clear();
+    ui->txtResultsEditor->setText("0");
 }
 
 void MainScreen::on_pbC_clicked()
 {
-    ui->txtEditor->clear();
-    ui->txtEditor->setText("0");
+    ui->txtResultsEditor->clear();
+    ui->txtResultsEditor->setText("0");
 }
 
 void MainScreen::on_pbDel_clicked()
 {
-    if(ui->txtEditor->toPlainText()!= "0")
+    if(ui->txtResultsEditor->toPlainText()!= "0")
     {
-        while(!ui->txtEditor->toPlainText().isEmpty())
+        while(!ui->txtResultsEditor->toPlainText().isEmpty())
         {
-            ui->txtEditor->textCursor().deletePreviousChar();
-//            QTextCursor prev_cursor = ui->txtEditor->textCursor();
-//            ui->txtEditor->moveCursor(QTextCursor::End);
-//            //ui->txtEditor->insertPlainText(QString::fromStdString(txt));
-//            ui->txtEditor->setTextCursor(prev_cursor);
+            ui->txtResultsEditor->textCursor().deletePreviousChar();
+//            QTextCursor prev_cursor = ui->txtResultsEditor->textCursor();
+//            ui->txtResultsEditor->moveCursor(QTextCursor::End);
+//            //ui->txtResultsEditor->insertPlainText(QString::fromStdString(txt));
+//            ui->txtResultsEditor->setTextCursor(prev_cursor);
         }
     }
 }
