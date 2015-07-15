@@ -15,11 +15,32 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainscreen.cpp \
     aboutcalculator.cpp \
-    help.cpp
+    help.cpp \
+    constantelement.cpp \
+    cosinefunctionelement.cpp \
+    dividefunctionelement.cpp \
+    formulaelement.cpp \
+    functionelement.cpp \
+    minusfunctionelement.cpp \
+    multiplefunctionelement.cpp \
+    plusfunctionelement.cpp \
+    powerfunctionelement.cpp \
+    sinefunctionelement.cpp
 
 HEADERS  += mainscreen.h \
     aboutcalculator.h \
-    help.h
+    help.h \
+    constantelement.h \
+    cosinefunctionelement.h \
+    dividefunctionelement.h \
+    formulaelement.h \
+    formulator.h \
+    functionelement.h \
+    minusfunctionelement.h \
+    multiplefunctionelement.h \
+    plusfunctionelement.h \
+    powerfunctionelement.h \
+    sinefunctionelement.h
 
 FORMS    += mainscreen.ui \
     aboutcalculator.ui \

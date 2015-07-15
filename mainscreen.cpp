@@ -1,6 +1,7 @@
 #include "mainscreen.h"
 #include "ui_mainscreen.h"
 #include "help.h"
+#include "formulator.h"
 #include <qmessagebox.h>
 
 MainScreen::MainScreen(QWidget *parent) :
@@ -106,7 +107,11 @@ void MainScreen::on_pbMinus_clicked()
 
 void MainScreen::on_pbEqual_clicked()
 {
-    this->ButtonClickEventHandler("=");
+    std::string input=this->ui->txtTextEditor->toPlainText().toStdString();
+    //std::string formulaInput(input);
+    FormulaElement* formula = FormulaElement::parseFormula("5+6");
+    //this->ui->txtTextEditor->setText(QString::fromStdString(formula->toQString().data()));
+    //this->ButtonClickEventHandler("=");
 }
 
 void MainScreen::on_pbInverse_clicked()
