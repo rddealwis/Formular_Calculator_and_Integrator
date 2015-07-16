@@ -109,7 +109,7 @@ void MainScreen::on_pbEqual_clicked()
 {
     std::string input=this->ui->txtTextEditor->toPlainText().toStdString();
     //std::string formulaInput(input);
-    FormulaElement* formula = FormulaElement::parseFormula("5+6");
+   // FormulaElement* formula = FormulaElement::parseFormula("5+6");
     //this->ui->txtTextEditor->setText(QString::fromStdString(formula->toQString().data()));
     //this->ButtonClickEventHandler("=");
 }

@@ -27,7 +27,8 @@ SOURCES += main.cpp\
     powerfunctionelement.cpp \
     sinefunctionelement.cpp \
     saveformula.cpp \
-    loadformula.cpp
+    loadformula.cpp \
+    variableelement.cpp
 
 HEADERS  += mainscreen.h \
     aboutcalculator.h \
@@ -44,7 +45,8 @@ HEADERS  += mainscreen.h \
     powerfunctionelement.h \
     sinefunctionelement.h \
     saveformula.h \
-    loadformula.h
+    loadformula.h \
+    variableelement.h
 
 FORMS    += mainscreen.ui \
     aboutcalculator.ui \

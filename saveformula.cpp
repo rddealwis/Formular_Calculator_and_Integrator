@@ -1,5 +1,6 @@
 #include "saveformula.h"
 #include "ui_saveformula.h"
+#include "QFileDialog"
 
 SaveFormula::SaveFormula(QWidget *parent) :
     QWidget(parent),
