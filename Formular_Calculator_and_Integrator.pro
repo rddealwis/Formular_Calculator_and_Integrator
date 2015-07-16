@@ -25,7 +25,9 @@ SOURCES += main.cpp\
     multiplefunctionelement.cpp \
     plusfunctionelement.cpp \
     powerfunctionelement.cpp \
-    sinefunctionelement.cpp
+    sinefunctionelement.cpp \
+    saveformula.cpp \
+    loadformula.cpp
 
 HEADERS  += mainscreen.h \
     aboutcalculator.h \
@@ -40,11 +42,15 @@ HEADERS  += mainscreen.h \
     multiplefunctionelement.h \
     plusfunctionelement.h \
     powerfunctionelement.h \
-    sinefunctionelement.h
+    sinefunctionelement.h \
+    saveformula.h \
+    loadformula.h
 
 FORMS    += mainscreen.ui \
     aboutcalculator.ui \
-    help.ui
+    help.ui \
+    saveformula.ui \
+    loadformula.ui
 
 RESOURCES += \
     resources.qrc
