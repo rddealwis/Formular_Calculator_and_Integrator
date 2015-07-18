@@ -1,4 +1,5 @@
 #include "cosinefunctionelement.h"
+#include <math.h>
 
 CosineFunctionElement::CosineFunctionElement()
 {
@@ -35,5 +36,5 @@ bool CosineFunctionElement::isNull()
 
 double CosineFunctionElement::evaluate()
 {
-	return cos(this->GetArgument().at(0)->evaluate());
+    return cos(this->GetArgument().at(0)->evaluate());
 }

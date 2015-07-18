@@ -93,6 +93,10 @@ private slots:
     void on_pbC_clicked();
 
     void on_pbDel_clicked();
+    
+    void on_pbSaveFormula_clicked();
+
+    void on_pbLoadFormula_clicked();
 
 private:
     Ui::MainScreen *ui;
