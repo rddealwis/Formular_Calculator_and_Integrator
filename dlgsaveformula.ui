@@ -1,68 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>LoadFormula</class>
- <widget class="QWidget" name="LoadFormula">
+ <class>dlgSaveFormula</class>
+ <widget class="QDialog" name="dlgSaveFormula">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>370</height>
+    <height>401</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Load Formula</string>
+   <string>Dialog</string>
   </property>
-  <widget class="QFrame" name="frmSubmit">
+  <widget class="QDialogButtonBox" name="btnBoxSubmit">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>310</y>
+     <y>355</y>
      <width>381</width>
-     <height>41</height>
+     <height>32</height>
     </rect>
    </property>
    <property name="autoFillBackground">
     <bool>true</bool>
    </property>
-   <property name="frameShape">
-    <enum>QFrame::StyledPanel</enum>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
    </property>
-   <property name="frameShadow">
-    <enum>QFrame::Raised</enum>
+   <property name="standardButtons">
+    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
    </property>
-   <widget class="QPushButton" name="pbClose">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>10</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Close</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pbSave">
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>10</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Save</string>
-    </property>
-   </widget>
   </widget>
   <widget class="QFrame" name="frmTable">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>90</y>
+     <y>130</y>
      <width>381</width>
      <height>211</height>
     </rect>
@@ -113,7 +87,7 @@
      <x>10</x>
      <y>20</y>
      <width>381</width>
-     <height>61</height>
+     <height>101</height>
     </rect>
    </property>
    <property name="autoFillBackground">
@@ -125,11 +99,11 @@
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
-   <widget class="QPushButton" name="pbBrowseFile">
+   <widget class="QPushButton" name="pbBrowseSaveLoc">
     <property name="geometry">
      <rect>
       <x>295</x>
-      <y>20</y>
+      <y>60</y>
       <width>75</width>
       <height>23</height>
      </rect>
@@ -138,11 +112,11 @@
      <string>Browse...</string>
     </property>
    </widget>
-   <widget class="QLabel" name="lblFileLocation">
+   <widget class="QLabel" name="lblSaveLocation">
     <property name="geometry">
      <rect>
       <x>15</x>
-      <y>25</y>
+      <y>65</y>
       <width>47</width>
       <height>13</height>
      </rect>
@@ -151,12 +125,35 @@
      <string>Location</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="txtFileLocation">
+   <widget class="QTextEdit" name="txtSaveLocation">
     <property name="geometry">
      <rect>
-      <x>65</x>
-      <y>15</y>
-      <width>221</width>
+      <x>95</x>
+      <y>55</y>
+      <width>191</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblFormulaName">
+    <property name="geometry">
+     <rect>
+      <x>15</x>
+      <y>20</y>
+      <width>71</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Formula Name</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="txtFormulaName">
+    <property name="geometry">
+     <rect>
+      <x>95</x>
+      <y>10</y>
+      <width>191</width>
       <height>31</height>
      </rect>
     </property>
@@ -164,5 +161,38 @@
   </widget>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>btnBoxSubmit</sender>
+   <signal>accepted()</signal>
+   <receiver>dlgSaveFormula</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnBoxSubmit</sender>
+   <signal>rejected()</signal>
+   <receiver>dlgSaveFormula</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

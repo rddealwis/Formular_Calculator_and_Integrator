@@ -26,9 +26,9 @@ SOURCES += main.cpp\
     plusfunctionelement.cpp \
     powerfunctionelement.cpp \
     sinefunctionelement.cpp \
-    saveformula.cpp \
-    loadformula.cpp \
-    variableelement.cpp
+    variableelement.cpp \
+    dlgsaveformula.cpp \
+    dlgloadformula.cpp
 
 HEADERS  += mainscreen.h \
     aboutcalculator.h \
@@ -44,15 +44,15 @@ HEADERS  += mainscreen.h \
     plusfunctionelement.h \
     powerfunctionelement.h \
     sinefunctionelement.h \
-    saveformula.h \
-    loadformula.h \
-    variableelement.h
+    variableelement.h \
+    dlgsaveformula.h \
+    dlgloadformula.h
 
 FORMS    += mainscreen.ui \
     aboutcalculator.ui \
     help.ui \
-    saveformula.ui \
-    loadformula.ui
+    dlgsaveformula.ui \
+    dlgloadformula.ui
 
 RESOURCES += \
     resources.qrc

@@ -2,6 +2,8 @@
 #include "ui_mainscreen.h"
 #include "help.h"
 #include "formulator.h"
+#include "dlgloadformula.h"
+#include "dlgsaveformula.h"
 #include <qmessagebox.h>
 
 MainScreen::MainScreen(QWidget *parent) :
@@ -244,4 +246,20 @@ void MainScreen::on_pbDel_clicked()
 //            ui->txtResultsEditor->setTextCursor(prev_cursor);
         }
     }
+}
+
+void MainScreen::on_pbSaveFormula_clicked()
+{
+    dlgSaveFormula saveFormula;
+
+    saveFormula.setModal(true);
+    saveFormula.exec();
+}
+
+void MainScreen::on_pbLoadFormula_clicked()
+{
+    dlgLoadFormula loadFormula;
+
+    loadFormula.setModal(true);
+    loadFormula.exec();
 }
