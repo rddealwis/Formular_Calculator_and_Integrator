@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>370</height>
+    <height>412</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
      <x>10</x>
      <y>20</y>
      <width>381</width>
-     <height>61</height>
+     <height>101</height>
     </rect>
    </property>
    <property name="autoFillBackground">
@@ -35,7 +35,7 @@
     <property name="geometry">
      <rect>
       <x>295</x>
-      <y>20</y>
+      <y>60</y>
       <width>75</width>
       <height>23</height>
      </rect>
@@ -48,7 +48,7 @@
     <property name="geometry">
      <rect>
       <x>15</x>
-      <y>25</y>
+      <y>65</y>
       <width>47</width>
       <height>13</height>
      </rect>
@@ -60,9 +60,32 @@
    <widget class="QTextEdit" name="txtSaveLocation">
     <property name="geometry">
      <rect>
-      <x>65</x>
-      <y>15</y>
-      <width>221</width>
+      <x>95</x>
+      <y>55</y>
+      <width>191</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblFormulaName">
+    <property name="geometry">
+     <rect>
+      <x>15</x>
+      <y>20</y>
+      <width>71</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Formula Name</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="txtFormulaName">
+    <property name="geometry">
+     <rect>
+      <x>95</x>
+      <y>10</y>
+      <width>191</width>
       <height>31</height>
      </rect>
     </property>
@@ -72,7 +95,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>90</y>
+     <y>140</y>
      <width>381</width>
      <height>211</height>
     </rect>
@@ -121,7 +144,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>310</y>
+     <y>360</y>
      <width>381</width>
      <height>41</height>
     </rect>
