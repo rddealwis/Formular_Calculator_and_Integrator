@@ -12,6 +12,7 @@
 #include "sinefunctionelement.h"
 #include "cosinefunctionelement.h"
 #include "powerfunctionelement.h"
+#include "xmlfilehandling.h"
 
 #endif // FORMULATOR
 

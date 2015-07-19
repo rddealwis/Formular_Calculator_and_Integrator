@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT       += xml
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -28,7 +29,8 @@ SOURCES += main.cpp\
     sinefunctionelement.cpp \
     variableelement.cpp \
     dlgsaveformula.cpp \
-    dlgloadformula.cpp
+    dlgloadformula.cpp \
+    xmlfilehandling.cpp
 
 HEADERS  += mainscreen.h \
     aboutcalculator.h \
@@ -46,7 +48,8 @@ HEADERS  += mainscreen.h \
     sinefunctionelement.h \
     variableelement.h \
     dlgsaveformula.h \
-    dlgloadformula.h
+    dlgloadformula.h \
+    xmlfilehandling.h
 
 FORMS    += mainscreen.ui \
     aboutcalculator.ui \
