@@ -1,4 +1,6 @@
 #include "sinefunctionelement.h"
+#include "constantelement.h"
+
 
 SineFunctionElement::SineFunctionElement()
 {
@@ -11,7 +13,7 @@ SineFunctionElement::~SineFunctionElement()
 
 std::string SineFunctionElement::toQString()
 {
-    return "sin(" + GetArgument().at(0)->toQString() + ")";
+    return "sin(" + getArgTwo()->toQString() + ")";
 }
 
 void SineFunctionElement::AddArgument(FormulaElement *argument)
@@ -35,5 +37,22 @@ bool SineFunctionElement::isNull()
 
 double SineFunctionElement::evaluate()
 {
-	return sin(GetArgument().at(0)->evaluate());
+    return sin(getArgTwo()->evaluate()* (pi /180));
+}
+
+FormulaElement* SineFunctionElement::simplify()
+{
+    std::string typeRHS(typeid(*(getArgTwo()->simplify())).name());
+
+    if (typeRHS.compare("class ConstantElement") == 0)
+    {
+        return new ConstantElement(evaluate());
+    }
+    else
+    {
+        FormulaElement* temp = this->getArgTwo()->simplify();
+        SineFunctionElement* simplifyResult = new SineFunctionElement();
+        simplifyResult->setArgTwo(temp);
+        return simplifyResult;
+    }
 }

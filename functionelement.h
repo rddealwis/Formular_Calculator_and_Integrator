@@ -11,27 +11,31 @@ public:
     void AddArgument(FormulaElement *argument);
     std::vector<FormulaElement*> GetArgument();
     std::string toQString();
+    FormulaElement* getArgOne();
+    FormulaElement* getArgTwo();
+    void setArgOne(FormulaElement* e);
+    void setArgTwo(FormulaElement* e);
     bool isArgOneNull();
     bool isArgTwoNull();
 	void getVariableValues(std::vector<variableValue*> *variableValues)
-	{
-		GetArgument().at(0)->getVariableValues(variableValues);
-		GetArgument().at(1)->getVariableValues(variableValues);
+    {
+        getArgOne()->getVariableValues(variableValues);
+        getArgTwo()->getVariableValues(variableValues);
 	}
 
 	bool setVariableValues(std::vector<variableValue*> *variableValues)
 	{
-		return (GetArgument().at(0)->setVariableValues(variableValues) && GetArgument().at(1)->setVariableValues(variableValues));
+        return (getArgOne()->setVariableValues(variableValues) && getArgTwo()->setVariableValues(variableValues));
 	}
 
 	bool isFullyGrounded()
 	{
-		return(GetArgument().at(0)->isFullyGrounded() && GetArgument().at(1)->isFullyGrounded());
+        return(getArgOne()->isFullyGrounded() && getArgTwo()->isFullyGrounded());
 	}
 private:
 	std::vector<FormulaElement*> arguments;
-	//FormulaElement* LHS = new NullElement();
-    //FormulaElement* RHS = new NullElement();
+    FormulaElement* ArgOne = new NullElement();
+    FormulaElement* ArgTwo = new NullElement();
 };
 
 #endif // FUNCTIONELEMENT_H

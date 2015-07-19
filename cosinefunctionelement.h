@@ -1,4 +1,4 @@
-#ifndef COSINEFUNCTIONELEMENT_H
+    #ifndef COSINEFUNCTIONELEMENT_H
 #define COSINEFUNCTIONELEMENT_H
 
 #include "functionelement.h"
@@ -13,18 +13,21 @@ public:
 	double evaluate();
 	void getVariableValues(std::vector<variableValue*> *variableValues)
 	{
-        GetArgument().at(0)->getVariableValues(variableValues);
+        getArgTwo()->getVariableValues(variableValues);
 	}
 
 	bool setVariableValues(std::vector<variableValue*> *variableValues)
 	{
-        return GetArgument().at(0)->setVariableValues(variableValues);
+        return getArgTwo()->setVariableValues(variableValues);
 	}
 
 	bool isFullyGrounded()
 	{
-        return GetArgument().at(0)->isFullyGrounded();
+        return getArgTwo()->isFullyGrounded();
 	}
+
+    FormulaElement* simplify();
+    FormulaElement* getNewInstance() { return new CosineFunctionElement(); }
 private:
     FunctionElement* argument;
 };

@@ -9,6 +9,8 @@ public:
     ~PowerFunctionElement();
     std::string toQString();
 	double evaluate();
+    FormulaElement* simplify();
+    FormulaElement* getNewInstance() { return new PowerFunctionElement(); }
 };
 
 

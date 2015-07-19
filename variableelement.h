@@ -16,6 +16,8 @@ public:
 	bool setVariableValues(std::vector<variableValue*> *variableValues);
 	bool isFullyGrounded();
 	double evaluate(){ return this->numVal; }
+    FormulaElement* simplify() { return new VariableElement(this->variable); }
+    FormulaElement* getNewInstance() { return new VariableElement(this->variable); }
 private:
     std::string variable;
     int numVal;

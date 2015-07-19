@@ -10,6 +10,8 @@ public:
     ~MinusFunctionElement();
     std::string toQString();
 	double evaluate();
+    FormulaElement* simplify();
+    FormulaElement* getNewInstance(){ return new MinusFunctionElement(); }
 };
 
 #endif // MINUSFUNCTIONELEMENT_H

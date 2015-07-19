@@ -10,10 +10,12 @@ public:
     ~ConstantElement();
     double GetConstant();
     std::string toQString();
-	void getVariableValues(std::vector<variableValue*> *variableValues){ return; }
-	bool setVariableValues(std::vector<variableValue*> *variableValues) { return true; }
+    void getVariableValues(std::vector<variableValue*> *variableValues){ return; }
+    bool setVariableValues(std::vector<variableValue*> *variableValues) { return true; }
 	bool isFullyGrounded() { return true; }
-	double evaluate(){ return this->constant; }
+    double evaluate(){ return this->constant; }
+    FormulaElement* simplify() { return this; }
+    FormulaElement* getNewInstance() { return new ConstantElement(this->constant); }
 private:
     double constant;
 };

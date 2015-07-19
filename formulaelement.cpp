@@ -59,9 +59,8 @@ void divideElemetns(std::vector<FormulaElement*> *formElements);
 void multiplyElemetns(std::vector<FormulaElement*> *formElements);
 void plusElemetns(std::vector<FormulaElement*> *formElements);
 void minusElemetns(std::vector<FormulaElement*> *formElements);
-
 void functionElemetnsInit(std::vector<FormulaElement*> *formElements);
-void functionElemetns(std::vector<FormulaElement*> *formElements);
+static void functionElemetns(std::vector<FormulaElement*> *formElements);
 FormulaElement* FormulaElement::parseFormula(std::string formula)
 {
     std::vector<std::string> tokens;
@@ -112,8 +111,7 @@ void functionElemetnsInit(std::vector<FormulaElement*> *formElements)
 	plusElemetnsInit(formElements);
 	minusElemetnsInit(formElements);
 }
-
-void functionElemetns(std::vector<FormulaElement*> *formElements)
+void FormulaElement::functionElemetns(std::vector<FormulaElement*> *formElements)
 {
 	sineElemetns(formElements);
 	cosElemetns(formElements);
@@ -134,7 +132,7 @@ void sineElemetnsInit(std::vector<FormulaElement*> *formElements)
         {
             if (i + 1 < (*formElements).size())
             {
-                FuncEle->AddArgument((*formElements)[i + 1]);
+                FuncEle->setArgTwo((*formElements)[i + 1]);
                 (*formElements).erase((*formElements).begin() + (i + 1));
             }
             temp.push_back(FuncEle);
@@ -160,7 +158,7 @@ void cosElemetnsInit(std::vector<FormulaElement*> *formElements)
         {
             if (i + 1 < (*formElements).size())
             {
-                FuncEle->AddArgument((*formElements)[i + 1]);
+                FuncEle->setArgTwo((*formElements)[i + 1]);
                 (*formElements).erase((*formElements).begin() + (i + 1));
             }
             temp.push_back(FuncEle);
@@ -193,13 +191,13 @@ void divideElemetnsInit(std::vector<FormulaElement*> *formElements)
 
             if (typeLHS.compare("class ConstantElement") == 0 || typeLHS.compare("class VariableElement") == 0)
             {
-                FuncEle->AddArgument((*formElements)[i - 1]);
+                FuncEle->setArgOne((*formElements)[i - 1]);
                 (*formElements).erase((*formElements).begin() + (--i));
                 temp.pop_back();
             }
             if (typeRHS.compare("class ConstantElement") == 0 || typeRHS.compare("class VariableElement") == 0)
             {
-                FuncEle->AddArgument((*formElements)[i + 1]);
+                FuncEle->setArgTwo((*formElements)[i + 1]);
                 (*formElements).erase((*formElements).begin() + (i + 1));
             }
             temp.push_back(FuncEle);
@@ -232,13 +230,13 @@ void powerElemetnsInit(std::vector<FormulaElement*> *formElements)
 
             if (typeLHS.compare("class ConstantElement") == 0 || typeLHS.compare("class VariableElement") == 0)
             {
-                FuncEle->AddArgument((*formElements)[i - 1]);
+                FuncEle->setArgOne((*formElements)[i - 1]);
                 (*formElements).erase((*formElements).begin() + (--i));
                 temp.pop_back();
             }
             if (typeRHS.compare("class ConstantElement") == 0 || typeRHS.compare("class VariableElement") == 0)
             {
-                FuncEle->AddArgument((*formElements)[i + 1]);
+                FuncEle->setArgTwo((*formElements)[i + 1]);
                 (*formElements).erase((*formElements).begin() + (i + 1));
             }
             temp.push_back(FuncEle);
@@ -271,13 +269,13 @@ void multiplyElemetnsInit(std::vector<FormulaElement*> *formElements)
 
             if (typeLHS.compare("class ConstantElement") == 0 || typeLHS.compare("class VariableElement") == 0)
             {
-                FuncEle->AddArgument((*formElements)[i - 1]);
+                FuncEle->setArgOne((*formElements)[i - 1]);
                 (*formElements).erase((*formElements).begin() + (--i));
                 temp.pop_back();
             }
             if (typeRHS.compare("class ConstantElement") == 0 || typeRHS.compare("class VariableElement") == 0)
             {
-                FuncEle->AddArgument((*formElements)[i + 1]);
+                FuncEle->setArgTwo((*formElements)[i + 1]);
                 (*formElements).erase((*formElements).begin() + (i + 1));
             }
             temp.push_back(FuncEle);
@@ -310,13 +308,13 @@ void plusElemetnsInit(std::vector<FormulaElement*> *formElements)
 
             if (typeLHS.compare("class ConstantElement") == 0 || typeLHS.compare("class VariableElement") == 0)
             {
-                FuncEle->AddArgument((*formElements)[i - 1]);
+                FuncEle->setArgOne((*formElements)[i - 1]);
                 (*formElements).erase((*formElements).begin() + (--i));
                 temp.pop_back();
             }
             if (typeRHS.compare("class ConstantElement") == 0 || typeRHS.compare("class VariableElement") == 0)
             {
-                FuncEle->AddArgument((*formElements)[i + 1]);
+                FuncEle->setArgTwo((*formElements)[i + 1]);
                 (*formElements).erase((*formElements).begin() + (i + 1));
             }
             temp.push_back(FuncEle);
@@ -349,13 +347,13 @@ void minusElemetnsInit(std::vector<FormulaElement*> *formElements)
 
             if (typeLHS.compare("class ConstantElement") == 0 || typeLHS.compare("class VariableElement") == 0)
             {
-                FuncEle->AddArgument((*formElements)[i - 1]);
+                FuncEle->setArgOne((*formElements)[i - 1]);
                 (*formElements).erase((*formElements).begin() + (--i));
                 temp.pop_back();
             }
             if (typeRHS.compare("class ConstantElement") == 0 || typeRHS.compare("class VariableElement") == 0)
             {
-                FuncEle->AddArgument((*formElements)[i + 1]);
+                FuncEle->setArgTwo((*formElements)[i + 1]);
                 (*formElements).erase((*formElements).begin() + (i + 1));
             }
             temp.push_back(FuncEle);
@@ -844,280 +842,310 @@ bool containNumber(std::string Text)
 
 void sineElemetns(std::vector<FormulaElement*> *formElements)
 {
-	std::vector<FormulaElement*> temp;
-	for (int i = 0; i < (*formElements).size(); i++)
-	{
-		SineFunctionElement *FuncEle = dynamic_cast<SineFunctionElement*>((*formElements)[i]);
-		if (FuncEle != 0)
-		{
+    std::vector<FormulaElement*> temp;
+    for (int i = 0; i < (*formElements).size(); i++)
+    {
+        SineFunctionElement *FuncEle = dynamic_cast<SineFunctionElement*>((*formElements)[i]);
+        if (FuncEle != 0)
+        {
 
-			if (FuncEle->isArgTwoNull())
-			{
-				FuncEle->AddArgument((*formElements)[i + 1]);
-				(*formElements).erase((*formElements).begin() + (i + 1));
-			}
-			temp.push_back(FuncEle);
-			(*formElements).erase((*formElements).begin() + (i--));
-		}
-		else
-		{
-			temp.push_back((*formElements)[i]);
-		}
-	}
-	(*formElements).clear();
-	for (size_t i = 0; i < temp.size(); i++)
-		(*formElements).push_back(temp[i]);
+            if (FuncEle->isArgTwoNull())
+            {
+                FuncEle->setArgTwo((*formElements)[i + 1]);
+                (*formElements).erase((*formElements).begin() + (i + 1));
+            }
+            temp.push_back(FuncEle);
+            (*formElements).erase((*formElements).begin() + (i--));
+        }
+        else
+        {
+            temp.push_back((*formElements)[i]);
+        }
+    }
+    (*formElements).clear();
+    for (size_t i = 0; i < temp.size(); i++)
+        (*formElements).push_back(temp[i]);
 }
 
 void cosElemetns(std::vector<FormulaElement*> *formElements)
 {
-	std::vector<FormulaElement*> temp;
-	for (int i = 0; i < (*formElements).size(); i++)
-	{
-		CosineFunctionElement *FuncEle = dynamic_cast<CosineFunctionElement*>((*formElements)[i]);
-		if (FuncEle != 0)
-		{
+    std::vector<FormulaElement*> temp;
+    for (int i = 0; i < (*formElements).size(); i++)
+    {
+        CosineFunctionElement *FuncEle = dynamic_cast<CosineFunctionElement*>((*formElements)[i]);
+        if (FuncEle != 0)
+        {
 
-			if (FuncEle->isArgTwoNull())
-			{
-				FuncEle->AddArgument((*formElements)[i + 1]);
-				(*formElements).erase((*formElements).begin() + (i + 1));
-			}
-			temp.push_back(FuncEle);
-			(*formElements).erase((*formElements).begin() + (i--));
-		}
-		else
-		{
-			temp.push_back((*formElements)[i]);
-		}
-	}
-	(*formElements).clear();
-	for (size_t i = 0; i < temp.size(); i++)
-		(*formElements).push_back(temp[i]);
+            if (FuncEle->isArgTwoNull())
+            {
+                FuncEle->setArgTwo((*formElements)[i + 1]);
+                (*formElements).erase((*formElements).begin() + (i + 1));
+            }
+            temp.push_back(FuncEle);
+            (*formElements).erase((*formElements).begin() + (i--));
+        }
+        else
+        {
+            temp.push_back((*formElements)[i]);
+        }
+    }
+    (*formElements).clear();
+    for (size_t i = 0; i < temp.size(); i++)
+        (*formElements).push_back(temp[i]);
 }
 
 void powerElemetns(std::vector<FormulaElement*> *formElements)
 {
-	std::vector<FormulaElement*> temp;
-	for (int i = 0; i < (*formElements).size(); i++)
-	{
-		PowerFunctionElement *FuncEle = dynamic_cast<PowerFunctionElement*>((*formElements)[i]);
-		if (FuncEle != 0)
-		{
-			bool LHSchg = false;
-			bool RHSchg = false;
-			if (FuncEle->isArgOneNull())
-			{
-				if (temp.size() > 0)
-				{
-					FuncEle->AddArgument(temp[temp.size() - 1]);
-					temp.pop_back();
-				}
-				else
-				{
-					FuncEle->AddArgument((*formElements)[i - 1]);
-					(*formElements).erase((*formElements).begin() + (--i));
-				}
-				LHSchg = true;
-			}
+    std::vector<FormulaElement*> temp;
+    for (int i = 0; i < (*formElements).size(); i++)
+    {
+        PowerFunctionElement *FuncEle = dynamic_cast<PowerFunctionElement*>((*formElements)[i]);
+        if (FuncEle != 0)
+        {
+            bool LHSchg = false;
+            bool RHSchg = false;
+            if (FuncEle->isArgOneNull())
+            {
+                if (temp.size() > 0)
+                {
+                    FuncEle->setArgOne(temp[temp.size() - 1]);
+                    temp.pop_back();
+                }
+                else
+                {
+                    FuncEle->setArgOne((*formElements)[i - 1]);
+                    (*formElements).erase((*formElements).begin() + (--i));
+                }
+                LHSchg = true;
+            }
 
-			if (FuncEle->isArgTwoNull())
-			{
-				FuncEle->AddArgument((*formElements)[i + 1]);
-				(*formElements).erase((*formElements).begin() + (i + 1));
-				RHSchg = true;
-			}
+            if (FuncEle->isArgTwoNull())
+            {
+                FuncEle->setArgTwo((*formElements)[i + 1]);
+                (*formElements).erase((*formElements).begin() + (i + 1));
+                RHSchg = true;
+            }
 
-			temp.push_back(FuncEle);
-			(*formElements).erase((*formElements).begin() + (i--));
-		}
-		else
-		{
-			temp.push_back((*formElements)[i]);
-		}
-	}
-	(*formElements).clear();
-	for (size_t i = 0; i < temp.size(); i++)
-		(*formElements).push_back(temp[i]);
+            temp.push_back(FuncEle);
+            (*formElements).erase((*formElements).begin() + (i--));
+        }
+        else
+        {
+            temp.push_back((*formElements)[i]);
+        }
+    }
+    (*formElements).clear();
+    for (size_t i = 0; i < temp.size(); i++)
+        (*formElements).push_back(temp[i]);
 }
 
 void divideElemetns(std::vector<FormulaElement*> *formElements)
 {
-	std::vector<FormulaElement*> temp;
-	for (int i = 0; i < (*formElements).size(); i++)
-	{
-		DivideFunctionElement *FuncEle = dynamic_cast<DivideFunctionElement*>((*formElements)[i]);
-		if (FuncEle != 0)
-		{
-			bool LHSchg = false;
-			bool RHSchg = false;
-			if (FuncEle->isArgOneNull())
-			{
-				if (temp.size() > 0)
-				{
-					FuncEle->AddArgument(temp[temp.size() - 1]);
-					temp.pop_back();
-				}
-				else
-				{
-					FuncEle->AddArgument((*formElements)[i - 1]);
-					(*formElements).erase((*formElements).begin() + (--i));
-				}
-				LHSchg = true;
-			}
+    std::vector<FormulaElement*> temp;
+    for (int i = 0; i < (*formElements).size(); i++)
+    {
+        DivideFunctionElement *FuncEle = dynamic_cast<DivideFunctionElement*>((*formElements)[i]);
+        if (FuncEle != 0)
+        {
+            bool LHSchg = false;
+            bool RHSchg = false;
+            if (FuncEle->isArgOneNull())
+            {
+                if (temp.size() > 0)
+                {
+                    FuncEle->setArgOne(temp[temp.size() - 1]);
+                    temp.pop_back();
+                }
+                else
+                {
+                    FuncEle->setArgOne((*formElements)[i - 1]);
+                    (*formElements).erase((*formElements).begin() + (--i));
+                }
+                LHSchg = true;
+            }
 
-			if (FuncEle->isArgTwoNull())
-			{
-				FuncEle->AddArgument((*formElements)[i + 1]);
-				(*formElements).erase((*formElements).begin() + (i + 1));
-				RHSchg = true;
-			}
+            if (FuncEle->isArgTwoNull())
+            {
+                FuncEle->setArgTwo((*formElements)[i + 1]);
+                (*formElements).erase((*formElements).begin() + (i + 1));
+                RHSchg = true;
+            }
 
-			temp.push_back(FuncEle);
-			(*formElements).erase((*formElements).begin() + (i--));
-		}
-		else
-		{
-			temp.push_back((*formElements)[i]);
-		}
-	}
-	(*formElements).clear();
-	for (size_t i = 0; i < temp.size(); i++)
-		(*formElements).push_back(temp[i]);
+            temp.push_back(FuncEle);
+            (*formElements).erase((*formElements).begin() + (i--));
+        }
+        else
+        {
+            temp.push_back((*formElements)[i]);
+        }
+    }
+    (*formElements).clear();
+    for (size_t i = 0; i < temp.size(); i++)
+        (*formElements).push_back(temp[i]);
 }
 
 void multiplyElemetns(std::vector<FormulaElement*> *formElements)
 {
-	std::vector<FormulaElement*> temp;
-	for (int i = 0; i < (*formElements).size(); i++)
-	{
-		MultipleFunctionElement *FuncEle = dynamic_cast<MultipleFunctionElement*>((*formElements)[i]);
-		if (FuncEle != 0)
-		{
-			bool LHSchg = false;
-			bool RHSchg = false;
-			if (FuncEle->isArgOneNull())
-			{
-				if (temp.size() > 0)
-				{
-					FuncEle->AddArgument(temp[temp.size() - 1]);
-					temp.pop_back();
-				}
-				else
-				{
-					FuncEle->AddArgument((*formElements)[i - 1]);
-					(*formElements).erase((*formElements).begin() + (--i));
-				}
-				LHSchg = true;
-			}
+    std::vector<FormulaElement*> temp;
+    for (int i = 0; i < (*formElements).size(); i++)
+    {
+        MultipleFunctionElement *FuncEle = dynamic_cast<MultipleFunctionElement*>((*formElements)[i]);
+        if (FuncEle != 0)
+        {
+            bool LHSchg = false;
+            bool RHSchg = false;
+            if (FuncEle->isArgOneNull())
+            {
+                if (temp.size() > 0)
+                {
+                    FuncEle->setArgOne(temp[temp.size() - 1]);
+                    temp.pop_back();
+                }
+                else
+                {
+                    FuncEle->setArgOne((*formElements)[i - 1]);
+                    (*formElements).erase((*formElements).begin() + (--i));
+                }
+                LHSchg = true;
+            }
 
-			if (FuncEle->isArgTwoNull())
-			{
-				FuncEle->AddArgument((*formElements)[i + 1]);
-				(*formElements).erase((*formElements).begin() + (i + 1));
-				RHSchg = true;
-			}
+            if (FuncEle->isArgTwoNull())
+            {
+                FuncEle->setArgTwo((*formElements)[i + 1]);
+                (*formElements).erase((*formElements).begin() + (i + 1));
+                RHSchg = true;
+            }
 
-			temp.push_back(FuncEle);
-			(*formElements).erase((*formElements).begin() + (i--));
-		}
-		else
-		{
-			temp.push_back((*formElements)[i]);
-		}
-	}
-	(*formElements).clear();
-	for (size_t i = 0; i < temp.size(); i++)
-		(*formElements).push_back(temp[i]);
+            temp.push_back(FuncEle);
+            (*formElements).erase((*formElements).begin() + (i--));
+        }
+        else
+        {
+            temp.push_back((*formElements)[i]);
+        }
+    }
+    (*formElements).clear();
+    for (size_t i = 0; i < temp.size(); i++)
+        (*formElements).push_back(temp[i]);
 }
 
 void plusElemetns(std::vector<FormulaElement*> *formElements)
 {
-	std::vector<FormulaElement*> temp;
-	for (int i = 0; i < (*formElements).size(); i++)
-	{
-		PlusFunctionElement *FuncEle = dynamic_cast<PlusFunctionElement*>((*formElements)[i]);
-		if (FuncEle != 0)
-		{
-			bool LHSchg = false;
-			bool RHSchg = false;
-				if (FuncEle->isArgOneNull())
-			{
-				if (temp.size() > 0)
-				{
-					FuncEle->AddArgument(temp[temp.size() - 1]);
-					temp.pop_back();
-				}
-				else
-				{
-					FuncEle->AddArgument((*formElements)[i - 1]);
-					(*formElements).erase((*formElements).begin() + (--i));
-				}
-				LHSchg = true;
-			}
+    std::vector<FormulaElement*> temp;
+    for (int i = 0; i < (*formElements).size(); i++)
+    {
+        PlusFunctionElement *FuncEle = dynamic_cast<PlusFunctionElement*>((*formElements)[i]);
+        if (FuncEle != 0)
+        {
+            bool LHSchg = false;
+            bool RHSchg = false;
+            if (FuncEle->isArgOneNull())
+            {
+                if (temp.size() > 0)
+                {
+                    FuncEle->setArgOne(temp[temp.size() - 1]);
+                    temp.pop_back();
+                }
+                else
+                {
+                    FuncEle->setArgOne((*formElements)[i - 1]);
+                    (*formElements).erase((*formElements).begin() + (--i));
+                }
+                LHSchg = true;
+            }
 
-			if (FuncEle->isArgTwoNull())
-			{
-				FuncEle->AddArgument((*formElements)[i + 1]);
-				(*formElements).erase((*formElements).begin() + (i + 1));
-				RHSchg = true;
-			}
+            if (FuncEle->isArgTwoNull())
+            {
+                FuncEle->setArgTwo((*formElements)[i + 1]);
+                (*formElements).erase((*formElements).begin() + (i + 1));
+                RHSchg = true;
+            }
 
-			temp.push_back(FuncEle);
-			(*formElements).erase((*formElements).begin() + (i--));
-		}
-		else
-		{
-			temp.push_back((*formElements)[i]);
-		}
-	}
-	(*formElements).clear();
-	for (size_t i = 0; i < temp.size(); i++)
-		(*formElements).push_back(temp[i]);
+            temp.push_back(FuncEle);
+            (*formElements).erase((*formElements).begin() + (i--));
+        }
+        else
+        {
+            temp.push_back((*formElements)[i]);
+        }
+    }
+    (*formElements).clear();
+    for (size_t i = 0; i < temp.size(); i++)
+        (*formElements).push_back(temp[i]);
 }
 
 void minusElemetns(std::vector<FormulaElement*> *formElements)
 {
-	std::vector<FormulaElement*> temp;
-	for (int i = 0; i < (*formElements).size(); i++)
-	{
-		MinusFunctionElement *FuncEle = dynamic_cast<MinusFunctionElement*>((*formElements)[i]);
-		if (FuncEle != 0)
-		{
-			bool LHSchg = false;
-			bool RHSchg = false;
-			if (FuncEle->isArgOneNull())
-			{
-				if (temp.size() > 0)
-				{
-					FuncEle->AddArgument(temp[temp.size() - 1]);
-					temp.pop_back();
-				}
-				else
-				{
-					FuncEle->AddArgument((*formElements)[i - 1]);
-					(*formElements).erase((*formElements).begin() + (--i));
-				}
-				LHSchg = true;
-			}
+    std::vector<FormulaElement*> temp;
+    for (int i = 0; i < (*formElements).size(); i++)
+    {
+        MinusFunctionElement *FuncEle = dynamic_cast<MinusFunctionElement*>((*formElements)[i]);
+        if (FuncEle != 0)
+        {
+            bool LHSchg = false;
+            bool RHSchg = false;
+            if (FuncEle->isArgOneNull())
+            {
+                if (temp.size() > 0)
+                {
+                    FuncEle->setArgOne(temp[temp.size() - 1]);
+                    temp.pop_back();
+                }
+                else
+                {
+                    FuncEle->setArgOne((*formElements)[i - 1]);
+                    (*formElements).erase((*formElements).begin() + (--i));
+                }
+                LHSchg = true;
+            }
 
-			if (FuncEle->isArgTwoNull())
-			{
-				FuncEle->AddArgument((*formElements)[i + 1]);
-				(*formElements).erase((*formElements).begin() + (i + 1));
-				RHSchg = true;
-			}
+            if (FuncEle->isArgTwoNull())
+            {
+                FuncEle->setArgTwo((*formElements)[i + 1]);
+                (*formElements).erase((*formElements).begin() + (i + 1));
+                RHSchg = true;
+            }
 
-			temp.push_back(FuncEle);
-			(*formElements).erase((*formElements).begin() + (i--));
-		}
-		else
-		{
-			temp.push_back((*formElements)[i]);
-		}
-	}
-	(*formElements).clear();
-	for (size_t i = 0; i < temp.size(); i++)
-		(*formElements).push_back(temp[i]);
+            temp.push_back(FuncEle);
+            (*formElements).erase((*formElements).begin() + (i--));
+        }
+        else
+        {
+            temp.push_back((*formElements)[i]);
+        }
+    }
+    (*formElements).clear();
+    for (size_t i = 0; i < temp.size(); i++)
+        (*formElements).push_back(temp[i]);
 }
 
+void FormulaElement::toVector(FormulaElement* node, std::vector<FormulaElement*> *formElements)
+{
+    FunctionElement* cNode = dynamic_cast<FunctionElement*>(node);
+    std::string cNodeType = (cNode != 0) ? typeid(*cNode).name() : "NULL";
+    if (cNode != 0 &&
+        (cNodeType == "class MinusFunctionElement" ||  cNodeType == "class PlusFunctionElement"))
+    {
+        std::string typeLHS = typeid(*(cNode->getArgOne())).name();
+        std::string typeRHS = typeid(*(cNode->getArgTwo())).name();
+
+        if (typeLHS == "class ConstantElement" || typeLHS == "class VariableElement")
+            formElements->push_back(cNode->getArgOne()->getNewInstance());
+        else
+            FormulaElement::toVector(cNode->getArgOne(), formElements);
+
+        formElements->push_back(cNode->getNewInstance());
+
+        if (typeRHS == "class ConstantElement" || typeRHS == "class VariableElement")
+            formElements->push_back(cNode->getArgTwo()->getNewInstance());
+        else
+            FormulaElement::toVector(cNode->getArgTwo(), formElements);
+    }
+    else
+    {
+        if (cNode != 0)
+            formElements->push_back(node);
+        else
+            formElements->push_back(node->getNewInstance());
+    }
+}

@@ -10,6 +10,8 @@ public:
     ~DivideFunctionElement();
 	double evaluate();
     std::string toQString();
+    FormulaElement* simplify();
+    FormulaElement* getNewInstance(){ return new DivideFunctionElement(); }
 };
 
 #endif // DIVIDEFUNCTIONELEMENT_H

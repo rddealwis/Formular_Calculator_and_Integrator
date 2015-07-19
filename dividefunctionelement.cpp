@@ -14,18 +14,19 @@ DivideFunctionElement::~DivideFunctionElement()
 
 double DivideFunctionElement::evaluate()
 {
-	return this->GetArgument().at(0)->evaluate() / this->GetArgument().at(1)->evaluate();
+    return this->getArgOne()->evaluate() / this->getArgTwo()->evaluate();
 }
 
 std::string DivideFunctionElement::toQString()
 {
-	std::string typeLHS(typeid(*GetArgument().at(0)).name());
-	std::string typeRHS(typeid(*GetArgument().at(1)).name());
+    std::string typeLHS(typeid(*getArgOne()).name());
+    std::string typeRHS(typeid(*getArgTwo()).name());
 
 	if ((typeLHS == "class ConstantElement")
 		&& (typeRHS == "class ConstantElement")) {
-		ConstantElement* tempLHS = (ConstantElement*)GetArgument().at(0);
-		ConstantElement* tempRHS = (ConstantElement*)GetArgument().at(1);
+        return getArgOne()->toQString() + "/" + getArgTwo()->toQString();
+        /*ConstantElement* tempLHS = (ConstantElement*)getArgOne();
+        ConstantElement* tempRHS = (ConstantElement*)getArgTwo();
 		double result = tempLHS->GetConstant() / tempRHS->GetConstant();
 
 		char* buffer = new char[100];
@@ -34,52 +35,70 @@ std::string DivideFunctionElement::toQString()
 		returnVal = buffer;
 		delete buffer;
 
-		return returnVal;
+        return returnVal;*/
 	}
 
 	if ((typeLHS == "class ConstantElement")
 		&& (typeRHS == "class VariableElement")) {
-		return GetArgument().at(0)->toQString() + "/" + GetArgument().at(1)->toQString();
+        return getArgOne()->toQString() + "/" + getArgTwo()->toQString();
 	}
 
 	if ((typeLHS == "class VariableElement")
 		&& (typeRHS == "class ConstantElement")) {
-		return GetArgument().at(0)->toQString() + "/" + GetArgument().at(1)->toQString();
+        return getArgOne()->toQString() + "/" + getArgTwo()->toQString();
 	}
 
 	if (("class VariableElement" == typeLHS)
 		&& ("class VariableElement" == typeRHS)) {
-		return GetArgument().at(0)->toQString() + "/" + GetArgument().at(1)->toQString();
+        return getArgOne()->toQString() + "/" + getArgTwo()->toQString();
 	}
 
 	if (("class DivideFunctionElement" == typeLHS)
 		&& ("class VariableElement" == typeRHS)) {
-		return "(" + GetArgument().at(0)->toQString() + ")/" + GetArgument().at(1)->toQString();
+        return "(" + getArgOne()->toQString() + ")/" + getArgTwo()->toQString();
 	}
 
 	if (("class VariableElement" == typeLHS)
 		&& ("class DivideFunctionElement" == typeRHS)) {
-		return GetArgument().at(0)->toQString() + "/(" + GetArgument().at(1)->toQString() + ")";
+        return getArgOne()->toQString() + "/(" + getArgTwo()->toQString() + ")";
 	}
 
 	if (("class ConstantElement" == typeLHS)
 		&& ("class CosineFunctionElement" == typeRHS || "class SineFunctionElement" == typeRHS)) {
-		return GetArgument().at(0)->toQString() + "/" + GetArgument().at(1)->toQString();
+        return getArgOne()->toQString() + "/" + getArgTwo()->toQString();
 	}
 
 	if (("class ConstantElement" == typeRHS)
 		&& ("class CosineFunctionElement" == typeLHS || "class SineFunctionElement" == typeLHS)) {
-		return GetArgument().at(1)->toQString() + "/" + GetArgument().at(0)->toQString();
+        return getArgTwo()->toQString() + "/" + getArgOne()->toQString();
 	}
 
 	if (("class VariableElement" == typeLHS || "class ConstantElement" == typeLHS)
 		|| ("class VariableElement" == typeRHS || "class ConstantElement" == typeRHS)) {
-		return GetArgument().at(0)->toQString() + "/" + GetArgument().at(1)->toQString();
+        return getArgOne()->toQString() + "/" + getArgTwo()->toQString();
 	}
 
 	if (("class CosineFunctionElement" == typeRHS || "class SineFunctionElement" == typeRHS)
 		|| ("class CosineFunctionElement" == typeLHS || "class SineFunctionElement" == typeLHS)) {
-		return GetArgument().at(0)->toQString() + "/" + GetArgument().at(1)->toQString();
+        return getArgOne()->toQString() + "/" + getArgTwo()->toQString();
 	}
-   return "(" + GetArgument().at(0)->toQString() + ") / (" + GetArgument().at(1)->toQString() + ")";
+   return "(" + getArgOne()->toQString() + ") / (" + getArgTwo()->toQString() + ")";
+}
+
+FormulaElement* DivideFunctionElement::simplify()
+{
+    std::string typeLHS(typeid(*(getArgOne()->simplify())).name());
+    std::string typeRHS(typeid(*(getArgTwo()->simplify())).name());
+
+    if (("class ConstantElement" == typeLHS)
+        && ("class ConstantElement" == typeRHS)) {
+        return new ConstantElement(evaluate());
+    }
+    else
+    {
+        DivideFunctionElement* temp = new DivideFunctionElement();
+        temp->setArgOne(getArgOne()->simplify());
+        temp->setArgTwo(getArgTwo()->simplify());
+        return temp;
+    }
 }
