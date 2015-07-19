@@ -51,8 +51,8 @@ class NullElement :public FormulaElement
 {
 public:
     NullElement(){}
-    void getVariableValues(std::vector<variableValue*> *variableValues1){ return; }
-    bool setVariableValues(std::vector<variableValue*> *variableValues1){ return false; }
+    void getVariableValues(std::vector<variableValue*> *variableValues){ return; }
+    bool setVariableValues(std::vector<variableValue*> *variableValues){ return false; }
 	bool isFullyGrounded() { return false; }
 	double evaluate(){ return 0; }
     FormulaElement* simplify() { return this; }
@@ -69,8 +69,8 @@ class Bracket :public FormulaElement
 private:
     bool open;
 public:
-    void getVariableValues(std::vector<variableValue*> *variableValues2){ return; }
-    bool setVariableValues(std::vector<variableValue*> *variableValues2){ return false; }
+    void getVariableValues(std::vector<variableValue*> *variableValues){ return; }
+    bool setVariableValues(std::vector<variableValue*> *variableValues){ return false; }
 	bool isFullyGrounded() { return false; }
 	double evaluate(){ return 0; }
     FormulaElement* simplify() { return this; }

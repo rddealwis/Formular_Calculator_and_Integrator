@@ -20,20 +20,20 @@ MainScreen::~MainScreen()
 
 void MainScreen::ButtonClickEventHandler(std::string txt)
 {
-    if(ui->txtResultsEditor->toPlainText()!= "0")
+    if(ui->txtTextEditor->toPlainText()!= "0")
     {
-        QTextCursor prev_cursor = ui->txtResultsEditor->textCursor();
-        ui->txtResultsEditor->moveCursor(QTextCursor::End);
-        ui->txtResultsEditor->insertPlainText(QString::fromStdString(txt));
-        ui->txtResultsEditor->setTextCursor(prev_cursor);
+        QTextCursor prev_cursor = ui->txtTextEditor->textCursor();
+        ui->txtTextEditor->moveCursor(QTextCursor::End);
+        ui->txtTextEditor->insertPlainText(QString::fromStdString(txt));
+        ui->txtTextEditor->setTextCursor(prev_cursor);
     }
     else
     {
-        ui->txtResultsEditor->clear();
-        QTextCursor prev_cursor = ui->txtResultsEditor->textCursor();
-        ui->txtResultsEditor->moveCursor(QTextCursor::End);
-        ui->txtResultsEditor->insertPlainText(QString::fromStdString(txt));
-        ui->txtResultsEditor->setTextCursor(prev_cursor);
+        ui->txtTextEditor->clear();
+        QTextCursor prev_cursor = ui->txtTextEditor->textCursor();
+        ui->txtTextEditor->moveCursor(QTextCursor::End);
+        ui->txtTextEditor->insertPlainText(QString::fromStdString(txt));
+        ui->txtTextEditor->setTextCursor(prev_cursor);
     }
 }
 
@@ -110,10 +110,10 @@ void MainScreen::on_pbMinus_clicked()
 void MainScreen::on_pbEqual_clicked()
 {
     std::string input=this->ui->txtTextEditor->toPlainText().toStdString();
-    //std::string formulaInput(input);
-   // FormulaElement* formula = FormulaElement::parseFormula("5+6");
+    std::string formulaInput(input);
+    FormulaElement* formula = FormulaElement::parseFormula(formulaInput);
     //this->ui->txtTextEditor->setText(QString::fromStdString(formula->toQString().data()));
-    //this->ButtonClickEventHandler("=");
+    this->ui->txtResultsEditor->setText(QString::number(formula->evaluate()));
 }
 
 void MainScreen::on_pbInverse_clicked()
@@ -159,12 +159,12 @@ void MainScreen::on_pbLn_clicked()
 
 void MainScreen::on_pbSin_clicked()
 {
-    this->ButtonClickEventHandler("Sin(");
+    this->ButtonClickEventHandler("sin(");
 }
 
 void MainScreen::on_pbCos_clicked()
 {
-    this->ButtonClickEventHandler("Cos(");
+    this->ButtonClickEventHandler("cos(");
 }
 
 void MainScreen::on_pbTan_clicked()
@@ -185,7 +185,7 @@ void MainScreen::on_pbSquare_clicked()
 
 void MainScreen::on_pbPi_clicked()
 {
-    if(sizeof(ui->txtResultsEditor->size())>2)
+    if(sizeof(ui->txtTextEditor->size())>2)
     {
         this->ButtonClickEventHandler("3.1416");
     }
@@ -223,27 +223,27 @@ void MainScreen::on_pbExit_clicked()
 
 void MainScreen::on_pbCE_clicked()
 {
-    ui->txtResultsEditor->clear();
-    ui->txtResultsEditor->setText("0");
+    ui->txtTextEditor->clear();
+    ui->txtTextEditor->setText("0");
 }
 
 void MainScreen::on_pbC_clicked()
 {
-    ui->txtResultsEditor->clear();
-    ui->txtResultsEditor->setText("0");
+    ui->txtTextEditor->clear();
+    ui->txtTextEditor->setText("0");
 }
 
 void MainScreen::on_pbDel_clicked()
 {
-    if(ui->txtResultsEditor->toPlainText()!= "0")
+    if(ui->txtTextEditor->toPlainText()!= "0")
     {
-        while(!ui->txtResultsEditor->toPlainText().isEmpty())
+        while(!ui->txtTextEditor->toPlainText().isEmpty())
         {
-            ui->txtResultsEditor->textCursor().deletePreviousChar();
-//            QTextCursor prev_cursor = ui->txtResultsEditor->textCursor();
-//            ui->txtResultsEditor->moveCursor(QTextCursor::End);
-//            //ui->txtResultsEditor->insertPlainText(QString::fromStdString(txt));
-//            ui->txtResultsEditor->setTextCursor(prev_cursor);
+            ui->txtTextEditor->textCursor().deletePreviousChar();
+//            QTextCursor prev_cursor = ui->txtTextEditor->textCursor();
+//            ui->txtTextEditor->moveCursor(QTextCursor::End);
+//            //ui->txtTextEditor->insertPlainText(QString::fromStdString(txt));
+//            ui->txtTextEditor->setTextCursor(prev_cursor);
         }
     }
 }
