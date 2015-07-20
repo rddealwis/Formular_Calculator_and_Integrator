@@ -201,24 +201,9 @@ void MainScreen::on_pbPower_clicked()
     this->ButtonClickEventHandler("^");
 }
 
-void MainScreen::on_pbOptions_clicked()
-{
-    ui->frmAboutCalculator->setVisible(false);
-}
-
-void MainScreen::on_pbHelp_clicked()
-{
-    ui->frmAboutCalculator->setVisible(false);
-}
-
 void MainScreen::on_pbAboutUs_clicked()
 {
     ui->frmAboutCalculator->setVisible(true);
-}
-
-void MainScreen::on_pbExit_clicked()
-{
-
 }
 
 void MainScreen::on_pbCE_clicked()

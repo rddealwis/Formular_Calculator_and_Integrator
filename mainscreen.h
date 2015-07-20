@@ -72,20 +72,13 @@ private slots:
 
     void on_pbFactorial_clicked();
 
-
     void on_pbSquare_clicked();
 
     void on_pbPi_clicked();
 
     void on_pbPower_clicked();
 
-    void on_pbOptions_clicked();
-
-    void on_pbHelp_clicked();
-
     void on_pbAboutUs_clicked();
-
-    void on_pbExit_clicked();
 
     void on_pbCE_clicked();
 
