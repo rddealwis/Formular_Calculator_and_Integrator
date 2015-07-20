@@ -90,6 +90,12 @@ private slots:
 
     void on_pbLoadFormula_clicked();
 
+    void on_pbLoadGraphFormula_clicked();
+
+    void on_pbSaveGraph_clicked();
+
+    void on_pbGenerate_clicked();
+
 private:
     Ui::MainScreen *ui;
 };

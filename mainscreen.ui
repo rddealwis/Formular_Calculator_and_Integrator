@@ -167,7 +167,7 @@ QPushButton{
          <x>20</x>
          <y>30</y>
          <width>661</width>
-         <height>181</height>
+         <height>201</height>
         </rect>
        </property>
        <property name="font">
@@ -178,7 +178,7 @@ QPushButton{
         </font>
        </property>
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Calibri,sans-serif'; font-size:11pt;&quot;&gt;Infinity Calculator is a symbolic calculator which allows users to manipulate real mathematical formulae &lt;br/&gt;in their textual or symbolic forms. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Calibri,sans-serif'; font-size:11pt;&quot;&gt;Infinity Calculator also allows the following : &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Calibri,sans-serif'; font-size:11pt;&quot;&gt;     Calculate the integral of any formula.&lt;br/&gt;     Graph any named formula of one free variable that it is given.&lt;br/&gt;     Calculate the area under a curve in a graph.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Calibri,sans-serif'; font-size:11pt;&quot;&gt;&lt;br/&gt;Infinity Members are :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Calibri,sans-serif'; font-size:11pt;&quot;&gt;Infinity Calculator is a symbolic calculator which allows users to manipulate real mathematical formulae &lt;br/&gt;in their textual or symbolic forms. &lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Calibri,sans-serif'; font-size:11pt;&quot;&gt;Infinity Calculator also allows the following : &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Calibri,sans-serif'; font-size:11pt;&quot;&gt;     Calculate the integral of any formula.&lt;br/&gt;     Graph any named formula of one free variable that it is given.&lt;br/&gt;     Calculate the area under a curve in a graph.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Calibri,sans-serif'; font-size:11pt;&quot;&gt;&lt;br/&gt;Infinity Members are :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -254,8 +254,8 @@ QPushButton{
       </widget>
       <zorder>label_9</zorder>
       <zorder>label_10</zorder>
-      <zorder>label_11</zorder>
       <zorder>label_8</zorder>
+      <zorder>label_11</zorder>
      </widget>
     </widget>
     <widget class="QWidget" name="tab_ScientificMenu">
@@ -2546,10 +2546,6 @@ QPushButton:hover{background-color:#40bd9e; color:white;}</string>
        </property>
       </widget>
      </widget>
-     <zorder>frame</zorder>
-     <zorder>pbLoadGraphFormula</zorder>
-     <zorder>pbSaveGraph</zorder>
-     <zorder>pbGenerate</zorder>
     </widget>
    </widget>
    <widget class="QLabel" name="label">

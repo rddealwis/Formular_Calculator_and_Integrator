@@ -3,6 +3,8 @@
 #include "formulator.h"
 #include "dlgloadformula.h"
 #include "dlgsaveformula.h"
+#include "dlgloadgraph.h"
+#include "dlgsavegraph.h"
 #include <qmessagebox.h>
 #include <qframe.h>
 
@@ -248,3 +250,29 @@ void MainScreen::on_pbLoadFormula_clicked()
     loadFormula.setModal(true);
     loadFormula.exec();
 }
+
+void MainScreen::on_pbLoadGraphFormula_clicked()
+{
+    dlgLoadFormula loadFormula;
+
+    loadFormula.setModal(true);
+    loadFormula.exec();
+}
+
+void MainScreen::on_pbSaveGraph_clicked()
+{
+    dlgSaveGraph saveGraph;
+
+    saveGraph.setModal(true);
+    saveGraph.exec();
+}
+
+void MainScreen::on_pbGenerate_clicked()
+{
+    dlgLoadGraph loadGraph;
+
+    loadGraph.setModal(true);
+    loadGraph.exec();
+}
+
+

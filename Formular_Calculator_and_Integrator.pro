@@ -7,7 +7,7 @@
 QT       += core gui
 QT       += xml
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 
 TARGET = Formular_Calculator_and_Integrator
 TEMPLATE = app
@@ -28,7 +28,10 @@ SOURCES += main.cpp\
     variableelement.cpp \
     dlgsaveformula.cpp \
     dlgloadformula.cpp \
-    xmlfilehandling.cpp
+    xmlfilehandling.cpp \
+    qcustomplot.cpp \
+    dlgloadgraph.cpp \
+    dlgsavegraph.cpp
 
 HEADERS  += mainscreen.h \
     constantelement.h \
@@ -45,11 +48,16 @@ HEADERS  += mainscreen.h \
     variableelement.h \
     dlgsaveformula.h \
     dlgloadformula.h \
-    xmlfilehandling.h
+    xmlfilehandling.h \
+    qcustomplot.h \
+    dlgloadgraph.h \
+    dlgsavegraph.h
 
 FORMS    += mainscreen.ui \
     dlgsaveformula.ui \
-    dlgloadformula.ui
+    dlgloadformula.ui \
+    dlgloadgraph.ui \
+    dlgsavegraph.ui
 
 RESOURCES += \
     resources.qrc
