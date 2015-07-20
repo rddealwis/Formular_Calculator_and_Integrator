@@ -20,10 +20,7 @@
    <bool>false</bool>
   </property>
   <property name="styleSheet">
-   <string notr="true">QMainWindow{
- 	background-color: rgb(109, 109, 109);
-	border: 2px rgb(2, 255, 184);
-}</string>
+   <string notr="true">QMainWindow{border:1px solid #40bd9e;}</string>
   </property>
   <property name="animated">
    <bool>true</bool>
@@ -51,8 +48,14 @@
     </property>
     <property name="styleSheet">
      <string notr="true">QObject {
-    background-color: rgb(236, 236, 236)
-}</string>
+    background-color:#f5f6f6;
+	
+}
+
+QTabWidget:hover{
+ background-color:#40bd9e !important;
+}
+</string>
     </property>
     <property name="tabShape">
      <enum>QTabWidget::Rounded</enum>
@@ -92,7 +95,9 @@
       <property name="styleSheet">
        <string notr="true">QFrame {
     background-color: rgb(236, 236, 236)
-}</string>
+}
+
+QPushButton:hover{background-color:#40bd9e; color:white;}</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -257,13 +262,14 @@
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>70</y>
+        <y>60</y>
         <width>790</width>
         <height>41</height>
        </rect>
       </property>
       <property name="font">
        <font>
+        <family>Lao UI</family>
         <pointsize>12</pointsize>
        </font>
       </property>
@@ -272,8 +278,11 @@
       </property>
       <property name="styleSheet">
        <string notr="true">QTextEdit{
-    background-color: rgb(255, 255, 255);	
-}</string>
+    background-color: #dbdbdb;	
+	
+}
+
+</string>
       </property>
      </widget>
      <widget class="QFrame" name="frmBasicButtons">
@@ -290,9 +299,12 @@
       </property>
       <property name="styleSheet">
        <string notr="true">QPushButton{
- 	background-color: rgb(190, 190, 190);
-	border: 2px;
-}</string>
+ 	background-color:#dbdbdb;
+	border: 1px;
+	color:#464747;
+}
+
+QPushButton:hover{background-color:#40bd9e; color:white !important;}</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -353,6 +365,10 @@
        <property name="autoFillBackground">
         <bool>false</bool>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{color:#36b495;}
+QPushButton:hover{color:white;}</string>
+       </property>
        <property name="text">
         <string>x</string>
        </property>
@@ -385,6 +401,10 @@
        </property>
        <property name="autoFillBackground">
         <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{color:#36b495;}
+QPushButton:hover{color:white;}</string>
        </property>
        <property name="text">
         <string>÷</string>
@@ -517,6 +537,10 @@
        </property>
        <property name="autoFillBackground">
         <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{color:#36b495;}
+QPushButton:hover{color:white;}</string>
        </property>
        <property name="text">
         <string>-</string>
@@ -748,6 +772,10 @@
        </property>
        <property name="autoFillBackground">
         <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{color:#36b495;}
+QPushButton:hover{color:white;}</string>
        </property>
        <property name="text">
         <string>+/-</string>
@@ -1046,6 +1074,9 @@
        <property name="autoFillBackground">
         <bool>false</bool>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{background-color:#36b495;color:white;}</string>
+       </property>
        <property name="text">
         <string>=</string>
        </property>
@@ -1145,6 +1176,10 @@
        <property name="autoFillBackground">
         <bool>false</bool>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{color:#36b495;}
+QPushButton:hover{color:white;}</string>
+       </property>
        <property name="text">
         <string>+</string>
        </property>
@@ -1239,12 +1274,19 @@
       </property>
       <property name="styleSheet">
        <string notr="true">QPushButton{
- 	background-color: rgb(190, 190, 190);
+ 	background-color: #dbdbdb;
     border: 2px;
+	color:#464747;
+
 }
+
 QLabel{
  	background-color: rgb(190, 190, 190);
-}</string>
+}
+
+QPushButton:hover{background-color:#40bd9e; color:white;}
+
+QLabel:hover{background-color:#40bd9e; color:white;}</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -1538,6 +1580,10 @@ QLabel{
        </property>
        <property name="autoFillBackground">
         <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{color:#36b495;}
+QPushButton:hover{color:white;}</string>
        </property>
        <property name="text">
         <string>dy/dx</string>
@@ -1902,6 +1948,10 @@ QLabel{
        <property name="autoFillBackground">
         <bool>false</bool>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{color:#36b495;}
+QPushButton:hover{color:white;}</string>
+       </property>
        <property name="text">
         <string>∫</string>
        </property>
@@ -2041,6 +2091,11 @@ QLabel{
          <height>16</height>
         </rect>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+	background-color:rgba(0,0,0,0%);
+}</string>
+       </property>
        <property name="text">
         <string>x</string>
        </property>
@@ -2053,6 +2108,11 @@ QLabel{
          <width>16</width>
          <height>16</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+	background-color:rgba(0,0,0,0%);
+}</string>
        </property>
        <property name="text">
         <string>n</string>
@@ -2072,6 +2132,11 @@ QLabel{
          <pointsize>8</pointsize>
         </font>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+	background-color:rgba(0,0,0,0%);
+}</string>
+       </property>
        <property name="text">
         <string>2</string>
        </property>
@@ -2085,6 +2150,11 @@ QLabel{
          <height>16</height>
         </rect>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+	background-color:rgba(0,0,0,0%);
+}</string>
+       </property>
        <property name="text">
         <string>y</string>
        </property>
@@ -2097,6 +2167,11 @@ QLabel{
          <width>16</width>
          <height>16</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+	background-color:rgba(0,0,0,0%);
+}</string>
        </property>
        <property name="text">
         <string>x</string>
@@ -2114,6 +2189,7 @@ QLabel{
       </property>
       <property name="font">
        <font>
+        <family>Lao UI</family>
         <pointsize>12</pointsize>
        </font>
       </property>
@@ -2122,7 +2198,9 @@ QLabel{
       </property>
       <property name="styleSheet">
        <string notr="true">QTextEdit{
-    background-color: rgb(255, 255, 255);	
+    background-color: #dbdbdb;	
+	border-top:2px solid #40bd9e;
+	
 }</string>
       </property>
      </widget>
@@ -2136,10 +2214,10 @@ QLabel{
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>750</x>
-      <y>10</y>
-      <width>111</width>
-      <height>41</height>
+      <x>720</x>
+      <y>-35</y>
+      <width>151</width>
+      <height>121</height>
      </rect>
     </property>
     <property name="font">
@@ -2151,7 +2229,13 @@ QLabel{
      </font>
     </property>
     <property name="text">
-     <string>INFINITY</string>
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="resources.qrc">:/resources/resources/logo.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
@@ -2170,6 +2254,11 @@ QLabel{
       <weight>75</weight>
       <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+color:#36b495;
+}</string>
     </property>
     <property name="text">
      <string>Calculator</string>
