@@ -2,7 +2,6 @@
 #define MAINSCREEN_H
 
 #include <QMainWindow>
-#include "aboutcalculator.h"
 
 namespace Ui {
 class MainScreen;
@@ -100,7 +99,6 @@ private slots:
 
 private:
     Ui::MainScreen *ui;
-    AboutCalculator *aboutCalculator;
 };
 
 #endif // MAINSCREEN_H

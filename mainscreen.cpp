@@ -1,6 +1,5 @@
 #include "mainscreen.h"
 #include "ui_mainscreen.h"
-#include "aboutcalculator.h"
 #include "formulator.h"
 #include "dlgloadformula.h"
 #include "dlgsaveformula.h"

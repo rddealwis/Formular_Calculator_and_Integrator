@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/resources">
         <file>resources/listicon.png</file>
+        <file>resources/logo.png</file>
+        <file>resources/aboutus.png</file>
     </qresource>
 </RCC>

@@ -58,7 +58,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <property name="iconSize">
      <size>
@@ -190,9 +190,7 @@
        <bool>false</bool>
       </property>
       <property name="styleSheet">
-       <string notr="true">QFrame {
-    background-color: rgb(216, 216, 216)
-}</string>
+       <string notr="true"/>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -204,13 +202,20 @@
        <property name="geometry">
         <rect>
          <x>20</x>
-         <y>20</y>
+         <y>30</y>
          <width>661</width>
-         <height>41</height>
+         <height>161</height>
         </rect>
        </property>
+       <property name="font">
+        <font>
+         <family>Lao UI</family>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Calibri,sans-serif'; font-size:11pt;&quot;&gt;Infinity Calculator is a symbolic calculator which allows users to manipulate real mathematical formulae &lt;br/&gt;in their textual or symbolic forms. &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Calibri,sans-serif'; font-size:11pt;&quot;&gt;Infinity Calculator is a symbolic calculator which allows users to manipulate real mathematical formulae &lt;br/&gt;in their textual or symbolic forms. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Calibri,sans-serif'; font-size:11pt;&quot;&gt;Infinity Calculator also allows the following : &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Calibri,sans-serif'; font-size:11pt;&quot;&gt;Calculate the integral of any formula.&lt;br/&gt;Graph any named formula of one free variable that it is given.&lt;br/&gt;Calculate the area under a curve in a graph.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Calibri,sans-serif'; font-size:11pt;&quot;&gt;Infinity Members are :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -220,10 +225,17 @@
        <property name="geometry">
         <rect>
          <x>220</x>
-         <y>80</y>
-         <width>81</width>
+         <y>220</y>
+         <width>61</width>
          <height>111</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Lao UI</family>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
        </property>
        <property name="text">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Calibri,sans-serif'; font-size:11pt;&quot;&gt;14209687&lt;br/&gt;14209691&lt;br/&gt;14209716&lt;br/&gt;14209717&lt;br/&gt;14209810&lt;br/&gt;14208990 &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -236,10 +248,17 @@
        <property name="geometry">
         <rect>
          <x>20</x>
-         <y>80</y>
+         <y>220</y>
          <width>161</width>
          <height>111</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Lao UI</family>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
        </property>
        <property name="text">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Calibri,sans-serif'; font-size:11pt;&quot;&gt;L. D. Chintaka Wijetunga &lt;br/&gt;K. G. Disni C. Sriyaratna&lt;br/&gt;R. D. De Alwis&lt;br/&gt;P. T. Danthanarayana&lt;br/&gt;L. D. Anuja Wijethunga&lt;br/&gt;M. A. T. S. Manthrirathna&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -248,6 +267,32 @@
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
        </property>
       </widget>
+      <widget class="QLabel" name="label_11">
+       <property name="geometry">
+        <rect>
+         <x>410</x>
+         <y>200</y>
+         <width>291</width>
+         <height>221</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap resource="resources.qrc">:/resources/resources/aboutus.png</pixmap>
+       </property>
+       <property name="scaledContents">
+        <bool>true</bool>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+       </property>
+      </widget>
+      <zorder>label_9</zorder>
+      <zorder>label_10</zorder>
+      <zorder>label_11</zorder>
+      <zorder>label_8</zorder>
      </widget>
     </widget>
     <widget class="QWidget" name="tab_ScientificMenu">
