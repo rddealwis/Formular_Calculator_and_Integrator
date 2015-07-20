@@ -16,11 +16,22 @@
   <property name="windowTitle">
    <string>Formula Calculator and Integrator</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <selectedon>:/resources/resources/windowicon.png</selectedon>
+   </iconset>
+  </property>
   <property name="autoFillBackground">
    <bool>false</bool>
   </property>
   <property name="styleSheet">
    <string notr="true">QMainWindow{border:1px solid #40bd9e;}</string>
+  </property>
+  <property name="iconSize">
+   <size>
+    <width>48</width>
+    <height>48</height>
+   </size>
   </property>
   <property name="animated">
    <bool>true</bool>
@@ -37,7 +48,7 @@
     </property>
     <property name="font">
      <font>
-      <family>Lato Light</family>
+      <family>Lao UI</family>
       <pointsize>10</pointsize>
       <weight>50</weight>
       <bold>false</bold>
@@ -61,7 +72,7 @@ QTabWidget:hover{
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <property name="iconSize">
      <size>
@@ -86,7 +97,7 @@ QTabWidget:hover{
         <x>0</x>
         <y>-1</y>
         <width>125</width>
-        <height>440</height>
+        <height>441</height>
        </rect>
       </property>
       <property name="autoFillBackground">
@@ -177,6 +188,11 @@ QPushButton{
          <bold>false</bold>
         </font>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+	color:rgb(43, 147, 121);
+}</string>
+       </property>
        <property name="text">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Calibri,sans-serif'; font-size:11pt;&quot;&gt;Infinity Calculator is a symbolic calculator which allows users to manipulate real mathematical formulae &lt;br/&gt;in their textual or symbolic forms. &lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Calibri,sans-serif'; font-size:11pt;&quot;&gt;Infinity Calculator also allows the following : &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Calibri,sans-serif'; font-size:11pt;&quot;&gt;     Calculate the integral of any formula.&lt;br/&gt;     Graph any named formula of one free variable that it is given.&lt;br/&gt;     Calculate the area under a curve in a graph.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Calibri,sans-serif'; font-size:11pt;&quot;&gt;&lt;br/&gt;Infinity Members are :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
@@ -189,7 +205,7 @@ QPushButton{
         <rect>
          <x>220</x>
          <y>240</y>
-         <width>61</width>
+         <width>121</width>
          <height>111</height>
         </rect>
        </property>
@@ -200,8 +216,13 @@ QPushButton{
          <bold>false</bold>
         </font>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+	color:rgb(43, 147, 121);
+}</string>
+       </property>
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Calibri,sans-serif'; font-size:11pt;&quot;&gt;14209687&lt;br/&gt;14209691&lt;br/&gt;14209716&lt;br/&gt;14209717&lt;br/&gt;14209810&lt;br/&gt;14208990 &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Calibri,sans-serif'; font-size:11pt;&quot;&gt;-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;14209687&lt;br/&gt;-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;14209691&lt;br/&gt;-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;14209716&lt;br/&gt;-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;14209717&lt;br/&gt;-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;14209810&lt;br/&gt;-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;14208990 &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -222,6 +243,11 @@ QPushButton{
          <weight>50</weight>
          <bold>false</bold>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+	color:rgb(43, 147, 121);
+}</string>
        </property>
        <property name="text">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Calibri,sans-serif'; font-size:11pt;&quot;&gt;L. D. Chintaka Wijetunga &lt;br/&gt;K. G. Disni C. Sriyaratna&lt;br/&gt;R. D. De Alwis&lt;br/&gt;P. T. Danthanarayana&lt;br/&gt;L. D. Anuja Wijethunga&lt;br/&gt;M. A. T. S. Manthrirathna&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -336,7 +362,7 @@ QPushButton:hover{background-color:#40bd9e; color:white !important;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -369,10 +395,10 @@ QPushButton:hover{background-color:#40bd9e; color:white !important;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>14</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -406,10 +432,10 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>14</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -443,7 +469,7 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -476,7 +502,7 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -509,7 +535,7 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -542,10 +568,10 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>14</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -579,7 +605,7 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -612,7 +638,7 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -645,7 +671,7 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -678,7 +704,7 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>12</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -711,7 +737,7 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -744,7 +770,7 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -777,10 +803,10 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>12</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -814,7 +840,7 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -847,7 +873,7 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -880,7 +906,7 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -913,7 +939,7 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -946,7 +972,7 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -979,7 +1005,7 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -1012,7 +1038,7 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -1045,7 +1071,7 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -1078,10 +1104,10 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>14</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -1114,7 +1140,7 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -1147,7 +1173,7 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -1180,10 +1206,10 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>14</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -1217,7 +1243,7 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -1250,7 +1276,7 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -1324,7 +1350,7 @@ QLabel:hover{background-color:#40bd9e; color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -1360,7 +1386,7 @@ QLabel:hover{background-color:#40bd9e; color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -1393,7 +1419,7 @@ QLabel:hover{background-color:#40bd9e; color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -1426,7 +1452,7 @@ QLabel:hover{background-color:#40bd9e; color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -1459,7 +1485,7 @@ QLabel:hover{background-color:#40bd9e; color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -1492,7 +1518,7 @@ QLabel:hover{background-color:#40bd9e; color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -1525,7 +1551,7 @@ QLabel:hover{background-color:#40bd9e; color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -1558,7 +1584,7 @@ QLabel:hover{background-color:#40bd9e; color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -1591,10 +1617,10 @@ QLabel:hover{background-color:#40bd9e; color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>11</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -1628,7 +1654,7 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>12</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -1661,7 +1687,7 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -1694,7 +1720,7 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -1727,7 +1753,7 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -1760,7 +1786,7 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -1793,7 +1819,7 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>10</pointsize>
          <weight>75</weight>
          <bold>true</bold>
@@ -1826,7 +1852,7 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>12</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -1859,7 +1885,7 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>11</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -1892,7 +1918,7 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -1925,7 +1951,7 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>16</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -1958,10 +1984,10 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>11</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -1995,7 +2021,7 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -2028,7 +2054,7 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -2061,7 +2087,7 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -2088,7 +2114,7 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
-         <family>Lato Light</family>
+         <family>Lao UI</family>
          <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
@@ -2110,6 +2136,11 @@ QPushButton:hover{color:white;}</string>
          <height>16</height>
         </rect>
        </property>
+       <property name="font">
+        <font>
+         <family>Lao UI</family>
+        </font>
+       </property>
        <property name="styleSheet">
         <string notr="true">QLabel{
 	background-color:rgba(0,0,0,0%);
@@ -2127,6 +2158,11 @@ QPushButton:hover{color:white;}</string>
          <width>16</width>
          <height>16</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Lao UI</family>
+        </font>
        </property>
        <property name="styleSheet">
         <string notr="true">QLabel{
@@ -2148,6 +2184,7 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="font">
         <font>
+         <family>Lao UI</family>
          <pointsize>8</pointsize>
         </font>
        </property>
@@ -2169,6 +2206,11 @@ QPushButton:hover{color:white;}</string>
          <height>16</height>
         </rect>
        </property>
+       <property name="font">
+        <font>
+         <family>Lao UI</family>
+        </font>
+       </property>
        <property name="styleSheet">
         <string notr="true">QLabel{
 	background-color:rgba(0,0,0,0%);
@@ -2186,6 +2228,11 @@ QPushButton:hover{color:white;}</string>
          <width>16</width>
          <height>16</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Lao UI</family>
+        </font>
        </property>
        <property name="styleSheet">
         <string notr="true">QLabel{
@@ -2548,13 +2595,39 @@ QPushButton:hover{background-color:#40bd9e; color:white;}</string>
      </widget>
     </widget>
    </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>780</x>
+      <y>32</y>
+      <width>101</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Lao UI</family>
+      <pointsize>11</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+	color:#36b495;
+}</string>
+    </property>
+    <property name="text">
+     <string>Calculator</string>
+    </property>
+   </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>720</x>
-      <y>-35</y>
-      <width>151</width>
-      <height>121</height>
+      <x>690</x>
+      <y>5</y>
+      <width>171</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="font">
@@ -2573,32 +2646,6 @@ QPushButton:hover{background-color:#40bd9e; color:white;}</string>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>780</x>
-      <y>30</y>
-      <width>101</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Lato Light</family>
-      <pointsize>10</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLabel{
-color:#36b495;
-}</string>
-    </property>
-    <property name="text">
-     <string>Calculator</string>
     </property>
    </widget>
   </widget>

@@ -10,8 +10,18 @@
     <height>228</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <family>Lao UI</family>
+   </font>
+  </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Save Graph</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <selectedon>:/resources/resources/windowicon.png</selectedon>
+   </iconset>
   </property>
   <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">

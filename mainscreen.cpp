@@ -275,4 +275,9 @@ void MainScreen::on_pbGenerate_clicked()
     loadGraph.exec();
 }
 
-
+void MainScreen::on_tabMenu_currentChanged(int index)
+{
+    if((index == 0) || (index == 1) || (index == 2)){
+        ui->frmAboutCalculator->setVisible(false);
+    }
+}

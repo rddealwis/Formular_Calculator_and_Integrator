@@ -96,6 +96,8 @@ private slots:
 
     void on_pbGenerate_clicked();
 
+    void on_tabMenu_currentChanged(int index);
+
 private:
     Ui::MainScreen *ui;
 };
