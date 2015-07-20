@@ -11,12 +11,10 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = Formular_Calculator_and_Integrator
 TEMPLATE = app
-
+CONFIG +=c++11
 
 SOURCES += main.cpp\
         mainscreen.cpp \
-    aboutcalculator.cpp \
-    help.cpp \
     constantelement.cpp \
     cosinefunctionelement.cpp \
     dividefunctionelement.cpp \
@@ -33,8 +31,6 @@ SOURCES += main.cpp\
     xmlfilehandling.cpp
 
 HEADERS  += mainscreen.h \
-    aboutcalculator.h \
-    help.h \
     constantelement.h \
     cosinefunctionelement.h \
     dividefunctionelement.h \
@@ -52,8 +48,6 @@ HEADERS  += mainscreen.h \
     xmlfilehandling.h
 
 FORMS    += mainscreen.ui \
-    aboutcalculator.ui \
-    help.ui \
     dlgsaveformula.ui \
     dlgloadformula.ui
 

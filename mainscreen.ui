@@ -58,7 +58,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <property name="iconSize">
      <size>
@@ -177,7 +177,7 @@
        </property>
       </widget>
      </widget>
-     <widget class="QFrame" name="frmOpenWindows">
+     <widget class="QFrame" name="frmAboutCalculator">
       <property name="geometry">
        <rect>
         <x>130</x>
@@ -191,7 +191,7 @@
       </property>
       <property name="styleSheet">
        <string notr="true">QFrame {
-    background-color: rgb(190, 190, 190);
+    background-color: rgb(216, 216, 216)
 }</string>
       </property>
       <property name="frameShape">
@@ -200,6 +200,54 @@
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
+      <widget class="QLabel" name="label_8">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>20</y>
+         <width>661</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Calibri,sans-serif'; font-size:11pt;&quot;&gt;Infinity Calculator is a symbolic calculator which allows users to manipulate real mathematical formulae &lt;br/&gt;in their textual or symbolic forms. &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_9">
+       <property name="geometry">
+        <rect>
+         <x>220</x>
+         <y>80</y>
+         <width>81</width>
+         <height>111</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Calibri,sans-serif'; font-size:11pt;&quot;&gt;14209687&lt;br/&gt;14209691&lt;br/&gt;14209716&lt;br/&gt;14209717&lt;br/&gt;14209810&lt;br/&gt;14208990 &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_10">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>80</y>
+         <width>161</width>
+         <height>111</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Calibri,sans-serif'; font-size:11pt;&quot;&gt;L. D. Chintaka Wijetunga &lt;br/&gt;K. G. Disni C. Sriyaratna&lt;br/&gt;R. D. De Alwis&lt;br/&gt;P. T. Danthanarayana&lt;br/&gt;L. D. Anuja Wijethunga&lt;br/&gt;M. A. T. S. Manthrirathna&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+       </property>
+      </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="tab_ScientificMenu">

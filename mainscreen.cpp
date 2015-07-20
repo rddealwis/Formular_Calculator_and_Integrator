@@ -1,16 +1,18 @@
 #include "mainscreen.h"
 #include "ui_mainscreen.h"
-#include "help.h"
+#include "aboutcalculator.h"
 #include "formulator.h"
 #include "dlgloadformula.h"
 #include "dlgsaveformula.h"
 #include <qmessagebox.h>
+#include <qframe.h>
 
 MainScreen::MainScreen(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainScreen)
 {
     ui->setupUi(this);
+    ui->frmAboutCalculator->setVisible(false);
 }
 
 MainScreen::~MainScreen()
@@ -202,18 +204,17 @@ void MainScreen::on_pbPower_clicked()
 
 void MainScreen::on_pbOptions_clicked()
 {
-
+    ui->frmAboutCalculator->setVisible(false);
 }
 
 void MainScreen::on_pbHelp_clicked()
 {
-    helpForm = new help(this);
-    helpForm->show();
+    ui->frmAboutCalculator->setVisible(false);
 }
 
 void MainScreen::on_pbAboutUs_clicked()
 {
-
+    ui->frmAboutCalculator->setVisible(true);
 }
 
 void MainScreen::on_pbExit_clicked()
