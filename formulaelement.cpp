@@ -91,8 +91,8 @@ FormulaElement* FormulaElement::parseFormula(std::string formula)
         {
             return formElements[0];
         }
-        else
-            throw new std::exception("Error Parsing!");
+        else std::cout<<"Error;";
+            //throw new std::exception("Error Parsing!");
     }
     catch (std::exception* e)
     {
@@ -406,8 +406,9 @@ void simplifyBrackets(std::vector<FormulaElement*> *formElements)
 
             if (temp.size() != 1)
                 functionElemetnsInit(&temp);
-            if (temp.size() != 1)
-                throw new std::exception("Error Simplifying Bracket");
+            if (temp.size() != 1) std::cout<<"Error";
+
+                //throw new std::exception("Error Simplifying Bracket");
 
             (*formElements).erase((*formElements).begin() + brakStartEnd[0]->startPos, (*formElements).begin() + brakStartEnd[0]->endPos + 1);
             (*formElements).insert((*formElements).begin() + brakStartEnd[0]->startPos, temp[0]);
@@ -445,8 +446,8 @@ void simplifyBrackets(std::vector<FormulaElement*> *formElements)
 
             if (temp.size() != 1)
                 functionElemetnsInit(&temp);
-            if (temp.size() != 1)
-                throw new std::exception("Error Simplifying Bracket");
+            if (temp.size() != 1) std::cout<<"Error";
+                //throw new std::exception("Error Simplifying Bracket");
 
             (*formElements).erase((*formElements).begin() + brakStartEnd[0]->startPos, (*formElements).begin() + brakStartEnd[0]->endPos + 1);
             (*formElements).insert((*formElements).begin() + brakStartEnd[0]->startPos, temp[0]);
