@@ -39,8 +39,8 @@
      <font>
       <family>Lato Light</family>
       <pointsize>10</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
+      <weight>50</weight>
+      <bold>false</bold>
      </font>
     </property>
     <property name="autoFillBackground">
@@ -61,7 +61,7 @@ QTabWidget:hover{
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <property name="iconSize">
      <size>
@@ -97,7 +97,14 @@ QTabWidget:hover{
     background-color: rgb(236, 236, 236)
 }
 
-QPushButton:hover{background-color:#40bd9e; color:white;}</string>
+QPushButton:hover{background-color:#40bd9e; color:white;}
+
+QPushButton{
+ 	background-color: #dbdbdb;
+    border: 2px;
+	color:#464747;
+
+}</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -118,8 +125,8 @@ QPushButton:hover{background-color:#40bd9e; color:white;}</string>
         <font>
          <family>Lao UI</family>
          <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -160,18 +167,18 @@ QPushButton:hover{background-color:#40bd9e; color:white;}</string>
          <x>20</x>
          <y>30</y>
          <width>661</width>
-         <height>161</height>
+         <height>181</height>
         </rect>
        </property>
        <property name="font">
         <font>
          <family>Lao UI</family>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Calibri,sans-serif'; font-size:11pt;&quot;&gt;Infinity Calculator is a symbolic calculator which allows users to manipulate real mathematical formulae &lt;br/&gt;in their textual or symbolic forms. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Calibri,sans-serif'; font-size:11pt;&quot;&gt;Infinity Calculator also allows the following : &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Calibri,sans-serif'; font-size:11pt;&quot;&gt;Calculate the integral of any formula.&lt;br/&gt;Graph any named formula of one free variable that it is given.&lt;br/&gt;Calculate the area under a curve in a graph.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Calibri,sans-serif'; font-size:11pt;&quot;&gt;Infinity Members are :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Calibri,sans-serif'; font-size:11pt;&quot;&gt;Infinity Calculator is a symbolic calculator which allows users to manipulate real mathematical formulae &lt;br/&gt;in their textual or symbolic forms. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Calibri,sans-serif'; font-size:11pt;&quot;&gt;Infinity Calculator also allows the following : &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Calibri,sans-serif'; font-size:11pt;&quot;&gt;     Calculate the integral of any formula.&lt;br/&gt;     Graph any named formula of one free variable that it is given.&lt;br/&gt;     Calculate the area under a curve in a graph.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Calibri,sans-serif'; font-size:11pt;&quot;&gt;&lt;br/&gt;Infinity Members are :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -181,7 +188,7 @@ QPushButton:hover{background-color:#40bd9e; color:white;}</string>
        <property name="geometry">
         <rect>
          <x>220</x>
-         <y>220</y>
+         <y>240</y>
          <width>61</width>
          <height>111</height>
         </rect>
@@ -189,8 +196,8 @@ QPushButton:hover{background-color:#40bd9e; color:white;}</string>
        <property name="font">
         <font>
          <family>Lao UI</family>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="text">
@@ -204,7 +211,7 @@ QPushButton:hover{background-color:#40bd9e; color:white;}</string>
        <property name="geometry">
         <rect>
          <x>20</x>
-         <y>220</y>
+         <y>240</y>
          <width>161</width>
          <height>111</height>
         </rect>
@@ -212,8 +219,8 @@ QPushButton:hover{background-color:#40bd9e; color:white;}</string>
        <property name="font">
         <font>
          <family>Lao UI</family>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="text">
@@ -294,6 +301,12 @@ QPushButton:hover{background-color:#40bd9e; color:white;}</string>
         <height>311</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
       <property name="autoFillBackground">
        <bool>false</bool>
       </property>
@@ -325,8 +338,8 @@ QPushButton:hover{background-color:#40bd9e; color:white !important;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -358,8 +371,8 @@ QPushButton:hover{background-color:#40bd9e; color:white !important;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>14</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -395,8 +408,8 @@ QPushButton:hover{color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>14</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -432,8 +445,8 @@ QPushButton:hover{color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -465,8 +478,8 @@ QPushButton:hover{color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -498,8 +511,8 @@ QPushButton:hover{color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -531,8 +544,8 @@ QPushButton:hover{color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>14</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -568,8 +581,8 @@ QPushButton:hover{color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -601,8 +614,8 @@ QPushButton:hover{color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -634,8 +647,8 @@ QPushButton:hover{color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -667,8 +680,8 @@ QPushButton:hover{color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>12</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -700,8 +713,8 @@ QPushButton:hover{color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -733,8 +746,8 @@ QPushButton:hover{color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -766,8 +779,8 @@ QPushButton:hover{color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>12</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -803,8 +816,8 @@ QPushButton:hover{color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -836,8 +849,8 @@ QPushButton:hover{color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -869,8 +882,8 @@ QPushButton:hover{color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -902,8 +915,8 @@ QPushButton:hover{color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -935,8 +948,8 @@ QPushButton:hover{color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -968,8 +981,8 @@ QPushButton:hover{color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -1001,8 +1014,8 @@ QPushButton:hover{color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -1034,8 +1047,8 @@ QPushButton:hover{color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -1067,8 +1080,8 @@ QPushButton:hover{color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>14</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -1103,8 +1116,8 @@ QPushButton:hover{color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -1136,8 +1149,8 @@ QPushButton:hover{color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -1169,8 +1182,8 @@ QPushButton:hover{color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>14</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -1206,8 +1219,8 @@ QPushButton:hover{color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -1239,8 +1252,8 @@ QPushButton:hover{color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -1268,6 +1281,12 @@ QPushButton:hover{color:white;}</string>
         <width>361</width>
         <height>311</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
       </property>
       <property name="autoFillBackground">
        <bool>false</bool>
@@ -1307,8 +1326,8 @@ QLabel:hover{background-color:#40bd9e; color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -1343,8 +1362,8 @@ QLabel:hover{background-color:#40bd9e; color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -1376,8 +1395,8 @@ QLabel:hover{background-color:#40bd9e; color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -1409,8 +1428,8 @@ QLabel:hover{background-color:#40bd9e; color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -1442,8 +1461,8 @@ QLabel:hover{background-color:#40bd9e; color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -1475,8 +1494,8 @@ QLabel:hover{background-color:#40bd9e; color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -1508,8 +1527,8 @@ QLabel:hover{background-color:#40bd9e; color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -1541,8 +1560,8 @@ QLabel:hover{background-color:#40bd9e; color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -1573,9 +1592,9 @@ QLabel:hover{background-color:#40bd9e; color:white;}</string>
        <property name="font">
         <font>
          <family>Lato Light</family>
-         <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <pointsize>11</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -1611,8 +1630,8 @@ QPushButton:hover{color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>12</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -1644,8 +1663,8 @@ QPushButton:hover{color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -1677,8 +1696,8 @@ QPushButton:hover{color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -1710,8 +1729,8 @@ QPushButton:hover{color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -1743,8 +1762,8 @@ QPushButton:hover{color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -1809,8 +1828,8 @@ QPushButton:hover{color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>12</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -1842,8 +1861,8 @@ QPushButton:hover{color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>11</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -1875,8 +1894,8 @@ QPushButton:hover{color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -1908,8 +1927,8 @@ QPushButton:hover{color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>16</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -1940,9 +1959,9 @@ QPushButton:hover{color:white;}</string>
        <property name="font">
         <font>
          <family>Lato Light</family>
-         <pointsize>12</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <pointsize>11</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -1978,8 +1997,8 @@ QPushButton:hover{color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -2011,8 +2030,8 @@ QPushButton:hover{color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -2044,8 +2063,8 @@ QPushButton:hover{color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -2071,8 +2090,8 @@ QPushButton:hover{color:white;}</string>
         <font>
          <family>Lato Light</family>
          <pointsize>10</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
        <property name="autoFillBackground">
@@ -2103,7 +2122,7 @@ QPushButton:hover{color:white;}</string>
       <widget class="QLabel" name="label_4">
        <property name="geometry">
         <rect>
-         <x>255</x>
+         <x>256</x>
          <y>215</y>
          <width>16</width>
          <height>16</height>
@@ -2209,6 +2228,328 @@ QPushButton:hover{color:white;}</string>
      <attribute name="title">
       <string>Graphs</string>
      </attribute>
+     <widget class="QFrame" name="frame">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>811</width>
+        <height>131</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QLabel" name="lblEquation">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>20</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Lao UI</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Equation</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblXaxisRange">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>55</y>
+         <width>91</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Lao UI</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>X - axis Range</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblYaxisRange">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>95</y>
+         <width>91</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Lao UI</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Y - axis Range</string>
+       </property>
+      </widget>
+      <widget class="QTextEdit" name="txtEquation">
+       <property name="geometry">
+        <rect>
+         <x>120</x>
+         <y>10</y>
+         <width>501</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Lao UI</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QTextEdit{
+    background-color: #dbdbdb;	
+}</string>
+       </property>
+      </widget>
+      <widget class="QTextEdit" name="txtXaxisRange">
+       <property name="geometry">
+        <rect>
+         <x>120</x>
+         <y>50</y>
+         <width>191</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Lao UI</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QTextEdit{
+    background-color: #dbdbdb;	
+}</string>
+       </property>
+      </widget>
+      <widget class="QTextEdit" name="txtYaxisRange">
+       <property name="geometry">
+        <rect>
+         <x>120</x>
+         <y>90</y>
+         <width>191</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Lao UI</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QTextEdit{
+    background-color: #dbdbdb;	
+}</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblXaxisName">
+       <property name="geometry">
+        <rect>
+         <x>330</x>
+         <y>55</y>
+         <width>91</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Lao UI</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>X - axis Name</string>
+       </property>
+      </widget>
+      <widget class="QTextEdit" name="txtXaxisName">
+       <property name="geometry">
+        <rect>
+         <x>430</x>
+         <y>50</y>
+         <width>191</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Lao UI</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QTextEdit{
+    background-color: #dbdbdb;	
+}</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblYaxisName">
+       <property name="geometry">
+        <rect>
+         <x>330</x>
+         <y>95</y>
+         <width>91</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Lao UI</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Y - axis Name</string>
+       </property>
+      </widget>
+      <widget class="QTextEdit" name="txtYaxisName">
+       <property name="geometry">
+        <rect>
+         <x>430</x>
+         <y>90</y>
+         <width>191</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Lao UI</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QTextEdit{
+    background-color: #dbdbdb;	
+}</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pbLoadGraphFormula">
+       <property name="geometry">
+        <rect>
+         <x>680</x>
+         <y>15</y>
+         <width>91</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Lao UI</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+ 	background-color: #dbdbdb;
+    border: 2px;
+	color:#464747;
+
+}
+
+QPushButton:hover{background-color:#40bd9e; color:white;}</string>
+       </property>
+       <property name="text">
+        <string>Load Formula</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pbSaveGraph">
+       <property name="geometry">
+        <rect>
+         <x>680</x>
+         <y>55</y>
+         <width>91</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Lao UI</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+ 	background-color: #dbdbdb;
+    border: 2px;
+	color:#464747;
+
+}
+
+QPushButton:hover{background-color:#40bd9e; color:white;}</string>
+       </property>
+       <property name="text">
+        <string>Save Graph</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pbGenerate">
+       <property name="geometry">
+        <rect>
+         <x>680</x>
+         <y>95</y>
+         <width>91</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Lao UI</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+ 	background-color: #dbdbdb;
+    border: 2px;
+	color:#464747;
+
+}
+
+QPushButton:hover{background-color:#40bd9e; color:white;}</string>
+       </property>
+       <property name="text">
+        <string>Generate</string>
+       </property>
+      </widget>
+     </widget>
+     <zorder>frame</zorder>
+     <zorder>pbLoadGraphFormula</zorder>
+     <zorder>pbSaveGraph</zorder>
+     <zorder>pbGenerate</zorder>
     </widget>
    </widget>
    <widget class="QLabel" name="label">

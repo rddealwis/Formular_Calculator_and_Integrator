@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>401</height>
+    <width>440</width>
+    <height>451</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,13 +17,31 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>355</y>
-     <width>381</width>
+     <y>400</y>
+     <width>411</width>
      <height>32</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Lao UI</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="autoFillBackground">
     <bool>true</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+ 	background-color: #dbdbdb;
+    border: 2px;
+	color:#464747;
+	width:75px;
+	height:23px;
+
+}
+
+QPushButton:hover{background-color:#40bd9e; color:white;}</string>
    </property>
    <property name="orientation">
     <enum>Qt::Horizontal</enum>
@@ -31,13 +49,16 @@
    <property name="standardButtons">
     <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
    </property>
+   <property name="centerButtons">
+    <bool>false</bool>
+   </property>
   </widget>
   <widget class="QFrame" name="frmTable">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>130</y>
-     <width>381</width>
+     <y>175</y>
+     <width>421</width>
      <height>211</height>
     </rect>
    </property>
@@ -55,7 +76,7 @@
      <rect>
       <x>15</x>
       <y>10</y>
-      <width>271</width>
+      <width>301</width>
       <height>192</height>
      </rect>
     </property>
@@ -86,8 +107,8 @@
     <rect>
      <x>10</x>
      <y>20</y>
-     <width>381</width>
-     <height>101</height>
+     <width>421</width>
+     <height>141</height>
     </rect>
    </property>
    <property name="autoFillBackground">
@@ -99,40 +120,38 @@
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
-   <widget class="QPushButton" name="pbBrowseSaveLoc">
-    <property name="geometry">
-     <rect>
-      <x>295</x>
-      <y>60</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Browse...</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblSaveLocation">
+   <widget class="QLabel" name="lblFormula">
     <property name="geometry">
      <rect>
       <x>15</x>
       <y>65</y>
-      <width>47</width>
-      <height>13</height>
+      <width>61</width>
+      <height>16</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Lao UI</family>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
-     <string>Location</string>
+     <string>Formula</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="txtSaveLocation">
+   <widget class="QTextEdit" name="txtFormula">
     <property name="geometry">
      <rect>
-      <x>95</x>
+      <x>120</x>
       <y>55</y>
-      <width>191</width>
+      <width>201</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextEdit{
+    background-color: #dbdbdb;	
+}</string>
     </property>
    </widget>
    <widget class="QLabel" name="lblFormulaName">
@@ -140,9 +159,15 @@
      <rect>
       <x>15</x>
       <y>20</y>
-      <width>71</width>
+      <width>91</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Lao UI</family>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Formula Name</string>
@@ -151,11 +176,79 @@
    <widget class="QTextEdit" name="txtFormulaName">
     <property name="geometry">
      <rect>
-      <x>95</x>
+      <x>120</x>
       <y>10</y>
-      <width>191</width>
+      <width>201</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextEdit{
+    background-color: #dbdbdb;	
+}</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pbBrowseSaveLoc_2">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>105</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Lao UI</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+ 	background-color: #dbdbdb;
+    border: 2px;
+	color:#464747;
+
+}
+
+QPushButton:hover{background-color:#40bd9e; color:white;}</string>
+    </property>
+    <property name="text">
+     <string>Browse...</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="txtSaveLocation">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>100</y>
+      <width>201</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextEdit{
+    background-color: #dbdbdb;	
+}</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblSaveLocation">
+    <property name="geometry">
+     <rect>
+      <x>15</x>
+      <y>110</y>
+      <width>61</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Lao UI</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Location</string>
     </property>
    </widget>
   </widget>
