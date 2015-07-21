@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>dlgLoadFormula</class>
  <widget class="QDialog" name="dlgLoadFormula">
+  <property name="windowModality">
+   <enum>Qt::WindowModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -86,6 +89,13 @@ QPushButton:hover{background-color:#40bd9e; color:white;}</string>
       <width>401</width>
       <height>201</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Lao UI</family>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
     </property>
     <property name="gridStyle">
      <enum>Qt::SolidLine</enum>

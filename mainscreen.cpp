@@ -268,6 +268,11 @@ void MainScreen::on_pbLoadGraphFormula_clicked()
     loadFormula.exec();
 }
 
+void MainScreen::on_pbAddGraphFormula_clicked()
+{
+
+}
+
 void MainScreen::on_pbSaveGraph_clicked()
 {
     dlgSaveGraph saveGraph;
@@ -290,3 +295,4 @@ void MainScreen::on_tabMenu_currentChanged(int index)
         ui->frmAboutCalculator->setVisible(false);
     }
 }
+

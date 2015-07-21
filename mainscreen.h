@@ -99,6 +99,8 @@ private slots:
 
     void on_tabMenu_currentChanged(int index);
 
+    void on_pbAddGraphFormula_clicked();
+
 private:
     Ui::MainScreen *ui;
 };
