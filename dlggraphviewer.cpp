@@ -1,10 +1,11 @@
-#include "dlgloadgraph.h"
-#include "ui_dlgloadgraph.h"
+#include "dlggraphviewer.h"
+#include "ui_dlggraphviewer.h"
+#include "dlgsavegraph.h"
 #include <math.h>
 
-dlgLoadGraph::dlgLoadGraph(QWidget *parent) :
+dlgGraphViewer::dlgGraphViewer(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::dlgLoadGraph)
+    ui(new Ui::dlgGraphViewer)
 {
     ui->setupUi(this);
 
@@ -45,11 +46,22 @@ dlgLoadGraph::dlgLoadGraph(QWidget *parent) :
             ui->customPlot->xAxis->setLabel("Angle in degrees");
             ui->customPlot->yAxis->setLabel("Value");
             ui->customPlot->replot();
-
-
 }
 
-dlgLoadGraph::~dlgLoadGraph()
+dlgGraphViewer::~dlgGraphViewer()
 {
     delete ui;
+}
+
+void dlgGraphViewer::on_pbSaveGraph_clicked()
+{
+    dlgSaveGraph saveGraph;
+
+    saveGraph.setModal(true);
+    saveGraph.exec();
+}
+
+void dlgGraphViewer::on_pbClose_clicked()
+{
+
 }

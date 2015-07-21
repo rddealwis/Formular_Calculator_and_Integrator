@@ -3,8 +3,8 @@
 #include "formulator.h"
 #include "dlgloadformula.h"
 #include "dlgsaveformula.h"
-#include "dlgloadgraph.h"
 #include "dlgsavegraph.h"
+#include "dlggraphviewer.h"
 #include <qmessagebox.h>
 #include <qframe.h>
 
@@ -278,10 +278,10 @@ void MainScreen::on_pbSaveGraph_clicked()
 
 void MainScreen::on_pbGenerate_clicked()
 {
-    dlgLoadGraph loadGraph;
+    dlgGraphViewer graphViewer;
 
-    loadGraph.setModal(true);
-    loadGraph.exec();
+    graphViewer.setModal(true);
+    graphViewer.exec();
 }
 
 void MainScreen::on_tabMenu_currentChanged(int index)

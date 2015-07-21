@@ -30,8 +30,8 @@ SOURCES += main.cpp\
     dlgloadformula.cpp \
     xmlfilehandling.cpp \
     qcustomplot.cpp \
-    dlgloadgraph.cpp \
-    dlgsavegraph.cpp
+    dlgsavegraph.cpp \
+    dlggraphviewer.cpp
 
 HEADERS  += mainscreen.h \
     constantelement.h \
@@ -50,14 +50,14 @@ HEADERS  += mainscreen.h \
     dlgloadformula.h \
     xmlfilehandling.h \
     qcustomplot.h \
-    dlgloadgraph.h \
-    dlgsavegraph.h
+    dlgsavegraph.h \
+    dlggraphviewer.h
 
 FORMS    += mainscreen.ui \
     dlgsaveformula.ui \
     dlgloadformula.ui \
-    dlgloadgraph.ui \
-    dlgsavegraph.ui
+    dlgsavegraph.ui \
+    dlggraphviewer.ui
 
 RESOURCES += \
     resources.qrc
