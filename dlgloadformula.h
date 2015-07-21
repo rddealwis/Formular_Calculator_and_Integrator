@@ -15,6 +15,9 @@ class dlgLoadFormula : public QDialog
 public:
     explicit dlgLoadFormula(QWidget *parent = 0);
     QString text;
+    void setTestVariable(const int &testVariable);
+    int getTestVariable();
+    int p_testVariable;
     ~dlgLoadFormula();
 
 private slots:

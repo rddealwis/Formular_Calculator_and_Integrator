@@ -16,6 +16,16 @@ dlgLoadFormula::~dlgLoadFormula()
     delete ui;
 }
 
+void dlgLoadFormula::setTestVariable(const int &testVariable)
+{
+    p_testVariable=testVariable + 123;
+}
+
+int dlgLoadFormula::getTestVariable()
+{
+    return p_testVariable;
+}
+
 void dlgLoadFormula::on_pbBrowseFile_clicked()
 {
     XMLFileHandling obj1;

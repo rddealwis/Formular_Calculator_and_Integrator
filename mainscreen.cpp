@@ -246,9 +246,18 @@ void MainScreen::on_pbSaveFormula_clicked()
 void MainScreen::on_pbLoadFormula_clicked()
 {
     dlgLoadFormula loadFormula;
+    testVariable=1000;
+    loadFormula.setTestVariable(testVariable);
+
 
     loadFormula.setModal(true);
     loadFormula.exec();
+    int x=loadFormula.getTestVariable();
+    QString y=QString::number(x);
+    QMessageBox::information(
+            this,
+            tr("Application Name"),
+            y );
 }
 
 void MainScreen::on_pbLoadGraphFormula_clicked()

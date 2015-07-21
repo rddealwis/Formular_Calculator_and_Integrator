@@ -13,6 +13,7 @@ class MainScreen : public QMainWindow
 
 public:
     explicit MainScreen(QWidget *parent = 0);
+    int testVariable;
     ~MainScreen();
 
 private slots:
