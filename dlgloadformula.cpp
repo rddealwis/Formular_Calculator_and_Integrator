@@ -50,11 +50,10 @@ void dlgLoadFormula::on_pbBrowseFile_clicked()
 
 }
 
-void dlgLoadFormula::on_pushButton_clicked()
+void dlgLoadFormula::on_buttonBox_clicked(QAbstractButton *button)
 {
-    QModelIndexList selectedList = this->ui->tblCurrentFormulae->selectionModel()->selectedRows();
-    text=this->ui->tblCurrentFormulae->item(selectedList.at(0).row(), 1)->text();
-    QMessageBox::information(this,"", text);
-
-
+    // Push Button eke CODE eka
+//    QModelIndexList selectedList = this->ui->tblCurrentFormulae->selectionModel()->selectedRows();
+//    text=this->ui->tblCurrentFormulae->item(selectedList.at(0).row(), 1)->text();
+//    QMessageBox::information(this,"", text);
 }

@@ -23,7 +23,7 @@ public:
 private slots:
     void on_pbBrowseFile_clicked();
 
-    void on_pushButton_clicked();
+    void on_buttonBox_clicked(QAbstractButton *button);
 
 private:
     Ui::dlgLoadFormula *ui;
