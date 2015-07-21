@@ -314,6 +314,9 @@ QPushButton:hover{background-color:#40bd9e; color:white;}</string>
     <property name="text">
      <string>To Memory</string>
     </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
    </widget>
   </widget>
  </widget>
