@@ -903,8 +903,7 @@ void powerElemetns(std::vector<FormulaElement*> *formElements)
         PowerFunctionElement *FuncEle = dynamic_cast<PowerFunctionElement*>((*formElements)[i]);
         if (FuncEle != 0)
         {
-            bool LHSchg = false;
-            bool RHSchg = false;
+
             if (FuncEle->isArgOneNull())
             {
                 if (temp.size() > 0)
@@ -917,14 +916,14 @@ void powerElemetns(std::vector<FormulaElement*> *formElements)
                     FuncEle->setArgOne((*formElements)[i - 1]);
                     (*formElements).erase((*formElements).begin() + (--i));
                 }
-                LHSchg = true;
+
             }
 
             if (FuncEle->isArgTwoNull())
             {
                 FuncEle->setArgTwo((*formElements)[i + 1]);
                 (*formElements).erase((*formElements).begin() + (i + 1));
-                RHSchg = true;
+
             }
 
             temp.push_back(FuncEle);
@@ -948,8 +947,7 @@ void divideElemetns(std::vector<FormulaElement*> *formElements)
         DivideFunctionElement *FuncEle = dynamic_cast<DivideFunctionElement*>((*formElements)[i]);
         if (FuncEle != 0)
         {
-            bool LHSchg = false;
-            bool RHSchg = false;
+
             if (FuncEle->isArgOneNull())
             {
                 if (temp.size() > 0)
@@ -962,14 +960,14 @@ void divideElemetns(std::vector<FormulaElement*> *formElements)
                     FuncEle->setArgOne((*formElements)[i - 1]);
                     (*formElements).erase((*formElements).begin() + (--i));
                 }
-                LHSchg = true;
+
             }
 
             if (FuncEle->isArgTwoNull())
             {
                 FuncEle->setArgTwo((*formElements)[i + 1]);
                 (*formElements).erase((*formElements).begin() + (i + 1));
-                RHSchg = true;
+
             }
 
             temp.push_back(FuncEle);
@@ -993,8 +991,6 @@ void multiplyElemetns(std::vector<FormulaElement*> *formElements)
         MultipleFunctionElement *FuncEle = dynamic_cast<MultipleFunctionElement*>((*formElements)[i]);
         if (FuncEle != 0)
         {
-            bool LHSchg = false;
-            bool RHSchg = false;
             if (FuncEle->isArgOneNull())
             {
                 if (temp.size() > 0)
@@ -1007,14 +1003,13 @@ void multiplyElemetns(std::vector<FormulaElement*> *formElements)
                     FuncEle->setArgOne((*formElements)[i - 1]);
                     (*formElements).erase((*formElements).begin() + (--i));
                 }
-                LHSchg = true;
             }
 
             if (FuncEle->isArgTwoNull())
             {
                 FuncEle->setArgTwo((*formElements)[i + 1]);
                 (*formElements).erase((*formElements).begin() + (i + 1));
-                RHSchg = true;
+
             }
 
             temp.push_back(FuncEle);
@@ -1038,8 +1033,6 @@ void plusElemetns(std::vector<FormulaElement*> *formElements)
         PlusFunctionElement *FuncEle = dynamic_cast<PlusFunctionElement*>((*formElements)[i]);
         if (FuncEle != 0)
         {
-            bool LHSchg = false;
-            bool RHSchg = false;
             if (FuncEle->isArgOneNull())
             {
                 if (temp.size() > 0)
@@ -1052,14 +1045,13 @@ void plusElemetns(std::vector<FormulaElement*> *formElements)
                     FuncEle->setArgOne((*formElements)[i - 1]);
                     (*formElements).erase((*formElements).begin() + (--i));
                 }
-                LHSchg = true;
             }
 
             if (FuncEle->isArgTwoNull())
             {
                 FuncEle->setArgTwo((*formElements)[i + 1]);
                 (*formElements).erase((*formElements).begin() + (i + 1));
-                RHSchg = true;
+
             }
 
             temp.push_back(FuncEle);
@@ -1083,8 +1075,6 @@ void minusElemetns(std::vector<FormulaElement*> *formElements)
         MinusFunctionElement *FuncEle = dynamic_cast<MinusFunctionElement*>((*formElements)[i]);
         if (FuncEle != 0)
         {
-            bool LHSchg = false;
-            bool RHSchg = false;
             if (FuncEle->isArgOneNull())
             {
                 if (temp.size() > 0)
@@ -1097,14 +1087,13 @@ void minusElemetns(std::vector<FormulaElement*> *formElements)
                     FuncEle->setArgOne((*formElements)[i - 1]);
                     (*formElements).erase((*formElements).begin() + (--i));
                 }
-                LHSchg = true;
             }
 
             if (FuncEle->isArgTwoNull())
             {
                 FuncEle->setArgTwo((*formElements)[i + 1]);
                 (*formElements).erase((*formElements).begin() + (i + 1));
-                RHSchg = true;
+
             }
 
             temp.push_back(FuncEle);
