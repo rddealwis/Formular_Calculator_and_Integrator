@@ -42,8 +42,8 @@ void dlgSaveFormula::on_btnBoxSubmit_clicked(QAbstractButton *button)
     std::string filePath;
     if(button ==this->ui->btnBoxSubmit->button(QDialogButtonBox::Ok))
     {
-        formulaName[formula->length()+1]=this->ui->txtFormulaName->toPlainText().toStdString();
-        formula[formula->length()+1]=this->ui->txtFormula->toPlainText().toStdString();
+        formulaName[formula->length()]=this->ui->txtFormulaName->toPlainText().toStdString();
+        formula[formula->length()]=this->ui->txtFormula->toPlainText().toStdString();
         filePath=this->ui->txtSaveLocation->toPlainText().toStdString();
         if(obj1.Write(filePath, formula,formulaName))
         {
