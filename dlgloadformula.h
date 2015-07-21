@@ -15,9 +15,11 @@ class dlgLoadFormula : public QDialog
 public:
     explicit dlgLoadFormula(QWidget *parent = 0);
     QString text;
-    void setTestVariable(const int &testVariable);
-    int getTestVariable();
-    int p_testVariable;
+    void setCurrentMemory(std::string p_formula[], std::string p_formulaName[]);
+    std::string getSelectedEquation(std::string formula[], std::string formulaName[]);
+    std::string selectFormula;
+    std::string formula[1024];
+    std::string formulaName[1024];
     ~dlgLoadFormula();
 
 private slots:

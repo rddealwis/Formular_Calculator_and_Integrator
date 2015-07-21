@@ -14,6 +14,8 @@ class MainScreen : public QMainWindow
 public:
     explicit MainScreen(QWidget *parent = 0);
     int testVariable;
+    std::string formula[1024];
+    std::string formulaName[1024];
     ~MainScreen();
 
 private slots:

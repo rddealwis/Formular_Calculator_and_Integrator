@@ -246,18 +246,19 @@ void MainScreen::on_pbSaveFormula_clicked()
 void MainScreen::on_pbLoadFormula_clicked()
 {
     dlgLoadFormula loadFormula;
-    testVariable=1000;
-    loadFormula.setTestVariable(testVariable);
-
-
+    //testVariable=1000;
+    formula[0] = "abc";
+    formula[1] = "abcd";
+    formula[2] = "abcde";
+    formulaName[0] = "abc111";
+    formulaName[1] = "abcd111";
+    formulaName[2] = "abcde111";
+    loadFormula.setCurrentMemory(formula, formulaName);
     loadFormula.setModal(true);
     loadFormula.exec();
-    int x=loadFormula.getTestVariable();
-    QString y=QString::number(x);
-    QMessageBox::information(
-            this,
-            tr("Application Name"),
-            y );
+    this->ui->txtTextEditor->setText(QString::fromStdString(loadFormula.getSelectedEquation(formula, formulaName)));
+    //int x=loadFormula.getTestVariable();
+
 }
 
 void MainScreen::on_pbLoadGraphFormula_clicked()
