@@ -27,6 +27,10 @@ private slots:
 
     void on_btnBoxSubmit_clicked(QAbstractButton *button);
 
+    void on_rdToMemory_clicked();
+
+    void on_rdToFile_clicked();
+
 private:
     Ui::dlgSaveFormula *ui;
 };

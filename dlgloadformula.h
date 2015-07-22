@@ -29,9 +29,9 @@ private slots:
 
     void on_buttonBox_clicked(QAbstractButton *button);
 
-    void on_rdFromMemory_windowIconChanged(const QIcon &icon);
-
     void on_rdFromMemory_clicked();
+
+    void on_rdFromFile_clicked();
 
 private:
     Ui::dlgLoadFormula *ui;

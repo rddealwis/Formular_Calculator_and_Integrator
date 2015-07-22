@@ -56,16 +56,34 @@ void dlgSaveFormula::on_btnBoxSubmit_clicked(QAbstractButton *button)
     std::string filePath;
     if(button ==this->ui->btnBoxSubmit->button(QDialogButtonBox::Save))
     {
-        formulaName[formula->length()]=this->ui->txtFormulaName->toPlainText().toStdString();
-        formula[formula->length()]=this->ui->txtFormula->toPlainText().toStdString();
-        filePath=this->ui->txtSaveLocation->toPlainText().toStdString();
-        if(obj1.Write(filePath, formula,formulaName))
+        if(this->ui->rdToFile->isChecked())
         {
-            QMessageBox::information(this, "Infinity Calculator", "Formula is successfully saved to the file.", QMessageBox::Ok);
+            formulaName[formula->length()]=this->ui->txtFormulaName->toPlainText().toStdString();
+            formula[formula->length()]=this->ui->txtFormula->toPlainText().toStdString();
+            filePath=this->ui->txtSaveLocation->toPlainText().toStdString();
+            if(obj1.Write(filePath, formula,formulaName))
+            {
+                QMessageBox::information(this, "Infinity Calculator", "Formula is successfully saved to the file.", QMessageBox::Ok);
+            }
+            else
+            {
+                QMessageBox::critical(this,"Infinity Calculator","Failed to open the file to write.", QMessageBox::Ok);
+            }
         }
         else
         {
-            QMessageBox::critical(this,"Infinity Calculator","Failed to open the file to write.", QMessageBox::Ok);
+            try
+            {
+                formulaNameOnMemory[formulaOnMemory->length()]=this->ui->txtFormulaName->toPlainText().toStdString();
+                formulaOnMemory[formulaOnMemory->length()]=this->ui->txtFormula->toPlainText().toStdString();
+                QMessageBox::information(this, "Infinity Calculator", "Formula is successfully saved to the memory.", QMessageBox::Ok);
+            }
+
+            catch(...)
+            {
+                QMessageBox::critical(this,"Infinity Calculator","Error occured when writing to the memory", QMessageBox::Ok);
+            }
+
         }
     }
 }
@@ -86,9 +104,42 @@ void dlgSaveFormula::setCurrentMemory(std::string saveFormula, std::string p_for
         this->ui->tblCurrentFormulae->setItem(j,0,formulaNameItem);
         this->ui->tblCurrentFormulae->setItem(j,1,formulaItem);
     }
+    this->ui->txtSaveLocation->setEnabled(false);
+    this->ui->pbBrowseSaveLoc->setEnabled(false);
 }
 
-void dlgSaveFormula::getSavedEquations(std::string formula[], std::string p_formulaName[], std::string p_formulaOnMemory[], std::string p_formulaNameOnMemory[])
+void dlgSaveFormula::getSavedEquations(std::string p_formula[], std::string p_formulaName[], std::string p_formulaOnMemory[], std::string p_formulaNameOnMemory[])
 {
+    CopyArray(formula, p_formula);
+    CopyArray(formulaName, p_formulaName);
+    CopyArray(formulaOnMemory,p_formulaOnMemory);
+    CopyArray(formulaNameOnMemory, p_formulaNameOnMemory);
+}
 
+void dlgSaveFormula::on_rdToMemory_clicked()
+{
+    for (unsigned j=0; j<formulaNameOnMemory->length();j++)
+    {
+        QTableWidgetItem *formulaNameItem=new QTableWidgetItem(tr(formulaNameOnMemory[j].c_str()));
+        QTableWidgetItem *formulaItem=new QTableWidgetItem(tr(formulaOnMemory[j].c_str()));
+        this->ui->tblCurrentFormulae->insertRow(j);
+        this->ui->tblCurrentFormulae->setItem(j,0,formulaNameItem);
+        this->ui->tblCurrentFormulae->setItem(j,1,formulaItem);
+    }
+    this->ui->txtSaveLocation->setEnabled(false);
+    this->ui->pbBrowseSaveLoc->setEnabled(false);
+}
+
+void dlgSaveFormula::on_rdToFile_clicked()
+{
+    for (unsigned j=0; j<formulaName->length();j++)
+    {
+        QTableWidgetItem *formulaNameItem=new QTableWidgetItem(tr(formulaName[j].c_str()));
+        QTableWidgetItem *formulaItem=new QTableWidgetItem(tr(formula[j].c_str()));
+        this->ui->tblCurrentFormulae->insertRow(j);
+        this->ui->tblCurrentFormulae->setItem(j,0,formulaNameItem);
+        this->ui->tblCurrentFormulae->setItem(j,1,formulaItem);
+    }
+    this->ui->txtSaveLocation->setEnabled(true);
+    this->ui->pbBrowseSaveLoc->setEnabled(true);
 }

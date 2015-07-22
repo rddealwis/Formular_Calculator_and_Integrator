@@ -262,18 +262,13 @@ void MainScreen::on_pbSaveFormula_clicked()
     saveFormula.setCurrentMemory(saveFormulaValue, formula, formulaName, formulaOnMemory, formulaNameOnMemory);
     saveFormula.setModal(true);
     saveFormula.exec();
+    saveFormula.getSavedEquations(formula,formulaName, formulaOnMemory, formulaNameOnMemory);
 }
 
 void MainScreen::on_pbLoadFormula_clicked()
 {
     dlgLoadFormula loadFormula;
-    //testVariable=1000;
-    /*formula[0] = "abc";
-    formula[1] = "abcd";
-    formula[2] = "abcde";
-    formulaName[0] = "abc111";
-    formulaName[1] = "abcd111";
-    formulaName[2] = "abcde111";*/
+
     loadFormula.setCurrentMemory(formula, formulaName, formulaOnMemory, formulaNameOnMemory);
     loadFormula.setModal(true);
     loadFormula.exec();

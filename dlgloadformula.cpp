@@ -48,7 +48,10 @@ void dlgLoadFormula::setCurrentMemory(std::string p_formula[], std::string p_for
         this->ui->tblCurrentFormulae->insertRow(j);
         this->ui->tblCurrentFormulae->setItem(j,0,formulaNameItem);
         this->ui->tblCurrentFormulae->setItem(j,1,formulaItem);
-    }
+    }\
+
+    this->ui->txtFileLocation->setEnabled(false);
+    this->ui->pbBrowseFile->setEnabled(false);
 
 }
 
@@ -97,12 +100,30 @@ void dlgLoadFormula::on_buttonBox_clicked(QAbstractButton *button)
     }
 }
 
-void dlgLoadFormula::on_rdFromMemory_windowIconChanged(const QIcon &icon)
-{
-
-}
-
 void dlgLoadFormula::on_rdFromMemory_clicked()
 {
+    for (unsigned j=0; j<formulaNameOnMemory->length();j++)
+    {
+        QTableWidgetItem *formulaNameItem=new QTableWidgetItem(tr(formulaNameOnMemory[j].c_str()));
+        QTableWidgetItem *formulaItem=new QTableWidgetItem(tr(formulaOnMemory[j].c_str()));
+        this->ui->tblCurrentFormulae->insertRow(j);
+        this->ui->tblCurrentFormulae->setItem(j,0,formulaNameItem);
+        this->ui->tblCurrentFormulae->setItem(j,1,formulaItem);
+    }
+    this->ui->txtFileLocation->setEnabled(false);
+    this->ui->pbBrowseFile->setEnabled(false);
+}
 
+void dlgLoadFormula::on_rdFromFile_clicked()
+{
+    for (unsigned j=0; j<formulaName->length();j++)
+    {
+        QTableWidgetItem *formulaNameItem=new QTableWidgetItem(tr(formulaName[j].c_str()));
+        QTableWidgetItem *formulaItem=new QTableWidgetItem(tr(formula[j].c_str()));
+        this->ui->tblCurrentFormulae->insertRow(j);
+        this->ui->tblCurrentFormulae->setItem(j,0,formulaNameItem);
+        this->ui->tblCurrentFormulae->setItem(j,1,formulaItem);
+    }
+    this->ui->txtFileLocation->setEnabled(true);
+    this->ui->pbBrowseFile->setEnabled(true);
 }
