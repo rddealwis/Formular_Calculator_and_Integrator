@@ -7,6 +7,9 @@
 #include "dlggraphviewer.h"
 #include <qmessagebox.h>
 #include <qframe.h>
+#include <QInputDialog>
+#include <QDir>
+
 
 MainScreen::MainScreen(QWidget *parent) :
     QMainWindow(parent),
@@ -112,10 +115,27 @@ void MainScreen::on_pbMinus_clicked()
 
 void MainScreen::on_pbEqual_clicked()
 {
-    std::string input=this->ui->txtTextEditor->toPlainText().toStdString();
+    std::vector<variableValue*> variableValues;
+
+    std::string input = this->ui->txtTextEditor->toPlainText().toStdString();
     std::string formulaInput(input);
     FormulaElement* formula = FormulaElement::parseFormula(formulaInput);
+    formula->getVariableValues(&variableValues);
+
+    for (int i = 0; i < variableValues.size(); i++)
+    {
+        bool ok;
+        double val = 0;
+
+        val = QInputDialog::getDouble(this,tr("Enter variable value"),tr("Please enter a value for the variable ")+variableValues[i]->variable.data(),
+                                        0,-2147483647,2147483647,4,&ok);
+        variableValues[i]->value = val;
+    }
+
+    bool returnVal1 = formula->setVariableValues(&variableValues);
+
     //this->ui->txtTextEditor->setText(QString::fromStdString(formula->toQString().data()));
+
     this->ui->txtResultsEditor->setText(QString::number(formula->evaluate()));
 }
 

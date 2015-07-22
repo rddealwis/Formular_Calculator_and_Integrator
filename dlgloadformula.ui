@@ -204,6 +204,12 @@ QPushButton:hover{background-color:#40bd9e; color:white;}</string>
       <height>31</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Lao UI</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">QTextEdit{
     background-color: #dbdbdb;	
