@@ -23,6 +23,7 @@ bool XMLFileHandling::Write(std::string fileName, std::string formula[], std::st
     //Add it to the document
     document.appendChild(root);
     //Add some elements
+
     for(int i=0; i<formula->length()+1; i++)
     {
         QDomElement book =document.createElement("Formulae");
@@ -37,13 +38,6 @@ bool XMLFileHandling::Write(std::string fileName, std::string formula[], std::st
 
     if(!file.open(QIODevice::WriteOnly|QIODevice::Text))
     {
-        //std::cout<<"Failed to open the file to write";
-        QMessageBox openFail;
-        openFail.setText("Open Failed.");
-        openFail.setInformativeText("Failed to open the file to write.");
-        openFail.setStandardButtons(QMessageBox::Ok);
-        openFail.setDefaultButton(QMessageBox::Ok);
-        int ret = openFail.exec();
         return false;
     }
     else
@@ -51,7 +45,7 @@ bool XMLFileHandling::Write(std::string fileName, std::string formula[], std::st
         QTextStream stream (&file);
         stream<<document.toString();
         file.close();
-        //std::cout<<"Finished";
+
         return true;
     }
 }
@@ -64,28 +58,13 @@ bool XMLFileHandling::Read(std::string& fileName,std::string formula[],std::stri
     QFile file(qFileName);
 
     if(!file.open(QIODevice::ReadOnly|QIODevice::Text))
-    {
-        //std::cout<<"Failed to open the file";
-        QMessageBox openFail;
-        openFail.setText("Open Failed.");
-        openFail.setInformativeText("Failed to open the file to write.");
-        openFail.setStandardButtons(QMessageBox::Ok);
-        openFail.setDefaultButton(QMessageBox::Ok);
-        int ret = openFail.exec();
+    {        
         return false;
     }
-
     else
     {
         if(!document.setContent(&file))
-        {
-            //std::cout<<"Failed to load the document";
-            QMessageBox loadFail;
-            loadFail.setText("Load Failed.");
-            loadFail.setInformativeText("Failed to load the document.");
-            loadFail.setStandardButtons(QMessageBox::Ok);
-            loadFail.setDefaultButton(QMessageBox::Ok);
-            int ret = loadFail.exec();
+        {            
             return false;
         }
         file.close();
@@ -124,6 +103,7 @@ void ListElements(QDomElement root, QString tagName, QString attribute, std::str
     QDomNodeList items=root.elementsByTagName(tagName);
     std::string values="";
     QMessageBox xmlContent;
+
     for(int i=0; i < items.count(); i++)
     {
         QDomNode itemNode = items.at(i);
@@ -143,8 +123,6 @@ void ListElements(QDomElement root, QString tagName, QString attribute, std::str
             {
                 formula[temp]=itemElement.attribute(attribute).toStdString();
             }
-
-
 
             /*values+=formulaName[i];
 

@@ -26,8 +26,8 @@ FormulaElement* MinusFunctionElement::simplify()
     std::string typeLHS(typeid(*(getArgOne()->simplify())).name());
     std::string typeRHS(typeid(*(getArgTwo()->simplify())).name());
 
-    if (("class ConstantElement" == typeLHS)
-        && ("class ConstantElement" == typeRHS)) {
+    if (("class ConstantElement" == typeLHS) && ("class ConstantElement" == typeRHS)) {
+
         return new ConstantElement(evaluate());
     }
     else
@@ -35,6 +35,7 @@ FormulaElement* MinusFunctionElement::simplify()
         MinusFunctionElement* temp = new MinusFunctionElement();
         temp->setArgOne(getArgOne()->simplify());
         temp->setArgTwo(getArgTwo()->simplify());
+
         return temp;
     }
 }

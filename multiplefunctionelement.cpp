@@ -20,8 +20,8 @@ std::string MultipleFunctionElement::toQString()
     std::string typeLHS(typeid(*getArgOne()).name());
     std::string typeRHS(typeid(*getArgTwo()).name());
 
-    if ((typeLHS == "class ConstantElement")
-            && (typeRHS == "class ConstantElement")) {
+    if ((typeLHS == "class ConstantElement") && (typeRHS == "class ConstantElement")) {
+
         ConstantElement* tempLHS = (ConstantElement*)getArgOne();
         ConstantElement* tempRHS = (ConstantElement*)getArgTwo();
         double result = tempLHS->GetConstant() * tempRHS->GetConstant();
@@ -30,6 +30,7 @@ std::string MultipleFunctionElement::toQString()
         sprintf(buffer, "%g", result);
         returnVal = buffer;
         delete buffer;
+
         return returnVal;
     }
 
@@ -105,14 +106,15 @@ FormulaElement* combineElements(MultipleFunctionElement* input)
             PowerFunctionElement* temp = new PowerFunctionElement();
             temp->setArgOne(LHSsimplify);
             temp->setArgTwo(new ConstantElement(2));
+
             return temp;
         }
         MultipleFunctionElement* temp = new MultipleFunctionElement();
         temp->setArgOne(LHSsimplify);
         temp->setArgTwo(RHSsimplify);
+
         return temp;
     }
-
     return 0;
 }
 

@@ -43,11 +43,11 @@ void dlgLoadFormula::setCurrentMemory(std::string p_formula[], std::string p_for
     //Formulae in the RuntimeMemory will be populated to the table by default
     for (unsigned j=0; j<formulaNameOnMemory->length();j++)
     {
-    QTableWidgetItem *formulaNameItem=new QTableWidgetItem(tr(formulaNameOnMemory[j].c_str()));
-    QTableWidgetItem *formulaItem=new QTableWidgetItem(tr(formulaOnMemory[j].c_str()));
-    this->ui->tblCurrentFormulae->insertRow(j);
-    this->ui->tblCurrentFormulae->setItem(j,0,formulaNameItem);
-    this->ui->tblCurrentFormulae->setItem(j,1,formulaItem);
+        QTableWidgetItem *formulaNameItem=new QTableWidgetItem(tr(formulaNameOnMemory[j].c_str()));
+        QTableWidgetItem *formulaItem=new QTableWidgetItem(tr(formulaOnMemory[j].c_str()));
+        this->ui->tblCurrentFormulae->insertRow(j);
+        this->ui->tblCurrentFormulae->setItem(j,0,formulaNameItem);
+        this->ui->tblCurrentFormulae->setItem(j,1,formulaItem);
     }
 
 }
@@ -60,6 +60,7 @@ std::string dlgLoadFormula::getSelectedEquation(std::string p_formula[], std::st
     CopyArrayL(formulaName, p_formulaName);
     CopyArrayL(formulaOnMemory, p_formulaOnMemory);
     CopyArrayL(formulaNameOnMemory, p_formulaNameOnMemory);
+
     return selectFormula;
 }
 
@@ -67,23 +68,24 @@ void dlgLoadFormula::on_pbBrowseFile_clicked()
 {
     XMLFileHandling obj1;
     std::string filePath=QFileDialog::getOpenFileName(this, tr("Open File"), "/desktop", tr("XML Files (*.xml)")).toUtf8().constData();
-    obj1.Read(filePath, formula, formulaName);
-
-    this->ui->tblCurrentFormulae->setRowCount(0);
-
-    for (unsigned j=0; j<formulaName->length();j++)
+    if(obj1.Read(filePath, formula, formulaName))
     {
-    QTableWidgetItem *formulaNameItem=new QTableWidgetItem(tr(formulaName[j].c_str()));
-    QTableWidgetItem *formulaItem=new QTableWidgetItem(tr(formula[j].c_str()));
-    this->ui->tblCurrentFormulae->insertRow(j);
-    this->ui->tblCurrentFormulae->setItem(j,0,formulaNameItem);
-    this->ui->tblCurrentFormulae->setItem(j,1,formulaItem);
+        this->ui->tblCurrentFormulae->setRowCount(0);
+
+        for (unsigned j=0; j<formulaName->length();j++)
+        {
+            QTableWidgetItem *formulaNameItem=new QTableWidgetItem(tr(formulaName[j].c_str()));
+            QTableWidgetItem *formulaItem=new QTableWidgetItem(tr(formula[j].c_str()));
+            this->ui->tblCurrentFormulae->insertRow(j);
+            this->ui->tblCurrentFormulae->setItem(j,0,formulaNameItem);
+            this->ui->tblCurrentFormulae->setItem(j,1,formulaItem);
+        }
+        ui->txtFileLocation->setText(QString::fromStdString(filePath));
     }
-
-
-    ui->txtFileLocation->setText(QString::fromStdString(filePath));
-
-
+    else
+    {
+        QMessageBox::critical(this,"Infinity Calculator","Unexpected error occurred when accessing the specified file.", QMessageBox::Ok);
+    }
 }
 
 void dlgLoadFormula::on_buttonBox_clicked(QAbstractButton *button)

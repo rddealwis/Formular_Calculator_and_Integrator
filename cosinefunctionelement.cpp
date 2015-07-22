@@ -52,6 +52,7 @@ FormulaElement* CosineFunctionElement::simplify()
         FormulaElement* temp = this->getArgTwo()->simplify();
         CosineFunctionElement* simplifyResult = new CosineFunctionElement();
         simplifyResult->setArgTwo(temp);
+
         return simplifyResult;
     }
 }

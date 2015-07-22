@@ -90,8 +90,8 @@ FormulaElement* DivideFunctionElement::simplify()
     std::string typeLHS(typeid(*(getArgOne()->simplify())).name());
     std::string typeRHS(typeid(*(getArgTwo()->simplify())).name());
 
-    if (("class ConstantElement" == typeLHS)
-        && ("class ConstantElement" == typeRHS)) {
+    if (("class ConstantElement" == typeLHS) && ("class ConstantElement" == typeRHS)) {
+
         return new ConstantElement(evaluate());
     }
     else
@@ -99,6 +99,7 @@ FormulaElement* DivideFunctionElement::simplify()
         DivideFunctionElement* temp = new DivideFunctionElement();
         temp->setArgOne(getArgOne()->simplify());
         temp->setArgTwo(getArgTwo()->simplify());
+
         return temp;
     }
 }

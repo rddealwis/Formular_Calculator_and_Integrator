@@ -26,14 +26,10 @@ bool isVariable(std::string Text);
 bool isOnlyNumber(std::string Text, double *value);
 bool containNumber(std::string Text);
 
-void getConstantElements(std::vector<std::string> *tokens,
-    std::vector<ConstantElement*> *constElementsOut);
-void getVariableElements(std::vector<std::string> *tokens,
-    std::vector<VariableElement*> *varElementsOut);
-void getFormulaElements(std::vector<std::string> *tokens,
-    std::vector<FormulaElement*> *formElements,
-    std::vector<VariableElement*> *varElements,
-    std::vector<ConstantElement*> *constElements);
+void getConstantElements(std::vector<std::string> *tokens, std::vector<ConstantElement*> *constElementsOut);
+void getVariableElements(std::vector<std::string> *tokens, std::vector<VariableElement*> *varElementsOut);
+void getFormulaElements(std::vector<std::string> *tokens, std::vector<FormulaElement*> *formElements,
+    std::vector<VariableElement*> *varElements, std::vector<ConstantElement*> *constElements);
 
 bool constElementExist(std::vector<ConstantElement*> *constElements, double value, int *index);
 bool constElementExist(std::vector<ConstantElement*> *constElements, double value);

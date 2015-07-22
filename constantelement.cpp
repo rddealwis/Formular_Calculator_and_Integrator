@@ -21,5 +21,6 @@ std::string ConstantElement::toQString()
     std::string returnVal;
     sprintf_s(buffer, 100, "%g", this->GetConstant());
     returnVal = buffer;
+
     return returnVal;
 }

@@ -19,8 +19,8 @@ std::string PowerFunctionElement::toQString()
     std::string typeLHS(typeid(*getArgOne()).name());
     std::string typeRHS(typeid(*getArgTwo()).name());
 
-	if ((typeLHS == "class ConstantElement")
-		&& (typeRHS == "class ConstantElement")) {
+    if ((typeLHS == "class ConstantElement") && (typeRHS == "class ConstantElement")) {
+
         ConstantElement* tempLHS = (ConstantElement*)getArgOne();
         ConstantElement* tempRHS = (ConstantElement*)getArgTwo();
 		double result = pow(tempLHS->GetConstant(), tempRHS->GetConstant());
@@ -65,8 +65,8 @@ FormulaElement* PowerFunctionElement::simplify()
     std::string typeLHS(typeid(*(getArgOne()->simplify())).name());
     std::string typeRHS(typeid(*(getArgTwo()->simplify())).name());
 
-    if (("class ConstantElement" == typeLHS)
-        && ("class ConstantElement" == typeRHS)) {
+    if (("class ConstantElement" == typeLHS) && ("class ConstantElement" == typeRHS)) {
+
         return new ConstantElement(evaluate());
     }
     else
@@ -74,6 +74,7 @@ FormulaElement* PowerFunctionElement::simplify()
         PowerFunctionElement* temp = new PowerFunctionElement();
         temp->setArgOne(getArgOne()->simplify());
         temp->setArgTwo(getArgTwo()->simplify());
+
         return temp;
     }
 }

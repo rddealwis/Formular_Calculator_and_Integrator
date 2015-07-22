@@ -53,6 +53,7 @@ FormulaElement* SineFunctionElement::simplify()
         FormulaElement* temp = this->getArgTwo()->simplify();
         SineFunctionElement* simplifyResult = new SineFunctionElement();
         simplifyResult->setArgTwo(temp);
+
         return simplifyResult;
     }
 }
