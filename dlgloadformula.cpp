@@ -48,10 +48,12 @@ void dlgLoadFormula::setCurrentMemory(std::string p_formula[], std::string p_for
 
 }
 
-std::string dlgLoadFormula::getSelectedEquation(std::string formula[], std::string formulaName[])
+std::string dlgLoadFormula::getSelectedEquation(std::string p_formula[], std::string p_formulaName[])
 {
     //p_Formula = formula;
     //p_FormulaName = formulaName;
+    CopyArray(formula, p_formula);
+    CopyArray(formulaName, p_formulaName);
     return selectFormula;
 }
 

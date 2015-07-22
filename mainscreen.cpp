@@ -257,7 +257,6 @@ void MainScreen::on_pbLoadFormula_clicked()
     loadFormula.setModal(true);
     loadFormula.exec();
     this->ui->txtTextEditor->setText(QString::fromStdString(loadFormula.getSelectedEquation(formula, formulaName)));
-    //int x=loadFormula.getTestVariable();
 
 }
 
