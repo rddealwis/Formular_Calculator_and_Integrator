@@ -247,12 +247,12 @@ void MainScreen::on_pbLoadFormula_clicked()
 {
     dlgLoadFormula loadFormula;
     //testVariable=1000;
-    formula[0] = "abc";
+    /*formula[0] = "abc";
     formula[1] = "abcd";
     formula[2] = "abcde";
     formulaName[0] = "abc111";
     formulaName[1] = "abcd111";
-    formulaName[2] = "abcde111";
+    formulaName[2] = "abcde111";*/
     loadFormula.setCurrentMemory(formula, formulaName);
     loadFormula.setModal(true);
     loadFormula.exec();
