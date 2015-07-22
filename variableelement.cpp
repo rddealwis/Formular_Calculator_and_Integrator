@@ -15,12 +15,12 @@ std::string VariableElement::GetVariable()
     return this->variable;
 }
 
-int VariableElement::GetNumVal()
+double VariableElement::GetNumVal()
 {
     return this->numVal;
 }
 
-void VariableElement::SetNumVal(int numVal)
+void VariableElement::SetNumVal(double numVal)
 {
     this->numVal=numVal;
 }

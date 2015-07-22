@@ -9,8 +9,8 @@ public:
     VariableElement(std::string variable);
     ~VariableElement();
     std::string GetVariable();
-    int GetNumVal();
-    void SetNumVal(int numVal);
+    double GetNumVal();
+    void SetNumVal(double numVal);
     std::string toQString();
 	void getVariableValues(std::vector<variableValue*> *variableValues);
 	bool setVariableValues(std::vector<variableValue*> *variableValues);
@@ -20,7 +20,7 @@ public:
     FormulaElement* getNewInstance() { return new VariableElement(this->variable); }
 private:
     std::string variable;
-    int numVal;
+    double numVal;
 	bool grounded = false;
 };
 
