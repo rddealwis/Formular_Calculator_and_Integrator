@@ -279,14 +279,18 @@ void MainScreen::on_pbLoadFormula_clicked()
 void MainScreen::on_pbLoadGraphFormula_clicked()
 {
     dlgLoadFormula loadFormula;
-
+    loadFormula.setCurrentMemory(formula, formulaName, formulaOnMemory, formulaNameOnMemory);
     loadFormula.setModal(true);
     loadFormula.exec();
+    this->ui->txtEquation->setText(QString::fromStdString(loadFormula.getSelectedEquation(formula, formulaName, formulaOnMemory, formulaNameOnMemory)));
 }
 
 void MainScreen::on_pbAddGraphFormula_clicked()
 {
-
+    QListWidgetItem *newItem = new QListWidgetItem;
+    newItem->setText(this->ui->txtEquation->toPlainText());
+    int row = this->ui->lstGraphFormulas->row(this->ui->lstGraphFormulas->currentItem());
+    this->ui->lstGraphFormulas->insertItem(row, newItem);
 }
 
 void MainScreen::on_pbSaveGraph_clicked()
@@ -300,6 +304,15 @@ void MainScreen::on_pbSaveGraph_clicked()
 void MainScreen::on_pbGenerate_clicked()
 {
     dlgGraphViewer graphViewer;
+    graphEquations[0]="x^2 + 4";
+
+    graphViewer.intializeGraphs(graphEquations,
+                                this->ui->txtXaxisName->toPlainText().toStdString(),
+                                this->ui->txtYaxisName->toPlainText().toStdString(),
+                                (this->ui->txtXaxisRangeFrom->toPlainText()).toDouble(),
+                                (this->ui->txtXaxisRangeTo->toPlainText()).toDouble(),
+                                (this->ui->txtYaxisRangeFrom->toPlainText()).toDouble(),
+                                (this->ui->txtYaxisRangeTo->toPlainText()).toDouble());
 
     graphViewer.setModal(true);
     graphViewer.exec();
@@ -312,3 +325,8 @@ void MainScreen::on_tabMenu_currentChanged(int index)
     }
 }
 
+
+void MainScreen::on_pbRemoveFormula_clicked()
+{
+    this->ui->lstGraphFormulas->takeItem(this->ui->lstGraphFormulas->row(this->ui->lstGraphFormulas->currentItem()));
+}

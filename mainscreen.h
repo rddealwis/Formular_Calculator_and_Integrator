@@ -18,6 +18,7 @@ public:
     std::string formulaName[1024];
     std::string formulaOnMemory[1024];
     std::string formulaNameOnMemory[1024];
+    std::string graphEquations[1024];
     std::string saveFormulaValue;
     ~MainScreen();
 
@@ -105,6 +106,8 @@ private slots:
     void on_tabMenu_currentChanged(int index);
 
     void on_pbAddGraphFormula_clicked();
+
+    void on_pbRemoveFormula_clicked();
 
 private:
     Ui::MainScreen *ui;

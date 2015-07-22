@@ -75,7 +75,7 @@ QTabWidget:hover{
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <property name="iconSize">
      <size>
@@ -2374,12 +2374,12 @@ QPushButton:hover{color:white;}</string>
 }</string>
        </property>
       </widget>
-      <widget class="QTextEdit" name="txtXaxisRange">
+      <widget class="QTextEdit" name="txtXaxisRangeFrom">
        <property name="geometry">
         <rect>
          <x>120</x>
          <y>285</y>
-         <width>191</width>
+         <width>81</width>
          <height>31</height>
         </rect>
        </property>
@@ -2398,12 +2398,12 @@ QPushButton:hover{color:white;}</string>
 }</string>
        </property>
       </widget>
-      <widget class="QTextEdit" name="txtYaxisRange">
+      <widget class="QTextEdit" name="txtYaxisRangeFrom">
        <property name="geometry">
         <rect>
          <x>120</x>
          <y>325</y>
-         <width>191</width>
+         <width>81</width>
          <height>31</height>
         </rect>
        </property>
@@ -2513,7 +2513,7 @@ QPushButton:hover{color:white;}</string>
         <rect>
          <x>680</x>
          <y>15</y>
-         <width>91</width>
+         <width>101</width>
          <height>23</height>
         </rect>
        </property>
@@ -2582,7 +2582,7 @@ Graph</string>
         <rect>
          <x>680</x>
          <y>60</y>
-         <width>91</width>
+         <width>101</width>
          <height>23</height>
         </rect>
        </property>
@@ -2604,6 +2604,121 @@ QPushButton:hover{background-color:#40bd9e; color:white;}</string>
        </property>
        <property name="text">
         <string>Add Formula</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pbRemoveFormula">
+       <property name="geometry">
+        <rect>
+         <x>680</x>
+         <y>90</y>
+         <width>101</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Lao UI</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+ 	background-color: #dbdbdb;
+    border: 2px;
+	color:#464747;
+
+}
+
+QPushButton:hover{background-color:#40bd9e; color:white;}</string>
+       </property>
+       <property name="text">
+        <string>Remove Formula</string>
+       </property>
+      </widget>
+      <widget class="QTextEdit" name="txtXaxisRangeTo">
+       <property name="geometry">
+        <rect>
+         <x>230</x>
+         <y>285</y>
+         <width>81</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Lao UI</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QTextEdit{
+    background-color: #dbdbdb;	
+}</string>
+       </property>
+      </widget>
+      <widget class="QTextEdit" name="txtYaxisRangeTo">
+       <property name="geometry">
+        <rect>
+         <x>230</x>
+         <y>325</y>
+         <width>81</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Lao UI</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QTextEdit{
+    background-color: #dbdbdb;	
+}</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblXaxisRangeTo">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>290</y>
+         <width>16</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Lao UI</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>to</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblXaxisRangeTo_2">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>330</y>
+         <width>16</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Lao UI</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>to</string>
        </property>
       </widget>
      </widget>
