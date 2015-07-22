@@ -16,9 +16,9 @@ dlgLoadFormula::~dlgLoadFormula()
     delete ui;
 }
 
-void CopyArray(std::string array1[], std::string array2[]);
+void CopyArrayL(std::string array1[], std::string array2[]);
 
-void CopyArray(std::string array1[], std::string array2[])
+void CopyArrayL(std::string array1[], std::string array2[])
 {
     for(int i = 0; i < array1->length(); i++)
     {
@@ -26,7 +26,7 @@ void CopyArray(std::string array1[], std::string array2[])
     }
 }
 
-void dlgLoadFormula::setCurrentMemory(std::string p_formula[], std::string p_formulaName[])
+void dlgLoadFormula::setCurrentMemory(std::string p_formula[], std::string p_formulaName[], std::string p_formulaOnMemory[], std::string p_formulaNameOnMemory[])
 {
     /*int a1[] = {1,2,3};
     int a2[3];
@@ -35,12 +35,16 @@ void dlgLoadFormula::setCurrentMemory(std::string p_formula[], std::string p_for
     formulaName = p_FormulaName;
     */
     //std::copy(std::begin(p_Formula), std::end(p_Formula), std::begin(formula));
-    CopyArray(p_formula, formula);
-    CopyArray(p_formulaName, formulaName);
-    for (unsigned j=0; j<formulaName->length();j++)
+    CopyArrayL(p_formula, formula);
+    CopyArrayL(p_formulaName, formulaName);
+    CopyArrayL(p_formulaOnMemory, formulaOnMemory);
+    CopyArrayL(p_formulaNameOnMemory, formulaNameOnMemory);
+
+    //Formulae in the RuntimeMemory will be populated to the table by default
+    for (unsigned j=0; j<formulaNameOnMemory->length();j++)
     {
-    QTableWidgetItem *formulaNameItem=new QTableWidgetItem(tr(formulaName[j].c_str()));
-    QTableWidgetItem *formulaItem=new QTableWidgetItem(tr(formula[j].c_str()));
+    QTableWidgetItem *formulaNameItem=new QTableWidgetItem(tr(formulaNameOnMemory[j].c_str()));
+    QTableWidgetItem *formulaItem=new QTableWidgetItem(tr(formulaOnMemory[j].c_str()));
     this->ui->tblCurrentFormulae->insertRow(j);
     this->ui->tblCurrentFormulae->setItem(j,0,formulaNameItem);
     this->ui->tblCurrentFormulae->setItem(j,1,formulaItem);
@@ -48,12 +52,14 @@ void dlgLoadFormula::setCurrentMemory(std::string p_formula[], std::string p_for
 
 }
 
-std::string dlgLoadFormula::getSelectedEquation(std::string p_formula[], std::string p_formulaName[])
+std::string dlgLoadFormula::getSelectedEquation(std::string p_formula[], std::string p_formulaName[], std::string p_formulaOnMemory[], std::string p_formulaNameOnMemory[])
 {
     //p_Formula = formula;
     //p_FormulaName = formulaName;
-    CopyArray(formula, p_formula);
-    CopyArray(formulaName, p_formulaName);
+    CopyArrayL(formula, p_formula);
+    CopyArrayL(formulaName, p_formulaName);
+    CopyArrayL(formulaOnMemory, p_formulaOnMemory);
+    CopyArrayL(formulaNameOnMemory, p_formulaNameOnMemory);
     return selectFormula;
 }
 
@@ -87,4 +93,14 @@ void dlgLoadFormula::on_buttonBox_clicked(QAbstractButton *button)
         QModelIndexList selectedList = this->ui->tblCurrentFormulae->selectionModel()->selectedRows();
         selectFormula=this->ui->tblCurrentFormulae->item(selectedList.at(0).row(), 1)->text().toStdString();
     }
+}
+
+void dlgLoadFormula::on_rdFromMemory_windowIconChanged(const QIcon &icon)
+{
+
+}
+
+void dlgLoadFormula::on_rdFromMemory_clicked()
+{
+
 }

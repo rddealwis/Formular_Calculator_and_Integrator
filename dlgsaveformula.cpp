@@ -2,6 +2,7 @@
 #include "ui_dlgsaveformula.h"
 #include "QFileDialog"
 
+
 dlgSaveFormula::dlgSaveFormula(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::dlgSaveFormula)
@@ -12,6 +13,16 @@ dlgSaveFormula::dlgSaveFormula(QWidget *parent) :
 dlgSaveFormula::~dlgSaveFormula()
 {
     delete ui;
+}
+
+void CopyArray(std::string array1[], std::string array2[]);
+
+void CopyArray(std::string array1[], std::string array2[])
+{
+    for(int i = 0; i < array1->length(); i++)
+    {
+        array2[i] = array1[i];
+    }
 }
 
 void dlgSaveFormula::on_pbBrowseSaveLoc_clicked()
@@ -40,7 +51,7 @@ void dlgSaveFormula::on_btnBoxSubmit_clicked(QAbstractButton *button)
 {
     XMLFileHandling obj1;
     std::string filePath;
-    if(button ==this->ui->btnBoxSubmit->button(QDialogButtonBox::Ok))
+    if(button ==this->ui->btnBoxSubmit->button(QDialogButtonBox::Save))
     {
         formulaName[formula->length()]=this->ui->txtFormulaName->toPlainText().toStdString();
         formula[formula->length()]=this->ui->txtFormula->toPlainText().toStdString();
@@ -56,5 +67,29 @@ void dlgSaveFormula::on_btnBoxSubmit_clicked(QAbstractButton *button)
         }
     }
 
+
+}
+
+void dlgSaveFormula::setCurrentMemory(std::string saveFormula, std::string p_formula[], std::string p_formulaName[], std::string p_formulaOnMemory[], std::string p_formulaNameOnMemory[])
+{
+    this->ui->txtFormula->setText(QString::fromStdString(saveFormula));
+    CopyArray(p_formula, formula);
+    CopyArray(p_formulaName, formulaName);
+    CopyArray(p_formulaOnMemory, formulaOnMemory);
+    CopyArray(p_formulaNameOnMemory, formulaNameOnMemory);
+
+    for (unsigned j=0; j<formulaNameOnMemory->length();j++)
+    {
+    QTableWidgetItem *formulaNameItem=new QTableWidgetItem(tr(formulaNameOnMemory[j].c_str()));
+    QTableWidgetItem *formulaItem=new QTableWidgetItem(tr(formulaOnMemory[j].c_str()));
+    this->ui->tblCurrentFormulae->insertRow(j);
+    this->ui->tblCurrentFormulae->setItem(j,0,formulaNameItem);
+    this->ui->tblCurrentFormulae->setItem(j,1,formulaItem);
+    }
+
+}
+
+void dlgSaveFormula::getSavedEquations(std::string formula[], std::string p_formulaName[], std::string p_formulaOnMemory[], std::string p_formulaNameOnMemory[])
+{
 
 }

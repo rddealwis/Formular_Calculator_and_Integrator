@@ -258,7 +258,8 @@ void MainScreen::on_pbDel_clicked()
 void MainScreen::on_pbSaveFormula_clicked()
 {
     dlgSaveFormula saveFormula;
-
+    saveFormulaValue = this->ui->txtTextEditor->toPlainText().toStdString();
+    saveFormula.setCurrentMemory(saveFormulaValue, formula, formulaName, formulaOnMemory, formulaNameOnMemory);
     saveFormula.setModal(true);
     saveFormula.exec();
 }
@@ -273,10 +274,10 @@ void MainScreen::on_pbLoadFormula_clicked()
     formulaName[0] = "abc111";
     formulaName[1] = "abcd111";
     formulaName[2] = "abcde111";*/
-    loadFormula.setCurrentMemory(formula, formulaName);
+    loadFormula.setCurrentMemory(formula, formulaName, formulaOnMemory, formulaNameOnMemory);
     loadFormula.setModal(true);
     loadFormula.exec();
-    this->ui->txtTextEditor->setText(QString::fromStdString(loadFormula.getSelectedEquation(formula, formulaName)));
+    this->ui->txtTextEditor->setText(QString::fromStdString(loadFormula.getSelectedEquation(formula, formulaName, formulaOnMemory, formulaNameOnMemory)));
 
 }
 

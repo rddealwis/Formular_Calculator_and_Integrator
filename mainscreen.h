@@ -16,6 +16,9 @@ public:
     int testVariable;
     std::string formula[1024];
     std::string formulaName[1024];
+    std::string formulaOnMemory[1024];
+    std::string formulaNameOnMemory[1024];
+    std::string saveFormulaValue;
     ~MainScreen();
 
 private slots:
