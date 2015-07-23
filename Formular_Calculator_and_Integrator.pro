@@ -12,7 +12,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 TARGET = Formular_Calculator_and_Integrator
 TEMPLATE = app
 CONFIG +=c++11
-
+QMAKE_CXXFLAGS += -bigobj
 
 SOURCES += main.cpp\
         mainscreen.cpp \
@@ -32,7 +32,8 @@ SOURCES += main.cpp\
     xmlfilehandling.cpp \
     qcustomplot.cpp \
     dlgsavegraph.cpp \
-    dlggraphviewer.cpp
+    dlggraphviewer.cpp \
+    dlgcalareaundercurve.cpp
 
 HEADERS  += mainscreen.h \
     constantelement.h \
@@ -53,13 +54,15 @@ HEADERS  += mainscreen.h \
     qcustomplot.h \
     dlgsavegraph.h \
     dlggraphviewer.h \
-    exprtk.hpp
+    exprtk.hpp \
+    dlgcalareaundercurve.h
 
 FORMS    += mainscreen.ui \
     dlgsaveformula.ui \
     dlgloadformula.ui \
     dlgsavegraph.ui \
-    dlggraphviewer.ui
+    dlggraphviewer.ui \
+    dlgcalareaundercurve.ui
 
 RESOURCES += \
     resources.qrc

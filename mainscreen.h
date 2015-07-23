@@ -121,6 +121,8 @@ private slots:
 
     void on_lstGraphFromFile_doubleClicked(const QModelIndex &index);
 
+    void on_pbCalAreaUndertheCurve_clicked();
+
 private:
     Ui::MainScreen *ui;
 };

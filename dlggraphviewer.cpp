@@ -48,7 +48,7 @@ bool dlgGraphViewer::intializeGraphs(std::string graphEquations[], std::string x
         ui->customPlot->yAxis->setLabel(QString::fromStdString(yAxisLabel));
         ui->customPlot->replot();
 
-        ui->textEdit->setText(QString::number(findAreaUnderTheCurve(graphEquations)));
+       // ui->textEdit->setText(QString::number(findAreaUnderTheCurve(graphEquations)));
 
         return true;
     }
@@ -62,7 +62,7 @@ bool dlgGraphViewer::intializeGraphs(std::string graphEquations[], std::string x
 
 double dlgGraphViewer::findAreaUnderTheCurve(std::string graphEquations[]){
 
-   /* exprtk::parser<double> parser;
+    exprtk::parser<double> parser;
     exprtk::expression<double> expression;
     exprtk::symbol_table<double> symbol_table;
 
@@ -70,14 +70,14 @@ double dlgGraphViewer::findAreaUnderTheCurve(std::string graphEquations[]){
     double t2 = 3.1415992;
     double temp = 0;
 
-    std::string expression_string = "abs(sin(X))";
+    std::string expression_string = "abs(sin(30))";
     symbol_table.add_variable("X",temp);
     symbol_table.add_variable("Y",temp);
 
     expression.register_symbol_table(symbol_table);
     parser.compile(expression_string,expression);
 
-    return exprtk::integrate(expression,"X",t1,t2);*/
+    return exprtk::integrate(expression,"X",t1,t2);
     return 0;
 }
 

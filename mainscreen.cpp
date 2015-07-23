@@ -5,6 +5,7 @@
 #include "dlgsaveformula.h"
 #include "dlgsavegraph.h"
 #include "dlggraphviewer.h"
+#include "dlgcalareaundercurve.h"
 #include <qmessagebox.h>
 #include <qframe.h>
 #include <QInputDialog>
@@ -430,4 +431,12 @@ void MainScreen::on_lstGraphFromFile_doubleClicked(const QModelIndex &index)
     newItem->setText(this->ui->lstGraphFromFile->currentItem()->text());
     int row = this->ui->lstGraphFormulas->row(this->ui->lstGraphFormulas->currentItem());
     this->ui->lstGraphFormulas->insertItem(row, newItem);
+}
+
+void MainScreen::on_pbCalAreaUndertheCurve_clicked()
+{
+    dlgCalAreaUnderCurve calAreaUnderCurve;
+
+    calAreaUnderCurve.setModal(true);
+    calAreaUnderCurve.exec();
 }
