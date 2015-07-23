@@ -51,7 +51,7 @@ QPushButton:hover{background-color:#40bd9e; color:white;}</string>
     <enum>Qt::Horizontal</enum>
    </property>
    <property name="standardButtons">
-    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Save</set>
    </property>
   </widget>
   <widget class="QFrame" name="frmLocation">

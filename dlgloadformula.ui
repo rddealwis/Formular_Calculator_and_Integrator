@@ -104,7 +104,7 @@ QPushButton:hover{background-color:#40bd9e; color:white;}</string>
      <number>10</number>
     </property>
     <property name="columnCount">
-     <number>3</number>
+     <number>2</number>
     </property>
     <row/>
     <row/>
@@ -120,13 +120,24 @@ QPushButton:hover{background-color:#40bd9e; color:white;}</string>
      <property name="text">
       <string>Formula Name</string>
      </property>
+     <property name="font">
+      <font>
+       <family>Lao UI</family>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
     </column>
     <column>
      <property name="text">
       <string>Formula</string>
      </property>
+     <property name="font">
+      <font>
+       <family>Lao UI</family>
+      </font>
+     </property>
     </column>
-    <column/>
    </widget>
   </widget>
   <widget class="QFrame" name="frmLocation">
