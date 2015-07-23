@@ -20,6 +20,10 @@ public:
     std::string formulaNameOnMemory[1024];
     std::string graphEquations[1024];
     std::string saveFormulaValue;
+    void LoadToListGraphFromFile();
+    void LoadToListGraphInMemory();
+    void LoadToListGraphScientificFromFile();
+    void LoadToListGraphScientificInMemory();
     ~MainScreen();
 
 private slots:

@@ -273,7 +273,66 @@ void MainScreen::on_pbLoadFormula_clicked()
     loadFormula.setModal(true);
     loadFormula.exec();
     this->ui->txtTextEditor->setText(QString::fromStdString(loadFormula.getSelectedEquation(formula, formulaName, formulaOnMemory, formulaNameOnMemory)));
+    this->LoadToListGraphFromFile();
+    this->LoadToListGraphInMemory();
+    this->LoadToListGraphScientificFromFile();
+    this->LoadToListGraphScientificInMemory();
+}
 
+void MainScreen::LoadToListGraphFromFile()
+{
+    QListWidgetItem *newItem;
+    QString ListVal = "";
+    for(int i = 0; i < formula->length(); i++)
+    {
+        newItem = new QListWidgetItem;
+        ListVal = QString::fromStdString(formulaName[i] + " - " + formula[i]);
+        newItem->setText(ListVal);
+        int row = this->ui->lstGraphFromFile->row(this->ui->lstGraphFromFile->currentItem());
+        this->ui->lstGraphFromFile->insertItem(row, newItem);
+    }
+}
+
+void MainScreen::LoadToListGraphInMemory()
+{
+    QListWidgetItem *newItem;
+    QString ListVal = "";
+    for(int i = 0; i < formulaOnMemory->length(); i++)
+    {
+        newItem = new QListWidgetItem;
+        ListVal = QString::fromStdString(formulaNameOnMemory[i] + " - " + formulaOnMemory[i]);
+        newItem->setText(ListVal);
+        int row = this->ui->lstGraphInMemory->row(this->ui->lstGraphInMemory->currentItem());
+        this->ui->lstGraphInMemory->insertItem(row, newItem);
+    }
+}
+
+void MainScreen::LoadToListGraphScientificFromFile()
+{
+    QListWidgetItem *newItem;
+    QString ListVal = "";
+    for(int i = 0; i < formula->length(); i++)
+    {
+        newItem = new QListWidgetItem;
+        ListVal = QString::fromStdString(formulaName[i] + " - " + formula[i]);
+        newItem->setText(ListVal);
+        int row = this->ui->lstScientificFromFile->row(this->ui->lstScientificFromFile->currentItem());
+        this->ui->lstScientificFromFile->insertItem(row, newItem);
+    }
+}
+
+void MainScreen::LoadToListGraphScientificInMemory()
+{
+    QListWidgetItem *newItem;
+    QString ListVal = "";
+    for(int i = 0; i < formulaOnMemory->length(); i++)
+    {
+        newItem = new QListWidgetItem;
+        ListVal = QString::fromStdString(formulaNameOnMemory[i] + " - " + formulaOnMemory[i]);
+        newItem->setText(ListVal);
+        int row = this->ui->lstScientificInMemory->row(this->ui->lstScientificInMemory->currentItem());
+        this->ui->lstScientificInMemory->insertItem(row, newItem);
+    }
 }
 
 void MainScreen::on_pbLoadGraphFormula_clicked()
