@@ -27,7 +27,7 @@ void dlgCalAreaUnderCurve::addIntegrationVariables(std::string graphEquation)
     for (int i = 0; i < variableValues.size(); i++)
     {
         this->ui->cmbIntegrationVar->clear();
-        this->ui->cmbIntegrationVar->addItems(QStringList::toVector(variableValues[i]->variable.data()));
+        this->ui->cmbIntegrationVar->addItems(st);
     }
 }
 

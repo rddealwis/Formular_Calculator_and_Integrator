@@ -37,6 +37,9 @@
     <enum>QFrame::Raised</enum>
    </property>
    <widget class="QTextEdit" name="txtFormula">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>90</x>
@@ -214,7 +217,7 @@
    <widget class="QPushButton" name="pbCalculate">
     <property name="geometry">
      <rect>
-      <x>140</x>
+      <x>260</x>
       <y>115</y>
       <width>101</width>
       <height>31</height>
@@ -267,6 +270,35 @@ QPushButton:hover{background-color:#40bd9e; color:white;}</string>
     </property>
     <property name="text">
      <string>Close</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblIntegrationVar">
+    <property name="geometry">
+     <rect>
+      <x>15</x>
+      <y>110</y>
+      <width>71</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Lao UI</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Integration&lt;br/&gt;Variable&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="cmbIntegrationVar">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>110</y>
+      <width>81</width>
+      <height>22</height>
+     </rect>
     </property>
    </widget>
   </widget>
