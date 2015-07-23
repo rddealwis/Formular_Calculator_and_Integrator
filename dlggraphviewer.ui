@@ -30,19 +30,19 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>57</y>
-     <width>1171</width>
-     <height>441</height>
+     <y>17</y>
+     <width>921</width>
+     <height>531</height>
     </rect>
    </property>
   </widget>
   <widget class="QFrame" name="frmGraphButtons">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>505</y>
-     <width>1171</width>
-     <height>41</height>
+     <x>940</x>
+     <y>15</y>
+     <width>241</width>
+     <height>531</height>
     </rect>
    </property>
    <property name="autoFillBackground">
@@ -57,8 +57,8 @@
    <widget class="QPushButton" name="pbClose">
     <property name="geometry">
      <rect>
-      <x>1070</x>
-      <y>10</y>
+      <x>130</x>
+      <y>490</y>
       <width>91</width>
       <height>23</height>
      </rect>
@@ -86,8 +86,8 @@ QPushButton:hover{background-color:#40bd9e; color:white;}</string>
    <widget class="QPushButton" name="pbSaveGraph">
     <property name="geometry">
      <rect>
-      <x>960</x>
-      <y>10</y>
+      <x>20</x>
+      <y>490</y>
       <width>91</width>
       <height>23</height>
      </rect>
@@ -112,74 +112,72 @@ QPushButton:hover{background-color:#40bd9e; color:white;}</string>
      <string>Save Graph</string>
     </property>
    </widget>
-  </widget>
-  <widget class="QFrame" name="frame_2">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>1171</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="autoFillBackground">
-    <bool>true</bool>
-   </property>
-   <property name="frameShape">
-    <enum>QFrame::StyledPanel</enum>
-   </property>
-   <property name="frameShadow">
-    <enum>QFrame::Raised</enum>
-   </property>
-   <widget class="QLabel" name="lblCurveArea">
+   <widget class="QTableWidget" name="tblCurrentFormulae">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>131</width>
-      <height>21</height>
+      <x>5</x>
+      <y>30</y>
+      <width>225</width>
+      <height>431</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>10</pointsize>
+      <family>Lao UI</family>
      </font>
     </property>
-    <property name="text">
-     <string>Area under the curve</string>
+    <property name="gridStyle">
+     <enum>Qt::SolidLine</enum>
     </property>
+    <property name="rowCount">
+     <number>12</number>
+    </property>
+    <property name="columnCount">
+     <number>2</number>
+    </property>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <column>
+     <property name="text">
+      <string>Formula</string>
+     </property>
+     <property name="font">
+      <font>
+       <family>Lao UI</family>
+      </font>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Area Under
+the Curve 
+(in Units)</string>
+     </property>
+     <property name="font">
+      <font>
+       <family>Lao UI</family>
+      </font>
+     </property>
+    </column>
    </widget>
-   <widget class="QTextEdit" name="txtCurveArea">
+   <widget class="QTextEdit" name="textEdit">
     <property name="geometry">
      <rect>
-      <x>145</x>
-      <y>5</y>
-      <width>151</width>
+      <x>30</x>
+      <y>0</y>
+      <width>104</width>
       <height>31</height>
      </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblUnits">
-    <property name="geometry">
-     <rect>
-      <x>310</x>
-      <y>10</y>
-      <width>31</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Units</string>
     </property>
    </widget>
   </widget>

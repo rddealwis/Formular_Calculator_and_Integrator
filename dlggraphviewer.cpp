@@ -1,6 +1,7 @@
 #include "dlggraphviewer.h"
 #include "ui_dlggraphviewer.h"
 #include "dlgsavegraph.h"
+#include "exprtk.hpp"
 #include <math.h>
 
 dlgGraphViewer::dlgGraphViewer(QWidget *parent) :
@@ -47,6 +48,8 @@ bool dlgGraphViewer::intializeGraphs(std::string graphEquations[], std::string x
         ui->customPlot->yAxis->setLabel(QString::fromStdString(yAxisLabel));
         ui->customPlot->replot();
 
+        ui->textEdit->setText(QString::number(findAreaUnderTheCurve(graphEquations)));
+
         return true;
     }
 
@@ -55,6 +58,26 @@ bool dlgGraphViewer::intializeGraphs(std::string graphEquations[], std::string x
         QMessageBox::critical(this,"Infinity Calculator","Unexpected error occurred when plotting the graph.", QMessageBox::Ok);
         return false;
     }
+}
+
+double dlgGraphViewer::findAreaUnderTheCurve(std::string graphEquations[]){
+
+    exprtk::parser<double> parser;
+    exprtk::expression<double> expression;
+    exprtk::symbol_table<double> symbol_table;
+
+    double t1 = 0;
+    double t2 = 3.1415992;
+    double temp = 0;
+
+    std::string expression_string = "abs(sin(X))";
+    symbol_table.add_variable("X",temp);
+    symbol_table.add_variable("Y",temp);
+
+    expression.register_symbol_table(symbol_table);
+    parser.compile(expression_string,expression);
+
+    return exprtk::integrate(expression,"X",t1,t2);
 }
 
 void dlgGraphViewer::on_pbSaveGraph_clicked()

@@ -1,6 +1,7 @@
 #ifndef DLGGRAPHVIEWER_H
 #define DLGGRAPHVIEWER_H
 
+#include "formulaelement.h"
 #include <QDialog>
 
 namespace Ui {
@@ -14,6 +15,7 @@ class dlgGraphViewer : public QDialog
 public:
     explicit dlgGraphViewer(QWidget *parent = 0);
     bool intializeGraphs(std::string graphEquations[], std::string xAxisLabel, std::string yAxisLabel, double xAxisRangeFrom, double xAxisRangeTo, double yAxisRangeFrom, double yAxisRangeTo);
+    double findAreaUnderTheCurve(std::string graphEquations[]);
     ~dlgGraphViewer();
 
 private slots:
