@@ -78,6 +78,7 @@ double dlgGraphViewer::findAreaUnderTheCurve(std::string graphEquations[]){
     parser.compile(expression_string,expression);
 
     return exprtk::integrate(expression,"X",t1,t2);
+    //return 0;
 }
 
 void dlgGraphViewer::on_pbSaveGraph_clicked()

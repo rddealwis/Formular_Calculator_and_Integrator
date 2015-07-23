@@ -288,7 +288,8 @@ void MainScreen::LoadToListGraphFromFile()
         if(formulaName[i] != "")
         {
         newItem = new QListWidgetItem;
-        ListVal = QString::fromStdString(formulaName[i] + " - " + formula[i]);
+        //ListVal = QString::fromStdString(formulaName[i] + " - " + formula[i]);
+        ListVal = QString::fromStdString(formulaName[i]);
         newItem->setText(ListVal);
         int row = this->ui->lstGraphFromFile->row(this->ui->lstGraphFromFile->currentItem());
         this->ui->lstGraphFromFile->insertItem(row, newItem);
@@ -305,7 +306,8 @@ void MainScreen::LoadToListGraphInMemory()
         if(formulaNameOnMemory[i] != "")
         {
         newItem = new QListWidgetItem;
-        ListVal = QString::fromStdString(formulaNameOnMemory[i] + " - " + formulaOnMemory[i]);
+        //ListVal = QString::fromStdString(formulaNameOnMemory[i] + " - " + formulaOnMemory[i]);
+        ListVal = QString::fromStdString(formulaNameOnMemory[i]);
         newItem->setText(ListVal);
         int row = this->ui->lstGraphInMemory->row(this->ui->lstGraphInMemory->currentItem());
         this->ui->lstGraphInMemory->insertItem(row, newItem);
@@ -322,7 +324,8 @@ void MainScreen::LoadToListGraphScientificFromFile()
         if(formulaName[i] != "")
         {
         newItem = new QListWidgetItem;
-        ListVal = QString::fromStdString(formulaName[i] + " - " + formula[i]);
+        //ListVal = QString::fromStdString(formulaName[i] + " - " + formula[i]);
+        ListVal = QString::fromStdString(formulaName[i]);
         newItem->setText(ListVal);
         int row = this->ui->lstScientificFromFile->row(this->ui->lstScientificFromFile->currentItem());
         this->ui->lstScientificFromFile->insertItem(row, newItem);
@@ -339,7 +342,8 @@ void MainScreen::LoadToListGraphScientificInMemory()
         if(formulaNameOnMemory[i] != "")
         {
         newItem = new QListWidgetItem;
-        ListVal = QString::fromStdString(formulaNameOnMemory[i] + " - " + formulaOnMemory[i]);
+        //ListVal = QString::fromStdString(formulaNameOnMemory[i] + " - " + formulaOnMemory[i]);
+        ListVal = QString::fromStdString(formulaOnMemory[i]);
         newItem->setText(ListVal);
         int row = this->ui->lstScientificInMemory->row(this->ui->lstScientificInMemory->currentItem());
         this->ui->lstScientificInMemory->insertItem(row, newItem);
@@ -400,4 +404,10 @@ void MainScreen::on_tabMenu_currentChanged(int index)
 void MainScreen::on_pbRemoveFormula_clicked()
 {
     this->ui->lstGraphFormulas->takeItem(this->ui->lstGraphFormulas->row(this->ui->lstGraphFormulas->currentItem()));
+}
+
+void MainScreen::on_lstScientificInMemory_doubleClicked(const QModelIndex &index)
+{
+    QString selectedFormula = this->ui->lstScientificInMemory->currentItem()->text();
+
 }

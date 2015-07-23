@@ -113,6 +113,8 @@ private slots:
 
     void on_pbRemoveFormula_clicked();
 
+    void on_lstScientificInMemory_doubleClicked(const QModelIndex &index);
+
 private:
     Ui::MainScreen *ui;
 };
