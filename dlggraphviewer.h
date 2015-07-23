@@ -14,8 +14,7 @@ class dlgGraphViewer : public QDialog
 
 public:
     explicit dlgGraphViewer(QWidget *parent = 0);
-    bool intializeGraphs(std::string graphEquations[], std::string xAxisLabel, std::string yAxisLabel, double xAxisRangeFrom, double xAxisRangeTo, double yAxisRangeFrom, double yAxisRangeTo);
-    double findAreaUnderTheCurve(std::string graphEquations[]);
+    bool intializeGraphs(std::string graphEquations[], std::string xAxisLabel, std::string yAxisLabel, double xAxisRangeFrom, double xAxisRangeTo, double yAxisRangeFrom, double yAxisRangeTo);    
     ~dlgGraphViewer();
 
 private slots:

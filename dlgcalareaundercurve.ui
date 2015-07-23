@@ -165,7 +165,7 @@
      <string>Max Range</string>
     </property>
    </widget>
-   <widget class="QLabel" name="lblMinRange_3">
+   <widget class="QLabel" name="lblCalAreaUndertheCurve">
     <property name="geometry">
      <rect>
       <x>15</x>
@@ -184,7 +184,7 @@
      <string>Area Under the Curve (in Units)</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="txtMinRange_3">
+   <widget class="QTextEdit" name="txtCalAreaUndertheCurve">
     <property name="enabled">
      <bool>false</bool>
     </property>

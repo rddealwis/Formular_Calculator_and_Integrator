@@ -13,7 +13,13 @@ class dlgCalAreaUnderCurve : public QDialog
 
 public:
     explicit dlgCalAreaUnderCurve(QWidget *parent = 0);
+    void findAreaUnderTheCurve(std::string graphEquation);
     ~dlgCalAreaUnderCurve();
+
+private slots:
+    void on_pbCalculate_clicked();
+
+    void on_pbClose_clicked();
 
 private:
     Ui::dlgCalAreaUnderCurve *ui;

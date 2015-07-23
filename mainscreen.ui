@@ -99,7 +99,7 @@ QTabWidget:hover{
        <rect>
         <x>0</x>
         <y>-1</y>
-        <width>125</width>
+        <width>181</width>
         <height>441</height>
        </rect>
       </property>
@@ -131,7 +131,7 @@ QPushButton{
         <rect>
          <x>0</x>
          <y>30</y>
-         <width>131</width>
+         <width>181</width>
          <height>41</height>
         </rect>
        </property>
@@ -157,9 +157,9 @@ QPushButton{
      <widget class="QFrame" name="frmAboutCalculator">
       <property name="geometry">
        <rect>
-        <x>130</x>
+        <x>180</x>
         <y>0</y>
-        <width>701</width>
+        <width>981</width>
         <height>441</height>
        </rect>
       </property>
@@ -178,15 +178,16 @@ QPushButton{
       <widget class="QLabel" name="label_8">
        <property name="geometry">
         <rect>
-         <x>20</x>
+         <x>10</x>
          <y>30</y>
-         <width>661</width>
+         <width>971</width>
          <height>201</height>
         </rect>
        </property>
        <property name="font">
         <font>
          <family>Lao UI</family>
+         <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
         </font>
@@ -197,7 +198,7 @@ QPushButton{
 }</string>
        </property>
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Calibri,sans-serif'; font-size:11pt;&quot;&gt;Infinity Calculator is a symbolic calculator which allows users to manipulate real mathematical formulae &lt;br/&gt;in their textual or symbolic forms. &lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Calibri,sans-serif'; font-size:11pt;&quot;&gt;Infinity Calculator also allows the following : &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Calibri,sans-serif'; font-size:11pt;&quot;&gt;     Calculate the integral of any formula.&lt;br/&gt;     Graph any named formula of one free variable that it is given.&lt;br/&gt;     Calculate the area under a curve in a graph.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Calibri,sans-serif'; font-size:11pt;&quot;&gt;&lt;br/&gt;Infinity Members are :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Lao UI'; font-size:12pt;&quot;&gt;Infinity Calculator is a symbolic calculator which allows users to manipulate real mathematical formulae in their textual or symbolic forms. &lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Lao UI'; font-size:12pt;&quot;&gt;Infinity Calculator also allows the following : &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Lao UI'; font-size:12pt;&quot;&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Calculate the integral of any formula.&lt;br/&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Graph any named formula of one free variable that it is given.&lt;br/&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Calculate the area under a curve in a graph.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Lao UI'; font-size:12pt;&quot;&gt;&lt;br/&gt;Infinity Members are :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -206,15 +207,16 @@ QPushButton{
       <widget class="QLabel" name="label_9">
        <property name="geometry">
         <rect>
-         <x>220</x>
+         <x>210</x>
          <y>240</y>
-         <width>121</width>
-         <height>111</height>
+         <width>231</width>
+         <height>141</height>
         </rect>
        </property>
        <property name="font">
         <font>
          <family>Lao UI</family>
+         <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
         </font>
@@ -225,7 +227,7 @@ QPushButton{
 }</string>
        </property>
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Calibri,sans-serif'; font-size:11pt;&quot;&gt;-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;14209687&lt;br/&gt;-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;14209691&lt;br/&gt;-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;14209716&lt;br/&gt;-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;14209717&lt;br/&gt;-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;14209810&lt;br/&gt;-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;14208990 &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Lao UI'; font-size:12pt;&quot;&gt;-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;14209687&lt;br/&gt;-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;14209691&lt;br/&gt;-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;14209716&lt;br/&gt;-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;14209717&lt;br/&gt;-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;14209810&lt;br/&gt;-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;14208990 &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -234,15 +236,16 @@ QPushButton{
       <widget class="QLabel" name="label_10">
        <property name="geometry">
         <rect>
-         <x>20</x>
+         <x>10</x>
          <y>240</y>
-         <width>161</width>
-         <height>111</height>
+         <width>191</width>
+         <height>141</height>
         </rect>
        </property>
        <property name="font">
         <font>
          <family>Lao UI</family>
+         <pointsize>10</pointsize>
          <weight>50</weight>
          <bold>false</bold>
         </font>
@@ -253,7 +256,7 @@ QPushButton{
 }</string>
        </property>
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Calibri,sans-serif'; font-size:11pt;&quot;&gt;L. D. Chintaka Wijetunga &lt;br/&gt;K. G. Disni C. Sriyaratna&lt;br/&gt;R. D. De Alwis&lt;br/&gt;P. T. Danthanarayana&lt;br/&gt;L. D. Anuja Wijethunga&lt;br/&gt;M. A. T. S. Manthrirathna&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Lao UI'; font-size:12pt;&quot;&gt;L. D. Chintaka Wijetunga &lt;br/&gt;K. G. Disni C. Sriyaratna&lt;br/&gt;R. D. De Alwis&lt;br/&gt;P. T. Danthanarayana&lt;br/&gt;L. D. Anuja Wijethunga&lt;br/&gt;M. A. T. S. Manthrirathna&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -262,10 +265,10 @@ QPushButton{
       <widget class="QLabel" name="label_11">
        <property name="geometry">
         <rect>
-         <x>410</x>
-         <y>200</y>
-         <width>291</width>
-         <height>221</height>
+         <x>630</x>
+         <y>170</y>
+         <width>311</width>
+         <height>251</height>
         </rect>
        </property>
        <property name="text">
