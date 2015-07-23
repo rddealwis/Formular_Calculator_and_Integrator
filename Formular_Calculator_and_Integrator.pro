@@ -12,6 +12,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 TARGET = Formular_Calculator_and_Integrator
 TEMPLATE = app
 CONFIG +=c++11
+QMAKE_CXXFLAGS += -bigobj
 
 SOURCES += main.cpp\
         mainscreen.cpp \
@@ -51,7 +52,8 @@ HEADERS  += mainscreen.h \
     xmlfilehandling.h \
     qcustomplot.h \
     dlgsavegraph.h \
-    dlggraphviewer.h
+    dlggraphviewer.h \
+    exprtk.hpp
 
 FORMS    += mainscreen.ui \
     dlgsaveformula.ui \
