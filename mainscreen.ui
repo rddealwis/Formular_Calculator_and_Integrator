@@ -75,7 +75,7 @@ QTabWidget:hover{
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>1</number>
     </property>
     <property name="iconSize">
      <size>
@@ -317,7 +317,7 @@ QPushButton{
       </property>
       <property name="styleSheet">
        <string notr="true">QTextEdit{
-    background-color: #dbdbdb;	
+    background-color: #e8e8e8;
 	
 }
 
@@ -2270,7 +2270,7 @@ QPushButton:hover{color:white;}</string>
       </property>
       <property name="styleSheet">
        <string notr="true">QTextEdit{
-    background-color: #dbdbdb;	
+    background-color: #e8e8e8;
 	border-top:2px solid #40bd9e;
 	
 }</string>
@@ -2295,7 +2295,7 @@ QPushButton:hover{color:white;}</string>
        <property name="geometry">
         <rect>
          <x>12</x>
-         <y>30</y>
+         <y>20</y>
          <width>71</width>
          <height>16</height>
         </rect>
@@ -2319,12 +2319,17 @@ QPushButton:hover{color:white;}</string>
          <height>341</height>
         </rect>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QListWidget{
+	background-color: #e8e8e8;
+}</string>
+       </property>
       </widget>
       <widget class="QLabel" name="lblScFromFile">
        <property name="geometry">
         <rect>
          <x>172</x>
-         <y>30</y>
+         <y>20</y>
          <width>71</width>
          <height>16</height>
         </rect>
@@ -2347,6 +2352,11 @@ QPushButton:hover{color:white;}</string>
          <width>151</width>
          <height>341</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QListWidget{
+	background-color: #e8e8e8;
+}</string>
        </property>
       </widget>
      </widget>
@@ -2447,7 +2457,7 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="styleSheet">
         <string notr="true">QTextEdit{
-    background-color: #dbdbdb;	
+    background-color: #e8e8e8;
 }</string>
        </property>
       </widget>
@@ -2471,7 +2481,7 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="styleSheet">
         <string notr="true">QTextEdit{
-    background-color: #dbdbdb;	
+    background-color: #e8e8e8;
 }</string>
        </property>
       </widget>
@@ -2495,7 +2505,7 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="styleSheet">
         <string notr="true">QTextEdit{
-    background-color: #dbdbdb;	
+    background-color: #e8e8e8;
 }</string>
        </property>
       </widget>
@@ -2538,7 +2548,7 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="styleSheet">
         <string notr="true">QTextEdit{
-    background-color: #dbdbdb;	
+    background-color: #e8e8e8;
 }</string>
        </property>
       </widget>
@@ -2581,7 +2591,7 @@ QPushButton:hover{color:white;}</string>
        </property>
        <property name="styleSheet">
         <string notr="true">QTextEdit{
-    background-color: #dbdbdb;	
+    background-color: #e8e8e8;
 }</string>
        </property>
       </widget>
@@ -2654,6 +2664,11 @@ QPushButton:hover{background-color:#40bd9e; color:white;}</string>
          <width>501</width>
          <height>201</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QListWidget{
+	background-color: #e8e8e8;
+}</string>
        </property>
       </widget>
       <widget class="QPushButton" name="pbAddGraphFormula">
@@ -2734,7 +2749,7 @@ QPushButton:hover{background-color:#40bd9e; color:white;}</string>
        </property>
        <property name="styleSheet">
         <string notr="true">QTextEdit{
-    background-color: #dbdbdb;	
+    background-color: #e8e8e8;
 }</string>
        </property>
       </widget>
@@ -2758,7 +2773,7 @@ QPushButton:hover{background-color:#40bd9e; color:white;}</string>
        </property>
        <property name="styleSheet">
         <string notr="true">QTextEdit{
-    background-color: #dbdbdb;	
+    background-color: #e8e8e8;
 }</string>
        </property>
       </widget>
@@ -2850,7 +2865,7 @@ Under the Curve</string>
        <property name="geometry">
         <rect>
          <x>12</x>
-         <y>30</y>
+         <y>20</y>
          <width>71</width>
          <height>16</height>
         </rect>
@@ -2874,12 +2889,17 @@ Under the Curve</string>
          <height>341</height>
         </rect>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QListWidget{
+	background-color: #e8e8e8;
+}</string>
+       </property>
       </widget>
       <widget class="QLabel" name="lblGraphFromFile">
        <property name="geometry">
         <rect>
          <x>172</x>
-         <y>30</y>
+         <y>20</y>
          <width>71</width>
          <height>16</height>
         </rect>
@@ -2902,6 +2922,11 @@ Under the Curve</string>
          <width>151</width>
          <height>341</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QListWidget{
+	background-color: #e8e8e8;
+}</string>
        </property>
       </widget>
      </widget>

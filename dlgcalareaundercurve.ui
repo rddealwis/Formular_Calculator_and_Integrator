@@ -56,7 +56,7 @@
     </property>
     <property name="styleSheet">
      <string notr="true">QTextEdit{
-    background-color: #dbdbdb;	
+    background-color: #e8e8e8;
 }</string>
     </property>
    </widget>
@@ -99,7 +99,7 @@
     </property>
     <property name="styleSheet">
      <string notr="true">QTextEdit{
-    background-color: #dbdbdb;	
+    background-color: #e8e8e8;
 }</string>
     </property>
    </widget>
@@ -142,7 +142,7 @@
     </property>
     <property name="styleSheet">
      <string notr="true">QTextEdit{
-    background-color: #dbdbdb;	
+    background-color: #e8e8e8;
 }</string>
     </property>
    </widget>
@@ -207,7 +207,7 @@
     </property>
     <property name="styleSheet">
      <string notr="true">QTextEdit{
-    background-color: #dbdbdb;	
+    background-color: #e8e8e8;
 }</string>
     </property>
    </widget>
