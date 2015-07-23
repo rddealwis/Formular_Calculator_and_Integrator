@@ -12,8 +12,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>875</width>
-    <height>550</height>
+    <width>1192</width>
+    <height>556</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -45,7 +45,7 @@
      <rect>
       <x>20</x>
       <y>30</y>
-      <width>835</width>
+      <width>1161</width>
       <height>490</height>
      </rect>
     </property>
@@ -297,7 +297,7 @@ QPushButton{
       </property>
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>350</x>
         <y>60</y>
         <width>790</width>
         <height>41</height>
@@ -324,7 +324,7 @@ QPushButton{
      <widget class="QFrame" name="frmBasicButtons">
       <property name="geometry">
        <rect>
-        <x>430</x>
+        <x>760</x>
         <y>125</y>
         <width>361</width>
         <height>311</height>
@@ -1305,7 +1305,7 @@ QPushButton:hover{color:white;}</string>
      <widget class="QFrame" name="frmScientificButtons">
       <property name="geometry">
        <rect>
-        <x>40</x>
+        <x>370</x>
         <y>125</y>
         <width>361</width>
         <height>311</height>
@@ -2250,7 +2250,7 @@ QPushButton:hover{color:white;}</string>
      <widget class="QTextEdit" name="txtTextEditor">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>350</x>
         <y>20</y>
         <width>790</width>
         <height>41</height>
@@ -2273,6 +2273,80 @@ QPushButton:hover{color:white;}</string>
 }</string>
       </property>
      </widget>
+     <widget class="QFrame" name="frmScientificFormulaView">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>331</width>
+        <height>411</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QLabel" name="lblScInMemory">
+       <property name="geometry">
+        <rect>
+         <x>12</x>
+         <y>30</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Lao UI</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>In Memory</string>
+       </property>
+      </widget>
+      <widget class="QListWidget" name="lstScientificInMemory">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>60</y>
+         <width>151</width>
+         <height>341</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblScFromFile">
+       <property name="geometry">
+        <rect>
+         <x>172</x>
+         <y>30</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Lao UI</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>From File</string>
+       </property>
+      </widget>
+      <widget class="QListWidget" name="lstScientificFromFile">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>60</y>
+         <width>151</width>
+         <height>341</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_GraphMenu">
      <attribute name="title">
@@ -2281,9 +2355,9 @@ QPushButton:hover{color:white;}</string>
      <widget class="QFrame" name="frame">
       <property name="geometry">
        <rect>
-        <x>10</x>
+        <x>350</x>
         <y>10</y>
-        <width>811</width>
+        <width>791</width>
         <height>421</height>
        </rect>
       </property>
@@ -2568,6 +2642,9 @@ Graph</string>
        </property>
       </widget>
       <widget class="QListWidget" name="lstGraphFormulas">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
        <property name="geometry">
         <rect>
          <x>120</x>
@@ -2722,12 +2799,86 @@ QPushButton:hover{background-color:#40bd9e; color:white;}</string>
        </property>
       </widget>
      </widget>
+     <widget class="QFrame" name="frmGraphFormulaView">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>331</width>
+        <height>421</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QLabel" name="lblGraphInMemory">
+       <property name="geometry">
+        <rect>
+         <x>12</x>
+         <y>30</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Lao UI</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>In Memory</string>
+       </property>
+      </widget>
+      <widget class="QListWidget" name="lstGraphInMemory">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>60</y>
+         <width>151</width>
+         <height>341</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblGraphFromFile">
+       <property name="geometry">
+        <rect>
+         <x>172</x>
+         <y>30</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Lao UI</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>From File</string>
+       </property>
+      </widget>
+      <widget class="QListWidget" name="lstGraphFromFile">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>60</y>
+         <width>151</width>
+         <height>341</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
     </widget>
    </widget>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>780</x>
+      <x>1090</x>
       <y>32</y>
       <width>101</width>
       <height>41</height>
@@ -2753,7 +2904,7 @@ QPushButton:hover{background-color:#40bd9e; color:white;}</string>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>690</x>
+      <x>1000</x>
       <y>5</y>
       <width>171</width>
       <height>51</height>
@@ -2783,7 +2934,7 @@ QPushButton:hover{background-color:#40bd9e; color:white;}</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>875</width>
+     <width>1192</width>
      <height>21</height>
     </rect>
    </property>
