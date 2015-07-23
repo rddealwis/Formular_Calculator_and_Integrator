@@ -285,11 +285,14 @@ void MainScreen::LoadToListGraphFromFile()
     QString ListVal = "";
     for(int i = 0; i < formula->length(); i++)
     {
+        if(formulaName[i] != "")
+        {
         newItem = new QListWidgetItem;
         ListVal = QString::fromStdString(formulaName[i] + " - " + formula[i]);
         newItem->setText(ListVal);
         int row = this->ui->lstGraphFromFile->row(this->ui->lstGraphFromFile->currentItem());
         this->ui->lstGraphFromFile->insertItem(row, newItem);
+        }
     }
 }
 
@@ -299,11 +302,14 @@ void MainScreen::LoadToListGraphInMemory()
     QString ListVal = "";
     for(int i = 0; i < formulaOnMemory->length(); i++)
     {
+        if(formulaNameOnMemory[i] != "")
+        {
         newItem = new QListWidgetItem;
         ListVal = QString::fromStdString(formulaNameOnMemory[i] + " - " + formulaOnMemory[i]);
         newItem->setText(ListVal);
         int row = this->ui->lstGraphInMemory->row(this->ui->lstGraphInMemory->currentItem());
         this->ui->lstGraphInMemory->insertItem(row, newItem);
+        }
     }
 }
 
@@ -313,11 +319,14 @@ void MainScreen::LoadToListGraphScientificFromFile()
     QString ListVal = "";
     for(int i = 0; i < formula->length(); i++)
     {
+        if(formulaName[i] != "")
+        {
         newItem = new QListWidgetItem;
         ListVal = QString::fromStdString(formulaName[i] + " - " + formula[i]);
         newItem->setText(ListVal);
         int row = this->ui->lstScientificFromFile->row(this->ui->lstScientificFromFile->currentItem());
         this->ui->lstScientificFromFile->insertItem(row, newItem);
+        }
     }
 }
 
@@ -327,11 +336,14 @@ void MainScreen::LoadToListGraphScientificInMemory()
     QString ListVal = "";
     for(int i = 0; i < formulaOnMemory->length(); i++)
     {
+        if(formulaNameOnMemory[i] != "")
+        {
         newItem = new QListWidgetItem;
         ListVal = QString::fromStdString(formulaNameOnMemory[i] + " - " + formulaOnMemory[i]);
         newItem->setText(ListVal);
         int row = this->ui->lstScientificInMemory->row(this->ui->lstScientificInMemory->currentItem());
         this->ui->lstScientificInMemory->insertItem(row, newItem);
+        }
     }
 }
 
