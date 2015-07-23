@@ -62,7 +62,7 @@ bool dlgGraphViewer::intializeGraphs(std::string graphEquations[], std::string x
 
 double dlgGraphViewer::findAreaUnderTheCurve(std::string graphEquations[]){
 
-    exprtk::parser<double> parser;
+   /* exprtk::parser<double> parser;
     exprtk::expression<double> expression;
     exprtk::symbol_table<double> symbol_table;
 
@@ -77,8 +77,8 @@ double dlgGraphViewer::findAreaUnderTheCurve(std::string graphEquations[]){
     expression.register_symbol_table(symbol_table);
     parser.compile(expression_string,expression);
 
-    return exprtk::integrate(expression,"X",t1,t2);
-    //return 0;
+    return exprtk::integrate(expression,"X",t1,t2);*/
+    return 0;
 }
 
 void dlgGraphViewer::on_pbSaveGraph_clicked()

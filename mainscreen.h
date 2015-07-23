@@ -115,6 +115,12 @@ private slots:
 
     void on_lstScientificInMemory_doubleClicked(const QModelIndex &index);
 
+    void on_lstScientificFromFile_doubleClicked(const QModelIndex &index);
+
+    void on_lstGraphInMemory_doubleClicked(const QModelIndex &index);
+
+    void on_lstGraphFromFile_doubleClicked(const QModelIndex &index);
+
 private:
     Ui::MainScreen *ui;
 };

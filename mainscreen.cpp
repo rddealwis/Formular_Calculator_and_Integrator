@@ -289,7 +289,7 @@ void MainScreen::LoadToListGraphFromFile()
         {
         newItem = new QListWidgetItem;
         //ListVal = QString::fromStdString(formulaName[i] + " - " + formula[i]);
-        ListVal = QString::fromStdString(formulaName[i]);
+        ListVal = QString::fromStdString(formula[i]);
         newItem->setText(ListVal);
         int row = this->ui->lstGraphFromFile->row(this->ui->lstGraphFromFile->currentItem());
         this->ui->lstGraphFromFile->insertItem(row, newItem);
@@ -307,7 +307,7 @@ void MainScreen::LoadToListGraphInMemory()
         {
         newItem = new QListWidgetItem;
         //ListVal = QString::fromStdString(formulaNameOnMemory[i] + " - " + formulaOnMemory[i]);
-        ListVal = QString::fromStdString(formulaNameOnMemory[i]);
+        ListVal = QString::fromStdString(formulaOnMemory[i]);
         newItem->setText(ListVal);
         int row = this->ui->lstGraphInMemory->row(this->ui->lstGraphInMemory->currentItem());
         this->ui->lstGraphInMemory->insertItem(row, newItem);
@@ -325,7 +325,7 @@ void MainScreen::LoadToListGraphScientificFromFile()
         {
         newItem = new QListWidgetItem;
         //ListVal = QString::fromStdString(formulaName[i] + " - " + formula[i]);
-        ListVal = QString::fromStdString(formulaName[i]);
+        ListVal = QString::fromStdString(formula[i]);
         newItem->setText(ListVal);
         int row = this->ui->lstScientificFromFile->row(this->ui->lstScientificFromFile->currentItem());
         this->ui->lstScientificFromFile->insertItem(row, newItem);
@@ -408,6 +408,26 @@ void MainScreen::on_pbRemoveFormula_clicked()
 
 void MainScreen::on_lstScientificInMemory_doubleClicked(const QModelIndex &index)
 {
-    QString selectedFormula = this->ui->lstScientificInMemory->currentItem()->text();
+    this->ButtonClickEventHandler(this->ui->lstScientificInMemory->currentItem()->text().toStdString());
+}
 
+void MainScreen::on_lstScientificFromFile_doubleClicked(const QModelIndex &index)
+{
+    this->ButtonClickEventHandler(this->ui->lstScientificFromFile->currentItem()->text().toStdString());
+}
+
+void MainScreen::on_lstGraphInMemory_doubleClicked(const QModelIndex &index)
+{
+    QListWidgetItem *newItem = new QListWidgetItem;
+    newItem->setText(this->ui->lstGraphInMemory->currentItem()->text());
+    int row = this->ui->lstGraphFormulas->row(this->ui->lstGraphFormulas->currentItem());
+    this->ui->lstGraphFormulas->insertItem(row, newItem);
+}
+
+void MainScreen::on_lstGraphFromFile_doubleClicked(const QModelIndex &index)
+{
+    QListWidgetItem *newItem = new QListWidgetItem;
+    newItem->setText(this->ui->lstGraphFromFile->currentItem()->text());
+    int row = this->ui->lstGraphFormulas->row(this->ui->lstGraphFormulas->currentItem());
+    this->ui->lstGraphFormulas->insertItem(row, newItem);
 }
