@@ -804,7 +804,8 @@ bool constElementExist(std::vector<ConstantElement*> *constElements, double valu
 bool isVariable(std::string Text)
 {
     return (!containNumber(Text) && Text.compare("sin") != 0 && Text.compare("cos") != 0 && Text.compare("+") != 0 && Text.compare("-") != 0 &&
-        Text.compare("*") != 0 && Text.compare("/") != 0 && Text.compare("(") != 0 && Text.compare(")") != 0 && Text.compare("^") != 0 && Text.compare("") != 0);
+            Text.compare("*") != 0 && Text.compare("/") != 0 && Text.compare("(") != 0 && Text.compare(")") != 0 && Text.compare("^") != 0 && Text.compare("") != 0 &&
+            Text.compare("!") != 0 && Text.compare("log") != 0 && Text.compare("ln") != 0 && Text.compare("tan") != 0 && Text.compare("mod") != 0);
 }
 
 bool isOnlyNumber(std::string Text, double *value)

@@ -27,7 +27,7 @@ MainScreen::~MainScreen()
 
 void MainScreen::ButtonClickEventHandler(std::string txt, int txtField)
 {
-    if(txtField ==0)
+    if(txtField == 0)
     {
         if(ui->txtTextEditor->toPlainText()!= "0")
         {
@@ -72,7 +72,9 @@ void MainScreen::on_pbMultiply_clicked()
 
 void MainScreen::on_pbZero_clicked()
 {
-   this->ButtonClickEventHandler("0", 0);
+    if(ui->txtTextEditor->toPlainText()!= "0"){
+        this->ButtonClickEventHandler("0", 0);
+    }
 }
 
 void MainScreen::on_pbOne_clicked()
@@ -163,14 +165,17 @@ void MainScreen::on_pbEqual_clicked()
 
 void MainScreen::on_pbInverse_clicked()
 {
-    this->ButtonClickEventHandler("1/", 0);
+    QTextCursor prev_cursor = ui->txtTextEditor->textCursor();
+    ui->txtTextEditor->moveCursor(QTextCursor::End);
+
+    ui->txtTextEditor->setText("1/("+ ui->txtTextEditor->toPlainText()+")");
+    ui->txtTextEditor->setTextCursor(prev_cursor);
 }
 
 void MainScreen::on_pbPercentage_clicked()
 {
     this->ButtonClickEventHandler("%", 0);
 }
-
 
 void MainScreen::on_pbDivide_clicked()
 {
@@ -245,6 +250,31 @@ void MainScreen::on_pbPower_clicked()
     this->ButtonClickEventHandler("^", 0);
 }
 
+void MainScreen::on_pbModulus_clicked()
+{
+    this->ButtonClickEventHandler("mod", 0);
+}
+
+void MainScreen::on_pbPlusOrMinus_clicked()
+{
+    if(ui->txtResultsEditor->toPlainText().toDouble(0) < 0)
+    {
+        std::size_t posOfMinusSign =(ui->txtResultsEditor->toPlainText().toStdString()).find("-");
+        std::string plusValue = (ui->txtResultsEditor->toPlainText().toStdString()).substr (posOfMinusSign+1);
+        ui->txtResultsEditor->setText(QString::fromStdString(plusValue));
+
+        ui->txtTextEditor->clear();
+        ui->txtTextEditor->setText(QString::fromStdString(plusValue));
+    }
+    else
+    {
+        ui->txtResultsEditor->setText("-"+ ui->txtResultsEditor->toPlainText());
+
+        ui->txtTextEditor->clear();
+        ui->txtTextEditor->setText(ui->txtResultsEditor->toPlainText());
+    }
+}
+
 void MainScreen::on_pbAboutUs_clicked()
 {
     if(ui->frmAboutCalculator->isVisible())
@@ -259,15 +289,19 @@ void MainScreen::on_pbAboutUs_clicked()
 
 void MainScreen::on_pbCE_clicked()
 {
-    ui->txtTextEditor->clear();
-    ui->txtTextEditor->setText("0");
+    if(ui->txtTextEditor->toPlainText()!= "0")
+    {
+        if(!ui->txtTextEditor->toPlainText().isEmpty())
+        {
+            ui->txtTextEditor->textCursor().deletePreviousChar();
+        }
+    }
     ui->txtResultsEditor->clear();
 }
 
 void MainScreen::on_pbC_clicked()
 {
     ui->txtTextEditor->clear();
-    ui->txtTextEditor->setText("0");
     ui->txtResultsEditor->clear();
 }
 
@@ -278,10 +312,6 @@ void MainScreen::on_pbDel_clicked()
         if(!ui->txtTextEditor->toPlainText().isEmpty())
         {
             ui->txtTextEditor->textCursor().deletePreviousChar();
-//            QTextCursor prev_cursor = ui->txtTextEditor->textCursor();
-//            ui->txtTextEditor->moveCursor(QTextCursor::End);
-//            //ui->txtTextEditor->insertPlainText(QString::fromStdString(txt));
-//            ui->txtTextEditor->setTextCursor(prev_cursor);
         }
     }
     ui->txtResultsEditor->clear();
@@ -513,3 +543,7 @@ void MainScreen::on_pbCalAreaUndertheCurve_clicked()
     calAreaUnderCurve.setModal(true);
     calAreaUnderCurve.exec();
 }
+
+
+
+

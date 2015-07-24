@@ -124,6 +124,10 @@ private slots:
 
     void on_pbCalAreaUndertheCurve_clicked();
 
+    void on_pbModulus_clicked();
+
+    void on_pbPlusOrMinus_clicked();
+
 private:
     Ui::MainScreen *ui;
 };
