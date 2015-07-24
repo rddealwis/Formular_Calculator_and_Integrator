@@ -405,9 +405,20 @@ void MainScreen::on_pbAddGraphFormula_clicked()
 void MainScreen::on_pbGenerate_clicked()
 {
     dlgGraphViewer graphViewer;
-    graphEquations[0]="x^2 + 4";
+
+    QMessageBox::critical(this,"Infinity Calculator",QString::number(this->ui->lstGraphInMemory->count()), QMessageBox::Ok);
+    for(int i = 0; i< 1/*this->ui->lstGraphInMemory->count()*/; i++)
+    {
+        formulaListTemp[i] = this->ui->lstGraphInMemory->currentItem()->text().toStdString();
+        FormulaElement* formula  = FormulaElement::parseFormula(formulaListTemp[i]);
+        formulaList[i] = formula;
+    }
+
+    FormulaElement *test = formulaList[this->ui->lstGraphInMemory->count()];
+
 
     graphViewer.intializeGraphs(graphEquations,
+                                test,
                                 this->ui->txtXaxisName->toPlainText().toStdString(),
                                 this->ui->txtYaxisName->toPlainText().toStdString(),
                                 (this->ui->txtXaxisRangeFrom->toPlainText()).toDouble(),

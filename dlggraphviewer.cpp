@@ -3,6 +3,7 @@
 #include "dlgsavegraph.h"
 #include "exprtk.hpp"
 #include <math.h>
+#include "formulator.h"
 
 dlgGraphViewer::dlgGraphViewer(QWidget *parent) :
     QDialog(parent),
@@ -18,20 +19,31 @@ dlgGraphViewer::~dlgGraphViewer()
     delete ui;
 }
 
-bool dlgGraphViewer::intializeGraphs(std::string graphEquations[], std::string xAxisLabel,std::string yAxisLabel,
+bool dlgGraphViewer::intializeGraphs(std::string graphEquations[],FormulaElement* formulaList, std::string xAxisLabel,std::string yAxisLabel,
                                      double xAxisRangeFrom, double xAxisRangeTo, double yAxisRangeFrom, double yAxisRangeTo)
 {
     try
     {
         QVector<double> x(1440), currentGraph(1440);
-
-        QVector<QVector<double>> graphPoints;
+        //QVector<QVector<double>> graphPoints;
 
         for (int i=0; i<1440; i++)
         {
             x[i] = i;
+
+            currentGraph[i] = (float)formulaList->evaluate();
+
+
+
+
+
+
+
+
+
+
             //currentGraph[i] = cos(i*(3.14159265) / 180);
-            currentGraph[i] = i*i + 4;
+            //currentGraph[i] = i*i + 4;
         }
 
         ui->customPlot->legend->setVisible(true);

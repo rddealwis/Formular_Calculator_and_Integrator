@@ -1,6 +1,6 @@
 #ifndef MAINSCREEN_H
 #define MAINSCREEN_H
-
+#include "formulator.h"
 #include <QMainWindow>
 
 namespace Ui {
@@ -19,11 +19,13 @@ public:
     std::string formulaOnMemory[1024];
     std::string formulaNameOnMemory[1024];
     std::string graphEquations[1024];
-    std::string saveFormulaValue;
+    std::string saveFormulaValue;    
     void LoadToListGraphFromFile();
     void LoadToListGraphInMemory();
     void LoadToListGraphScientificFromFile();
     void LoadToListGraphScientificInMemory();
+    std::vector<std::string> formulaListTemp;
+    std::vector<FormulaElement*> formulaList;
     ~MainScreen();
 
 private slots:
