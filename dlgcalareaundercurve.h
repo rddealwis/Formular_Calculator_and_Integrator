@@ -15,6 +15,7 @@ public:
     explicit dlgCalAreaUnderCurve(QWidget *parent = 0);
     void findAreaUnderTheCurve(std::string graphEquation);
     void addIntegrationVariables(std::string graphEquation);
+    void setGraphEquation(std::string graphEquation);
     ~dlgCalAreaUnderCurve();
 
 private slots:

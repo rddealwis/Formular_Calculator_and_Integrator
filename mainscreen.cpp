@@ -402,14 +402,6 @@ void MainScreen::on_pbAddGraphFormula_clicked()
     this->ui->lstGraphFormulas->insertItem(row, newItem);
 }
 
-void MainScreen::on_pbSaveGraph_clicked()
-{
-    dlgSaveGraph saveGraph;
-
-    saveGraph.setModal(true);
-    saveGraph.exec();
-}
-
 void MainScreen::on_pbGenerate_clicked()
 {
     dlgGraphViewer graphViewer;
@@ -466,6 +458,7 @@ void MainScreen::on_pbCalAreaUndertheCurve_clicked()
 {
     dlgCalAreaUnderCurve calAreaUnderCurve;
 
+    calAreaUnderCurve.setGraphEquation(this->ui->lstGraphFormulas->currentItem()->text().toStdString());
     calAreaUnderCurve.setModal(true);
     calAreaUnderCurve.exec();
 }

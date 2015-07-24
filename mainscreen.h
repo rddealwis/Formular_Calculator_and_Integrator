@@ -103,8 +103,6 @@ private slots:
 
     void on_pbLoadGraphFormula_clicked();
 
-    void on_pbSaveGraph_clicked();
-
     void on_pbGenerate_clicked();
 
     void on_tabMenu_currentChanged(int index);
