@@ -24,7 +24,7 @@ public:
     void LoadToListGraphInMemory();
     void LoadToListGraphScientificFromFile();
     void LoadToListGraphScientificInMemory();
-    std::vector<std::string> formulaListTemp;
+    std::string formulaListTemp[1024];
     std::vector<FormulaElement*> formulaList;
     ~MainScreen();
 

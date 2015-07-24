@@ -416,15 +416,15 @@ void MainScreen::on_pbGenerate_clicked()
 {
     dlgGraphViewer graphViewer;
 
-    QMessageBox::critical(this,"Infinity Calculator",QString::number(this->ui->lstGraphInMemory->count()), QMessageBox::Ok);
+    QMessageBox::critical(this,"Infinity Calculator",this->ui->lstGraphFormulas->item(0)->text(), QMessageBox::Ok);
     for(int i = 0; i< 1/*this->ui->lstGraphInMemory->count()*/; i++)
     {
-        formulaListTemp[i] = this->ui->lstGraphInMemory->currentItem()->text().toStdString();
+        formulaListTemp[i] = this->ui->lstGraphFormulas->currentItem()->text().toStdString();
         FormulaElement* formula  = FormulaElement::parseFormula(formulaListTemp[i]);
-        formulaList[i] = formula;
+        formulaList.push_back(formula);// = formula;
     }
 
-    FormulaElement *test = formulaList[this->ui->lstGraphInMemory->count()];
+    FormulaElement *test = formulaList[this->ui->lstGraphFormulas->count()];
 
 
     graphViewer.intializeGraphs(graphEquations,
