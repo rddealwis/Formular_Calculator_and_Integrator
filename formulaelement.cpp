@@ -367,9 +367,8 @@ void minusElemetnsInit(std::vector<FormulaElement*> *formElements)
 
 void simplifyBrackets(std::vector<FormulaElement*> *formElements)
 {
-    int openCount = 0;
     std::vector<BracketPos*> brakStartEnd;
-    for (size_t i = 0; i < (*formElements).size(); i++)
+    for (int i = 0; i < (*formElements).size(); i++)
     {
         Bracket *brak = dynamic_cast<Bracket*>((*formElements)[i]);
         if (brak != 0 && brak->isOpen())
@@ -412,7 +411,7 @@ void simplifyBrackets(std::vector<FormulaElement*> *formElements)
             if (hasBrackets(formElements))
             {
                 brakStartEnd.clear();
-                for (size_t k = 0; k < (*formElements).size(); k++)
+                for (int k = 0; k < (*formElements).size(); k++)
                 {
                     Bracket *brak = dynamic_cast<Bracket*>((*formElements)[k]);
                     if (brak != 0 && brak->isOpen())
@@ -429,7 +428,7 @@ void simplifyBrackets(std::vector<FormulaElement*> *formElements)
         else
         {
             std::vector<FormulaElement*> temp;
-            for (size_t i = brakStartEnd[0]->startPos + 1; i < brakStartEnd[0]->endPos; i++)
+            for (int i = brakStartEnd[0]->startPos + 1; i < brakStartEnd[0]->endPos; i++)
             {
                 temp.push_back((*formElements)[i]);
             }
@@ -451,7 +450,7 @@ void simplifyBrackets(std::vector<FormulaElement*> *formElements)
             if (hasBrackets(formElements))
             {
                 brakStartEnd.clear();
-                for (size_t k = 0; k < (*formElements).size(); k++)
+                for (int k = 0; k < (*formElements).size(); k++)
                 {
                     Bracket *brak = dynamic_cast<Bracket*>((*formElements)[k]);
                     if (brak != 0 && brak->isOpen())
@@ -474,7 +473,7 @@ int hasInnerBrackets(std::vector<FormulaElement*> *formElements, int startPos)
     Bracket *brakOpen = dynamic_cast<Bracket*>((*formElements)[startPos]);
 
     if (brakOpen != 0 && brakOpen->isOpen())
-    for (size_t i = startPos; i < (*formElements).size(); i++)
+    for (int i = startPos; i < (*formElements).size(); i++)
     {
         Bracket *brakClose = dynamic_cast<Bracket*>((*formElements)[i]);
         if (brakClose != 0)
@@ -491,7 +490,7 @@ int hasInnerBrackets(std::vector<FormulaElement*> *formElements, int startPos)
 
 bool hasBrackets(std::vector<FormulaElement*> *formElements)
 {
-    for (size_t i = 0; i < (*formElements).size(); i++)
+    for (int i = 0; i < (*formElements).size(); i++)
     {
         Bracket *brakOpen = dynamic_cast<Bracket*>((*formElements)[i]);
         if (brakOpen != 0)
@@ -506,7 +505,7 @@ int findClosingBracket(std::vector<FormulaElement*> *formElements, int startPos)
     Bracket *brakOpen = dynamic_cast<Bracket*>((*formElements)[startPos]);
 
     if (brakOpen != 0 && brakOpen->isOpen())
-    for (size_t i = startPos; i < (*formElements).size(); i++)
+    for (int i = startPos; i < (*formElements).size(); i++)
     {
         Bracket *brakClose = dynamic_cast<Bracket*>((*formElements)[i]);
         if (brakClose != 0)
@@ -560,7 +559,7 @@ std::vector<std::string> getTokens(std::string formulaInput)
     formatString(&formulaInput, "\t", "");
 
     std::vector<std::string> tokens = splitString(formulaInput);
-    for (size_t i = 0; i < tokens.size(); i++)
+    for (int i = 0; i < tokens.size(); i++)
     {
         size_t sinPos = tokens[i].find("sin", 0);
         size_t cosPos = tokens[i].find("cos", 0);
@@ -770,7 +769,7 @@ bool variableElementExist(std::vector<VariableElement*> *varElements, std::strin
 
 bool variableElementExist(std::vector<VariableElement*> *varElements, std::string value, int *index)
 {
-    for (size_t i = 0; i < (*varElements).size(); i++)
+    for (int i = 0; i < (*varElements).size(); i++)
     {
         if ((*varElements)[i]->GetVariable() == value)
         {
@@ -790,7 +789,7 @@ bool constElementExist(std::vector<ConstantElement*> *constElements, double valu
 
 bool constElementExist(std::vector<ConstantElement*> *constElements, double value, int *index)
 {
-    for (size_t i = 0; i < (*constElements).size(); i++)
+    for (int i = 0; i < (*constElements).size(); i++)
     {
         if ((*constElements)[i]->GetConstant() == value)
         {
@@ -827,7 +826,7 @@ bool containNumber(std::string Text)
     try
     {
         std::string::size_type sz;
-        double chkDouble = std::stod(Text, &sz);
+        std::stod(Text, &sz);
         return true;
     }
     catch (...)

@@ -27,7 +27,7 @@ std::string MultipleFunctionElement::toQString()
         double result = tempLHS->GetConstant() * tempRHS->GetConstant();
         char* buffer = new char[100];
         std::string returnVal;
-        sprintf(buffer, "%g", result);
+        printf(buffer, "%g", result);
         returnVal = buffer;
         delete buffer;
 

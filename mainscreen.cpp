@@ -133,7 +133,7 @@ void MainScreen::on_pbEqual_clicked()
         variableValues[i]->value = val;
     }
 
-    bool returnVal1 = formula->setVariableValues(&variableValues);
+    formula->setVariableValues(&variableValues);
 
     //this->ui->txtTextEditor->setText(QString::fromStdString(formula->toQString().data()));
 
