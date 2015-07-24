@@ -25,93 +25,114 @@ MainScreen::~MainScreen()
     delete ui;
 }
 
-void MainScreen::ButtonClickEventHandler(std::string txt)
+void MainScreen::ButtonClickEventHandler(std::string txt, int txtField)
 {
-    if(ui->txtTextEditor->toPlainText()!= "0")
+    if(txtField ==0)
     {
-        QTextCursor prev_cursor = ui->txtTextEditor->textCursor();
-        ui->txtTextEditor->moveCursor(QTextCursor::End);
-        ui->txtTextEditor->insertPlainText(QString::fromStdString(txt));
-        ui->txtTextEditor->setTextCursor(prev_cursor);
+        if(ui->txtTextEditor->toPlainText()!= "0")
+        {
+            QTextCursor prev_cursor = ui->txtTextEditor->textCursor();
+            ui->txtTextEditor->moveCursor(QTextCursor::End);
+            ui->txtTextEditor->insertPlainText(QString::fromStdString(txt));
+            ui->txtTextEditor->setTextCursor(prev_cursor);
+        }
+        else
+        {
+            ui->txtTextEditor->clear();
+            QTextCursor prev_cursor = ui->txtTextEditor->textCursor();
+            ui->txtTextEditor->moveCursor(QTextCursor::End);
+            ui->txtTextEditor->insertPlainText(QString::fromStdString(txt));
+            ui->txtTextEditor->setTextCursor(prev_cursor);
+        }
     }
     else
     {
-        ui->txtTextEditor->clear();
-        QTextCursor prev_cursor = ui->txtTextEditor->textCursor();
-        ui->txtTextEditor->moveCursor(QTextCursor::End);
-        ui->txtTextEditor->insertPlainText(QString::fromStdString(txt));
-        ui->txtTextEditor->setTextCursor(prev_cursor);
+        if(ui->txtEquation->toPlainText()!= "0")
+        {
+            QTextCursor prev_cursor = ui->txtEquation->textCursor();
+            ui->txtEquation->moveCursor(QTextCursor::End);
+            ui->txtEquation->insertPlainText(QString::fromStdString(txt));
+            ui->txtEquation->setTextCursor(prev_cursor);
+        }
+        else
+        {
+            ui->txtEquation->clear();
+            QTextCursor prev_cursor = ui->txtEquation->textCursor();
+            ui->txtEquation->moveCursor(QTextCursor::End);
+            ui->txtEquation->insertPlainText(QString::fromStdString(txt));
+            ui->txtEquation->setTextCursor(prev_cursor);
+        }
     }
 }
 
 void MainScreen::on_pbMultiply_clicked()
 {
-    this->ButtonClickEventHandler("*");
+    this->ButtonClickEventHandler("*", 0);
 }
 
 void MainScreen::on_pbZero_clicked()
 {
-   this->ButtonClickEventHandler("0");
+   this->ButtonClickEventHandler("0", 0);
 }
 
 void MainScreen::on_pbOne_clicked()
 {
-   this->ButtonClickEventHandler("1");
+   this->ButtonClickEventHandler("1", 0);
 }
 
 void MainScreen::on_pbTwo_clicked()
 {
-    this->ButtonClickEventHandler("2");
+    this->ButtonClickEventHandler("2", 0);
 }
 
 void MainScreen::on_pbThree_clicked()
 {
-    this->ButtonClickEventHandler("3");
+    this->ButtonClickEventHandler("3", 0);
 }
 
 void MainScreen::on_pbFour_clicked()
 {
-    this->ButtonClickEventHandler("4");
+    this->ButtonClickEventHandler("4", 0);
 }
 
 void MainScreen::on_pbFive_clicked()
 {
-    this->ButtonClickEventHandler("5");
+    this->ButtonClickEventHandler("5", 0);
 }
 
 void MainScreen::on_pbSix_clicked()
 {
-    this->ButtonClickEventHandler("6");
+    this->ButtonClickEventHandler("6", 0);
 }
 
 void MainScreen::on_pbSeven_clicked()
 {
-    this->ButtonClickEventHandler("7");
+    this->ButtonClickEventHandler("7", 0);
 }
 
 void MainScreen::on_pbEight_clicked()
 {
-    this->ButtonClickEventHandler("8");
+    this->ButtonClickEventHandler("8", 0);
 }
 
 void MainScreen::on_pbNine_clicked()
 {
-    this->ButtonClickEventHandler("9");
+    this->ButtonClickEventHandler("9", 0);
 }
 
 void MainScreen::on_pbDot_clicked()
 {
-    this->ButtonClickEventHandler(".");
+    this->ButtonClickEventHandler(".", 0);
 }
 
 void MainScreen::on_pbPlus_clicked()
 {
-    this->ButtonClickEventHandler("+");
+    this->ButtonClickEventHandler("+", 0);
 }
 
 void MainScreen::on_pbMinus_clicked()
 {
-    this->ButtonClickEventHandler("-");
+    this->ButtonClickEventHandler("-", 0);
 }
 
 void MainScreen::on_pbEqual_clicked()
@@ -142,86 +163,86 @@ void MainScreen::on_pbEqual_clicked()
 
 void MainScreen::on_pbInverse_clicked()
 {
-    this->ButtonClickEventHandler("1/");
+    this->ButtonClickEventHandler("1/", 0);
 }
 
 void MainScreen::on_pbPercentage_clicked()
 {
-    this->ButtonClickEventHandler("%");
+    this->ButtonClickEventHandler("%", 0);
 }
 
 
 void MainScreen::on_pbDivide_clicked()
 {
-    this->ButtonClickEventHandler("/");
+    this->ButtonClickEventHandler("/", 0);
 }
 
 void MainScreen::on_pbSqRoot_clicked()
 {
-    this->ButtonClickEventHandler("sqrt(");
+    this->ButtonClickEventHandler("sqrt(", 0);
 }
 
 void MainScreen::on_pbOpenBrackets_clicked()
 {
-    this->ButtonClickEventHandler("(");
+    this->ButtonClickEventHandler("(", 0);
 }
 
 void MainScreen::on_pbCloseBrackets_clicked()
 {
-    this->ButtonClickEventHandler(")");
+    this->ButtonClickEventHandler(")", 0);
 }
 
 void MainScreen::on_pbLog_clicked()
 {
-    this->ButtonClickEventHandler("log(");
+    this->ButtonClickEventHandler("log(", 0);
 }
 
 void MainScreen::on_pbLn_clicked()
 {
-    this->ButtonClickEventHandler("ln(");
+    this->ButtonClickEventHandler("ln(", 0);
 }
 
 void MainScreen::on_pbSin_clicked()
 {
-    this->ButtonClickEventHandler("sin(");
+    this->ButtonClickEventHandler("sin(", 0);
 }
 
 void MainScreen::on_pbCos_clicked()
 {
-    this->ButtonClickEventHandler("cos(");
+    this->ButtonClickEventHandler("cos(", 0);
 }
 
 void MainScreen::on_pbTan_clicked()
 {
-    this->ButtonClickEventHandler("Tan(");
+    this->ButtonClickEventHandler("Tan(", 0);
 }
 
 void MainScreen::on_pbFactorial_clicked()
 {
-    this->ButtonClickEventHandler("!");
+    this->ButtonClickEventHandler("!", 0);
 }
 
 
 void MainScreen::on_pbSquare_clicked()
 {
-    this->ButtonClickEventHandler("^2");
+    this->ButtonClickEventHandler("^2", 0);
 }
 
 void MainScreen::on_pbPi_clicked()
 {
     if(sizeof(ui->txtTextEditor->size())>2)
     {
-        this->ButtonClickEventHandler("3.1416");
+        this->ButtonClickEventHandler("3.1416", 0);
     }
     else
     {
-        this->ButtonClickEventHandler("3.1415926535897932384626433832795");
+        this->ButtonClickEventHandler("3.1415926535897932384626433832795", 0);
     }
 }
 
 void MainScreen::on_pbPower_clicked()
 {
-    this->ButtonClickEventHandler("^");
+    this->ButtonClickEventHandler("^", 0);
 }
 
 void MainScreen::on_pbAboutUs_clicked()
@@ -264,6 +285,10 @@ void MainScreen::on_pbSaveFormula_clicked()
     saveFormula.setModal(true);
     saveFormula.exec();
     saveFormula.getSavedEquations(formula,formulaName, formulaOnMemory, formulaNameOnMemory);
+    this->LoadToListGraphFromFile();
+    this->LoadToListGraphInMemory();
+    this->LoadToListGraphScientificFromFile();
+    this->LoadToListGraphScientificInMemory();
 }
 
 void MainScreen::on_pbLoadFormula_clicked()
@@ -284,9 +309,10 @@ void MainScreen::LoadToListGraphFromFile()
 {
     QListWidgetItem *newItem;
     QString ListVal = "";
-    for(int i = 0; i < formula->length(); i++)
+    this->ui->lstGraphFromFile->clear();
+    for(int i = 0; formulaName[i] != ""; i++)
     {
-        if(formulaName[i] != "")
+       // if(formulaName[i] != "")
         {
         newItem = new QListWidgetItem;
         //ListVal = QString::fromStdString(formulaName[i] + " - " + formula[i]);
@@ -302,7 +328,8 @@ void MainScreen::LoadToListGraphInMemory()
 {
     QListWidgetItem *newItem;
     QString ListVal = "";
-    for(int i = 0; i < formulaOnMemory->length(); i++)
+    this->ui->lstGraphInMemory->clear();
+    for(int i = 0; formulaNameOnMemory[i] != ""; i++)
     {
         if(formulaNameOnMemory[i] != "")
         {
@@ -320,9 +347,10 @@ void MainScreen::LoadToListGraphScientificFromFile()
 {
     QListWidgetItem *newItem;
     QString ListVal = "";
-    for(int i = 0; i < formula->length(); i++)
+    this->ui->lstScientificFromFile->clear();
+    for(int i = 0; formulaName[i] != ""; i++)
     {
-        if(formulaName[i] != "")
+       // if(formulaName[i] != "")
         {
         newItem = new QListWidgetItem;
         //ListVal = QString::fromStdString(formulaName[i] + " - " + formula[i]);
@@ -338,9 +366,10 @@ void MainScreen::LoadToListGraphScientificInMemory()
 {
     QListWidgetItem *newItem;
     QString ListVal = "";
-    for(int i = 0; i < formulaOnMemory->length(); i++)
+    this->ui->lstScientificInMemory->clear();
+    for(int i = 0; formulaNameOnMemory[i] != ""; i++)
     {
-        if(formulaNameOnMemory[i] != "")
+       // if(formulaNameOnMemory[i] != "")
         {
         newItem = new QListWidgetItem;
         //ListVal = QString::fromStdString(formulaNameOnMemory[i] + " - " + formulaOnMemory[i]);
@@ -359,6 +388,10 @@ void MainScreen::on_pbLoadGraphFormula_clicked()
     loadFormula.setModal(true);
     loadFormula.exec();
     this->ui->txtEquation->setText(QString::fromStdString(loadFormula.getSelectedEquation(formula, formulaName, formulaOnMemory, formulaNameOnMemory)));
+    this->LoadToListGraphFromFile();
+    this->LoadToListGraphInMemory();
+    this->LoadToListGraphScientificFromFile();
+    this->LoadToListGraphScientificInMemory();
 }
 
 void MainScreen::on_pbAddGraphFormula_clicked()
@@ -409,29 +442,25 @@ void MainScreen::on_pbRemoveFormula_clicked()
 
 void MainScreen::on_lstScientificInMemory_doubleClicked(const QModelIndex &index)
 {
-    this->ButtonClickEventHandler(this->ui->lstScientificInMemory->currentItem()->text().toStdString());
+    this->ButtonClickEventHandler(this->ui->lstScientificInMemory->currentItem()->text().toStdString(), 0);
 }
 
 void MainScreen::on_lstScientificFromFile_doubleClicked(const QModelIndex &index)
 {
-    this->ButtonClickEventHandler(this->ui->lstScientificFromFile->currentItem()->text().toStdString());
+    this->ButtonClickEventHandler(this->ui->lstScientificFromFile->currentItem()->text().toStdString(), 0);
 }
 
 void MainScreen::on_lstGraphInMemory_doubleClicked(const QModelIndex &index)
 {
-    QListWidgetItem *newItem = new QListWidgetItem;
-    newItem->setText(this->ui->lstGraphInMemory->currentItem()->text());
-    int row = this->ui->lstGraphFormulas->row(this->ui->lstGraphFormulas->currentItem());
-    this->ui->lstGraphFormulas->insertItem(row, newItem);
+    this->ButtonClickEventHandler(this->ui->lstGraphInMemory->currentItem()->text().toStdString(), 1);
 }
+
 
 void MainScreen::on_lstGraphFromFile_doubleClicked(const QModelIndex &index)
 {
-    QListWidgetItem *newItem = new QListWidgetItem;
-    newItem->setText(this->ui->lstGraphFromFile->currentItem()->text());
-    int row = this->ui->lstGraphFormulas->row(this->ui->lstGraphFormulas->currentItem());
-    this->ui->lstGraphFormulas->insertItem(row, newItem);
+    this->ButtonClickEventHandler(this->ui->lstGraphFromFile->currentItem()->text().toStdString(), 1);
 }
+
 
 void MainScreen::on_pbCalAreaUndertheCurve_clicked()
 {

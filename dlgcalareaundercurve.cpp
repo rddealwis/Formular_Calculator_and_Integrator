@@ -27,13 +27,13 @@ void dlgCalAreaUnderCurve::addIntegrationVariables(std::string graphEquation)
     for (int i = 0; i < variableValues.size(); i++)
     {
         this->ui->cmbIntegrationVar->clear();
-        this->ui->cmbIntegrationVar->addItems(QStringList::toVector(variableValues[i]->variable.data()));
+       // this->ui->cmbIntegrationVar->addItems(st);
     }
 }
 
 void dlgCalAreaUnderCurve::findAreaUnderTheCurve(std::string graphEquation){
 
-    exprtk::parser<double> parser;
+   /* exprtk::parser<double> parser;
     exprtk::expression<double> expression;
     exprtk::symbol_table<double> symbol_table;
 
@@ -69,7 +69,7 @@ void dlgCalAreaUnderCurve::findAreaUnderTheCurve(std::string graphEquation){
 
     double calculatedArea = (exprtk::integrate(expression,"X",minimumRange,maximumRange));
 
-    this->ui->txtCalAreaUndertheCurve->setText(QString::number(calculatedArea));
+    this->ui->txtCalAreaUndertheCurve->setText(QString::number(calculatedArea));*/
 }
 
 void dlgCalAreaUnderCurve::on_pbCalculate_clicked()

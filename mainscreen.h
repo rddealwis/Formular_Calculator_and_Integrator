@@ -27,7 +27,7 @@ public:
     ~MainScreen();
 
 private slots:
-    void ButtonClickEventHandler(std::string txt);
+    void ButtonClickEventHandler(std::string txt, int txtField);
 
     void on_pbMultiply_clicked();
 

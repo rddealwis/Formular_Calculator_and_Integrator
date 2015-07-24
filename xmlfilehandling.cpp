@@ -24,7 +24,7 @@ bool XMLFileHandling::Write(std::string fileName, std::string formula[], std::st
     document.appendChild(root);
     //Add some elements
 
-    for(int i=0; i<formula->length()+1; i++)
+    for(int i=0; i<=formula->length()+1; i++)
     {
         QDomElement book =document.createElement("Formulae");
         book.setAttribute("Name", QString::fromStdString(formulaName[i]));

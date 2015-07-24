@@ -20,7 +20,12 @@ void CopyArrayL(std::string array1[], std::string array2[]);
 
 void CopyArrayL(std::string array1[], std::string array2[])
 {
-    for(int i = 0; i < array1->length(); i++)
+    //QMessageBox::information(0, "Infinity Calculator", QString::number(array1->length()), QMessageBox::Ok);
+    /*for(int i = 0; i <= array1->length(); i++)
+    {
+        array2[i] = array1[i];
+    }*/
+    for(int i = 0; array1[i]!=""; i++)
     {
         array2[i] = array1[i];
     }
@@ -28,20 +33,14 @@ void CopyArrayL(std::string array1[], std::string array2[])
 
 void dlgLoadFormula::setCurrentMemory(std::string p_formula[], std::string p_formulaName[], std::string p_formulaOnMemory[], std::string p_formulaNameOnMemory[])
 {
-    /*int a1[] = {1,2,3};
-    int a2[3];
-    std::copy(std::begin(a1), std::end(a1), std::begin(a2));
-    formula = p_Formula;
-    formulaName = p_FormulaName;
-    */
-    //std::copy(std::begin(p_Formula), std::end(p_Formula), std::begin(formula));
+    
     CopyArrayL(p_formula, formula);
     CopyArrayL(p_formulaName, formulaName);
     CopyArrayL(p_formulaOnMemory, formulaOnMemory);
     CopyArrayL(p_formulaNameOnMemory, formulaNameOnMemory);
 
     //Formulae in the RuntimeMemory will be populated to the table by default
-    for (unsigned j=0; j<formulaNameOnMemory->length();j++)
+    for (int j=0; formulaNameOnMemory[j] != "";j++)
     {
         QTableWidgetItem *formulaNameItem=new QTableWidgetItem(tr(formulaNameOnMemory[j].c_str()));
         QTableWidgetItem *formulaItem=new QTableWidgetItem(tr(formulaOnMemory[j].c_str()));
@@ -57,8 +56,6 @@ void dlgLoadFormula::setCurrentMemory(std::string p_formula[], std::string p_for
 
 std::string dlgLoadFormula::getSelectedEquation(std::string p_formula[], std::string p_formulaName[], std::string p_formulaOnMemory[], std::string p_formulaNameOnMemory[])
 {
-    //p_Formula = formula;
-    //p_FormulaName = formulaName;
     CopyArrayL(formula, p_formula);
     CopyArrayL(formulaName, p_formulaName);
     CopyArrayL(formulaOnMemory, p_formulaOnMemory);
@@ -102,7 +99,8 @@ void dlgLoadFormula::on_buttonBox_clicked(QAbstractButton *button)
 
 void dlgLoadFormula::on_rdFromMemory_clicked()
 {
-    for (unsigned j=0; j<formulaNameOnMemory->length();j++)
+    //this->ui->tblCurrentFormulae->clear();
+    for (int j=0; formulaNameOnMemory[j] != "";j++)
     {
         QTableWidgetItem *formulaNameItem=new QTableWidgetItem(tr(formulaNameOnMemory[j].c_str()));
         QTableWidgetItem *formulaItem=new QTableWidgetItem(tr(formulaOnMemory[j].c_str()));
@@ -116,7 +114,8 @@ void dlgLoadFormula::on_rdFromMemory_clicked()
 
 void dlgLoadFormula::on_rdFromFile_clicked()
 {
-    for (unsigned j=0; j<formulaName->length();j++)
+    //this->ui->tblCurrentFormulae->clear();
+    for (int j=0; formulaName[j] !="";j++)
     {
         QTableWidgetItem *formulaNameItem=new QTableWidgetItem(tr(formulaName[j].c_str()));
         QTableWidgetItem *formulaItem=new QTableWidgetItem(tr(formula[j].c_str()));

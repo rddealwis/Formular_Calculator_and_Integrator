@@ -19,7 +19,7 @@ void CopyArray(std::string array1[], std::string array2[]);
 
 void CopyArray(std::string array1[], std::string array2[])
 {
-    for(int i = 0; i < array1->length(); i++)
+    for(int i = 0; array1[i] != ""; i++)
     {
         array2[i] = array1[i];
     }
@@ -58,8 +58,8 @@ void dlgSaveFormula::on_btnBoxSubmit_clicked(QAbstractButton *button)
     {
         if(this->ui->rdToFile->isChecked())
         {
-            formulaName[formula->length()]=this->ui->txtFormulaName->toPlainText().toStdString();
-            formula[formula->length()]=this->ui->txtFormula->toPlainText().toStdString();
+            formulaName[formula->length()+1]=this->ui->txtFormulaName->toPlainText().toStdString();
+            formula[formula->length()+1]=this->ui->txtFormula->toPlainText().toStdString();
             filePath=this->ui->txtSaveLocation->toPlainText().toStdString();
             if(obj1.Write(filePath, formula,formulaName))
             {
@@ -74,8 +74,31 @@ void dlgSaveFormula::on_btnBoxSubmit_clicked(QAbstractButton *button)
         {
             try
             {
-                formulaNameOnMemory[formulaOnMemory->length()]=this->ui->txtFormulaName->toPlainText().toStdString();
-                formulaOnMemory[formulaOnMemory->length()]=this->ui->txtFormula->toPlainText().toStdString();
+                int location = 0;
+               /* if(formulaOnMemory[0] == "")
+                {
+                    location = 0;
+                }
+                else if(formulaOnMemory[1] == "")
+                {
+                    location = 1;
+                }
+                else
+                {
+                    location = formulaOnMemory->length() + 1;
+                }*/
+
+                while(true)
+                {
+                    if(formulaOnMemory[location] == "")
+                    {
+                        break;
+                    }
+                    location++;
+                }
+
+                formulaNameOnMemory[location]=this->ui->txtFormulaName->toPlainText().toStdString();
+                formulaOnMemory[location]=this->ui->txtFormula->toPlainText().toStdString();
                 QMessageBox::information(this, "Infinity Calculator", "Formula is successfully saved to the memory.", QMessageBox::Ok);
             }
 
@@ -96,7 +119,7 @@ void dlgSaveFormula::setCurrentMemory(std::string saveFormula, std::string p_for
     CopyArray(p_formulaOnMemory, formulaOnMemory);
     CopyArray(p_formulaNameOnMemory, formulaNameOnMemory);
 
-    for (unsigned j=0; j<formulaNameOnMemory->length();j++)
+    for (int j=0; formulaNameOnMemory[j] != "";j++)
     {
         QTableWidgetItem *formulaNameItem=new QTableWidgetItem(tr(formulaNameOnMemory[j].c_str()));
         QTableWidgetItem *formulaItem=new QTableWidgetItem(tr(formulaOnMemory[j].c_str()));
@@ -118,7 +141,8 @@ void dlgSaveFormula::getSavedEquations(std::string p_formula[], std::string p_fo
 
 void dlgSaveFormula::on_rdToMemory_clicked()
 {
-    for (unsigned j=0; j<formulaNameOnMemory->length();j++)
+    //this->ui->tblCurrentFormulae->clear();
+    for (int j=0; formulaNameOnMemory[j] != ""; j++)
     {
         QTableWidgetItem *formulaNameItem=new QTableWidgetItem(tr(formulaNameOnMemory[j].c_str()));
         QTableWidgetItem *formulaItem=new QTableWidgetItem(tr(formulaOnMemory[j].c_str()));
@@ -132,7 +156,8 @@ void dlgSaveFormula::on_rdToMemory_clicked()
 
 void dlgSaveFormula::on_rdToFile_clicked()
 {
-    for (unsigned j=0; j<formulaName->length();j++)
+    //this->ui->tblCurrentFormulae->clear();
+    for (int j=0; formulaName[j] != "";j++)
     {
         QTableWidgetItem *formulaNameItem=new QTableWidgetItem(tr(formulaName[j].c_str()));
         QTableWidgetItem *formulaItem=new QTableWidgetItem(tr(formula[j].c_str()));
