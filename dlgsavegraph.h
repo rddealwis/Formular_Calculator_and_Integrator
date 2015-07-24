@@ -18,6 +18,10 @@ public:
 private slots:
     void on_pbBrowseGraphSaveLoc_clicked();
 
+    void on_pbSaveGraph_clicked();
+
+    void on_pbClose_clicked();
+
 private:
     Ui::dlgSaveGraph *ui;
 };

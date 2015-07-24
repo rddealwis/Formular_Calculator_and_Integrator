@@ -33,13 +33,15 @@ void dlgSaveFormula::on_pbBrowseSaveLoc_clicked()
     if(obj1.Read(filePath, formula, formulaName))
     {
         this->ui->tblCurrentFormulae->setRowCount(0);
-        for (unsigned j=0; j<formulaName->length();j++)
+        for (unsigned j=0; formulaName[j]!="";j++)
         {
-        QTableWidgetItem *formulaNameItem=new QTableWidgetItem(tr(formulaName[j].c_str()));
-        QTableWidgetItem *formulaItem=new QTableWidgetItem(tr(formula[j].c_str()));
-        this->ui->tblCurrentFormulae->insertRow(j);
-        this->ui->tblCurrentFormulae->setItem(j,0,formulaNameItem);
-        this->ui->tblCurrentFormulae->setItem(j,1,formulaItem);
+            QTableWidgetItem *formulaNameItem=new QTableWidgetItem(tr(formulaName[j].c_str()));
+            QTableWidgetItem *formulaItem=new QTableWidgetItem(tr(formula[j].c_str()));
+            this->ui->tblCurrentFormulae->insertRow(j);
+            this->ui->tblCurrentFormulae->setItem(j,0,formulaNameItem);
+            this->ui->tblCurrentFormulae->setItem(j,1,formulaItem);
+            formulaNameItem->setFlags(formulaNameItem->flags() ^ Qt::ItemIsEditable);
+            formulaItem->setFlags(formulaItem->flags() ^ Qt::ItemIsEditable);
         }
 
         ui->txtSaveLocation->setText(QString::fromStdString(filePath));
@@ -50,74 +52,13 @@ void dlgSaveFormula::on_pbBrowseSaveLoc_clicked()
     }
 }
 
-void dlgSaveFormula::on_btnBoxSubmit_clicked(QAbstractButton *button)
-{
-    XMLFileHandling obj1;
-    std::string filePath;
-    if(button ==this->ui->btnBoxSubmit->button(QDialogButtonBox::Save))
-    {
-        if(this->ui->rdToFile->isChecked())
-        {
-            formulaName[formula->length()+1]=this->ui->txtFormulaName->toPlainText().toStdString();
-            formula[formula->length()+1]=this->ui->txtFormula->toPlainText().toStdString();
-            filePath=this->ui->txtSaveLocation->toPlainText().toStdString();
-            if(obj1.Write(filePath, formula,formulaName))
-            {
-                QMessageBox::information(this, "Infinity Calculator", "Formula is successfully saved to the file.", QMessageBox::Ok);
-            }
-            else
-            {
-                QMessageBox::critical(this,"Infinity Calculator","Failed to open the file to write.", QMessageBox::Ok);
-            }
-        }
-        else
-        {
-            try
-            {
-                int location = 0;
-               /* if(formulaOnMemory[0] == "")
-                {
-                    location = 0;
-                }
-                else if(formulaOnMemory[1] == "")
-                {
-                    location = 1;
-                }
-                else
-                {
-                    location = formulaOnMemory->length() + 1;
-                }*/
-
-                while(true)
-                {
-                    if(formulaOnMemory[location] == "")
-                    {
-                        break;
-                    }
-                    location++;
-                }
-
-                formulaNameOnMemory[location]=this->ui->txtFormulaName->toPlainText().toStdString();
-                formulaOnMemory[location]=this->ui->txtFormula->toPlainText().toStdString();
-                QMessageBox::information(this, "Infinity Calculator", "Formula is successfully saved to the memory.", QMessageBox::Ok);
-            }
-
-            catch(...)
-            {
-                QMessageBox::critical(this,"Infinity Calculator","Error occured when writing to the memory", QMessageBox::Ok);
-            }
-
-        }
-    }
-}
-
 void dlgSaveFormula::setCurrentMemory(std::string saveFormula, std::string p_formula[], std::string p_formulaName[], std::string p_formulaOnMemory[], std::string p_formulaNameOnMemory[])
 {
     this->ui->txtFormula->setText(QString::fromStdString(saveFormula));
-    CopyArray(p_formula, formula);
-    CopyArray(p_formulaName, formulaName);
-    CopyArray(p_formulaOnMemory, formulaOnMemory);
-    CopyArray(p_formulaNameOnMemory, formulaNameOnMemory);
+//    CopyArray(p_formula, formula);
+//    CopyArray(p_formulaName, formulaName);
+//    CopyArray(p_formulaOnMemory, formulaOnMemory);
+//    CopyArray(p_formulaNameOnMemory, formulaNameOnMemory);
 
     for (int j=0; formulaNameOnMemory[j] != "";j++)
     {
@@ -126,6 +67,8 @@ void dlgSaveFormula::setCurrentMemory(std::string saveFormula, std::string p_for
         this->ui->tblCurrentFormulae->insertRow(j);
         this->ui->tblCurrentFormulae->setItem(j,0,formulaNameItem);
         this->ui->tblCurrentFormulae->setItem(j,1,formulaItem);
+        formulaNameItem->setFlags(formulaNameItem->flags() ^ Qt::ItemIsEditable);
+        formulaItem->setFlags(formulaItem->flags() ^ Qt::ItemIsEditable);
     }
     this->ui->txtSaveLocation->setEnabled(false);
     this->ui->pbBrowseSaveLoc->setEnabled(false);
@@ -146,25 +89,104 @@ void dlgSaveFormula::on_rdToMemory_clicked()
     {
         QTableWidgetItem *formulaNameItem=new QTableWidgetItem(tr(formulaNameOnMemory[j].c_str()));
         QTableWidgetItem *formulaItem=new QTableWidgetItem(tr(formulaOnMemory[j].c_str()));
+
         this->ui->tblCurrentFormulae->insertRow(j);
         this->ui->tblCurrentFormulae->setItem(j,0,formulaNameItem);
         this->ui->tblCurrentFormulae->setItem(j,1,formulaItem);
+
+        formulaNameItem->setFlags(formulaNameItem->flags() ^ Qt::ItemIsEditable);
+        formulaItem->setFlags(formulaItem->flags() ^ Qt::ItemIsEditable);
     }
+
     this->ui->txtSaveLocation->setEnabled(false);
     this->ui->pbBrowseSaveLoc->setEnabled(false);
 }
 
 void dlgSaveFormula::on_rdToFile_clicked()
 {
-    //this->ui->tblCurrentFormulae->clear();
-    for (int j=0; formulaName[j] != "";j++)
+    if( this->ui->tblCurrentFormulae->rowCount()<=0)
     {
-        QTableWidgetItem *formulaNameItem=new QTableWidgetItem(tr(formulaName[j].c_str()));
-        QTableWidgetItem *formulaItem=new QTableWidgetItem(tr(formula[j].c_str()));
-        this->ui->tblCurrentFormulae->insertRow(j);
-        this->ui->tblCurrentFormulae->setItem(j,0,formulaNameItem);
-        this->ui->tblCurrentFormulae->setItem(j,1,formulaItem);
+        for (int j=0; formulaName[j] != "";j++)
+        {
+            QTableWidgetItem *formulaNameItem=new QTableWidgetItem(tr(formulaName[j].c_str()));
+            QTableWidgetItem *formulaItem=new QTableWidgetItem(tr(formula[j].c_str()));
+
+            this->ui->tblCurrentFormulae->insertRow(j);
+            this->ui->tblCurrentFormulae->setItem(j,0,formulaNameItem);
+            this->ui->tblCurrentFormulae->setItem(j,1,formulaItem);
+
+            formulaNameItem->setFlags(formulaNameItem->flags() ^ Qt::ItemIsEditable);
+            formulaItem->setFlags(formulaItem->flags() ^ Qt::ItemIsEditable);
+        }
     }
+
     this->ui->txtSaveLocation->setEnabled(true);
     this->ui->pbBrowseSaveLoc->setEnabled(true);
+}
+
+void dlgSaveFormula::on_pbSaveFormula_clicked()
+{
+    XMLFileHandling obj1;
+    std::string filePath;
+
+    if(this->ui->rdToFile->isChecked())
+    {
+        formulaName[formula->length()+1]=this->ui->txtFormulaName->toPlainText().toStdString();
+        formula[formula->length()+1]=this->ui->txtFormula->toPlainText().toStdString();
+        filePath=this->ui->txtSaveLocation->toPlainText().toStdString();
+        if(obj1.Write(filePath, formula,formulaName))
+        {
+            QMessageBox::information(this, "Infinity Calculator", "Formula is successfully saved to the file.", QMessageBox::Ok);
+            this->close();
+        }
+        else
+        {
+            QMessageBox::critical(this,"Infinity Calculator","Failed to open the file to write.", QMessageBox::Ok);
+        }
+    }
+    else
+    {
+        try
+        {
+            int location = 0;
+            /* if(formulaOnMemory[0] == "")
+                {
+                    location = 0;
+                }
+                else if(formulaOnMemory[1] == "")
+                {
+                    location = 1;
+                }
+                else
+                {
+                    location = formulaOnMemory->length() + 1;
+                }*/
+
+            while(true)
+            {
+                if(formulaOnMemory[location] == "")
+                {
+                    break;
+                }
+                location++;
+            }
+
+            formulaNameOnMemory[location]=this->ui->txtFormulaName->toPlainText().toStdString();
+            formulaOnMemory[location]=this->ui->txtFormula->toPlainText().toStdString();
+            QMessageBox::information(this, "Infinity Calculator", "Formula is successfully saved to the memory.", QMessageBox::Ok);
+            this->close();
+        }
+
+        catch(...)
+        {
+            QMessageBox::critical(this,"Infinity Calculator","Error occured when writing to the memory", QMessageBox::Ok);
+        }
+
+    }
+
+}
+
+void dlgSaveFormula::on_pbClose_clicked()
+{
+    this->close();
 }

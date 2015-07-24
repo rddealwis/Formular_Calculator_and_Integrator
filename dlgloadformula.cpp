@@ -47,7 +47,9 @@ void dlgLoadFormula::setCurrentMemory(std::string p_formula[], std::string p_for
         this->ui->tblCurrentFormulae->insertRow(j);
         this->ui->tblCurrentFormulae->setItem(j,0,formulaNameItem);
         this->ui->tblCurrentFormulae->setItem(j,1,formulaItem);
-    }\
+        formulaNameItem->setFlags(formulaNameItem->flags() ^ Qt::ItemIsEditable);
+        formulaItem->setFlags(formulaItem->flags() ^ Qt::ItemIsEditable);
+    }
 
     this->ui->txtFileLocation->setEnabled(false);
     this->ui->pbBrowseFile->setEnabled(false);
@@ -68,17 +70,22 @@ void dlgLoadFormula::on_pbBrowseFile_clicked()
 {
     XMLFileHandling obj1;
     std::string filePath=QFileDialog::getOpenFileName(this, tr("Open File"), "/desktop", tr("XML Files (*.xml)")).toUtf8().constData();
+    std::fill( std::begin( formulaName ), std::end( formulaName ), "" );
+    std::fill( std::begin( formula ), std::end( formula ), "" );
+
     if(obj1.Read(filePath, formula, formulaName))
     {
         this->ui->tblCurrentFormulae->setRowCount(0);
 
-        for (unsigned j=0; j<formulaName->length();j++)
+        for (unsigned j=0; formulaName[j]!="";j++)
         {
             QTableWidgetItem *formulaNameItem=new QTableWidgetItem(tr(formulaName[j].c_str()));
             QTableWidgetItem *formulaItem=new QTableWidgetItem(tr(formula[j].c_str()));
             this->ui->tblCurrentFormulae->insertRow(j);
             this->ui->tblCurrentFormulae->setItem(j,0,formulaNameItem);
             this->ui->tblCurrentFormulae->setItem(j,1,formulaItem);
+            formulaNameItem->setFlags(formulaNameItem->flags() ^ Qt::ItemIsEditable);
+            formulaItem->setFlags(formulaItem->flags() ^ Qt::ItemIsEditable);
         }
         ui->txtFileLocation->setText(QString::fromStdString(filePath));
     }
@@ -88,41 +95,63 @@ void dlgLoadFormula::on_pbBrowseFile_clicked()
     }
 }
 
-void dlgLoadFormula::on_buttonBox_clicked(QAbstractButton *button)
-{
-    if(button == this->ui->buttonBox->button(QDialogButtonBox::Ok))
-    {
-        QModelIndexList selectedList = this->ui->tblCurrentFormulae->selectionModel()->selectedRows();
-        selectFormula=this->ui->tblCurrentFormulae->item(selectedList.at(0).row(), 1)->text().toStdString();
-    }
-}
-
 void dlgLoadFormula::on_rdFromMemory_clicked()
 {
-    //this->ui->tblCurrentFormulae->clear();
     for (int j=0; formulaNameOnMemory[j] != "";j++)
     {
         QTableWidgetItem *formulaNameItem=new QTableWidgetItem(tr(formulaNameOnMemory[j].c_str()));
         QTableWidgetItem *formulaItem=new QTableWidgetItem(tr(formulaOnMemory[j].c_str()));
+
         this->ui->tblCurrentFormulae->insertRow(j);
         this->ui->tblCurrentFormulae->setItem(j,0,formulaNameItem);
         this->ui->tblCurrentFormulae->setItem(j,1,formulaItem);
+
+        formulaNameItem->setFlags(formulaNameItem->flags() ^ Qt::ItemIsEditable);
+        formulaItem->setFlags(formulaItem->flags() ^ Qt::ItemIsEditable);
     }
+
     this->ui->txtFileLocation->setEnabled(false);
     this->ui->pbBrowseFile->setEnabled(false);
 }
 
 void dlgLoadFormula::on_rdFromFile_clicked()
 {
-    //this->ui->tblCurrentFormulae->clear();
-    for (int j=0; formulaName[j] !="";j++)
+    if( this->ui->tblCurrentFormulae->rowCount()<=0)
     {
-        QTableWidgetItem *formulaNameItem=new QTableWidgetItem(tr(formulaName[j].c_str()));
-        QTableWidgetItem *formulaItem=new QTableWidgetItem(tr(formula[j].c_str()));
-        this->ui->tblCurrentFormulae->insertRow(j);
-        this->ui->tblCurrentFormulae->setItem(j,0,formulaNameItem);
-        this->ui->tblCurrentFormulae->setItem(j,1,formulaItem);
+        for (int j=0; formulaName[j] !="";j++)
+        {
+            QTableWidgetItem *formulaNameItem=new QTableWidgetItem(tr(formulaName[j].c_str()));
+            QTableWidgetItem *formulaItem=new QTableWidgetItem(tr(formula[j].c_str()));
+
+            this->ui->tblCurrentFormulae->insertRow(j);
+            this->ui->tblCurrentFormulae->setItem(j,0,formulaNameItem);
+            this->ui->tblCurrentFormulae->setItem(j,1,formulaItem);
+
+            formulaNameItem->setFlags(formulaNameItem->flags() ^ Qt::ItemIsEditable);
+            formulaItem->setFlags(formulaItem->flags() ^ Qt::ItemIsEditable);
+        }
     }
+
     this->ui->txtFileLocation->setEnabled(true);
     this->ui->pbBrowseFile->setEnabled(true);
+}
+
+void dlgLoadFormula::on_pbLoadFormula_clicked()
+{
+    QModelIndexList selectedList = this->ui->tblCurrentFormulae->selectionModel()->selectedRows();
+    if (selectedList.size() > 0) {
+
+        selectFormula=this->ui->tblCurrentFormulae->item(selectedList.at(0).row(), 1)->text().toStdString();
+        this->close();
+    }
+    else
+    {
+        QMessageBox::critical(this,"Infinity Calculator","Please select a formula to load.", QMessageBox::Ok);
+
+    }
+}
+
+void dlgLoadFormula::on_pbClose_clicked()
+{
+    this->close();
 }

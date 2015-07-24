@@ -18,3 +18,13 @@ void dlgSaveGraph::on_pbBrowseGraphSaveLoc_clicked()
 {
     ui->txtSaveLocation->setText(QFileDialog::getOpenFileName(this, tr("Save Graph"), "/desktop", tr("Image Files (*.png *.jpg *.bmp)")));
 }
+
+void dlgSaveGraph::on_pbSaveGraph_clicked()
+{
+    this->close();
+}
+
+void dlgSaveGraph::on_pbClose_clicked()
+{
+    this->close();
+}

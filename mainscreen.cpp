@@ -247,26 +247,35 @@ void MainScreen::on_pbPower_clicked()
 
 void MainScreen::on_pbAboutUs_clicked()
 {
-    ui->frmAboutCalculator->setVisible(true);
+    if(ui->frmAboutCalculator->isVisible())
+    {
+        ui->frmAboutCalculator->setVisible(false);
+    }
+    else
+    {
+        ui->frmAboutCalculator->setVisible(true);
+    }
 }
 
 void MainScreen::on_pbCE_clicked()
 {
     ui->txtTextEditor->clear();
     ui->txtTextEditor->setText("0");
+    ui->txtResultsEditor->clear();
 }
 
 void MainScreen::on_pbC_clicked()
 {
     ui->txtTextEditor->clear();
     ui->txtTextEditor->setText("0");
+    ui->txtResultsEditor->clear();
 }
 
 void MainScreen::on_pbDel_clicked()
 {
     if(ui->txtTextEditor->toPlainText()!= "0")
     {
-        while(!ui->txtTextEditor->toPlainText().isEmpty())
+        if(!ui->txtTextEditor->toPlainText().isEmpty())
         {
             ui->txtTextEditor->textCursor().deletePreviousChar();
 //            QTextCursor prev_cursor = ui->txtTextEditor->textCursor();
@@ -275,6 +284,7 @@ void MainScreen::on_pbDel_clicked()
 //            ui->txtTextEditor->setTextCursor(prev_cursor);
         }
     }
+    ui->txtResultsEditor->clear();
 }
 
 void MainScreen::on_pbSaveFormula_clicked()

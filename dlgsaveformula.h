@@ -25,11 +25,13 @@ public:
 private slots:
     void on_pbBrowseSaveLoc_clicked();
 
-    void on_btnBoxSubmit_clicked(QAbstractButton *button);
-
     void on_rdToMemory_clicked();
 
     void on_rdToFile_clicked();
+
+    void on_pbSaveFormula_clicked();
+
+    void on_pbClose_clicked();
 
 private:
     Ui::dlgSaveFormula *ui;
