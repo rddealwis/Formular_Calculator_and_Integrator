@@ -291,9 +291,15 @@ void MainScreen::on_pbSaveFormula_clicked()
 {
     dlgSaveFormula saveFormula;
     saveFormulaValue = this->ui->txtTextEditor->toPlainText().toStdString();
-    saveFormula.setCurrentMemory(saveFormulaValue, formula, formulaName, formulaOnMemory, formulaNameOnMemory);
+    saveFormula.setCurrentMemory(saveFormulaValue, formula, formulaName, formulaOnMemory, formulaNameOnMemory, this->filePath);
     saveFormula.setModal(true);
     saveFormula.exec();
+    std::fill( std::begin( formulaName ), std::end( formulaName ), "" );
+    std::fill( std::begin( formula ), std::end( formula ), "" );
+    std::fill( std::begin( formulaOnMemory ), std::end( formulaOnMemory ), "" );
+    std::fill( std::begin( formulaNameOnMemory ), std::end( formulaNameOnMemory ), "" );
+    this->ui->lstScientificFromFile->clear();
+    this->filePath = saveFormula.filePath;
     saveFormula.getSavedEquations(formula,formulaName, formulaOnMemory, formulaNameOnMemory);
     this->LoadToListGraphFromFile();
     this->LoadToListGraphInMemory();
@@ -301,14 +307,49 @@ void MainScreen::on_pbSaveFormula_clicked()
     this->LoadToListGraphScientificInMemory();
 }
 
+void ClearArray(std::string arr[]);
+void ClearArray(std::string arr[])
+{
+    for(int i = 0; arr[i] !=""; i++)
+    {
+       arr[i] = "";
+    }
+}
+
+
 void MainScreen::on_pbLoadFormula_clicked()
 {
     dlgLoadFormula loadFormula;
 
-    loadFormula.setCurrentMemory(formula, formulaName, formulaOnMemory, formulaNameOnMemory);
+    loadFormula.setCurrentMemory(formula, formulaName, formulaOnMemory, formulaNameOnMemory, filePath);
     loadFormula.setModal(true);
     loadFormula.exec();
+    std::fill( std::begin( formulaName ), std::end( formulaName ), "" );
+    std::fill( std::begin( formula ), std::end( formula ), "" );
+    std::fill( std::begin( formulaOnMemory ), std::end( formulaOnMemory ), "" );
+    std::fill( std::begin( formulaNameOnMemory ), std::end( formulaNameOnMemory ), "" );
     this->ui->txtTextEditor->setText(QString::fromStdString(loadFormula.getSelectedEquation(formula, formulaName, formulaOnMemory, formulaNameOnMemory)));
+    this->ui->lstScientificFromFile->clear();
+    this->filePath = loadFormula.filePath;
+    this->LoadToListGraphFromFile();
+    this->LoadToListGraphInMemory();
+    this->LoadToListGraphScientificFromFile();
+    this->LoadToListGraphScientificInMemory();
+}
+
+void MainScreen::on_pbLoadGraphFormula_clicked()
+{
+    dlgLoadFormula loadFormula;
+    loadFormula.setCurrentMemory(formula, formulaName, formulaOnMemory, formulaNameOnMemory, filePath);
+    loadFormula.setModal(true);
+    loadFormula.exec();
+    std::fill( std::begin( formulaName ), std::end( formulaName ), "" );
+    std::fill( std::begin( formula ), std::end( formula ), "" );
+    std::fill( std::begin( formulaOnMemory ), std::end( formulaOnMemory ), "" );
+    std::fill( std::begin( formulaNameOnMemory ), std::end( formulaNameOnMemory ), "" );
+    this->ui->txtEquation->setText(QString::fromStdString(loadFormula.getSelectedEquation(formula, formulaName, formulaOnMemory, formulaNameOnMemory)));
+    this->ui->lstScientificFromFile->clear();
+    this->filePath = loadFormula.filePath;
     this->LoadToListGraphFromFile();
     this->LoadToListGraphInMemory();
     this->LoadToListGraphScientificFromFile();
@@ -391,18 +432,7 @@ void MainScreen::LoadToListGraphScientificInMemory()
     }
 }
 
-void MainScreen::on_pbLoadGraphFormula_clicked()
-{
-    dlgLoadFormula loadFormula;
-    loadFormula.setCurrentMemory(formula, formulaName, formulaOnMemory, formulaNameOnMemory);
-    loadFormula.setModal(true);
-    loadFormula.exec();
-    this->ui->txtEquation->setText(QString::fromStdString(loadFormula.getSelectedEquation(formula, formulaName, formulaOnMemory, formulaNameOnMemory)));
-    this->LoadToListGraphFromFile();
-    this->LoadToListGraphInMemory();
-    this->LoadToListGraphScientificFromFile();
-    this->LoadToListGraphScientificInMemory();
-}
+
 
 void MainScreen::on_pbAddGraphFormula_clicked()
 {

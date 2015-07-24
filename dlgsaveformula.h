@@ -13,13 +13,14 @@ class dlgSaveFormula : public QDialog
 
 public:
     explicit dlgSaveFormula(QWidget *parent = 0);
-    void setCurrentMemory(std::string saveFormula, std::string p_formula[], std::string p_formulaName[], std::string p_formulaOnMemory[], std::string p_formulaNameOnMemory[]);
+    void setCurrentMemory(std::string saveFormula, std::string p_formula[], std::string p_formulaName[], std::string p_formulaOnMemory[], std::string p_formulaNameOnMemory[], std::string p_filePath);
     void getSavedEquations(std::string formula[], std::string p_formulaName[], std::string p_formulaOnMemory[], std::string p_formulaNameOnMemory[]);
     std::string selectFormula;
     std::string formula[1024];
     std::string formulaName[1024];
     std::string formulaOnMemory[1024];
     std::string formulaNameOnMemory[1024];
+    std::string filePath;
     ~dlgSaveFormula();
 
 private slots:

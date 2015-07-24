@@ -15,13 +15,14 @@ class dlgLoadFormula : public QDialog
 public:
     explicit dlgLoadFormula(QWidget *parent = 0);
     QString text;
-    void setCurrentMemory(std::string p_formula[], std::string p_formulaName[], std::string p_formulaOnMemory[], std::string p_formulaNameOnMemory[]);
+    void setCurrentMemory(std::string p_formula[], std::string p_formulaName[], std::string p_formulaOnMemory[], std::string p_formulaNameOnMemory[], std::string p_filePath);
     std::string getSelectedEquation(std::string formula[], std::string p_formulaName[], std::string p_formulaOnMemory[], std::string p_formulaNameOnMemory[]);
     std::string selectFormula;
     std::string formula[1024];
     std::string formulaName[1024];
     std::string formulaOnMemory[1024];
     std::string formulaNameOnMemory[1024];
+    std::string filePath;
     ~dlgLoadFormula();
 
 private slots:

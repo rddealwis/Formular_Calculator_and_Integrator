@@ -31,13 +31,14 @@ void CopyArrayL(std::string array1[], std::string array2[])
     }
 }
 
-void dlgLoadFormula::setCurrentMemory(std::string p_formula[], std::string p_formulaName[], std::string p_formulaOnMemory[], std::string p_formulaNameOnMemory[])
+void dlgLoadFormula::setCurrentMemory(std::string p_formula[], std::string p_formulaName[], std::string p_formulaOnMemory[], std::string p_formulaNameOnMemory[], std::string p_filePath)
 {
     
     CopyArrayL(p_formula, formula);
     CopyArrayL(p_formulaName, formulaName);
     CopyArrayL(p_formulaOnMemory, formulaOnMemory);
     CopyArrayL(p_formulaNameOnMemory, formulaNameOnMemory);
+    this->filePath = p_filePath;
 
     //Formulae in the RuntimeMemory will be populated to the table by default
     for (int j=0; formulaNameOnMemory[j] != "";j++)
@@ -69,10 +70,9 @@ std::string dlgLoadFormula::getSelectedEquation(std::string p_formula[], std::st
 void dlgLoadFormula::on_pbBrowseFile_clicked()
 {
     XMLFileHandling obj1;
-    std::string filePath=QFileDialog::getOpenFileName(this, tr("Open File"), "/desktop", tr("XML Files (*.xml)")).toUtf8().constData();
+    filePath=QFileDialog::getOpenFileName(this, tr("Open File"), "/desktop", tr("XML Files (*.xml)")).toUtf8().constData();
     std::fill( std::begin( formulaName ), std::end( formulaName ), "" );
     std::fill( std::begin( formula ), std::end( formula ), "" );
-
     if(obj1.Read(filePath, formula, formulaName))
     {
         this->ui->tblCurrentFormulae->setRowCount(0);
@@ -97,6 +97,8 @@ void dlgLoadFormula::on_pbBrowseFile_clicked()
 
 void dlgLoadFormula::on_rdFromMemory_clicked()
 {
+    this->ui->txtFileLocation->setText("");
+    this->ui->tblCurrentFormulae->model()->removeRows(0, this->ui->tblCurrentFormulae->rowCount());
     for (int j=0; formulaNameOnMemory[j] != "";j++)
     {
         QTableWidgetItem *formulaNameItem=new QTableWidgetItem(tr(formulaNameOnMemory[j].c_str()));
@@ -116,6 +118,8 @@ void dlgLoadFormula::on_rdFromMemory_clicked()
 
 void dlgLoadFormula::on_rdFromFile_clicked()
 {
+    this->ui->txtFileLocation->setText(QString::fromStdString(this->filePath));
+    this->ui->tblCurrentFormulae->model()->removeRows(0, this->ui->tblCurrentFormulae->rowCount());
     if( this->ui->tblCurrentFormulae->rowCount()<=0)
     {
         for (int j=0; formulaName[j] !="";j++)

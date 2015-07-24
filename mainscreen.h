@@ -26,6 +26,7 @@ public:
     void LoadToListGraphScientificInMemory();
     std::string formulaListTemp[1024];
     std::vector<FormulaElement*> formulaList;
+    std::string filePath;
     ~MainScreen();
 
 private slots:

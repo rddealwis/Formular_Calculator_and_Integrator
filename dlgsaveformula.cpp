@@ -29,7 +29,9 @@ void dlgSaveFormula::on_pbBrowseSaveLoc_clicked()
 {
     //ui->txtSaveLocation->setText(QFileDialog::getOpenFileName(this, tr("Save File"), "/desktop", tr("XML Files (*.xml)")));
     XMLFileHandling obj1;
-    std::string filePath=QFileDialog::getOpenFileName(this, tr("Save File"), "/desktop", tr("XML Files (*.xml)")).toUtf8().constData();
+    filePath=QFileDialog::getOpenFileName(this, tr("Save File"), "/desktop", tr("XML Files (*.xml)")).toUtf8().constData();
+    std::fill( std::begin( formulaName ), std::end( formulaName ), "" );
+    std::fill( std::begin( formula ), std::end( formula ), "" );
     if(obj1.Read(filePath, formula, formulaName))
     {
         this->ui->tblCurrentFormulae->setRowCount(0);
@@ -52,13 +54,14 @@ void dlgSaveFormula::on_pbBrowseSaveLoc_clicked()
     }
 }
 
-void dlgSaveFormula::setCurrentMemory(std::string saveFormula, std::string p_formula[], std::string p_formulaName[], std::string p_formulaOnMemory[], std::string p_formulaNameOnMemory[])
+void dlgSaveFormula::setCurrentMemory(std::string saveFormula, std::string p_formula[], std::string p_formulaName[], std::string p_formulaOnMemory[], std::string p_formulaNameOnMemory[], std::string p_filePath)
 {
     this->ui->txtFormula->setText(QString::fromStdString(saveFormula));
-//    CopyArray(p_formula, formula);
-//    CopyArray(p_formulaName, formulaName);
-//    CopyArray(p_formulaOnMemory, formulaOnMemory);
-//    CopyArray(p_formulaNameOnMemory, formulaNameOnMemory);
+    CopyArray(p_formula, formula);
+    CopyArray(p_formulaName, formulaName);
+    CopyArray(p_formulaOnMemory, formulaOnMemory);
+    CopyArray(p_formulaNameOnMemory, formulaNameOnMemory);
+    this->filePath = p_filePath;
 
     for (int j=0; formulaNameOnMemory[j] != "";j++)
     {
@@ -84,7 +87,8 @@ void dlgSaveFormula::getSavedEquations(std::string p_formula[], std::string p_fo
 
 void dlgSaveFormula::on_rdToMemory_clicked()
 {
-    //this->ui->tblCurrentFormulae->clear();
+    this->ui->txtSaveLocation->setText("");
+    this->ui->tblCurrentFormulae->model()->removeRows(0, this->ui->tblCurrentFormulae->rowCount());
     for (int j=0; formulaNameOnMemory[j] != ""; j++)
     {
         QTableWidgetItem *formulaNameItem=new QTableWidgetItem(tr(formulaNameOnMemory[j].c_str()));
@@ -104,6 +108,8 @@ void dlgSaveFormula::on_rdToMemory_clicked()
 
 void dlgSaveFormula::on_rdToFile_clicked()
 {
+    this->ui->txtSaveLocation->setText(QString::fromStdString(this->filePath));
+    this->ui->tblCurrentFormulae->model()->removeRows(0, this->ui->tblCurrentFormulae->rowCount());
     if( this->ui->tblCurrentFormulae->rowCount()<=0)
     {
         for (int j=0; formulaName[j] != "";j++)
@@ -124,15 +130,25 @@ void dlgSaveFormula::on_rdToFile_clicked()
     this->ui->pbBrowseSaveLoc->setEnabled(true);
 }
 
+int GetArraySize(std::string arr[]);
+int GetArraySize(std::string arr[])
+{
+    int size = 0;
+    for(size = 0; arr[size] != ""; size++)
+    {}
+    return size;
+
+}
+
 void dlgSaveFormula::on_pbSaveFormula_clicked()
 {
     XMLFileHandling obj1;
-    std::string filePath;
 
     if(this->ui->rdToFile->isChecked())
     {
-        formulaName[formula->length()+1]=this->ui->txtFormulaName->toPlainText().toStdString();
-        formula[formula->length()+1]=this->ui->txtFormula->toPlainText().toStdString();
+        int size = GetArraySize(formula);
+        formulaName[size]=this->ui->txtFormulaName->toPlainText().toStdString();
+        formula[size]=this->ui->txtFormula->toPlainText().toStdString();
         filePath=this->ui->txtSaveLocation->toPlainText().toStdString();
         if(obj1.Write(filePath, formula,formulaName))
         {
@@ -170,9 +186,9 @@ void dlgSaveFormula::on_pbSaveFormula_clicked()
                 }
                 location++;
             }
-
-            formulaNameOnMemory[location]=this->ui->txtFormulaName->toPlainText().toStdString();
-            formulaOnMemory[location]=this->ui->txtFormula->toPlainText().toStdString();
+            int size = GetArraySize(formulaNameOnMemory);
+            formulaNameOnMemory[size]=this->ui->txtFormulaName->toPlainText().toStdString();
+            formulaOnMemory[size]=this->ui->txtFormula->toPlainText().toStdString();
             QMessageBox::information(this, "Infinity Calculator", "Formula is successfully saved to the memory.", QMessageBox::Ok);
             this->close();
         }
