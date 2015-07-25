@@ -39,9 +39,11 @@ void dlgSaveFormula::on_pbBrowseSaveLoc_clicked()
         {
             QTableWidgetItem *formulaNameItem=new QTableWidgetItem(tr(formulaName[j].c_str()));
             QTableWidgetItem *formulaItem=new QTableWidgetItem(tr(formula[j].c_str()));
+
             this->ui->tblCurrentFormulae->insertRow(j);
             this->ui->tblCurrentFormulae->setItem(j,0,formulaNameItem);
             this->ui->tblCurrentFormulae->setItem(j,1,formulaItem);
+
             formulaNameItem->setFlags(formulaNameItem->flags() ^ Qt::ItemIsEditable);
             formulaItem->setFlags(formulaItem->flags() ^ Qt::ItemIsEditable);
         }
@@ -67,9 +69,11 @@ void dlgSaveFormula::setCurrentMemory(std::string saveFormula, std::string p_for
     {
         QTableWidgetItem *formulaNameItem=new QTableWidgetItem(tr(formulaNameOnMemory[j].c_str()));
         QTableWidgetItem *formulaItem=new QTableWidgetItem(tr(formulaOnMemory[j].c_str()));
+
         this->ui->tblCurrentFormulae->insertRow(j);
         this->ui->tblCurrentFormulae->setItem(j,0,formulaNameItem);
         this->ui->tblCurrentFormulae->setItem(j,1,formulaItem);
+
         formulaNameItem->setFlags(formulaNameItem->flags() ^ Qt::ItemIsEditable);
         formulaItem->setFlags(formulaItem->flags() ^ Qt::ItemIsEditable);
     }
@@ -150,6 +154,7 @@ void dlgSaveFormula::on_pbSaveFormula_clicked()
         formulaName[size]=this->ui->txtFormulaName->toPlainText().toStdString();
         formula[size]=this->ui->txtFormula->toPlainText().toStdString();
         filePath=this->ui->txtSaveLocation->toPlainText().toStdString();
+
         if(obj1.Write(filePath, formula,formulaName))
         {
             QMessageBox::information(this, "Infinity Calculator", "Formula is successfully saved to the file.", QMessageBox::Ok);
@@ -189,6 +194,7 @@ void dlgSaveFormula::on_pbSaveFormula_clicked()
             int size = GetArraySize(formulaNameOnMemory);
             formulaNameOnMemory[size]=this->ui->txtFormulaName->toPlainText().toStdString();
             formulaOnMemory[size]=this->ui->txtFormula->toPlainText().toStdString();
+
             QMessageBox::information(this, "Infinity Calculator", "Formula is successfully saved to the memory.", QMessageBox::Ok);
             this->close();
         }

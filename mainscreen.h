@@ -128,6 +128,12 @@ private slots:
 
     void on_pbPlusOrMinus_clicked();
 
+    void on_pbIntegration_clicked();
+
+    void on_lstGraphFormulas_clicked(const QModelIndex &index);
+
+    void on_txtEquation_textChanged();
+
 private:
     Ui::MainScreen *ui;
 };

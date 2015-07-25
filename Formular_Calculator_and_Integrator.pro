@@ -33,7 +33,8 @@ SOURCES += main.cpp\
     qcustomplot.cpp \
     dlgsavegraph.cpp \
     dlggraphviewer.cpp \
-    dlgcalareaundercurve.cpp
+    dlgcalareaundercurve.cpp \
+    dlgintegration.cpp
 
 HEADERS  += mainscreen.h \
     constantelement.h \
@@ -55,14 +56,16 @@ HEADERS  += mainscreen.h \
     dlgsavegraph.h \
     dlggraphviewer.h \
     exprtk.hpp \
-    dlgcalareaundercurve.h
+    dlgcalareaundercurve.h \
+    dlgintegration.h
 
 FORMS    += mainscreen.ui \
     dlgsaveformula.ui \
     dlgloadformula.ui \
     dlgsavegraph.ui \
     dlggraphviewer.ui \
-    dlgcalareaundercurve.ui
+    dlgcalareaundercurve.ui \
+    dlgintegration.ui
 
 RESOURCES += \
     resources.qrc

@@ -1,29 +1,29 @@
-#include "dlgcalareaundercurve.h"
-#include "ui_dlgcalareaundercurve.h"
+#include "dlgintegration.h"
+#include "ui_dlgintegration.h"
 #include "formulaelement.h"
 #include "exprtk.hpp"
-#include "qmessagebox.h"
+#include <qmessagebox.h>
 #include <QInputDialog>
 
-dlgCalAreaUnderCurve::dlgCalAreaUnderCurve(QWidget *parent) :
+dlgIntegration::dlgIntegration(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::dlgCalAreaUnderCurve)
+    ui(new Ui::dlgIntegration)
 {
     ui->setupUi(this);
 }
 
-dlgCalAreaUnderCurve::~dlgCalAreaUnderCurve()
+dlgIntegration::~dlgIntegration()
 {
     delete ui;
 }
 
-void dlgCalAreaUnderCurve::setGraphEquation(std::string graphEquation)
+void dlgIntegration::setGraphEquation(std::string graphEquation)
 {
     this->ui->txtFormula->setText(QString::fromStdString(graphEquation));
     addIntegrationVariables(this->ui->txtFormula->toPlainText().toStdString());
 }
 
-void dlgCalAreaUnderCurve::addIntegrationVariables(std::string graphEquation)
+void dlgIntegration::addIntegrationVariables(std::string graphEquation)
 {
     std::vector<variableValue*> variableValues;
     std::string formulaInput(graphEquation);
@@ -32,14 +32,13 @@ void dlgCalAreaUnderCurve::addIntegrationVariables(std::string graphEquation)
 
     this->ui->cmbIntegrationVar->clear();
     this->ui->cmbIntegrationVar->addItem("-Select-");
-
     for (int i = 0; i < variableValues.size(); i++)
     {
         this->ui->cmbIntegrationVar->addItem(variableValues[i]->variable.data());
     }
 }
 
-void dlgCalAreaUnderCurve::findAreaUnderTheCurve(std::string graphEquation){
+double dlgIntegration::findAreaUnderTheCurve(std::string graphEquation){
 
     exprtk::parser<double> parser;
     exprtk::expression<double> expression;
@@ -52,7 +51,7 @@ void dlgCalAreaUnderCurve::findAreaUnderTheCurve(std::string graphEquation){
     double minimumRange = std::stod(minRange);
     double maximumRange = std::stod(maxRange);
 
-    std::string expression_string = "abs(" +graphEquation+ ")";
+    std::string expression_string = graphEquation;
 
     std::vector<variableValue*> variableValues;
     std::string formulaInput(graphEquation);
@@ -83,13 +82,13 @@ void dlgCalAreaUnderCurve::findAreaUnderTheCurve(std::string graphEquation){
     expression.register_symbol_table(symbol_table);
     parser.compile(expression_string,expression);
 
-    double calculatedArea = (exprtk::integrate(expression,integrationVar,minimumRange,maximumRange));
-
-    this->ui->txtCalAreaUndertheCurve->setText(QString::number(calculatedArea));
+    return (exprtk::integrate(expression,integrationVar,minimumRange,maximumRange));
 }
 
-void dlgCalAreaUnderCurve::on_pbCalculate_clicked()
+void dlgIntegration::on_pbOk_clicked()
 {
+    double calculatedArea;
+
     if((this->ui->txtMinRange->toPlainText() == "")|| (this->ui->txtMaxRange->toPlainText() == ""))
     {
         QMessageBox::critical(this,"Infinity Calculator","Please provide both minimum & maximum ranges.", QMessageBox::Ok);
@@ -100,11 +99,14 @@ void dlgCalAreaUnderCurve::on_pbCalculate_clicked()
     }
     else
     {
-        findAreaUnderTheCurve(this->ui->txtFormula->toPlainText().toStdString());
+        calculatedArea = findAreaUnderTheCurve(this->ui->txtFormula->toPlainText().toStdString());
     }
+
+    QMessageBox::critical(this,"Infinity Calculator","Integrated answer "+QString::number(calculatedArea), QMessageBox::Ok);
+
 }
 
-void dlgCalAreaUnderCurve::on_pbClose_clicked()
+void dlgIntegration::on_pbClose_clicked()
 {
     this->close();
 }

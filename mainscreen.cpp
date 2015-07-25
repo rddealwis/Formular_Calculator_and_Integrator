@@ -6,6 +6,7 @@
 #include "dlgsavegraph.h"
 #include "dlggraphviewer.h"
 #include "dlgcalareaundercurve.h"
+#include "dlgintegration.h"
 #include <qmessagebox.h>
 #include <qframe.h>
 #include <QInputDialog>
@@ -18,6 +19,10 @@ MainScreen::MainScreen(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->frmAboutCalculator->setVisible(false);
+    ui->pbAddGraphFormula->setEnabled(false);
+    ui->pbRemoveFormula->setEnabled(false);
+    ui->pbCalAreaUndertheCurve->setEnabled(false);
+    ui->pbGenerate->setEnabled(false);
 }
 
 MainScreen::~MainScreen()
@@ -354,13 +359,16 @@ void MainScreen::on_pbLoadFormula_clicked()
     loadFormula.setCurrentMemory(formula, formulaName, formulaOnMemory, formulaNameOnMemory, filePath);
     loadFormula.setModal(true);
     loadFormula.exec();
+
     std::fill( std::begin( formulaName ), std::end( formulaName ), "" );
     std::fill( std::begin( formula ), std::end( formula ), "" );
     std::fill( std::begin( formulaOnMemory ), std::end( formulaOnMemory ), "" );
     std::fill( std::begin( formulaNameOnMemory ), std::end( formulaNameOnMemory ), "" );
+
     this->ui->txtTextEditor->setText(QString::fromStdString(loadFormula.getSelectedEquation(formula, formulaName, formulaOnMemory, formulaNameOnMemory)));
     this->ui->lstScientificFromFile->clear();
     this->filePath = loadFormula.filePath;
+
     this->LoadToListGraphFromFile();
     this->LoadToListGraphInMemory();
     this->LoadToListGraphScientificFromFile();
@@ -373,13 +381,16 @@ void MainScreen::on_pbLoadGraphFormula_clicked()
     loadFormula.setCurrentMemory(formula, formulaName, formulaOnMemory, formulaNameOnMemory, filePath);
     loadFormula.setModal(true);
     loadFormula.exec();
+
     std::fill( std::begin( formulaName ), std::end( formulaName ), "" );
     std::fill( std::begin( formula ), std::end( formula ), "" );
     std::fill( std::begin( formulaOnMemory ), std::end( formulaOnMemory ), "" );
     std::fill( std::begin( formulaNameOnMemory ), std::end( formulaNameOnMemory ), "" );
+
     this->ui->txtEquation->setText(QString::fromStdString(loadFormula.getSelectedEquation(formula, formulaName, formulaOnMemory, formulaNameOnMemory)));
     this->ui->lstScientificFromFile->clear();
     this->filePath = loadFormula.filePath;
+
     this->LoadToListGraphFromFile();
     this->LoadToListGraphInMemory();
     this->LoadToListGraphScientificFromFile();
@@ -410,6 +421,7 @@ void MainScreen::LoadToListGraphInMemory()
     QListWidgetItem *newItem;
     QString ListVal = "";
     this->ui->lstGraphInMemory->clear();
+
     for(int i = 0; formulaNameOnMemory[i] != ""; i++)
     {
         if(formulaNameOnMemory[i] != "")
@@ -429,6 +441,7 @@ void MainScreen::LoadToListGraphScientificFromFile()
     QListWidgetItem *newItem;
     QString ListVal = "";
     this->ui->lstScientificFromFile->clear();
+
     for(int i = 0; formulaName[i] != ""; i++)
     {
        // if(formulaName[i] != "")
@@ -448,6 +461,7 @@ void MainScreen::LoadToListGraphScientificInMemory()
     QListWidgetItem *newItem;
     QString ListVal = "";
     this->ui->lstScientificInMemory->clear();
+
     for(int i = 0; formulaNameOnMemory[i] != ""; i++)
     {
        // if(formulaNameOnMemory[i] != "")
@@ -470,6 +484,38 @@ void MainScreen::on_pbAddGraphFormula_clicked()
     newItem->setText(this->ui->txtEquation->toPlainText());
     int row = this->ui->lstGraphFormulas->row(this->ui->lstGraphFormulas->currentItem());
     this->ui->lstGraphFormulas->insertItem(row, newItem);
+
+    ui->txtEquation->clear();
+    ui->pbRemoveFormula->setEnabled(true);
+    ui->pbGenerate->setEnabled(true);
+
+    ui->txtXaxisRangeFrom->setText("-5");
+    ui->txtXaxisRangeTo->setText("-5");
+    ui->txtYaxisRangeFrom->setText("-5");
+    ui->txtYaxisRangeTo->setText("-5");
+
+    ui->txtXaxisName->setText("X-Axis");
+    ui->txtYaxisName->setText("Y-Axis");
+}
+
+void MainScreen::on_pbRemoveFormula_clicked()
+{
+    this->ui->lstGraphFormulas->takeItem(this->ui->lstGraphFormulas->row(this->ui->lstGraphFormulas->currentItem()));
+
+    if(this->ui->lstGraphFormulas->count() == 0)
+    {
+        ui->pbCalAreaUndertheCurve->setEnabled(false);
+        ui->pbRemoveFormula->setEnabled(false);
+        ui->pbGenerate->setEnabled(false);
+
+        ui->txtXaxisRangeFrom->clear();
+        ui->txtXaxisRangeTo->clear();
+        ui->txtYaxisRangeFrom->clear();
+        ui->txtYaxisRangeTo->clear();
+
+        ui->txtXaxisName->clear();
+        ui->txtYaxisName->clear();
+    }
 }
 
 void MainScreen::on_pbGenerate_clicked()
@@ -578,12 +624,6 @@ void MainScreen::on_tabMenu_currentChanged(int index)
     }
 }
 
-
-void MainScreen::on_pbRemoveFormula_clicked()
-{
-    this->ui->lstGraphFormulas->takeItem(this->ui->lstGraphFormulas->row(this->ui->lstGraphFormulas->currentItem()));
-}
-
 void MainScreen::on_lstScientificInMemory_doubleClicked(const QModelIndex &index)
 {
     this->ButtonClickEventHandler(this->ui->lstScientificInMemory->currentItem()->text().toStdString(), 0);
@@ -608,13 +648,46 @@ void MainScreen::on_lstGraphFromFile_doubleClicked(const QModelIndex &index)
 
 void MainScreen::on_pbCalAreaUndertheCurve_clicked()
 {
-    dlgCalAreaUnderCurve calAreaUnderCurve;
+    QModelIndexList selectedList = this->ui->lstGraphFormulas->selectionModel()->selectedRows();
+    if (selectedList.size() > 0) {
 
-    calAreaUnderCurve.setGraphEquation(this->ui->lstGraphFormulas->currentItem()->text().toStdString());
-    calAreaUnderCurve.setModal(true);
-    calAreaUnderCurve.exec();
+        dlgCalAreaUnderCurve calAreaUnderCurve;
+
+        calAreaUnderCurve.setGraphEquation(this->ui->lstGraphFormulas->currentItem()->text().toStdString());
+        calAreaUnderCurve.setModal(true);
+        calAreaUnderCurve.exec();
+    }
+    else
+    {
+        QMessageBox::critical(this,"Infinity Calculator","Please select a formula to load.", QMessageBox::Ok);
+
+    }
+
+
+
+
+
+
+
+
+
 }
 
+void MainScreen::on_pbIntegration_clicked()
+{
+    dlgIntegration formualIntegration;
 
+    formualIntegration.setGraphEquation(this->ui->txtTextEditor->toPlainText().toStdString());
+    formualIntegration.setModal(true);
+    formualIntegration.exec();
+}
 
+void MainScreen::on_lstGraphFormulas_clicked(const QModelIndex &index)
+{
+    ui->pbCalAreaUndertheCurve->setEnabled(true);
+}
 
+void MainScreen::on_txtEquation_textChanged()
+{
+    ui->pbAddGraphFormula->setEnabled(true);
+}
