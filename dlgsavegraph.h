@@ -2,7 +2,7 @@
 #define DLGSAVEGRAPH_H
 
 #include <QDialog>
-
+#include <qcustomplot.h>
 namespace Ui {
 class dlgSaveGraph;
 }
@@ -13,6 +13,10 @@ class dlgSaveGraph : public QDialog
 
 public:
     explicit dlgSaveGraph(QWidget *parent = 0);
+    QString GraphsData;
+    void SetCurrentValues(QString p_GraphsData, QCustomPlot *p_GraphDetails);
+    QCustomPlot *GraphDetails;
+    QString filePath;
     ~dlgSaveGraph();
 
 private slots:

@@ -25,10 +25,12 @@ bool dlgGraphViewer::intializeGraphs(std::string graphEquations[], std::string x
     try
     {
         double range = 1440;
+
         QVector<double> x(range), currentGraph(range);
         std::vector<variableValue*> variableValues;
         for(int j = 0; graphEquations[j] != ""; j++)
         {
+            GraphsCordinates = "";
             double xAxis = xAxisRangeFrom;
             std::string formulaInput(graphEquations[j]);
             FormulaElement* formula = FormulaElement::parseFormula(formulaInput);
@@ -40,7 +42,15 @@ bool dlgGraphViewer::intializeGraphs(std::string graphEquations[], std::string x
                 formula->setVariableValues(&variableValues);
                 currentGraph[i] = (float)formula->evaluate();
                 xAxis++;
+
+                if(x[i] < xAxisRangeTo)
+                {
+                    QString x1 = QString::number(xAxis);
+                    QString y1 = QString::number(currentGraph[i]);
+                    GraphsCordinates += "(" + x1 +  ", " + y1 + "), ";
+                }
             }
+            GraphsData += QString::fromStdString(graphEquations[j]) + ", " + GraphsCordinates + "\n\n";
 
             ui->customPlot->legend->setVisible(true);
             ui->customPlot->addGraph();
@@ -88,7 +98,7 @@ bool dlgGraphViewer::intializeGraphs(std::string graphEquations[], std::string x
 void dlgGraphViewer::on_pbSaveGraph_clicked()
 {
     dlgSaveGraph saveGraph;
-
+    saveGraph.SetCurrentValues(this->GraphsData, this->ui->customPlot);
     saveGraph.setModal(true);
     saveGraph.exec();
 }

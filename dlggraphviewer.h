@@ -15,6 +15,8 @@ class dlgGraphViewer : public QDialog
 public:
     explicit dlgGraphViewer(QWidget *parent = 0);
     bool intializeGraphs(std::string graphEquations[], std::string xAxisLabel, std::string yAxisLabel, double xAxisRangeFrom, double xAxisRangeTo, double yAxisRangeFrom, double yAxisRangeTo);
+    QString GraphsData = "";
+    QString GraphsCordinates = "";
     ~dlgGraphViewer();
 
 private slots:
