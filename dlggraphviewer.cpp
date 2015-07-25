@@ -24,29 +24,49 @@ bool dlgGraphViewer::intializeGraphs(std::string graphEquations[], std::string x
 {
     try
     {
-        QVector<double> x(1440), currentGraph(1440);
+        double range = 1440;
+        QVector<double> x(range), currentGraph(range);
         std::vector<variableValue*> variableValues;
-        std::string input[] = {"x", "x+1", "x+2","-x", "x-1"};//, "-x+2","x^2", "x^2+1", "2x+2"};
-        for(int j = 0; j < 5; j++)
+        for(int j = 0; graphEquations[j] != ""; j++)
         {
-            //QMessageBox::critical(this,"Infinity Calculator","Graph: " + QString::fromStdString(input[j]), QMessageBox::Ok);
-            std::string formulaInput(input[j]);
+            double xAxis = xAxisRangeFrom;
+            std::string formulaInput(graphEquations[j]);
             FormulaElement* formula = FormulaElement::parseFormula(formulaInput);
             formula->getVariableValues(&variableValues);
-            for (int i=0; i<1440; i++)
+            for (int i=0; i<range; i++)
             {
-                x[i] = i;
-                variableValues[0]->value = i;
+                x[i] = xAxis;
+                variableValues[0]->value = xAxis;
                 formula->setVariableValues(&variableValues);
-                currentGraph[i] = formula->evaluate();
+                currentGraph[i] = (float)formula->evaluate();
+                xAxis++;
             }
 
             ui->customPlot->legend->setVisible(true);
             ui->customPlot->addGraph();
-            ui->customPlot->graph(j)->setPen(QPen(Qt::blue));
-            ui->customPlot->graph(j)->setBrush(QBrush(QColor(0, 0, 255, 20)));
-            ui->customPlot->graph(j)->setData(x, currentGraph);
-            ui->customPlot->graph(j)->setName(QString::fromStdString(input[j]));
+
+            switch(j)
+            {
+                case 0: ui->customPlot->graph(j)->setPen(QPen(Qt::red)); break;
+                case 1: ui->customPlot->graph(j)->setPen(QPen(Qt::green)); break;
+                case 2: ui->customPlot->graph(j)->setPen(QPen(Qt::blue));break;
+                case 3: ui->customPlot->graph(j)->setPen(QPen(Qt::black));break;
+                case 4: ui->customPlot->graph(j)->setPen(QPen(Qt::darkRed));break;
+                case 5: ui->customPlot->graph(j)->setPen(QPen(Qt::darkGreen));break;
+                case 6: ui->customPlot->graph(j)->setPen(QPen(Qt::darkBlue));break;
+                case 7: ui->customPlot->graph(j)->setPen(QPen(Qt::cyan));break;
+                case 8: ui->customPlot->graph(j)->setPen(QPen(Qt::magenta));break;
+                case 9: ui->customPlot->graph(j)->setPen(QPen(Qt::yellow));break;
+                case 10: ui->customPlot->graph(j)->setPen(QPen(Qt::gray));break;
+                case 11: ui->customPlot->graph(j)->setPen(QPen(Qt::darkCyan));break;
+                case 12: ui->customPlot->graph(j)->setPen(QPen(Qt::darkMagenta));break;
+                case 13: ui->customPlot->graph(j)->setPen(QPen(Qt::darkYellow));break;
+                case 14: ui->customPlot->graph(j)->setPen(QPen(Qt::darkGray));break;
+                default: ui->customPlot->graph(j)->setPen(QPen(Qt::lightGray));
+            }
+
+           ui->customPlot->graph(j)->setData(x, currentGraph);
+           ui->customPlot->graph(j)->setName(QString::fromStdString(graphEquations[j]));
         }
 
         ui->customPlot->xAxis->setRange(xAxisRangeFrom, xAxisRangeTo);

@@ -475,25 +475,97 @@ void MainScreen::on_pbAddGraphFormula_clicked()
 void MainScreen::on_pbGenerate_clicked()
 {
     dlgGraphViewer graphViewer;
+    QString InfoMessage = "You have not specified values for the following. Default value will be taken.\n";
+    bool ShowMsg = false;
+    for(int i = 0; i< this->ui->lstGraphFormulas->count(); i++)
+    {
+        graphEquations[i] = this->ui->lstGraphFormulas->item(i)->text().toStdString();
+    }
 
-//    QMessageBox::critical(this,"Infinity Calculator",this->ui->lstGraphFormulas->item(0)->text(), QMessageBox::Ok);
-//    for(int i = 0; i< 1/*this->ui->lstGraphInMemory->count()*/; i++)
-//    {
-//        formulaListTemp[i] = this->ui->lstGraphFormulas->currentItem()->text().toStdString();
-//        FormulaElement* formula  = FormulaElement::parseFormula(formulaListTemp[i]);
-//        formulaList.push_back(formula);// = formula;
-//    }
+    std::string txtXaxisName    = this->ui->txtXaxisName->toPlainText().toStdString();
+    std::string txtYaxisName    = this->ui->txtYaxisName->toPlainText().toStdString();
+    double txtXaxisRangeFrom    = this->ui->txtXaxisRangeFrom->toPlainText().toDouble();
+    double txtXaxisRangeTo      = this->ui->txtXaxisRangeTo->toPlainText().toDouble();
+    double txtYaxisRangeFrom    = this->ui->txtYaxisRangeFrom->toPlainText().toDouble();
+    double txtYaxisRangeTo      = this->ui->txtYaxisRangeTo->toPlainText().toDouble();
 
-//    FormulaElement *test = formulaList[this->ui->lstGraphFormulas->count()];
+    if(graphEquations[0] == "")
+    {
+        QMessageBox::critical(this,"Infinity Calculator", "Insert the a graph to be plotted to the list box.", QMessageBox::Ok);
+        return;
+    }
+
+    if(graphEquations[16] != "")
+    {
+        QMessageBox::information(this,"Infinity Calculator", "Only 15 graphs will be shown in diffrent colors. Others will be in same color.", QMessageBox::Ok);
+    }
+
+    if(txtXaxisName == "")
+    {
+        txtXaxisName = "X Axis";
+        InfoMessage +="\t> X Axis Name, Default 'X Axis'\n";
+        ShowMsg = true;
+    }
+
+    if(txtYaxisName == "")
+    {
+        txtYaxisName = "Y Axis";
+        InfoMessage +="\t> Y Axis Name, Default 'Y Axis'\n";
+        ShowMsg = true;
+    }
+
+    if(txtXaxisRangeFrom == 0)
+    {
+        txtXaxisRangeFrom = -10;
+        InfoMessage +="\t> X Axis Start point, Default Value -10\n";
+        ShowMsg = true;
+    }
+
+    if(txtXaxisRangeTo == 0)
+    {
+        txtXaxisRangeTo = 20;
+        InfoMessage +="\t> X Axis End point, Default Value 20\n";
+        ShowMsg = true;
+    }
+
+    if(txtYaxisRangeFrom == 0)
+    {
+        txtYaxisRangeFrom = -10;
+        InfoMessage +="\t> Y Axis Start point, Default Value -10\n";
+        ShowMsg = true;
+    }
+
+    if(txtYaxisRangeTo == 0)
+    {
+        txtYaxisRangeTo = 20;
+        InfoMessage +="\t> Y Axis End point, Default Value 20\n";
+        ShowMsg = true;
+    }
+
+    if(txtXaxisRangeFrom > txtXaxisRangeTo)
+    {
+        QMessageBox::critical(this,"Infinity Calculator", "X axis starting point must be less than its ending point.", QMessageBox::Ok);
+        return;
+    }
+    if(txtYaxisRangeFrom > txtYaxisRangeTo)
+    {
+        QMessageBox::critical(this,"Infinity Calculator", "Y axis starting point must be less than its ending point.", QMessageBox::Ok);
+        return;
+    }
+
+    if(ShowMsg)
+    {
+        QMessageBox::information(this,"Infinity Calculator", InfoMessage, QMessageBox::Ok);
+    }
 
 
     graphViewer.intializeGraphs(graphEquations,
-                                this->ui->txtXaxisName->toPlainText().toStdString(),
-                                this->ui->txtYaxisName->toPlainText().toStdString(),
-                                (this->ui->txtXaxisRangeFrom->toPlainText()).toDouble(),
-                                (this->ui->txtXaxisRangeTo->toPlainText()).toDouble(),
-                                (this->ui->txtYaxisRangeFrom->toPlainText()).toDouble(),
-                                (this->ui->txtYaxisRangeTo->toPlainText()).toDouble());
+                                txtXaxisName,
+                                txtYaxisName,
+                                txtXaxisRangeFrom,
+                                txtXaxisRangeTo,
+                                txtYaxisRangeFrom,
+                                txtYaxisRangeTo);
 
     graphViewer.setModal(true);
     graphViewer.exec();
