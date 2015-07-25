@@ -21,6 +21,10 @@ public:
     std::string formulaOnMemory[1024];
     std::string formulaNameOnMemory[1024];
     std::string filePath;
+    std::string formulaNameTemp;
+    std::string formulaTemp;
+    int location;
+    bool ValidateFormulaName(std::string arr[]);
     ~dlgSaveFormula();
 
 private slots:

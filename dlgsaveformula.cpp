@@ -30,7 +30,6 @@ void CopyArray(std::string array1[], std::string array2[])
 
 void dlgSaveFormula::on_pbBrowseSaveLoc_clicked()
 {
-    //ui->txtSaveLocation->setText(QFileDialog::getOpenFileName(this, tr("Save File"), "/desktop", tr("XML Files (*.xml)")));
     XMLFileHandling obj1;
     QString temp = "<temp></temp>";
     filePath=QFileDialog::getSaveFileName(this, tr("Save File"), "/desktop", tr("XML Files (*.xml)"), new QString("XML Files (*.xml)")).toUtf8().constData();
@@ -185,19 +184,27 @@ void dlgSaveFormula::on_pbSaveFormula_clicked()
             }
             else
             {
-                int size = GetArraySize(formula);
-                formulaName[size]=this->ui->txtFormulaName->toPlainText().toStdString();
-                formula[size]=this->ui->txtFormula->toPlainText().toStdString();
-                filePath=this->ui->txtSaveLocation->toPlainText().toStdString();
+                location = GetArraySize(formula);
+                this->formulaTemp = this->ui->txtFormula->toPlainText().toStdString();
+                this->formulaNameTemp = this->ui->txtFormulaName->toPlainText().toStdString();
 
-                if(obj1.Write(filePath, formula,formulaName))
+                if(this->ValidateFormulaName(formulaName))
                 {
-                    QMessageBox::information(this, "Infinity Calculator", "Formula is successfully saved to the file.", QMessageBox::Ok);
-                    this->close();
-                }
-                else
-                {
-                    QMessageBox::critical(this,"Infinity Calculator","Failed to open the file to write.", QMessageBox::Ok);
+
+                    formulaName[location]= this->formulaNameTemp;
+                    formula[location]= this->formulaTemp;
+
+                    filePath=this->ui->txtSaveLocation->toPlainText().toStdString();
+
+                    if(obj1.Write(filePath, formula,formulaName))
+                    {
+                        QMessageBox::information(this, "Infinity Calculator", "Formula is successfully saved to the file.", QMessageBox::Ok);
+                        this->close();
+                    }
+                    else
+                    {
+                        QMessageBox::critical(this,"Infinity Calculator","Failed to open the file to write.", QMessageBox::Ok);
+                    }
                 }
             }
         }
@@ -205,7 +212,7 @@ void dlgSaveFormula::on_pbSaveFormula_clicked()
         {
             try
             {
-                int location = 0;
+                location = 0;
                 while(true)
                 {
                     if(formulaOnMemory[location] == "")
@@ -214,12 +221,18 @@ void dlgSaveFormula::on_pbSaveFormula_clicked()
                     }
                     location++;
                 }
-                int size = GetArraySize(formulaNameOnMemory);
-                formulaNameOnMemory[size]=this->ui->txtFormulaName->toPlainText().toStdString();
-                formulaOnMemory[size]=this->ui->txtFormula->toPlainText().toStdString();
 
-                QMessageBox::information(this, "Infinity Calculator", "Formula is successfully saved to the memory.", QMessageBox::Ok);
-                this->close();
+                location = GetArraySize(formulaNameOnMemory);
+                this->formulaTemp = this->ui->txtFormula->toPlainText().toStdString();
+                this->formulaNameTemp = this->ui->txtFormulaName->toPlainText().toStdString();
+
+                if(this->ValidateFormulaName(formulaNameOnMemory))
+                {
+                    formulaNameOnMemory[location] = this->formulaNameTemp;
+                    formulaOnMemory[location] = this->formulaTemp;
+                    QMessageBox::information(this, "Infinity Calculator", "Formula is successfully saved to the memory.", QMessageBox::Ok);
+                    this->close();
+                }
             }
             catch(...)
             {
@@ -227,6 +240,29 @@ void dlgSaveFormula::on_pbSaveFormula_clicked()
             }
         }
     }
+}
+
+bool dlgSaveFormula::ValidateFormulaName(std::string arr[])
+{
+    for(int i = 0; arr[i] !=""; i++)
+    {
+        if(arr[i] == this->formulaNameTemp)
+        {
+            QMessageBox::StandardButton overideInfo = QMessageBox::question(this,"Infinity Calculator","Formula Name Exists. Overide the existing formula?", QMessageBox::Yes|QMessageBox::No);
+
+            if(overideInfo == QMessageBox::Yes)
+            {
+                this->location = i;
+                return true;
+            }
+            else
+            {
+                QMessageBox::information(this,"Infinity Calculator","Please specify a diffrent name for the formula.", QMessageBox::Ok);
+                return false;
+            }
+        }
+    }
+    return true;
 }
 
 void dlgSaveFormula::on_pbClose_clicked()
