@@ -486,7 +486,6 @@ void MainScreen::on_pbAddGraphFormula_clicked()
     this->ui->lstGraphFormulas->insertItem(row, newItem);
 
     ui->txtEquation->clear();
-    ui->pbRemoveFormula->setEnabled(true);
     ui->pbGenerate->setEnabled(true);
 
     ui->txtXaxisRangeFrom->setText("-5");
@@ -684,10 +683,33 @@ void MainScreen::on_pbIntegration_clicked()
 
 void MainScreen::on_lstGraphFormulas_clicked(const QModelIndex &index)
 {
+    ui->pbRemoveFormula->setEnabled(true);
     ui->pbCalAreaUndertheCurve->setEnabled(true);
 }
 
 void MainScreen::on_txtEquation_textChanged()
 {
-    ui->pbAddGraphFormula->setEnabled(true);
+    if(ui->txtEquation->toPlainText()== "")
+    {
+        ui->pbAddGraphFormula->setEnabled(false);
+    }
+    else
+    {
+        ui->pbAddGraphFormula->setEnabled(true);
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

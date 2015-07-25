@@ -148,29 +148,42 @@ void dlgSaveFormula::on_pbSaveFormula_clicked()
 {
     XMLFileHandling obj1;
 
-    if(this->ui->rdToFile->isChecked())
+    if((this->ui->txtFormulaName->toPlainText() == ""))
     {
-        int size = GetArraySize(formula);
-        formulaName[size]=this->ui->txtFormulaName->toPlainText().toStdString();
-        formula[size]=this->ui->txtFormula->toPlainText().toStdString();
-        filePath=this->ui->txtSaveLocation->toPlainText().toStdString();
-
-        if(obj1.Write(filePath, formula,formulaName))
-        {
-            QMessageBox::information(this, "Infinity Calculator", "Formula is successfully saved to the file.", QMessageBox::Ok);
-            this->close();
-        }
-        else
-        {
-            QMessageBox::critical(this,"Infinity Calculator","Failed to open the file to write.", QMessageBox::Ok);
-        }
+        QMessageBox::critical(this,"Infinity Calculator","Please enter a formula name.", QMessageBox::Ok);
     }
     else
     {
-        try
+        if(this->ui->rdToFile->isChecked())
         {
-            int location = 0;
-            /* if(formulaOnMemory[0] == "")
+            if((this->ui->txtSaveLocation->toPlainText() == ""))
+            {
+                QMessageBox::critical(this,"Infinity Calculator","Please specify the save location.", QMessageBox::Ok);
+            }
+            else
+            {
+                int size = GetArraySize(formula);
+                formulaName[size]=this->ui->txtFormulaName->toPlainText().toStdString();
+                formula[size]=this->ui->txtFormula->toPlainText().toStdString();
+                filePath=this->ui->txtSaveLocation->toPlainText().toStdString();
+
+                if(obj1.Write(filePath, formula,formulaName))
+                {
+                    QMessageBox::information(this, "Infinity Calculator", "Formula is successfully saved to the file.", QMessageBox::Ok);
+                    this->close();
+                }
+                else
+                {
+                    QMessageBox::critical(this,"Infinity Calculator","Failed to open the file to write.", QMessageBox::Ok);
+                }
+            }
+        }
+        else
+        {
+            try
+            {
+                int location = 0;
+                /* if(formulaOnMemory[0] == "")
                 {
                     location = 0;
                 }
@@ -183,29 +196,27 @@ void dlgSaveFormula::on_pbSaveFormula_clicked()
                     location = formulaOnMemory->length() + 1;
                 }*/
 
-            while(true)
-            {
-                if(formulaOnMemory[location] == "")
+                while(true)
                 {
-                    break;
+                    if(formulaOnMemory[location] == "")
+                    {
+                        break;
+                    }
+                    location++;
                 }
-                location++;
+                int size = GetArraySize(formulaNameOnMemory);
+                formulaNameOnMemory[size]=this->ui->txtFormulaName->toPlainText().toStdString();
+                formulaOnMemory[size]=this->ui->txtFormula->toPlainText().toStdString();
+
+                QMessageBox::information(this, "Infinity Calculator", "Formula is successfully saved to the memory.", QMessageBox::Ok);
+                this->close();
             }
-            int size = GetArraySize(formulaNameOnMemory);
-            formulaNameOnMemory[size]=this->ui->txtFormulaName->toPlainText().toStdString();
-            formulaOnMemory[size]=this->ui->txtFormula->toPlainText().toStdString();
-
-            QMessageBox::information(this, "Infinity Calculator", "Formula is successfully saved to the memory.", QMessageBox::Ok);
-            this->close();
+            catch(...)
+            {
+                QMessageBox::critical(this,"Infinity Calculator","Error occured when writing to the memory", QMessageBox::Ok);
+            }
         }
-
-        catch(...)
-        {
-            QMessageBox::critical(this,"Infinity Calculator","Error occured when writing to the memory", QMessageBox::Ok);
-        }
-
     }
-
 }
 
 void dlgSaveFormula::on_pbClose_clicked()
