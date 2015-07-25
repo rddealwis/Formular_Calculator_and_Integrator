@@ -17,9 +17,7 @@ std::string CosineFunctionElement::toQString()
 
 void CosineFunctionElement::AddArgument(FormulaElement *argument)
 {
-    int temp=GetArgument().size();
-
-    if(temp==0)
+    if(GetArgument().size() == 0)
     {
         FunctionElement::AddArgument(argument);
     }
