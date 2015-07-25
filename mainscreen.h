@@ -134,6 +134,10 @@ private slots:
 
     void on_txtEquation_textChanged();
 
+    void on_pbPoweOfTen_clicked();
+
+    void on_pbNthPower_clicked();
+
 private:
     Ui::MainScreen *ui;
 };

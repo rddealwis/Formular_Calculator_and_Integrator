@@ -235,7 +235,30 @@ void MainScreen::on_pbFactorial_clicked()
 
 void MainScreen::on_pbSquare_clicked()
 {
-    this->ButtonClickEventHandler("^2", 0);
+    std::string input = this->ui->txtTextEditor->toPlainText().toStdString()+ "^2";
+
+    std::string formulaInput(input);
+    FormulaElement* formula = FormulaElement::parseFormula(formulaInput);
+    this->ui->txtResultsEditor->setText(QString::number(formula->evaluate()));
+
+    this->ui->txtTextEditor->setText(QString::fromStdString(input));
+}
+
+void MainScreen::on_pbNthPower_clicked()
+{
+    std::string input = this->ui->txtTextEditor->toPlainText().toStdString();
+    this->ui->txtTextEditor->setText(QString::fromStdString(input)+"^");
+}
+
+void MainScreen::on_pbPoweOfTen_clicked()
+{
+    std::string input = "10^"+this->ui->txtTextEditor->toPlainText().toStdString();
+
+    std::string formulaInput(input);
+    FormulaElement* formula = FormulaElement::parseFormula(formulaInput);
+    this->ui->txtResultsEditor->setText(QString::number(formula->evaluate()));
+
+    this->ui->txtTextEditor->setText(QString::fromStdString(input));
 }
 
 void MainScreen::on_pbPi_clicked()
@@ -638,12 +661,10 @@ void MainScreen::on_lstGraphInMemory_doubleClicked(const QModelIndex &index)
     this->ButtonClickEventHandler(this->ui->lstGraphInMemory->currentItem()->text().toStdString(), 1);
 }
 
-
 void MainScreen::on_lstGraphFromFile_doubleClicked(const QModelIndex &index)
 {
     this->ButtonClickEventHandler(this->ui->lstGraphFromFile->currentItem()->text().toStdString(), 1);
 }
-
 
 void MainScreen::on_pbCalAreaUndertheCurve_clicked()
 {
@@ -659,17 +680,7 @@ void MainScreen::on_pbCalAreaUndertheCurve_clicked()
     else
     {
         QMessageBox::critical(this,"Infinity Calculator","Please select a formula to load.", QMessageBox::Ok);
-
     }
-
-
-
-
-
-
-
-
-
 }
 
 void MainScreen::on_pbIntegration_clicked()
@@ -698,14 +709,6 @@ void MainScreen::on_txtEquation_textChanged()
         ui->pbAddGraphFormula->setEnabled(true);
     }
 }
-
-
-
-
-
-
-
-
 
 
 
