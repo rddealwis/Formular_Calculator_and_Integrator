@@ -152,6 +152,10 @@ void dlgSaveFormula::on_pbSaveFormula_clicked()
     {
         QMessageBox::critical(this,"Infinity Calculator","Please enter a formula name.", QMessageBox::Ok);
     }
+    else if((this->ui->txtFormula->toPlainText() == ""))
+    {
+        QMessageBox::critical(this,"Infinity Calculator","Please enter a formula.", QMessageBox::Ok);
+    }
     else
     {
         if(this->ui->rdToFile->isChecked())

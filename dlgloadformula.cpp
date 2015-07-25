@@ -147,7 +147,12 @@ void dlgLoadFormula::on_rdFromFile_clicked()
 void dlgLoadFormula::on_pbLoadFormula_clicked()
 {
     QModelIndexList selectedList = this->ui->tblCurrentFormulae->selectionModel()->selectedRows();
-    if (selectedList.size() > 0) {
+
+    if((this->ui->rdFromFile->isChecked())&&(this->ui->txtFileLocation->toPlainText() == ""))
+    {
+        QMessageBox::critical(this,"Infinity Calculator","Please specify the file location.", QMessageBox::Ok);
+    }
+    else if (selectedList.size() > 0) {
 
         selectFormula=this->ui->tblCurrentFormulae->item(selectedList.at(0).row(), 1)->text().toStdString();
         this->close();
@@ -155,7 +160,6 @@ void dlgLoadFormula::on_pbLoadFormula_clicked()
     else
     {
         QMessageBox::critical(this,"Infinity Calculator","Please select a formula to load.", QMessageBox::Ok);
-
     }
 }
 
