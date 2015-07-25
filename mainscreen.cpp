@@ -476,19 +476,18 @@ void MainScreen::on_pbGenerate_clicked()
 {
     dlgGraphViewer graphViewer;
 
-    QMessageBox::critical(this,"Infinity Calculator",this->ui->lstGraphFormulas->item(0)->text(), QMessageBox::Ok);
-    for(int i = 0; i< 1/*this->ui->lstGraphInMemory->count()*/; i++)
-    {
-        formulaListTemp[i] = this->ui->lstGraphFormulas->currentItem()->text().toStdString();
-        FormulaElement* formula  = FormulaElement::parseFormula(formulaListTemp[i]);
-        formulaList.push_back(formula);// = formula;
-    }
+//    QMessageBox::critical(this,"Infinity Calculator",this->ui->lstGraphFormulas->item(0)->text(), QMessageBox::Ok);
+//    for(int i = 0; i< 1/*this->ui->lstGraphInMemory->count()*/; i++)
+//    {
+//        formulaListTemp[i] = this->ui->lstGraphFormulas->currentItem()->text().toStdString();
+//        FormulaElement* formula  = FormulaElement::parseFormula(formulaListTemp[i]);
+//        formulaList.push_back(formula);// = formula;
+//    }
 
-    FormulaElement *test = formulaList[this->ui->lstGraphFormulas->count()];
+//    FormulaElement *test = formulaList[this->ui->lstGraphFormulas->count()];
 
 
     graphViewer.intializeGraphs(graphEquations,
-                                test,
                                 this->ui->txtXaxisName->toPlainText().toStdString(),
                                 this->ui->txtYaxisName->toPlainText().toStdString(),
                                 (this->ui->txtXaxisRangeFrom->toPlainText()).toDouble(),

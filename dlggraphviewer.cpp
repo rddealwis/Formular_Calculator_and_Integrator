@@ -19,51 +19,41 @@ dlgGraphViewer::~dlgGraphViewer()
     delete ui;
 }
 
-bool dlgGraphViewer::intializeGraphs(std::string graphEquations[],FormulaElement* formulaList, std::string xAxisLabel,std::string yAxisLabel,
+bool dlgGraphViewer::intializeGraphs(std::string graphEquations[], std::string xAxisLabel,std::string yAxisLabel,
                                      double xAxisRangeFrom, double xAxisRangeTo, double yAxisRangeFrom, double yAxisRangeTo)
 {
     try
     {
         QVector<double> x(1440), currentGraph(1440);
         std::vector<variableValue*> variableValues;
-        formulaList->getVariableValues(&variableValues);
-        float temp = 0;
-        //QVector<QVector<double>> graphPoints;
-
-        for (int i=0; i<1440; i++)
+        std::string input[] = {"x", "x+1", "x+2","-x", "x-1"};//, "-x+2","x^2", "x^2+1", "2x+2"};
+        for(int j = 0; j < 5; j++)
         {
-            x[i] = i;
+            //QMessageBox::critical(this,"Infinity Calculator","Graph: " + QString::fromStdString(input[j]), QMessageBox::Ok);
+            std::string formulaInput(input[j]);
+            FormulaElement* formula = FormulaElement::parseFormula(formulaInput);
+            formula->getVariableValues(&variableValues);
+            for (int i=0; i<1440; i++)
+            {
+                x[i] = i;
+                variableValues[0]->value = i;
+                formula->setVariableValues(&variableValues);
+                currentGraph[i] = formula->evaluate();
+            }
 
-            currentGraph[i] = formulaList->evaluate();
-
-
-
-
-
-
-
-
-
-
-            //currentGraph[i] = cos(i*(3.14159265) / 180);
-            //currentGraph[i] = i*i + 4;
+            ui->customPlot->legend->setVisible(true);
+            ui->customPlot->addGraph();
+            ui->customPlot->graph(j)->setPen(QPen(Qt::blue));
+            ui->customPlot->graph(j)->setBrush(QBrush(QColor(0, 0, 255, 20)));
+            ui->customPlot->graph(j)->setData(x, currentGraph);
+            ui->customPlot->graph(j)->setName(QString::fromStdString(input[j]));
         }
-
-        ui->customPlot->legend->setVisible(true);
-
-        ui->customPlot->addGraph();
-        ui->customPlot->graph(0)->setPen(QPen(Qt::blue));
-        ui->customPlot->graph(0)->setBrush(QBrush(QColor(0, 0, 255, 20)));
-        ui->customPlot->graph(0)->setData(x, currentGraph);
-        ui->customPlot->graph(0)->setName(QString::fromStdString(graphEquations[0]));
 
         ui->customPlot->xAxis->setRange(xAxisRangeFrom, xAxisRangeTo);
         ui->customPlot->yAxis->setRange(yAxisRangeFrom, yAxisRangeTo);
         ui->customPlot->xAxis->setLabel(QString::fromStdString(xAxisLabel));
         ui->customPlot->yAxis->setLabel(QString::fromStdString(yAxisLabel));
         ui->customPlot->replot();
-
-
 
         return true;
     }
