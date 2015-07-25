@@ -18,13 +18,10 @@ bool XMLFileHandling::Write(std::string fileName, std::string formula[], std::st
 {
     QString qFileName=QString::fromStdString(fileName);
     QDomDocument document;
-    //Make the root element
     QDomElement root=document.createElement("SavedFormulaEx");
-    //Add it to the document
     document.appendChild(root);
-    //Add some elements
 
-    for(int i=0; i<=formula->length()+1; i++)
+    for(int i=0; formula[i] != ""; i++)
     {
         QDomElement book =document.createElement("Formulae");
         book.setAttribute("Name", QString::fromStdString(formulaName[i]));
@@ -33,7 +30,6 @@ bool XMLFileHandling::Write(std::string fileName, std::string formula[], std::st
         chapter.setAttribute("Value", QString::fromStdString(formula[i]));
         book.appendChild(chapter);
     }
-    //write tothe file
     QFile file(qFileName);
 
     if(!file.open(QIODevice::WriteOnly|QIODevice::Text))
@@ -54,61 +50,51 @@ bool XMLFileHandling::Read(std::string& fileName,std::string formula[],std::stri
 {
     QDomDocument document;
     QString qFileName=QString::fromStdString(fileName);
-    //Load the file
     QFile file(qFileName);
 
     if(!file.open(QIODevice::ReadOnly|QIODevice::Text))
-    {        
+    {
         return false;
     }
     else
     {
         if(!document.setContent(&file))
-        {            
-            return false;
+        {
+            //return false;
         }
         file.close();
     }
 
-    //Get the root element
-    QDomElement root = document.firstChildElement();
-
-    //List the books
-
-    ListElements(root, "Formulae", "Name", formula, formulaName, true, 0);
-
-    //Get the chapters
-
-   QDomNodeList books=root.elementsByTagName("Formulae");
-
-    for(int i=0; i < books.count(); i++)
+    try
     {
-        QDomNode booknode = books.at(i);
+        QDomElement root = document.firstChildElement();
+        ListElements(root, "Formulae", "Name", formula, formulaName, true, 0);
+        QDomNodeList books=root.elementsByTagName("Formulae");
 
-        //convert to an element
-        if(booknode.isElement())
+        for(int i=0; i < books.count(); i++)
         {
-            QDomElement book=booknode.toElement();
-            ListElements(book, "Formula", "Value", formula, formulaName, false, i);
+            QDomNode booknode = books.at(i);
+            if(booknode.isElement())
+            {
+                QDomElement book=booknode.toElement();
+                ListElements(book, "Formula", "Value", formula, formulaName, false, i);
+            }
         }
     }
-
-    //std::cout<<"Finished Reading File";
-
+    catch(...)
+    {
+        return false;
+    }
     return true;
 }
 
 void ListElements(QDomElement root, QString tagName, QString attribute, std::string formula[], std::string formulaName[], bool operation, int temp)
 {
     QDomNodeList items=root.elementsByTagName(tagName);
-    std::string values="";
-    QMessageBox xmlContent;
 
     for(int i=0; i < items.count(); i++)
     {
         QDomNode itemNode = items.at(i);
-
-        //convert to element
 
         if(itemNode.isElement())
         {
@@ -123,16 +109,6 @@ void ListElements(QDomElement root, QString tagName, QString attribute, std::str
             {
                 formula[temp]=itemElement.attribute(attribute).toStdString();
             }
-
-            /*values+=formulaName[i];
-
-            xmlContent.setText("XML Content.");
-            xmlContent.setInformativeText(QString::fromStdString(values));
-            xmlContent.setStandardButtons(QMessageBox::Ok);
-            xmlContent.setDefaultButton(QMessageBox::Ok);
-*/
-            //qDebug()<<itemElement.attribute(attribute);
         }
     }
-    //int ret = xmlContent.exec();
 }

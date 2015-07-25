@@ -1,7 +1,9 @@
 #include "dlgsaveformula.h"
 #include "ui_dlgsaveformula.h"
 #include "QFileDialog"
-
+#include <sstream>
+#include "QFile"
+#include "QTextStream"
 
 dlgSaveFormula::dlgSaveFormula(QWidget *parent) :
     QDialog(parent),
@@ -23,37 +25,54 @@ void CopyArray(std::string array1[], std::string array2[])
     {
         array2[i] = array1[i];
     }
+
 }
 
 void dlgSaveFormula::on_pbBrowseSaveLoc_clicked()
 {
     //ui->txtSaveLocation->setText(QFileDialog::getOpenFileName(this, tr("Save File"), "/desktop", tr("XML Files (*.xml)")));
     XMLFileHandling obj1;
-    filePath=QFileDialog::getOpenFileName(this, tr("Save File"), "/desktop", tr("XML Files (*.xml)")).toUtf8().constData();
+    QString temp = "<temp></temp>";
+    filePath=QFileDialog::getSaveFileName(this, tr("Save File"), "/desktop", tr("XML Files (*.xml)"), new QString("XML Files (*.xml)")).toUtf8().constData();
+
+    QFile file(QString::fromStdString(filePath));
+    if(!file.exists())
+    {
+        if(file.open(QFile::WriteOnly |QFile::Truncate))
+        {
+            QTextStream stream(&file);
+            stream <<temp;
+        }
+    }
     std::fill( std::begin( formulaName ), std::end( formulaName ), "" );
     std::fill( std::begin( formula ), std::end( formula ), "" );
-    if(obj1.Read(filePath, formula, formulaName))
+    if(file.exists())
     {
-        this->ui->tblCurrentFormulae->setRowCount(0);
-        for (unsigned j=0; formulaName[j]!="";j++)
+        file.close();
+        if(obj1.Read(filePath, formula, formulaName))
         {
-            QTableWidgetItem *formulaNameItem=new QTableWidgetItem(tr(formulaName[j].c_str()));
-            QTableWidgetItem *formulaItem=new QTableWidgetItem(tr(formula[j].c_str()));
+            this->ui->tblCurrentFormulae->setRowCount(0);
+            for (unsigned j=0; formulaName[j]!="";j++)
+            {
+                QTableWidgetItem *formulaNameItem=new QTableWidgetItem(tr(formulaName[j].c_str()));
+                QTableWidgetItem *formulaItem=new QTableWidgetItem(tr(formula[j].c_str()));
 
-            this->ui->tblCurrentFormulae->insertRow(j);
-            this->ui->tblCurrentFormulae->setItem(j,0,formulaNameItem);
-            this->ui->tblCurrentFormulae->setItem(j,1,formulaItem);
+                this->ui->tblCurrentFormulae->insertRow(j);
+                this->ui->tblCurrentFormulae->setItem(j,0,formulaNameItem);
+                this->ui->tblCurrentFormulae->setItem(j,1,formulaItem);
 
-            formulaNameItem->setFlags(formulaNameItem->flags() ^ Qt::ItemIsEditable);
-            formulaItem->setFlags(formulaItem->flags() ^ Qt::ItemIsEditable);
+                formulaNameItem->setFlags(formulaNameItem->flags() ^ Qt::ItemIsEditable);
+                formulaItem->setFlags(formulaItem->flags() ^ Qt::ItemIsEditable);
+            }
+
+            ui->txtSaveLocation->setText(QString::fromStdString(filePath));
         }
-
-        ui->txtSaveLocation->setText(QString::fromStdString(filePath));
+        else
+        {
+            QMessageBox::critical(this,"Infinity Calculator","Unexpected error occurred when accessing the specified file." + QString::fromStdString(filePath), QMessageBox::Ok);
+        }
     }
-    else
-    {
-        QMessageBox::critical(this,"Infinity Calculator","Unexpected error occurred when accessing the specified file.", QMessageBox::Ok);
-    }
+    file.close();
 }
 
 void dlgSaveFormula::setCurrentMemory(std::string saveFormula, std::string p_formula[], std::string p_formulaName[], std::string p_formulaOnMemory[], std::string p_formulaNameOnMemory[], std::string p_filePath)
@@ -187,19 +206,6 @@ void dlgSaveFormula::on_pbSaveFormula_clicked()
             try
             {
                 int location = 0;
-                /* if(formulaOnMemory[0] == "")
-                {
-                    location = 0;
-                }
-                else if(formulaOnMemory[1] == "")
-                {
-                    location = 1;
-                }
-                else
-                {
-                    location = formulaOnMemory->length() + 1;
-                }*/
-
                 while(true)
                 {
                     if(formulaOnMemory[location] == "")
