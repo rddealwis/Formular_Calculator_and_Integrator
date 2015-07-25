@@ -40,17 +40,17 @@ bool dlgGraphViewer::intializeGraphs(std::string graphEquations[], std::string x
                 x[i] = xAxis;
                 variableValues[0]->value = xAxis;
                 formula->setVariableValues(&variableValues);
-                currentGraph[i] = (float)formula->evaluate();
-                xAxis++;
+                currentGraph[i] = (float)formula->evaluate();                
 
                 if(x[i] < xAxisRangeTo)
                 {
                     QString x1 = QString::number(xAxis);
                     QString y1 = QString::number(currentGraph[i]);
-                    GraphsCordinates += "(" + x1 +  ", " + y1 + "), ";
+                    GraphsCordinates += x1 +  ", " + y1 + "\n ";
                 }
+                xAxis++;
             }
-            GraphsData += QString::fromStdString(graphEquations[j]) + ", " + GraphsCordinates + "\n\n";
+            GraphsData += QString::fromStdString(graphEquations[j]) + "\n\nX,Y\n " + GraphsCordinates + "\n\n";
 
             ui->customPlot->legend->setVisible(true);
             ui->customPlot->addGraph();
