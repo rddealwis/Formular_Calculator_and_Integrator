@@ -18,6 +18,7 @@ MainScreen::MainScreen(QWidget *parent) :
     ui(new Ui::MainScreen)
 {
     ui->setupUi(this);
+    ui->pbPercentage->setEnabled(false);
     ui->frmAboutCalculator->setVisible(false);
     ui->pbAddGraphFormula->setEnabled(false);
     ui->pbRemoveFormula->setEnabled(false);
@@ -179,7 +180,10 @@ void MainScreen::on_pbInverse_clicked()
 
 void MainScreen::on_pbPercentage_clicked()
 {
-    this->ButtonClickEventHandler("%", 0);
+    double val = ui->txtTextEditor->toPlainText().toDouble(0);
+
+    double prcntgValue = val/100;
+    ui->txtResultsEditor->setText(QString::number(prcntgValue));
 }
 
 void MainScreen::on_pbDivide_clicked()
@@ -190,48 +194,67 @@ void MainScreen::on_pbDivide_clicked()
 void MainScreen::on_pbSqRoot_clicked()
 {
     this->ButtonClickEventHandler("sqrt(", 0);
+    ui->pbPercentage->setEnabled(false);
 }
 
 void MainScreen::on_pbOpenBrackets_clicked()
 {
     this->ButtonClickEventHandler("(", 0);
+    ui->pbPercentage->setEnabled(false);
 }
 
 void MainScreen::on_pbCloseBrackets_clicked()
 {
     this->ButtonClickEventHandler(")", 0);
+    ui->pbPercentage->setEnabled(false);
 }
 
 void MainScreen::on_pbLog_clicked()
 {
     this->ButtonClickEventHandler("log(", 0);
+    ui->pbPercentage->setEnabled(false);
 }
 
 void MainScreen::on_pbLn_clicked()
 {
     this->ButtonClickEventHandler("ln(", 0);
+    ui->pbPercentage->setEnabled(false);
 }
 
 void MainScreen::on_pbSin_clicked()
 {
     this->ButtonClickEventHandler("sin(", 0);
+    ui->pbPercentage->setEnabled(false);
 }
 
 void MainScreen::on_pbCos_clicked()
 {
     this->ButtonClickEventHandler("cos(", 0);
+    ui->pbPercentage->setEnabled(false);
 }
 
 void MainScreen::on_pbTan_clicked()
 {
     this->ButtonClickEventHandler("Tan(", 0);
+    ui->pbPercentage->setEnabled(false);
 }
 
 void MainScreen::on_pbFactorial_clicked()
 {
-    this->ButtonClickEventHandler("!", 0);
+   ui->txtResultsEditor->setText(QString::number(iter_factorial(ui->txtTextEditor->toPlainText().toDouble(0))));
+   ui->txtTextEditor->setText(ui->txtResultsEditor->toPlainText());
+   ui->pbPercentage->setEnabled(false);
 }
 
+double MainScreen::iter_factorial(double n)
+{
+    double ret = 1;
+    for(double i = 1; i <= n; ++i)
+    {
+        ret = ret* i;
+    }
+    return ret;
+}
 
 void MainScreen::on_pbSquare_clicked()
 {
@@ -242,12 +265,14 @@ void MainScreen::on_pbSquare_clicked()
     this->ui->txtResultsEditor->setText(QString::number(formula->evaluate()));
 
     this->ui->txtTextEditor->setText(QString::fromStdString(input));
+    ui->pbPercentage->setEnabled(false);
 }
 
 void MainScreen::on_pbNthPower_clicked()
 {
     std::string input = this->ui->txtTextEditor->toPlainText().toStdString();
     this->ui->txtTextEditor->setText(QString::fromStdString(input)+"^");
+    ui->pbPercentage->setEnabled(false);
 }
 
 void MainScreen::on_pbPoweOfTen_clicked()
@@ -259,6 +284,7 @@ void MainScreen::on_pbPoweOfTen_clicked()
     this->ui->txtResultsEditor->setText(QString::number(formula->evaluate()));
 
     this->ui->txtTextEditor->setText(QString::fromStdString(input));
+    ui->pbPercentage->setEnabled(false);
 }
 
 void MainScreen::on_pbPi_clicked()
@@ -271,16 +297,19 @@ void MainScreen::on_pbPi_clicked()
     {
         this->ButtonClickEventHandler("3.1415926535897932384626433832795", 0);
     }
+    ui->pbPercentage->setEnabled(true);
 }
 
 void MainScreen::on_pbPower_clicked()
 {
     this->ButtonClickEventHandler("^", 0);
+    ui->pbPercentage->setEnabled(false);
 }
 
 void MainScreen::on_pbModulus_clicked()
 {
     this->ButtonClickEventHandler("mod", 0);
+    ui->pbPercentage->setEnabled(false);
 }
 
 void MainScreen::on_pbPlusOrMinus_clicked()
@@ -301,6 +330,7 @@ void MainScreen::on_pbPlusOrMinus_clicked()
         ui->txtTextEditor->clear();
         ui->txtTextEditor->setText(ui->txtResultsEditor->toPlainText());
     }
+    ui->pbPercentage->setEnabled(true);
 }
 
 void MainScreen::on_pbAboutUs_clicked()
@@ -325,12 +355,14 @@ void MainScreen::on_pbCE_clicked()
         }
     }
     ui->txtResultsEditor->clear();
+    ui->pbPercentage->setEnabled(false);
 }
 
 void MainScreen::on_pbC_clicked()
 {
     ui->txtTextEditor->clear();
     ui->txtResultsEditor->clear();
+    ui->pbPercentage->setEnabled(false);
 }
 
 void MainScreen::on_pbDel_clicked()
@@ -354,9 +386,9 @@ void MainScreen::on_pbSaveFormula_clicked()
     saveFormula.exec();
     std::fill( std::begin( formulaName ), std::end( formulaName ), "" );
     std::fill( std::begin( formula ), std::end( formula ), "" );
-    std::fill( std::begin( formulaOnMemory ), std::end( formulaOnMemory ), "" );
-    std::fill( std::begin( formulaNameOnMemory ), std::end( formulaNameOnMemory ), "" );
+    std::fill( std::begin( formulaOnMemory ), std::end( formulaOnMemory ), "" );    std::fill( std::begin( formulaNameOnMemory ), std::end( formulaNameOnMemory ), "" );
     this->ui->lstScientificFromFile->clear();
+
     this->filePath = saveFormula.filePath;
     saveFormula.getSavedEquations(formula,formulaName, formulaOnMemory, formulaNameOnMemory);
     this->LoadToListGraphFromFile();
@@ -373,7 +405,6 @@ void ClearArray(std::string arr[])
        arr[i] = "";
     }
 }
-
 
 void MainScreen::on_pbLoadFormula_clicked()
 {

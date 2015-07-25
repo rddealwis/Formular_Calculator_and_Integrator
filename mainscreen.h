@@ -138,6 +138,8 @@ private slots:
 
     void on_pbNthPower_clicked();
 
+    double iter_factorial(double n);
+
 private:
     Ui::MainScreen *ui;
 };
