@@ -321,6 +321,16 @@ void MainScreen::on_pbPlusOrMinus_clicked()
 
 // ----------------------------------------------------------------------------------------
 
+bool MainScreen::CheckBrackets(std::string formula)
+{
+    if(std::count(formula.begin(), formula.end(), '(') != std::count(formula.begin(), formula.end(), ')'))
+    {
+        QMessageBox::critical(this,"Infinity Calculator", "Number of opening and closing brackets are not equal.", QMessageBox::Ok);
+        return true;
+    }
+    return false;
+}
+
 void MainScreen::on_pbEqual_clicked()
 {
     try
@@ -330,12 +340,7 @@ void MainScreen::on_pbEqual_clicked()
     std::string input = this->ui->txtTextEditor->toPlainText().toStdString();
     std::string formulaInput(input);
 
-    //QMessageBox::critical(this,"Infinity Calculator", QString::number(std::count(formulaInput.begin(), formulaInput.end()) +" "+, QMessageBox::Ok);
-    if(std::count(formulaInput.begin(), formulaInput.end(), '(') != std::count(formulaInput.begin(), formulaInput.end(), ')'))
-    {
-        QMessageBox::critical(this,"Infinity Calculator", "Number of opening and closing brackets are not equal.", QMessageBox::Ok);
-        return;
-    }
+    if(this->CheckBrackets(formulaInput)) return;
 
     FormulaElement* formula = FormulaElement::parseFormula(formulaInput);
     formula->getVariableValues(&variableValues);
@@ -646,7 +651,7 @@ void MainScreen::on_pbModulus_clicked()
 void MainScreen::on_pbIntegration_clicked()
 {
     dlgIntegration formualIntegration;
-
+    if(this->CheckBrackets(this->ui->txtTextEditor->toPlainText().toStdString())) return;
     formualIntegration.setIntegrationEquation(this->ui->txtTextEditor->toPlainText().toStdString());
     formualIntegration.setModal(true);
     formualIntegration.exec();
@@ -663,7 +668,7 @@ void MainScreen::on_pbSaveFormula_clicked()
     dlgSaveFormula saveFormula;
 
     saveFormulaValue = this->ui->txtTextEditor->toPlainText().toStdString();
-
+    if(this->CheckBrackets(saveFormulaValue)) return;
     saveFormula.setCurrentMemory(saveFormulaValue, formula, formulaName, formulaOnMemory, formulaNameOnMemory, this->filePath);
     saveFormula.setModal(true);
     saveFormula.exec();
@@ -833,6 +838,7 @@ void MainScreen::LoadToListGraphScientificInMemory()
 
 void MainScreen::on_pbAddGraphFormula_clicked()
 {
+    if(this->CheckBrackets(this->ui->txtEquation->toPlainText().toStdString())) return;
     QListWidgetItem *newItem = new QListWidgetItem;
     newItem->setText(this->ui->txtEquation->toPlainText());
     int row = this->ui->lstGraphFormulas->row(this->ui->lstGraphFormulas->currentItem());
