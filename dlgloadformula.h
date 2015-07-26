@@ -1,6 +1,5 @@
 #ifndef DLGLOADFORMULA_H
 #define DLGLOADFORMULA_H
-//#include "formulator.h"
 #include "xmlfilehandling.h"
 #include <QDialog>
 

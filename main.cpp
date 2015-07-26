@@ -1,5 +1,4 @@
 #include "mainscreen.h"
-//#include "formulator.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])
