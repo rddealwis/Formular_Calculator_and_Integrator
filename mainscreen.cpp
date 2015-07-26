@@ -335,31 +335,30 @@ void MainScreen::on_pbEqual_clicked()
 {
     try
     {
-    std::vector<variableValue*> variableValues;
+        std::vector<variableValue*> variableValues;
 
-    std::string input = this->ui->txtTextEditor->toPlainText().toStdString();
-    std::string formulaInput(input);
+        std::string input = this->ui->txtTextEditor->toPlainText().toStdString();
+        std::string formulaInput(input);
 
-    if(this->CheckBrackets(formulaInput)) return;
 
-    FormulaElement* formula = FormulaElement::parseFormula(formulaInput);
-    formula->getVariableValues(&variableValues);
+        if(this->CheckBrackets(formulaInput)) return;
 
-    for (int i = 0; i < variableValues.size(); i++)
-    {
-        bool ok;
-        double val = 0;
+        FormulaElement* formula = FormulaElement::parseFormula(formulaInput);
+        formula->getVariableValues(&variableValues);
 
-        val = QInputDialog::getDouble(this,tr("Enter variable value"),tr("Please enter a value for the variable ")+variableValues[i]->variable.data(),
-                                      0,-2147483647,2147483647,4,&ok);
-        variableValues[i]->value = val;
-    }
+        for (int i = 0; i < variableValues.size(); i++)
+        {
+            bool ok;
+            double val = 0;
 
-    formula->setVariableValues(&variableValues);
+            val = QInputDialog::getDouble(this,tr("Enter variable value"),tr("Please enter a value for the variable ")+variableValues[i]->variable.data(),
+                                          0,-2147483647,2147483647,4,&ok);
+            variableValues[i]->value = val;
+        }
 
-    //this->ui->txtTextEditor->setText(QString::fromStdString(formula->toQString().data()));
+        formula->setVariableValues(&variableValues);
 
-    this->ui->txtResultsEditor->setText(QString::number(formula->evaluate()));    
+        this->ui->txtResultsEditor->setText(QString::number(formula->evaluate()));
     }
 
     catch(...)
@@ -377,6 +376,7 @@ void MainScreen::on_pbInverse_clicked()
 
     ui->txtTextEditor->setText("1/("+ ui->txtTextEditor->toPlainText()+")");
     ui->txtTextEditor->setTextCursor(prev_cursor);
+
     ui->pbPercentage->setEnabled(true);
     ui->pbSqRoot->setEnabled(true);
 }
@@ -387,6 +387,7 @@ void MainScreen::on_pbPercentage_clicked()
 
     double prcntgValue = val/100;
     ui->txtResultsEditor->setText(QString::number(prcntgValue));
+
     ui->pbPercentage->setEnabled(false);
     ui->pbSqRoot->setEnabled(false);
 }
@@ -397,6 +398,9 @@ void MainScreen::on_pbSqRoot_clicked()
 
     double result = sqrt (val);
     ui->txtResultsEditor->setText(QString::number(result));
+    ui->txtTextEditor->setText("sqrt("+ui->txtTextEditor->toPlainText()+")");
+
+    ui->pbEqual->setEnabled(false);
     ui->pbPercentage->setEnabled(false);
     ui->pbSqRoot->setEnabled(false);
 }
@@ -447,6 +451,7 @@ void MainScreen::on_pbMC_clicked()
 {
     this->tempMemory = 0;
     this->ui->txtTextEditor->setText("");
+
     ui->pbPercentage->setEnabled(false);
     ui->pbSqRoot->setEnabled(false);
 }
@@ -454,6 +459,7 @@ void MainScreen::on_pbMC_clicked()
 void MainScreen::on_pbMR_clicked()
 {
     this->ui->txtTextEditor->setText(QString::number(this->tempMemory, 'f', 2));
+
     ui->pbPercentage->setEnabled(false);
     ui->pbSqRoot->setEnabled(false);
 }
@@ -463,6 +469,7 @@ void MainScreen::on_pbMS_clicked()
     this->tempMemory = this->ui->txtTextEditor->toPlainText().toDouble();
     this->ui->txtResultsEditor->setText(QString::number(this->tempMemory, 'f', 2));
     this->ui->txtTextEditor->setText("");
+
     ui->pbPercentage->setEnabled(false);
     ui->pbSqRoot->setEnabled(false);
 }
@@ -472,6 +479,7 @@ void MainScreen::on_pbMPlus_clicked()
     this->tempMemory += this->ui->txtTextEditor->toPlainText().toDouble();
     this->ui->txtResultsEditor->setText(QString::number(this->tempMemory, 'f', 2));
     this->ui->txtTextEditor->setText("");
+
     ui->pbPercentage->setEnabled(false);
     ui->pbSqRoot->setEnabled(false);
 }
@@ -481,6 +489,7 @@ void MainScreen::on_pbMMinus_clicked()
     this->tempMemory -= this->ui->txtTextEditor->toPlainText().toDouble();
     this->ui->txtResultsEditor->setText(QString::number(this->tempMemory, 'f', 2));
     this->ui->txtTextEditor->setText("");
+
     ui->pbPercentage->setEnabled(false);
     ui->pbSqRoot->setEnabled(false);
 }
@@ -490,6 +499,7 @@ void MainScreen::on_pbMMinus_clicked()
 void MainScreen::on_pbOpenBrackets_clicked()
 {
     this->ButtonClickEventHandler("(", 0);
+
     ui->pbPercentage->setEnabled(false);
     ui->pbSqRoot->setEnabled(false);
 }
@@ -497,20 +507,33 @@ void MainScreen::on_pbOpenBrackets_clicked()
 void MainScreen::on_pbCloseBrackets_clicked()
 {
     this->ButtonClickEventHandler(")", 0);
+
     ui->pbPercentage->setEnabled(false);
     ui->pbSqRoot->setEnabled(false);
 }
 
 void MainScreen::on_pbLog_clicked()
 {
-    this->ButtonClickEventHandler("log(", 0);
+    double val = ui->txtTextEditor->toPlainText().toDouble(0);
+
+    double result = log10(val);
+    ui->txtResultsEditor->setText(QString::number(result));
+    ui->txtTextEditor->setText("log("+ui->txtTextEditor->toPlainText()+")");
+
+    ui->pbEqual->setEnabled(false);
     ui->pbPercentage->setEnabled(false);
     ui->pbSqRoot->setEnabled(false);
 }
 
 void MainScreen::on_pbLn_clicked()
 {
-    this->ButtonClickEventHandler("ln(", 0);
+    double val = ui->txtTextEditor->toPlainText().toDouble(0);
+
+    double result = log (val);
+    ui->txtResultsEditor->setText(QString::number(result));
+    ui->txtTextEditor->setText("ln("+ui->txtTextEditor->toPlainText()+")");
+
+    ui->pbEqual->setEnabled(false);
     ui->pbPercentage->setEnabled(false);
     ui->pbSqRoot->setEnabled(false);
 }
@@ -518,6 +541,7 @@ void MainScreen::on_pbLn_clicked()
 void MainScreen::on_pbSin_clicked()
 {
     this->ButtonClickEventHandler("sin(", 0);
+
     ui->pbPercentage->setEnabled(false);
     ui->pbSqRoot->setEnabled(false);
 }
@@ -525,19 +549,19 @@ void MainScreen::on_pbSin_clicked()
 void MainScreen::on_pbCos_clicked()
 {
     this->ButtonClickEventHandler("cos(", 0);
+
     ui->pbPercentage->setEnabled(false);
     ui->pbSqRoot->setEnabled(false);
 }
 
 void MainScreen::on_pbTan_clicked()
 {
-    //this->ButtonClickEventHandler("Tan(", 0);
-    double val = ui->txtTextEditor->toPlainText().toDouble(0);
-    double result = tan ( val * PI / 180.0 );
+    this->ButtonClickEventHandler("tan(", 0);
+//    double val = ui->txtTextEditor->toPlainText().toDouble(0);
+//    double result = tan ( val * PI / 180.0 );
 
-    ui->txtResultsEditor->setText(QString::number(result));
-    ui->txtTextEditor->setText(ui->txtResultsEditor->toPlainText());
-
+//    ui->txtResultsEditor->setText(QString::number(result));
+//    ui->txtTextEditor->setText(ui->txtResultsEditor->toPlainText());
 
     ui->pbPercentage->setEnabled(false);
     ui->pbSqRoot->setEnabled(false);
@@ -545,7 +569,6 @@ void MainScreen::on_pbTan_clicked()
 
 void MainScreen::on_pbFactorial_clicked()
 {
-
     std::string input = this->ui->txtTextEditor->toPlainText().toStdString();
 
     std::string formulaInput(input);
@@ -554,6 +577,7 @@ void MainScreen::on_pbFactorial_clicked()
 
     ui->txtResultsEditor->setText(QString::number(iter_factorial(a)));
     ui->txtTextEditor->setText(ui->txtResultsEditor->toPlainText());
+
     ui->pbPercentage->setEnabled(false);
     ui->pbSqRoot->setEnabled(false);
 }
@@ -574,9 +598,10 @@ void MainScreen::on_pbSquare_clicked()
 
     std::string formulaInput(input);
     FormulaElement* formula = FormulaElement::parseFormula(formulaInput);
-    this->ui->txtResultsEditor->setText(QString::number(formula->evaluate()));
 
+    this->ui->txtResultsEditor->setText(QString::number(formula->evaluate()));
     this->ui->txtTextEditor->setText(QString::fromStdString(input));
+
     ui->pbPercentage->setEnabled(false);
     ui->pbSqRoot->setEnabled(false);
 }
@@ -585,6 +610,7 @@ void MainScreen::on_pbNthPower_clicked()
 {
     std::string input = this->ui->txtTextEditor->toPlainText().toStdString();
     this->ui->txtTextEditor->setText(QString::fromStdString(input)+"^");
+
     ui->pbPercentage->setEnabled(false);
     ui->pbSqRoot->setEnabled(false);
 }
@@ -595,9 +621,10 @@ void MainScreen::on_pbPoweOfTen_clicked()
 
     std::string formulaInput(input);
     FormulaElement* formula = FormulaElement::parseFormula(formulaInput);
-    this->ui->txtResultsEditor->setText(QString::number(formula->evaluate()));
 
+    this->ui->txtResultsEditor->setText(QString::number(formula->evaluate()));
     this->ui->txtTextEditor->setText(QString::fromStdString(input));
+
     ui->pbPercentage->setEnabled(false);
     ui->pbSqRoot->setEnabled(false);
 }
@@ -625,6 +652,7 @@ void MainScreen::on_pbPi_clicked()
 void MainScreen::on_pbPower_clicked()
 {
     this->ButtonClickEventHandler("^", 0);
+
     ui->pbPercentage->setEnabled(false);
     ui->pbSqRoot->setEnabled(false);
 }
@@ -643,7 +671,13 @@ void MainScreen::on_pbStoD_clicked()
 
 void MainScreen::on_pbModulus_clicked()
 {
-    this->ButtonClickEventHandler("mod", 0);
+    double val = ui->txtTextEditor->toPlainText().toDouble(0);
+
+    double result = log (val);
+    ui->txtResultsEditor->setText(QString::number(result));
+    ui->txtTextEditor->setText("mod"+ui->txtTextEditor->toPlainText()+")");
+
+
     ui->pbPercentage->setEnabled(false);
     ui->pbSqRoot->setEnabled(false);
 }
@@ -657,6 +691,7 @@ void MainScreen::on_pbIntegration_clicked()
     formualIntegration.exec();
 
     this->ui->txtResultsEditor->setText(QString::number(formualIntegration.calculatedArea));
+
     ui->pbPercentage->setEnabled(false);
     ui->pbSqRoot->setEnabled(false);
 }
