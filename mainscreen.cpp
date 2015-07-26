@@ -24,13 +24,32 @@ MainScreen::MainScreen(QWidget *parent) :
     ui->txtXaxisRangeTo->setEnabled(false);
     ui->txtYaxisRangeFrom->setEnabled(false);
     ui->txtYaxisRangeTo->setEnabled(false);
-
     ui->txtXaxisName->setEnabled(false);
     ui->txtYaxisName->setEnabled(false);
 
+    ui->pbPlus->setEnabled(false);
+    ui->pbMinus->setEnabled(false);
+    ui->pbMultiply->setEnabled(false);
+    ui->pbDivide->setEnabled(false);
+    ui->pbEqual->setEnabled(false);
+
     ui->pbPercentage->setEnabled(false);
+    ui->pbSqRoot->setEnabled(false);
+    ui->pbInverse->setEnabled(false);
+
+    ui->pbPower->setEnabled(false);
+    ui->pbPoweOfTen->setEnabled(false);
+    ui->pbModulus->setEnabled(false);
+
+    ui->pbSquare->setEnabled(false);
+    ui->pbNthPower->setEnabled(false);
+    ui->pbNthSqRoot->setEnabled(false);
+    ui->pbFactorial->setEnabled(false);
+
     ui->frmAboutCalculator->setVisible(false);
+
     ui->pbIntegration->setEnabled(false);
+
     ui->pbAddGraphFormula->setEnabled(false);
     ui->pbRemoveFormula->setEnabled(false);
     ui->pbCalAreaUndertheCurve->setEnabled(false);
@@ -90,61 +109,131 @@ void MainScreen::on_pbZero_clicked()
     {
         this->ButtonClickEventHandler("0", 0);
     }
+
+    ui->pbPlus->setEnabled(true);
+    ui->pbMinus->setEnabled(true);
+    ui->pbMultiply->setEnabled(true);
+    ui->pbDivide->setEnabled(true);
+
     ui->pbPercentage->setEnabled(true);
+    ui->pbSqRoot->setEnabled(true);
 }
 
 void MainScreen::on_pbOne_clicked()
 {
     this->ButtonClickEventHandler("1", 0);
+
+    ui->pbPlus->setEnabled(true);
+    ui->pbMinus->setEnabled(true);
+    ui->pbMultiply->setEnabled(true);
+    ui->pbDivide->setEnabled(true);
+
     ui->pbPercentage->setEnabled(true);
+    ui->pbSqRoot->setEnabled(true);
 }
 
 void MainScreen::on_pbTwo_clicked()
 {
     this->ButtonClickEventHandler("2", 0);
+
+    ui->pbPlus->setEnabled(true);
+    ui->pbMinus->setEnabled(true);
+    ui->pbMultiply->setEnabled(true);
+    ui->pbDivide->setEnabled(true);
+
     ui->pbPercentage->setEnabled(true);
+    ui->pbSqRoot->setEnabled(true);
 }
 
 void MainScreen::on_pbThree_clicked()
 {
     this->ButtonClickEventHandler("3", 0);
+
+    ui->pbPlus->setEnabled(true);
+    ui->pbMinus->setEnabled(true);
+    ui->pbMultiply->setEnabled(true);
+    ui->pbDivide->setEnabled(true);
+
     ui->pbPercentage->setEnabled(true);
+    ui->pbSqRoot->setEnabled(true);
 }
 
 void MainScreen::on_pbFour_clicked()
 {
     this->ButtonClickEventHandler("4", 0);
+
+    ui->pbPlus->setEnabled(true);
+    ui->pbMinus->setEnabled(true);
+    ui->pbMultiply->setEnabled(true);
+    ui->pbDivide->setEnabled(true);
+
     ui->pbPercentage->setEnabled(true);
+    ui->pbSqRoot->setEnabled(true);
 }
 
 void MainScreen::on_pbFive_clicked()
 {
     this->ButtonClickEventHandler("5", 0);
+
+    ui->pbPlus->setEnabled(true);
+    ui->pbMinus->setEnabled(true);
+    ui->pbMultiply->setEnabled(true);
+    ui->pbDivide->setEnabled(true);
+
     ui->pbPercentage->setEnabled(true);
+    ui->pbSqRoot->setEnabled(true);
 }
 
 void MainScreen::on_pbSix_clicked()
 {
     this->ButtonClickEventHandler("6", 0);
+
+    ui->pbPlus->setEnabled(true);
+    ui->pbMinus->setEnabled(true);
+    ui->pbMultiply->setEnabled(true);
+    ui->pbDivide->setEnabled(true);
+
     ui->pbPercentage->setEnabled(true);
+    ui->pbSqRoot->setEnabled(true);
 }
 
 void MainScreen::on_pbSeven_clicked()
 {
     this->ButtonClickEventHandler("7", 0);
+
+    ui->pbPlus->setEnabled(true);
+    ui->pbMinus->setEnabled(true);
+    ui->pbMultiply->setEnabled(true);
+    ui->pbDivide->setEnabled(true);
+
     ui->pbPercentage->setEnabled(true);
+    ui->pbSqRoot->setEnabled(true);
 }
 
 void MainScreen::on_pbEight_clicked()
 {
     this->ButtonClickEventHandler("8", 0);
+
+    ui->pbPlus->setEnabled(true);
+    ui->pbMinus->setEnabled(true);
+    ui->pbMultiply->setEnabled(true);
+    ui->pbDivide->setEnabled(true);
+
     ui->pbPercentage->setEnabled(true);
+    ui->pbSqRoot->setEnabled(true);
 }
 
 void MainScreen::on_pbNine_clicked()
 {
     this->ButtonClickEventHandler("9", 0);
+
+    ui->pbPlus->setEnabled(true);
+    ui->pbMinus->setEnabled(true);
+    ui->pbMultiply->setEnabled(true);
+    ui->pbDivide->setEnabled(true);
+
     ui->pbPercentage->setEnabled(true);
+    ui->pbSqRoot->setEnabled(true);
 }
 
 // ----------------------------------------------------------------------------------------
@@ -152,31 +241,60 @@ void MainScreen::on_pbNine_clicked()
 void MainScreen::on_pbDot_clicked()
 {
     this->ButtonClickEventHandler(".", 0);
-    ui->pbPercentage->setEnabled(true);
+    ui->pbPercentage->setEnabled(false);
+    ui->pbSqRoot->setEnabled(false);
 }
 
 void MainScreen::on_pbPlus_clicked()
 {
     this->ButtonClickEventHandler("+", 0);
+
+    ui->pbPlus->setEnabled(false);
+    ui->pbMinus->setEnabled(false);
+    ui->pbMultiply->setEnabled(false);
+    ui->pbDivide->setEnabled(false);
+
     ui->pbPercentage->setEnabled(true);
+    ui->pbSqRoot->setEnabled(false);
 }
 
 void MainScreen::on_pbMinus_clicked()
 {
     this->ButtonClickEventHandler("-", 0);
+
+    ui->pbPlus->setEnabled(false);
+    ui->pbMinus->setEnabled(false);
+    ui->pbMultiply->setEnabled(false);
+    ui->pbDivide->setEnabled(false);
+
     ui->pbPercentage->setEnabled(true);
+    ui->pbSqRoot->setEnabled(false);
 }
 
 void MainScreen::on_pbMultiply_clicked()
 {
     this->ButtonClickEventHandler("*", 0);
+
+    ui->pbPlus->setEnabled(false);
+    ui->pbMinus->setEnabled(false);
+    ui->pbMultiply->setEnabled(false);
+    ui->pbDivide->setEnabled(false);
+
     ui->pbPercentage->setEnabled(true);
+    ui->pbSqRoot->setEnabled(false);
 }
 
 void MainScreen::on_pbDivide_clicked()
 {
     this->ButtonClickEventHandler("/", 0);
+
+    ui->pbPlus->setEnabled(false);
+    ui->pbMinus->setEnabled(false);
+    ui->pbMultiply->setEnabled(false);
+    ui->pbDivide->setEnabled(false);
+
     ui->pbPercentage->setEnabled(true);
+    ui->pbSqRoot->setEnabled(false);
 }
 
 void MainScreen::on_pbPlusOrMinus_clicked()
@@ -198,6 +316,7 @@ void MainScreen::on_pbPlusOrMinus_clicked()
         ui->txtTextEditor->setText(ui->txtResultsEditor->toPlainText());
     }
     ui->pbPercentage->setEnabled(true);
+    ui->pbSqRoot->setEnabled(true);
 }
 
 // ----------------------------------------------------------------------------------------
@@ -235,14 +354,15 @@ void MainScreen::on_pbEqual_clicked()
 
     //this->ui->txtTextEditor->setText(QString::fromStdString(formula->toQString().data()));
 
-    this->ui->txtResultsEditor->setText(QString::number(formula->evaluate()));
-    ui->pbPercentage->setEnabled(false);
+    this->ui->txtResultsEditor->setText(QString::number(formula->evaluate()));    
     }
 
     catch(...)
     {
         QMessageBox::critical(this,"Infinity Calculator", "Error occured when solving the equation", QMessageBox::Ok);
     }
+    ui->pbPercentage->setEnabled(false);
+    ui->pbSqRoot->setEnabled(false);
 }
 
 void MainScreen::on_pbInverse_clicked()
@@ -253,6 +373,7 @@ void MainScreen::on_pbInverse_clicked()
     ui->txtTextEditor->setText("1/("+ ui->txtTextEditor->toPlainText()+")");
     ui->txtTextEditor->setTextCursor(prev_cursor);
     ui->pbPercentage->setEnabled(true);
+    ui->pbSqRoot->setEnabled(true);
 }
 
 void MainScreen::on_pbPercentage_clicked()
@@ -262,6 +383,7 @@ void MainScreen::on_pbPercentage_clicked()
     double prcntgValue = val/100;
     ui->txtResultsEditor->setText(QString::number(prcntgValue));
     ui->pbPercentage->setEnabled(false);
+    ui->pbSqRoot->setEnabled(false);
 }
 
 void MainScreen::on_pbSqRoot_clicked()
@@ -271,6 +393,7 @@ void MainScreen::on_pbSqRoot_clicked()
     double result = sqrt (val);
     ui->txtResultsEditor->setText(QString::number(result));
     ui->pbPercentage->setEnabled(false);
+    ui->pbSqRoot->setEnabled(false);
 }
 
 // ----------------------------------------------------------------------------------------
@@ -287,6 +410,7 @@ void MainScreen::on_pbCE_clicked()
     }
     ui->txtResultsEditor->clear();
     ui->pbPercentage->setEnabled(false);
+    ui->pbSqRoot->setEnabled(false);
 }
 
 void MainScreen::on_pbC_clicked()
@@ -294,6 +418,7 @@ void MainScreen::on_pbC_clicked()
     ui->txtTextEditor->clear();
     ui->txtResultsEditor->clear();
     ui->pbPercentage->setEnabled(false);
+    ui->pbSqRoot->setEnabled(false);
 }
 
 void MainScreen::on_pbDel_clicked()
@@ -308,6 +433,7 @@ void MainScreen::on_pbDel_clicked()
     }
     ui->txtResultsEditor->clear();
     ui->pbPercentage->setEnabled(false);
+    ui->pbSqRoot->setEnabled(false);
 }
 
 // ----------------------------------------------------------------------------------------
@@ -317,12 +443,14 @@ void MainScreen::on_pbMC_clicked()
     this->tempMemory = 0;
     this->ui->txtTextEditor->setText("");
     ui->pbPercentage->setEnabled(false);
+    ui->pbSqRoot->setEnabled(false);
 }
 
 void MainScreen::on_pbMR_clicked()
 {
     this->ui->txtTextEditor->setText(QString::number(this->tempMemory, 'f', 2));
     ui->pbPercentage->setEnabled(false);
+    ui->pbSqRoot->setEnabled(false);
 }
 
 void MainScreen::on_pbMS_clicked()
@@ -331,6 +459,7 @@ void MainScreen::on_pbMS_clicked()
     this->ui->txtResultsEditor->setText(QString::number(this->tempMemory, 'f', 2));
     this->ui->txtTextEditor->setText("");
     ui->pbPercentage->setEnabled(false);
+    ui->pbSqRoot->setEnabled(false);
 }
 
 void MainScreen::on_pbMPlus_clicked()
@@ -339,6 +468,7 @@ void MainScreen::on_pbMPlus_clicked()
     this->ui->txtResultsEditor->setText(QString::number(this->tempMemory, 'f', 2));
     this->ui->txtTextEditor->setText("");
     ui->pbPercentage->setEnabled(false);
+    ui->pbSqRoot->setEnabled(false);
 }
 
 void MainScreen::on_pbMMinus_clicked()
@@ -347,6 +477,7 @@ void MainScreen::on_pbMMinus_clicked()
     this->ui->txtResultsEditor->setText(QString::number(this->tempMemory, 'f', 2));
     this->ui->txtTextEditor->setText("");
     ui->pbPercentage->setEnabled(false);
+    ui->pbSqRoot->setEnabled(false);
 }
 
 // ----------------------------------------------------------------------------------------
@@ -355,36 +486,42 @@ void MainScreen::on_pbOpenBrackets_clicked()
 {
     this->ButtonClickEventHandler("(", 0);
     ui->pbPercentage->setEnabled(false);
+    ui->pbSqRoot->setEnabled(false);
 }
 
 void MainScreen::on_pbCloseBrackets_clicked()
 {
     this->ButtonClickEventHandler(")", 0);
     ui->pbPercentage->setEnabled(false);
+    ui->pbSqRoot->setEnabled(false);
 }
 
 void MainScreen::on_pbLog_clicked()
 {
     this->ButtonClickEventHandler("log(", 0);
     ui->pbPercentage->setEnabled(false);
+    ui->pbSqRoot->setEnabled(false);
 }
 
 void MainScreen::on_pbLn_clicked()
 {
     this->ButtonClickEventHandler("ln(", 0);
     ui->pbPercentage->setEnabled(false);
+    ui->pbSqRoot->setEnabled(false);
 }
 
 void MainScreen::on_pbSin_clicked()
 {
     this->ButtonClickEventHandler("sin(", 0);
     ui->pbPercentage->setEnabled(false);
+    ui->pbSqRoot->setEnabled(false);
 }
 
 void MainScreen::on_pbCos_clicked()
 {
     this->ButtonClickEventHandler("cos(", 0);
     ui->pbPercentage->setEnabled(false);
+    ui->pbSqRoot->setEnabled(false);
 }
 
 void MainScreen::on_pbTan_clicked()
@@ -398,6 +535,7 @@ void MainScreen::on_pbTan_clicked()
 
 
     ui->pbPercentage->setEnabled(false);
+    ui->pbSqRoot->setEnabled(false);
 }
 
 void MainScreen::on_pbFactorial_clicked()
@@ -412,6 +550,7 @@ void MainScreen::on_pbFactorial_clicked()
     ui->txtResultsEditor->setText(QString::number(iter_factorial(a)));
     ui->txtTextEditor->setText(ui->txtResultsEditor->toPlainText());
     ui->pbPercentage->setEnabled(false);
+    ui->pbSqRoot->setEnabled(false);
 }
 
 double MainScreen::iter_factorial(double n)
@@ -434,6 +573,7 @@ void MainScreen::on_pbSquare_clicked()
 
     this->ui->txtTextEditor->setText(QString::fromStdString(input));
     ui->pbPercentage->setEnabled(false);
+    ui->pbSqRoot->setEnabled(false);
 }
 
 void MainScreen::on_pbNthPower_clicked()
@@ -441,6 +581,7 @@ void MainScreen::on_pbNthPower_clicked()
     std::string input = this->ui->txtTextEditor->toPlainText().toStdString();
     this->ui->txtTextEditor->setText(QString::fromStdString(input)+"^");
     ui->pbPercentage->setEnabled(false);
+    ui->pbSqRoot->setEnabled(false);
 }
 
 void MainScreen::on_pbPoweOfTen_clicked()
@@ -453,11 +594,13 @@ void MainScreen::on_pbPoweOfTen_clicked()
 
     this->ui->txtTextEditor->setText(QString::fromStdString(input));
     ui->pbPercentage->setEnabled(false);
+    ui->pbSqRoot->setEnabled(false);
 }
 
 void MainScreen::on_pbNthSqRoot_clicked()
 {
     ui->pbPercentage->setEnabled(false);
+    ui->pbSqRoot->setEnabled(false);
 }
 
 void MainScreen::on_pbPi_clicked()
@@ -471,28 +614,33 @@ void MainScreen::on_pbPi_clicked()
         this->ButtonClickEventHandler("3.1415926535897932384626433832795", 0);
     }
     ui->pbPercentage->setEnabled(true);
+    ui->pbSqRoot->setEnabled(true);
 }
 
 void MainScreen::on_pbPower_clicked()
 {
     this->ButtonClickEventHandler("^", 0);
     ui->pbPercentage->setEnabled(false);
+    ui->pbSqRoot->setEnabled(false);
 }
 
 void MainScreen::on_pbDifferentiation_clicked()
 {
     ui->pbPercentage->setEnabled(false);
+    ui->pbSqRoot->setEnabled(false);
 }
 
 void MainScreen::on_pbStoD_clicked()
 {
     ui->pbPercentage->setEnabled(false);
+    ui->pbSqRoot->setEnabled(false);
 }
 
 void MainScreen::on_pbModulus_clicked()
 {
     this->ButtonClickEventHandler("mod", 0);
     ui->pbPercentage->setEnabled(false);
+    ui->pbSqRoot->setEnabled(false);
 }
 
 void MainScreen::on_pbIntegration_clicked()
@@ -505,6 +653,7 @@ void MainScreen::on_pbIntegration_clicked()
 
     this->ui->txtResultsEditor->setText(QString::number(formualIntegration.calculatedArea));
     ui->pbPercentage->setEnabled(false);
+    ui->pbSqRoot->setEnabled(false);
 }
 
 // ----------------------------------------------------------------------------------------
@@ -534,6 +683,7 @@ void MainScreen::on_pbSaveFormula_clicked()
     this->LoadToListGraphScientificInMemory();
 
     ui->pbPercentage->setEnabled(false);
+    ui->pbSqRoot->setEnabled(false);
 }
 
 void ClearArray(std::string arr[]);
@@ -568,6 +718,7 @@ void MainScreen::on_pbLoadFormula_clicked()
     this->LoadToListGraphScientificInMemory();
 
     ui->pbPercentage->setEnabled(false);
+    ui->pbSqRoot->setEnabled(false);
 }
 
 // ----------------------------------------------------------------------------------------
@@ -594,6 +745,7 @@ void MainScreen::on_pbLoadGraphFormula_clicked()
     this->LoadToListGraphScientificInMemory();
 
     ui->pbPercentage->setEnabled(false);
+    ui->pbSqRoot->setEnabled(false);
 }
 
 // ----------------------------------------------------------------------------------------
@@ -718,6 +870,7 @@ void MainScreen::on_pbAddGraphFormula_clicked()
     ui->txtYaxisName->setText("Y-Axis");
 
     ui->pbPercentage->setEnabled(false);
+    ui->pbSqRoot->setEnabled(false);
 }
 
 void MainScreen::on_pbRemoveFormula_clicked()
@@ -747,6 +900,7 @@ void MainScreen::on_pbRemoveFormula_clicked()
         ui->txtYaxisName->clear();
 
         ui->pbPercentage->setEnabled(false);
+        ui->pbSqRoot->setEnabled(false);
     }
 }
 
@@ -853,6 +1007,7 @@ void MainScreen::on_pbGenerate_clicked()
     }
 
     ui->pbPercentage->setEnabled(false);
+    ui->pbSqRoot->setEnabled(false);
 }
 
 void MainScreen::on_pbCalAreaUndertheCurve_clicked()
@@ -871,6 +1026,7 @@ void MainScreen::on_pbCalAreaUndertheCurve_clicked()
         QMessageBox::critical(this,"Infinity Calculator","Please select a formula to load.", QMessageBox::Ok);
     }
     ui->pbPercentage->setEnabled(false);
+    ui->pbSqRoot->setEnabled(false);
 }
 
 // ----------------------------------------------------------------------------------------
@@ -926,6 +1082,7 @@ void MainScreen::on_pbAboutUs_clicked()
         ui->frmAboutCalculator->setVisible(true);
     }
     ui->pbPercentage->setEnabled(false);
+    ui->pbSqRoot->setEnabled(false);
 }
 
 void MainScreen::on_tabMenu_currentChanged(int index)
@@ -935,16 +1092,40 @@ void MainScreen::on_tabMenu_currentChanged(int index)
     }
 }
 
-
-
 void MainScreen::on_txtTextEditor_textChanged()
 {
     if(ui->txtTextEditor->toPlainText()== "")
     {
         ui->pbIntegration->setEnabled(false);
+        ui->pbInverse->setEnabled(false);
+        ui->pbSquare->setEnabled(false);
+        ui->pbNthPower->setEnabled(false);
+        ui->pbNthSqRoot->setEnabled(false);
+        ui->pbFactorial->setEnabled(false);
+        ui->pbPower->setEnabled(false);
+        ui->pbPoweOfTen->setEnabled(false);
+        ui->pbModulus->setEnabled(false);
+        ui->pbPlus->setEnabled(false);
+        ui->pbMinus->setEnabled(false);
+        ui->pbMultiply->setEnabled(false);
+        ui->pbDivide->setEnabled(false);
+        ui->pbEqual->setEnabled(false);
     }
     else
     {
         ui->pbIntegration->setEnabled(true);
+        ui->pbInverse->setEnabled(true);
+        ui->pbSquare->setEnabled(true);
+        ui->pbNthPower->setEnabled(true);
+        ui->pbNthSqRoot->setEnabled(true);
+        ui->pbFactorial->setEnabled(true);
+        ui->pbPower->setEnabled(true);
+        ui->pbPoweOfTen->setEnabled(true);
+        ui->pbModulus->setEnabled(true);
+        ui->pbPlus->setEnabled(true);
+        ui->pbMinus->setEnabled(true);
+        ui->pbMultiply->setEnabled(true);
+        ui->pbDivide->setEnabled(true);
+        ui->pbEqual->setEnabled(true);
     }
 }
