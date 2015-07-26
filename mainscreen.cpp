@@ -40,6 +40,7 @@ MainScreen::MainScreen(QWidget *parent) :
     ui->pbPower->setEnabled(false);
     ui->pbPoweOfTen->setEnabled(false);
     ui->pbModulus->setEnabled(false);
+    ui->pbNone->setEnabled(false);
 
     ui->pbSquare->setEnabled(false);
     ui->pbNthPower->setEnabled(false);
@@ -400,9 +401,20 @@ void MainScreen::on_pbInverse_clicked()
 void MainScreen::on_pbPercentage_clicked()
 {
     double val = ui->txtTextEditor->toPlainText().toDouble(0);
+    if(val == 0)
+    {
+        QString temp = ui->txtTextEditor->toPlainText() + "0";
+        std::string formulaInput(temp.toStdString());
+        FormulaElement* formula = FormulaElement::parseFormula(formulaInput);
+        val = formula->evaluate();
+    }
+    else
+    {
+        this->ButtonClickEventHandler("+", 0);
+    }
 
     double prcntgValue = val/100;
-    ui->txtResultsEditor->setText(QString::number(prcntgValue));
+    this->ButtonClickEventHandler((QString::number(prcntgValue)).toStdString(), 0);
 
     ui->pbPercentage->setEnabled(false);
     ui->pbSqRoot->setEnabled(false);
