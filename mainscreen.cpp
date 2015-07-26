@@ -85,7 +85,7 @@ void MainScreen::on_pbZero_clicked()
 
 void MainScreen::on_pbOne_clicked()
 {
-   this->ButtonClickEventHandler("1", 0);
+    this->ButtonClickEventHandler("1", 0);
 }
 
 void MainScreen::on_pbTwo_clicked()
@@ -158,7 +158,7 @@ void MainScreen::on_pbEqual_clicked()
         double val = 0;
 
         val = QInputDialog::getDouble(this,tr("Enter variable value"),tr("Please enter a value for the variable ")+variableValues[i]->variable.data(),
-                                        0,-2147483647,2147483647,4,&ok);
+                                      0,-2147483647,2147483647,4,&ok);
         variableValues[i]->value = val;
     }
 
@@ -241,9 +241,9 @@ void MainScreen::on_pbTan_clicked()
 
 void MainScreen::on_pbFactorial_clicked()
 {
-   ui->txtResultsEditor->setText(QString::number(iter_factorial(ui->txtTextEditor->toPlainText().toDouble(0))));
-   ui->txtTextEditor->setText(ui->txtResultsEditor->toPlainText());
-   ui->pbPercentage->setEnabled(false);
+    ui->txtResultsEditor->setText(QString::number(iter_factorial(ui->txtTextEditor->toPlainText().toDouble(0))));
+    ui->txtTextEditor->setText(ui->txtResultsEditor->toPlainText());
+    ui->pbPercentage->setEnabled(false);
 }
 
 double MainScreen::iter_factorial(double n)
@@ -402,7 +402,7 @@ void ClearArray(std::string arr[])
 {
     for(int i = 0; arr[i] !=""; i++)
     {
-       arr[i] = "";
+        arr[i] = "";
     }
 }
 
@@ -458,14 +458,14 @@ void MainScreen::LoadToListGraphFromFile()
     this->ui->lstGraphFromFile->clear();
     for(int i = 0; formulaName[i] != ""; i++)
     {
-       // if(formulaName[i] != "")
+        // if(formulaName[i] != "")
         {
-        newItem = new QListWidgetItem;
-        //ListVal = QString::fromStdString(formulaName[i] + " - " + formula[i]);
-        ListVal = QString::fromStdString(formula[i]);
-        newItem->setText(ListVal);
-        int row = this->ui->lstGraphFromFile->row(this->ui->lstGraphFromFile->currentItem());
-        this->ui->lstGraphFromFile->insertItem(row, newItem);
+            newItem = new QListWidgetItem;
+            //ListVal = QString::fromStdString(formulaName[i] + " - " + formula[i]);
+            ListVal = QString::fromStdString(formula[i]);
+            newItem->setText(ListVal);
+            int row = this->ui->lstGraphFromFile->row(this->ui->lstGraphFromFile->currentItem());
+            this->ui->lstGraphFromFile->insertItem(row, newItem);
         }
     }
 }
@@ -480,12 +480,12 @@ void MainScreen::LoadToListGraphInMemory()
     {
         if(formulaNameOnMemory[i] != "")
         {
-        newItem = new QListWidgetItem;
-        //ListVal = QString::fromStdString(formulaNameOnMemory[i] + " - " + formulaOnMemory[i]);
-        ListVal = QString::fromStdString(formulaOnMemory[i]);
-        newItem->setText(ListVal);
-        int row = this->ui->lstGraphInMemory->row(this->ui->lstGraphInMemory->currentItem());
-        this->ui->lstGraphInMemory->insertItem(row, newItem);
+            newItem = new QListWidgetItem;
+            //ListVal = QString::fromStdString(formulaNameOnMemory[i] + " - " + formulaOnMemory[i]);
+            ListVal = QString::fromStdString(formulaOnMemory[i]);
+            newItem->setText(ListVal);
+            int row = this->ui->lstGraphInMemory->row(this->ui->lstGraphInMemory->currentItem());
+            this->ui->lstGraphInMemory->insertItem(row, newItem);
         }
     }
 }
@@ -498,14 +498,14 @@ void MainScreen::LoadToListGraphScientificFromFile()
 
     for(int i = 0; formulaName[i] != ""; i++)
     {
-       // if(formulaName[i] != "")
+        // if(formulaName[i] != "")
         {
-        newItem = new QListWidgetItem;
-        //ListVal = QString::fromStdString(formulaName[i] + " - " + formula[i]);
-        ListVal = QString::fromStdString(formula[i]);
-        newItem->setText(ListVal);
-        int row = this->ui->lstScientificFromFile->row(this->ui->lstScientificFromFile->currentItem());
-        this->ui->lstScientificFromFile->insertItem(row, newItem);
+            newItem = new QListWidgetItem;
+            //ListVal = QString::fromStdString(formulaName[i] + " - " + formula[i]);
+            ListVal = QString::fromStdString(formula[i]);
+            newItem->setText(ListVal);
+            int row = this->ui->lstScientificFromFile->row(this->ui->lstScientificFromFile->currentItem());
+            this->ui->lstScientificFromFile->insertItem(row, newItem);
         }
     }
 }
@@ -518,14 +518,14 @@ void MainScreen::LoadToListGraphScientificInMemory()
 
     for(int i = 0; formulaNameOnMemory[i] != ""; i++)
     {
-       // if(formulaNameOnMemory[i] != "")
+        // if(formulaNameOnMemory[i] != "")
         {
-        newItem = new QListWidgetItem;
-        //ListVal = QString::fromStdString(formulaNameOnMemory[i] + " - " + formulaOnMemory[i]);
-        ListVal = QString::fromStdString(formulaOnMemory[i]);
-        newItem->setText(ListVal);
-        int row = this->ui->lstScientificInMemory->row(this->ui->lstScientificInMemory->currentItem());
-        this->ui->lstScientificInMemory->insertItem(row, newItem);
+            newItem = new QListWidgetItem;
+            //ListVal = QString::fromStdString(formulaNameOnMemory[i] + " - " + formulaOnMemory[i]);
+            ListVal = QString::fromStdString(formulaOnMemory[i]);
+            newItem->setText(ListVal);
+            int row = this->ui->lstScientificInMemory->row(this->ui->lstScientificInMemory->currentItem());
+            this->ui->lstScientificInMemory->insertItem(row, newItem);
         }
     }
 }
@@ -542,10 +542,14 @@ void MainScreen::on_pbAddGraphFormula_clicked()
     ui->txtEquation->clear();
     ui->pbGenerate->setEnabled(true);
 
-    ui->txtXaxisRangeFrom->setText("-5");
-    ui->txtXaxisRangeTo->setText("10");
-    ui->txtYaxisRangeFrom->setText("-5");
-    ui->txtYaxisRangeTo->setText("10");
+    if(ui->txtXaxisRangeFrom->toPlainText() == "")
+        ui->txtXaxisRangeFrom->setText("-5");
+    if(ui->txtXaxisRangeTo->toPlainText() == "")
+        ui->txtXaxisRangeTo->setText("10");
+    if(ui->txtYaxisRangeFrom->toPlainText() == "")
+        ui->txtYaxisRangeFrom->setText("-5");
+    if(ui->txtYaxisRangeTo->toPlainText() == "")
+        ui->txtYaxisRangeTo->setText("10");
 
     ui->txtXaxisName->setText("X-Axis");
     ui->txtYaxisName->setText("Y-Axis");
@@ -576,6 +580,7 @@ void MainScreen::on_pbGenerate_clicked()
     dlgGraphViewer graphViewer;
     QString InfoMessage = "You have not specified values for the following. Default value will be taken.\n";
     bool ShowMsg = false;
+    std::fill( std::begin( graphEquations ), std::end( graphEquations ), "" );
     for(int i = 0; i< this->ui->lstGraphFormulas->count(); i++)
     {
         graphEquations[i] = this->ui->lstGraphFormulas->item(i)->text().toStdString();
@@ -613,28 +618,28 @@ void MainScreen::on_pbGenerate_clicked()
         ShowMsg = true;
     }
 
-    if(txtXaxisRangeFrom == 0)
+    if(this->ui->txtXaxisRangeFrom->toPlainText() == "")
     {
         txtXaxisRangeFrom = -10;
         InfoMessage +="\t> X Axis Start point, Default Value -10\n";
         ShowMsg = true;
     }
 
-    if(txtXaxisRangeTo == 0)
+    if(this->ui->txtXaxisRangeTo->toPlainText() == "")
     {
         txtXaxisRangeTo = 20;
         InfoMessage +="\t> X Axis End point, Default Value 20\n";
         ShowMsg = true;
     }
 
-    if(txtYaxisRangeFrom == 0)
+    if(this->ui->txtYaxisRangeFrom->toPlainText() == "")
     {
         txtYaxisRangeFrom = -10;
         InfoMessage +="\t> Y Axis Start point, Default Value -10\n";
         ShowMsg = true;
     }
 
-    if(txtYaxisRangeTo == 0)
+    if(this->ui->txtYaxisRangeTo->toPlainText() == "")
     {
         txtYaxisRangeTo = 20;
         InfoMessage +="\t> Y Axis End point, Default Value 20\n";
@@ -658,16 +663,18 @@ void MainScreen::on_pbGenerate_clicked()
     }
 
 
-    graphViewer.intializeGraphs(graphEquations,
-                                txtXaxisName,
-                                txtYaxisName,
-                                txtXaxisRangeFrom,
-                                txtXaxisRangeTo,
-                                txtYaxisRangeFrom,
-                                txtYaxisRangeTo);
-
-    graphViewer.setModal(true);
-    graphViewer.exec();
+    bool temp = graphViewer.intializeGraphs(graphEquations,
+                                            txtXaxisName,
+                                            txtYaxisName,
+                                            txtXaxisRangeFrom,
+                                            txtXaxisRangeTo,
+                                            txtYaxisRangeFrom,
+                                            txtYaxisRangeTo);
+    if(temp)
+    {
+        graphViewer.setModal(true);
+        graphViewer.exec();
+    }
 }
 
 void MainScreen::on_tabMenu_currentChanged(int index)
