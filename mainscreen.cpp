@@ -340,31 +340,39 @@ void MainScreen::on_pbEqual_clicked()
         std::string input = this->ui->txtTextEditor->toPlainText().toStdString();
         std::string formulaInput(input);
 
-
         if(this->CheckBrackets(formulaInput)) return;
 
-        FormulaElement* formula = FormulaElement::parseFormula(formulaInput);
-        formula->getVariableValues(&variableValues);
+        std::size_t posOfTanSign =(input).find("tan(");
+        std::string tanValWithBrckts = (input).substr(posOfTanSign+4);
+        std::size_t posOfClsngBrckt =(tanValWithBrckts).find(")");
+        std::string tanValue = tanValWithBrckts.substr(0,posOfClsngBrckt);
 
-        for (int i = 0; i < variableValues.size(); i++)
-        {
-            bool ok;
-            double val = 0;
+        QMessageBox::critical(this,"Infinity Calculator", "str255 :" + QString::fromStdString(tanValue), QMessageBox::Ok);
 
-            val = QInputDialog::getDouble(this,tr("Enter variable value"),tr("Please enter a value for the variable ")+variableValues[i]->variable.data(),
-                                          0,-2147483647,2147483647,4,&ok);
-            variableValues[i]->value = val;
-        }
 
-        formula->setVariableValues(&variableValues);
+//        FormulaElement* formula = FormulaElement::parseFormula(formulaInput);
+//        formula->getVariableValues(&variableValues);
 
-        this->ui->txtResultsEditor->setText(QString::number(formula->evaluate()));
+//        for (int i = 0; i < variableValues.size(); i++)
+//        {
+//            bool ok;
+//            double val = 0;
+
+//            val = QInputDialog::getDouble(this,tr("Enter variable value"),tr("Please enter a value for the variable ")+variableValues[i]->variable.data(),
+//                                          0,-2147483647,2147483647,4,&ok);
+//            variableValues[i]->value = val;
+//        }
+
+//        formula->setVariableValues(&variableValues);
+
+//        this->ui->txtResultsEditor->setText(QString::number(formula->evaluate()));
     }
 
     catch(...)
     {
-        QMessageBox::critical(this,"Infinity Calculator", "Error occured when solving the equation", QMessageBox::Ok);
+        QMessageBox::critical(this,"Infinity Calculator", "Error occured when solving the equation.", QMessageBox::Ok);
     }
+
     ui->pbPercentage->setEnabled(false);
     ui->pbSqRoot->setEnabled(false);
 }
