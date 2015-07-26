@@ -150,6 +150,14 @@ private slots:
 
     void on_pbMMinus_clicked();
 
+    void on_pbNthSqRoot_clicked();
+
+    void on_pbDifferentiation_clicked();
+
+    void on_pbStoD_clicked();
+
+    void on_txtTextEditor_textChanged();
+
 private:
     double tempMemory = 0;
     Ui::MainScreen *ui;

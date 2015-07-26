@@ -75,7 +75,7 @@ QTabWidget:hover{
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>1</number>
     </property>
     <property name="iconSize">
      <size>
@@ -1613,6 +1613,9 @@ QLabel:hover{background-color:#40bd9e; color:white;}</string>
        </property>
       </widget>
       <widget class="QPushButton" name="pbDifferentiation">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="geometry">
         <rect>
          <x>80</x>
@@ -2183,7 +2186,10 @@ QPushButton:hover{color:white;}</string>
         <string>x</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="pb">
+      <widget class="QPushButton" name="pbStoD">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="geometry">
         <rect>
          <x>150</x>

@@ -9,9 +9,11 @@
 #include "dlgintegration.h"
 #include <qmessagebox.h>
 #include <qframe.h>
+#include <cmath>
 #include <QInputDialog>
 #include <QDir>
 
+#define PI 3.14159265
 
 MainScreen::MainScreen(QWidget *parent) :
     QMainWindow(parent),
@@ -28,6 +30,7 @@ MainScreen::MainScreen(QWidget *parent) :
 
     ui->pbPercentage->setEnabled(false);
     ui->frmAboutCalculator->setVisible(false);
+    ui->pbIntegration->setEnabled(false);
     ui->pbAddGraphFormula->setEnabled(false);
     ui->pbRemoveFormula->setEnabled(false);
     ui->pbCalAreaUndertheCurve->setEnabled(false);
@@ -79,77 +82,125 @@ void MainScreen::ButtonClickEventHandler(std::string txt, int txtField)
     }
 }
 
-void MainScreen::on_pbMultiply_clicked()
-{
-    this->ButtonClickEventHandler("*", 0);
-}
+// ----------------------------------------------------------------------------------------
 
 void MainScreen::on_pbZero_clicked()
 {
-    if(ui->txtTextEditor->toPlainText()!= "0"){
+    if(ui->txtTextEditor->toPlainText()!= "0")
+    {
         this->ButtonClickEventHandler("0", 0);
     }
+    ui->pbPercentage->setEnabled(true);
 }
 
 void MainScreen::on_pbOne_clicked()
 {
     this->ButtonClickEventHandler("1", 0);
+    ui->pbPercentage->setEnabled(true);
 }
 
 void MainScreen::on_pbTwo_clicked()
 {
     this->ButtonClickEventHandler("2", 0);
+    ui->pbPercentage->setEnabled(true);
 }
 
 void MainScreen::on_pbThree_clicked()
 {
     this->ButtonClickEventHandler("3", 0);
+    ui->pbPercentage->setEnabled(true);
 }
 
 void MainScreen::on_pbFour_clicked()
 {
     this->ButtonClickEventHandler("4", 0);
+    ui->pbPercentage->setEnabled(true);
 }
 
 void MainScreen::on_pbFive_clicked()
 {
     this->ButtonClickEventHandler("5", 0);
+    ui->pbPercentage->setEnabled(true);
 }
 
 void MainScreen::on_pbSix_clicked()
 {
     this->ButtonClickEventHandler("6", 0);
+    ui->pbPercentage->setEnabled(true);
 }
 
 void MainScreen::on_pbSeven_clicked()
 {
     this->ButtonClickEventHandler("7", 0);
+    ui->pbPercentage->setEnabled(true);
 }
 
 void MainScreen::on_pbEight_clicked()
 {
     this->ButtonClickEventHandler("8", 0);
+    ui->pbPercentage->setEnabled(true);
 }
 
 void MainScreen::on_pbNine_clicked()
 {
     this->ButtonClickEventHandler("9", 0);
+    ui->pbPercentage->setEnabled(true);
 }
+
+// ----------------------------------------------------------------------------------------
 
 void MainScreen::on_pbDot_clicked()
 {
     this->ButtonClickEventHandler(".", 0);
+    ui->pbPercentage->setEnabled(true);
 }
 
 void MainScreen::on_pbPlus_clicked()
 {
     this->ButtonClickEventHandler("+", 0);
+    ui->pbPercentage->setEnabled(true);
 }
 
 void MainScreen::on_pbMinus_clicked()
 {
     this->ButtonClickEventHandler("-", 0);
+    ui->pbPercentage->setEnabled(true);
 }
+
+void MainScreen::on_pbMultiply_clicked()
+{
+    this->ButtonClickEventHandler("*", 0);
+    ui->pbPercentage->setEnabled(true);
+}
+
+void MainScreen::on_pbDivide_clicked()
+{
+    this->ButtonClickEventHandler("/", 0);
+    ui->pbPercentage->setEnabled(true);
+}
+
+void MainScreen::on_pbPlusOrMinus_clicked()
+{
+    if(ui->txtResultsEditor->toPlainText().toDouble(0) < 0)
+    {
+        std::size_t posOfMinusSign =(ui->txtResultsEditor->toPlainText().toStdString()).find("-");
+        std::string plusValue = (ui->txtResultsEditor->toPlainText().toStdString()).substr (posOfMinusSign+1);
+        ui->txtResultsEditor->setText(QString::fromStdString(plusValue));
+
+        ui->txtTextEditor->clear();
+        ui->txtTextEditor->setText(QString::fromStdString(plusValue));
+    }
+    else
+    {
+        ui->txtResultsEditor->setText("-"+ ui->txtResultsEditor->toPlainText());
+
+        ui->txtTextEditor->clear();
+        ui->txtTextEditor->setText(ui->txtResultsEditor->toPlainText());
+    }
+    ui->pbPercentage->setEnabled(true);
+}
+
+// ----------------------------------------------------------------------------------------
 
 void MainScreen::on_pbEqual_clicked()
 {
@@ -175,6 +226,7 @@ void MainScreen::on_pbEqual_clicked()
     //this->ui->txtTextEditor->setText(QString::fromStdString(formula->toQString().data()));
 
     this->ui->txtResultsEditor->setText(QString::number(formula->evaluate()));
+    ui->pbPercentage->setEnabled(false);
 }
 
 void MainScreen::on_pbInverse_clicked()
@@ -184,6 +236,7 @@ void MainScreen::on_pbInverse_clicked()
 
     ui->txtTextEditor->setText("1/("+ ui->txtTextEditor->toPlainText()+")");
     ui->txtTextEditor->setTextCursor(prev_cursor);
+    ui->pbPercentage->setEnabled(true);
 }
 
 void MainScreen::on_pbPercentage_clicked()
@@ -192,18 +245,95 @@ void MainScreen::on_pbPercentage_clicked()
 
     double prcntgValue = val/100;
     ui->txtResultsEditor->setText(QString::number(prcntgValue));
-}
-
-void MainScreen::on_pbDivide_clicked()
-{
-    this->ButtonClickEventHandler("/", 0);
+    ui->pbPercentage->setEnabled(false);
 }
 
 void MainScreen::on_pbSqRoot_clicked()
 {
-    this->ButtonClickEventHandler("sqrt(", 0);
+    double val = ui->txtTextEditor->toPlainText().toDouble(0);
+
+    double result = sqrt (val);
+    ui->txtResultsEditor->setText(QString::number(result));
     ui->pbPercentage->setEnabled(false);
 }
+
+// ----------------------------------------------------------------------------------------
+
+void MainScreen::on_pbCE_clicked()
+{
+    if(ui->txtTextEditor->toPlainText()!= "0")
+    {
+        if(!ui->txtTextEditor->toPlainText().isEmpty())
+        {
+            ui->txtTextEditor->moveCursor(QTextCursor::End);
+            ui->txtTextEditor->textCursor().deletePreviousChar();
+        }
+    }
+    ui->txtResultsEditor->clear();
+    ui->pbPercentage->setEnabled(false);
+}
+
+void MainScreen::on_pbC_clicked()
+{
+    ui->txtTextEditor->clear();
+    ui->txtResultsEditor->clear();
+    ui->pbPercentage->setEnabled(false);
+}
+
+void MainScreen::on_pbDel_clicked()
+{
+    if(ui->txtTextEditor->toPlainText()!= "0")
+    {
+        if(!ui->txtTextEditor->toPlainText().isEmpty())
+        {
+            ui->txtTextEditor->moveCursor(QTextCursor::End);
+            ui->txtTextEditor->textCursor().deletePreviousChar();
+        }
+    }
+    ui->txtResultsEditor->clear();
+    ui->pbPercentage->setEnabled(false);
+}
+
+// ----------------------------------------------------------------------------------------
+
+void MainScreen::on_pbMC_clicked()
+{
+    this->tempMemory = 0;
+    this->ui->txtTextEditor->setText("");
+    ui->pbPercentage->setEnabled(false);
+}
+
+void MainScreen::on_pbMR_clicked()
+{
+    this->ui->txtTextEditor->setText(QString::number(this->tempMemory, 'f', 2));
+    ui->pbPercentage->setEnabled(false);
+}
+
+void MainScreen::on_pbMS_clicked()
+{
+    this->tempMemory = this->ui->txtTextEditor->toPlainText().toDouble();
+    this->ui->txtResultsEditor->setText(QString::number(this->tempMemory, 'f', 2));
+    this->ui->txtTextEditor->setText("");
+    ui->pbPercentage->setEnabled(false);
+}
+
+void MainScreen::on_pbMPlus_clicked()
+{
+    this->tempMemory += this->ui->txtTextEditor->toPlainText().toDouble();
+    this->ui->txtResultsEditor->setText(QString::number(this->tempMemory, 'f', 2));
+    this->ui->txtTextEditor->setText("");
+    ui->pbPercentage->setEnabled(false);
+}
+
+void MainScreen::on_pbMMinus_clicked()
+{
+    this->tempMemory -= this->ui->txtTextEditor->toPlainText().toDouble();
+    this->ui->txtResultsEditor->setText(QString::number(this->tempMemory, 'f', 2));
+    this->ui->txtTextEditor->setText("");
+    ui->pbPercentage->setEnabled(false);
+}
+
+// ----------------------------------------------------------------------------------------
 
 void MainScreen::on_pbOpenBrackets_clicked()
 {
@@ -243,13 +373,27 @@ void MainScreen::on_pbCos_clicked()
 
 void MainScreen::on_pbTan_clicked()
 {
-    this->ButtonClickEventHandler("Tan(", 0);
+    //this->ButtonClickEventHandler("Tan(", 0);
+    double val = ui->txtTextEditor->toPlainText().toDouble(0);
+    double result = tan ( val * PI / 180.0 );
+
+    ui->txtResultsEditor->setText(QString::number(result));
+    ui->txtTextEditor->setText(ui->txtResultsEditor->toPlainText());
+
+
     ui->pbPercentage->setEnabled(false);
 }
 
 void MainScreen::on_pbFactorial_clicked()
 {
-    ui->txtResultsEditor->setText(QString::number(iter_factorial(ui->txtTextEditor->toPlainText().toDouble(0))));
+
+    std::string input = this->ui->txtTextEditor->toPlainText().toStdString();
+
+    std::string formulaInput(input);
+    FormulaElement* formula = FormulaElement::parseFormula(formulaInput);
+    double a = formula->evaluate();
+
+    ui->txtResultsEditor->setText(QString::number(iter_factorial(a)));
     ui->txtTextEditor->setText(ui->txtResultsEditor->toPlainText());
     ui->pbPercentage->setEnabled(false);
 }
@@ -295,6 +439,11 @@ void MainScreen::on_pbPoweOfTen_clicked()
     ui->pbPercentage->setEnabled(false);
 }
 
+void MainScreen::on_pbNthSqRoot_clicked()
+{
+    ui->pbPercentage->setEnabled(false);
+}
+
 void MainScreen::on_pbPi_clicked()
 {
     if(sizeof(ui->txtTextEditor->size())>2)
@@ -314,95 +463,61 @@ void MainScreen::on_pbPower_clicked()
     ui->pbPercentage->setEnabled(false);
 }
 
+void MainScreen::on_pbDifferentiation_clicked()
+{
+    ui->pbPercentage->setEnabled(false);
+}
+
+void MainScreen::on_pbStoD_clicked()
+{
+    ui->pbPercentage->setEnabled(false);
+}
+
 void MainScreen::on_pbModulus_clicked()
 {
     this->ButtonClickEventHandler("mod", 0);
     ui->pbPercentage->setEnabled(false);
 }
 
-void MainScreen::on_pbPlusOrMinus_clicked()
+void MainScreen::on_pbIntegration_clicked()
 {
-    if(ui->txtResultsEditor->toPlainText().toDouble(0) < 0)
-    {
-        std::size_t posOfMinusSign =(ui->txtResultsEditor->toPlainText().toStdString()).find("-");
-        std::string plusValue = (ui->txtResultsEditor->toPlainText().toStdString()).substr (posOfMinusSign+1);
-        ui->txtResultsEditor->setText(QString::fromStdString(plusValue));
+    dlgIntegration formualIntegration;
 
-        ui->txtTextEditor->clear();
-        ui->txtTextEditor->setText(QString::fromStdString(plusValue));
-    }
-    else
-    {
-        ui->txtResultsEditor->setText("-"+ ui->txtResultsEditor->toPlainText());
+    formualIntegration.setGraphEquation(this->ui->txtTextEditor->toPlainText().toStdString());
+    formualIntegration.setModal(true);
+    formualIntegration.exec();
 
-        ui->txtTextEditor->clear();
-        ui->txtTextEditor->setText(ui->txtResultsEditor->toPlainText());
-    }
-    ui->pbPercentage->setEnabled(true);
-}
-
-void MainScreen::on_pbAboutUs_clicked()
-{
-    if(ui->frmAboutCalculator->isVisible())
-    {
-        ui->frmAboutCalculator->setVisible(false);
-    }
-    else
-    {
-        ui->frmAboutCalculator->setVisible(true);
-    }
-}
-
-void MainScreen::on_pbCE_clicked()
-{
-    if(ui->txtTextEditor->toPlainText()!= "0")
-    {
-        if(!ui->txtTextEditor->toPlainText().isEmpty())
-        {
-            ui->txtTextEditor->textCursor().deletePreviousChar();
-        }
-    }
-    ui->txtResultsEditor->clear();
+    this->ui->txtResultsEditor->setText(QString::number(formualIntegration.calculatedArea));
     ui->pbPercentage->setEnabled(false);
 }
 
-void MainScreen::on_pbC_clicked()
-{
-    ui->txtTextEditor->clear();
-    ui->txtResultsEditor->clear();
-    ui->pbPercentage->setEnabled(false);
-}
-
-void MainScreen::on_pbDel_clicked()
-{
-    if(ui->txtTextEditor->toPlainText()!= "0")
-    {
-        if(!ui->txtTextEditor->toPlainText().isEmpty())
-        {
-            ui->txtTextEditor->textCursor().deletePreviousChar();
-        }
-    }
-    ui->txtResultsEditor->clear();
-}
+// ----------------------------------------------------------------------------------------
 
 void MainScreen::on_pbSaveFormula_clicked()
 {
     dlgSaveFormula saveFormula;
+
     saveFormulaValue = this->ui->txtTextEditor->toPlainText().toStdString();
+
     saveFormula.setCurrentMemory(saveFormulaValue, formula, formulaName, formulaOnMemory, formulaNameOnMemory, this->filePath);
     saveFormula.setModal(true);
     saveFormula.exec();
+
     std::fill( std::begin( formulaName ), std::end( formulaName ), "" );
     std::fill( std::begin( formula ), std::end( formula ), "" );
     std::fill( std::begin( formulaOnMemory ), std::end( formulaOnMemory ), "" );    std::fill( std::begin( formulaNameOnMemory ), std::end( formulaNameOnMemory ), "" );
     this->ui->lstScientificFromFile->clear();
 
     this->filePath = saveFormula.filePath;
+
     saveFormula.getSavedEquations(formula,formulaName, formulaOnMemory, formulaNameOnMemory);
+
     this->LoadToListGraphFromFile();
     this->LoadToListGraphInMemory();
     this->LoadToListGraphScientificFromFile();
     this->LoadToListGraphScientificInMemory();
+
+    ui->pbPercentage->setEnabled(false);
 }
 
 void ClearArray(std::string arr[]);
@@ -435,7 +550,11 @@ void MainScreen::on_pbLoadFormula_clicked()
     this->LoadToListGraphInMemory();
     this->LoadToListGraphScientificFromFile();
     this->LoadToListGraphScientificInMemory();
+
+    ui->pbPercentage->setEnabled(false);
 }
+
+// ----------------------------------------------------------------------------------------
 
 void MainScreen::on_pbLoadGraphFormula_clicked()
 {
@@ -457,7 +576,11 @@ void MainScreen::on_pbLoadGraphFormula_clicked()
     this->LoadToListGraphInMemory();
     this->LoadToListGraphScientificFromFile();
     this->LoadToListGraphScientificInMemory();
+
+    ui->pbPercentage->setEnabled(false);
 }
+
+// ----------------------------------------------------------------------------------------
 
 void MainScreen::LoadToListGraphFromFile()
 {
@@ -538,7 +661,7 @@ void MainScreen::LoadToListGraphScientificInMemory()
     }
 }
 
-
+// ----------------------------------------------------------------------------------------
 
 void MainScreen::on_pbAddGraphFormula_clicked()
 {
@@ -577,6 +700,8 @@ void MainScreen::on_pbAddGraphFormula_clicked()
 
     ui->txtXaxisName->setText("X-Axis");
     ui->txtYaxisName->setText("Y-Axis");
+
+    ui->pbPercentage->setEnabled(false);
 }
 
 void MainScreen::on_pbRemoveFormula_clicked()
@@ -604,6 +729,8 @@ void MainScreen::on_pbRemoveFormula_clicked()
 
         ui->txtXaxisName->clear();
         ui->txtYaxisName->clear();
+
+        ui->pbPercentage->setEnabled(false);
     }
 }
 
@@ -613,6 +740,7 @@ void MainScreen::on_pbGenerate_clicked()
     QString InfoMessage = "You have not specified values for the following. Default value will be taken.\n";
     bool ShowMsg = false;
     std::fill( std::begin( graphEquations ), std::end( graphEquations ), "" );
+
     for(int i = 0; i< this->ui->lstGraphFormulas->count(); i++)
     {
         graphEquations[i] = this->ui->lstGraphFormulas->item(i)->text().toStdString();
@@ -707,14 +835,29 @@ void MainScreen::on_pbGenerate_clicked()
         graphViewer.setModal(true);
         graphViewer.exec();
     }
+
+    ui->pbPercentage->setEnabled(false);
 }
 
-void MainScreen::on_tabMenu_currentChanged(int index)
+void MainScreen::on_pbCalAreaUndertheCurve_clicked()
 {
-    if((index == 0) || (index == 1) || (index == 2)){
-        ui->frmAboutCalculator->setVisible(false);
+    QModelIndexList selectedList = this->ui->lstGraphFormulas->selectionModel()->selectedRows();
+    if (selectedList.size() > 0) {
+
+        dlgCalAreaUnderCurve calAreaUnderCurve;
+
+        calAreaUnderCurve.setGraphEquation(this->ui->lstGraphFormulas->currentItem()->text().toStdString());
+        calAreaUnderCurve.setModal(true);
+        calAreaUnderCurve.exec();
     }
+    else
+    {
+        QMessageBox::critical(this,"Infinity Calculator","Please select a formula to load.", QMessageBox::Ok);
+    }
+    ui->pbPercentage->setEnabled(false);
 }
+
+// ----------------------------------------------------------------------------------------
 
 void MainScreen::on_lstScientificInMemory_doubleClicked(const QModelIndex &index)
 {
@@ -736,32 +879,6 @@ void MainScreen::on_lstGraphFromFile_doubleClicked(const QModelIndex &index)
     this->ButtonClickEventHandler(this->ui->lstGraphFromFile->currentItem()->text().toStdString(), 1);
 }
 
-void MainScreen::on_pbCalAreaUndertheCurve_clicked()
-{
-    QModelIndexList selectedList = this->ui->lstGraphFormulas->selectionModel()->selectedRows();
-    if (selectedList.size() > 0) {
-
-        dlgCalAreaUnderCurve calAreaUnderCurve;
-
-        calAreaUnderCurve.setGraphEquation(this->ui->lstGraphFormulas->currentItem()->text().toStdString());
-        calAreaUnderCurve.setModal(true);
-        calAreaUnderCurve.exec();
-    }
-    else
-    {
-        QMessageBox::critical(this,"Infinity Calculator","Please select a formula to load.", QMessageBox::Ok);
-    }
-}
-
-void MainScreen::on_pbIntegration_clicked()
-{
-    dlgIntegration formualIntegration;
-
-    formualIntegration.setGraphEquation(this->ui->txtTextEditor->toPlainText().toStdString());
-    formualIntegration.setModal(true);
-    formualIntegration.exec();
-}
-
 void MainScreen::on_lstGraphFormulas_clicked(const QModelIndex &index)
 {
     ui->pbRemoveFormula->setEnabled(true);
@@ -780,35 +897,38 @@ void MainScreen::on_txtEquation_textChanged()
     }
 }
 
+// ----------------------------------------------------------------------------------------
 
-void MainScreen::on_pbMC_clicked()
+void MainScreen::on_pbAboutUs_clicked()
 {
-    this->tempMemory = 0;
-    this->ui->txtTextEditor->setText("");
+    if(ui->frmAboutCalculator->isVisible())
+    {
+        ui->frmAboutCalculator->setVisible(false);
+    }
+    else
+    {
+        ui->frmAboutCalculator->setVisible(true);
+    }
+    ui->pbPercentage->setEnabled(false);
 }
 
-void MainScreen::on_pbMR_clicked()
+void MainScreen::on_tabMenu_currentChanged(int index)
 {
-    this->ui->txtTextEditor->setText(QString::number(this->tempMemory, 'f', 2));
+    if((index == 0) || (index == 1) || (index == 2)){
+        ui->frmAboutCalculator->setVisible(false);
+    }
 }
 
-void MainScreen::on_pbMS_clicked()
-{
-    this->tempMemory = this->ui->txtTextEditor->toPlainText().toDouble();
-    this->ui->txtResultsEditor->setText(QString::number(this->tempMemory, 'f', 2));
-    this->ui->txtTextEditor->setText("");
-}
 
-void MainScreen::on_pbMPlus_clicked()
-{
-    this->tempMemory += this->ui->txtTextEditor->toPlainText().toDouble();
-    this->ui->txtResultsEditor->setText(QString::number(this->tempMemory, 'f', 2));
-    this->ui->txtTextEditor->setText("");
-}
 
-void MainScreen::on_pbMMinus_clicked()
+void MainScreen::on_txtTextEditor_textChanged()
 {
-    this->tempMemory -= this->ui->txtTextEditor->toPlainText().toDouble();
-    this->ui->txtResultsEditor->setText(QString::number(this->tempMemory, 'f', 2));
-    this->ui->txtTextEditor->setText("");
+    if(ui->txtTextEditor->toPlainText()== "")
+    {
+        ui->pbIntegration->setEnabled(false);
+    }
+    else
+    {
+        ui->pbIntegration->setEnabled(true);
+    }
 }

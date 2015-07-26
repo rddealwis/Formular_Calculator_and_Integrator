@@ -87,8 +87,6 @@ double dlgIntegration::findAreaUnderTheCurve(std::string graphEquation){
 
 void dlgIntegration::on_pbOk_clicked()
 {
-    double calculatedArea;
-
     if((this->ui->txtMinRange->toPlainText() == "")|| (this->ui->txtMaxRange->toPlainText() == ""))
     {
         QMessageBox::critical(this,"Infinity Calculator","Please provide both minimum & maximum ranges.", QMessageBox::Ok);
@@ -100,10 +98,8 @@ void dlgIntegration::on_pbOk_clicked()
     else
     {
         calculatedArea = findAreaUnderTheCurve(this->ui->txtFormula->toPlainText().toStdString());
-    }
-
-    QMessageBox::critical(this,"Infinity Calculator","Integrated answer "+QString::number(calculatedArea), QMessageBox::Ok);
-
+        this->close();
+    }    
 }
 
 void dlgIntegration::on_pbClose_clicked()

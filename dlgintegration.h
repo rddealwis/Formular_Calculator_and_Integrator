@@ -13,6 +13,7 @@ class dlgIntegration : public QDialog
 
 public:
     explicit dlgIntegration(QWidget *parent = 0);
+    double calculatedArea =0;
     ~dlgIntegration();
     void addIntegrationVariables(std::string graphEquation);
     void setGraphEquation(std::string graphEquation);
