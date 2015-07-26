@@ -27,14 +27,20 @@ bool dlgGraphViewer::intializeGraphs(std::string graphEquations[], std::string x
         double range = 1440;
         bool temp = false;
         QVector<double> x(range), currentGraph(range);
-        std::vector<variableValue*> variableValues;
         for(int j = 0; graphEquations[j] != ""; j++)
         {
             GraphsCordinates = "";
             std::string formulaInput(graphEquations[j]);
-
+            std::vector<variableValue*> variableValues;
             FormulaElement* formula = FormulaElement::parseFormula(formulaInput);
             formula->getVariableValues(&variableValues);
+
+            if(variableValues.size() > 1)
+            {
+                QString msg ="Following types of graphs are not possible:\n\t> 3D graphs.\n\t> Log and ln graphs.\n\t> Complex graphs.";
+                QMessageBox::critical(this,"Infinity Calculator", msg, QMessageBox::Ok);
+                return false;
+            }
 
             if(!temp)
             {

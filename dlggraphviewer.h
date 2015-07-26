@@ -26,6 +26,7 @@ private slots:
 
 private:
     Ui::dlgGraphViewer *ui;
+    std::string tempVar = "";
 };
 
 #endif // DLGGRAPHVIEWER_H
