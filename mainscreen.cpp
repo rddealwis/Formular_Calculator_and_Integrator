@@ -543,9 +543,9 @@ void MainScreen::on_pbAddGraphFormula_clicked()
     ui->pbGenerate->setEnabled(true);
 
     ui->txtXaxisRangeFrom->setText("-5");
-    ui->txtXaxisRangeTo->setText("-5");
+    ui->txtXaxisRangeTo->setText("10");
     ui->txtYaxisRangeFrom->setText("-5");
-    ui->txtYaxisRangeTo->setText("-5");
+    ui->txtYaxisRangeTo->setText("10");
 
     ui->txtXaxisName->setText("X-Axis");
     ui->txtYaxisName->setText("Y-Axis");
