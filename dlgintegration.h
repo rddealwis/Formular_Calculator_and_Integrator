@@ -16,7 +16,7 @@ public:
     double calculatedArea =0;
     ~dlgIntegration();
     void addIntegrationVariables(std::string graphEquation);
-    void setGraphEquation(std::string graphEquation);
+    void setIntegrationEquation(std::string graphEquation);
     double findAreaUnderTheCurve(std::string graphEquation);
 
 private slots:

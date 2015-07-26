@@ -17,7 +17,7 @@ dlgIntegration::~dlgIntegration()
     delete ui;
 }
 
-void dlgIntegration::setGraphEquation(std::string graphEquation)
+void dlgIntegration::setIntegrationEquation(std::string graphEquation)
 {
     this->ui->txtFormula->setText(QString::fromStdString(graphEquation));
     addIntegrationVariables(this->ui->txtFormula->toPlainText().toStdString());
@@ -35,6 +35,10 @@ void dlgIntegration::addIntegrationVariables(std::string graphEquation)
     for (int i = 0; i < variableValues.size(); i++)
     {
         this->ui->cmbIntegrationVar->addItem(variableValues[i]->variable.data());
+    }
+    if(variableValues.size()==0)
+    {
+        this->ui->cmbIntegrationVar->addItem("X");
     }
 }
 
@@ -93,7 +97,7 @@ void dlgIntegration::on_pbOk_clicked()
     }
     else if(this->ui->cmbIntegrationVar->currentText().toStdString()== "-Select-")
     {
-        QMessageBox::critical(this,"Infinity Calculator","Please select the integration variable", QMessageBox::Ok);
+        QMessageBox::critical(this,"Infinity Calculator","Please select the integration variable.", QMessageBox::Ok);
     }
     else
     {

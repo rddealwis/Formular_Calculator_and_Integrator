@@ -37,6 +37,10 @@ void dlgCalAreaUnderCurve::addIntegrationVariables(std::string graphEquation)
     {
         this->ui->cmbIntegrationVar->addItem(variableValues[i]->variable.data());
     }
+    if(variableValues.size()==0)
+    {
+        this->ui->cmbIntegrationVar->addItem("X");
+    }
 }
 
 void dlgCalAreaUnderCurve::findAreaUnderTheCurve(std::string graphEquation){
@@ -96,7 +100,7 @@ void dlgCalAreaUnderCurve::on_pbCalculate_clicked()
     }
     else if(this->ui->cmbIntegrationVar->currentText().toStdString()== "-Select-")
     {
-        QMessageBox::critical(this,"Infinity Calculator","Please select the integration variable", QMessageBox::Ok);
+        QMessageBox::critical(this,"Infinity Calculator","Please select the integration variable.", QMessageBox::Ok);
     }
     else
     {

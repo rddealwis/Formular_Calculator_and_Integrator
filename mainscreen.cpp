@@ -647,7 +647,7 @@ void MainScreen::on_pbIntegration_clicked()
 {
     dlgIntegration formualIntegration;
 
-    formualIntegration.setGraphEquation(this->ui->txtTextEditor->toPlainText().toStdString());
+    formualIntegration.setIntegrationEquation(this->ui->txtTextEditor->toPlainText().toStdString());
     formualIntegration.setModal(true);
     formualIntegration.exec();
 
