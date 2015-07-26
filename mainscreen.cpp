@@ -343,29 +343,37 @@ void MainScreen::on_pbEqual_clicked()
         if(this->CheckBrackets(formulaInput)) return;
 
         std::size_t posOfTanSign =(input).find("tan(");
-        std::string tanValWithBrckts = (input).substr(posOfTanSign+4);
-        std::size_t posOfClsngBrckt =(tanValWithBrckts).find(")");
-        std::string tanValue = tanValWithBrckts.substr(0,posOfClsngBrckt);
+        if(posOfTanSign < 1000)
+        {
+            std::string tanValWithBrckts = (input).substr(posOfTanSign+4);
+            std::size_t posOfTanClsngBrckt =(input).find(")");
+            std::size_t posOfClsngBrckt =(tanValWithBrckts).find(")");
+            std::string tanValue = tanValWithBrckts.substr(0,posOfClsngBrckt);
+            TanReplace = "sin(" + tanValue + ")/cos(" + tanValue + ")";
+            formulaInput.replace(posOfTanSign, posOfTanClsngBrckt+1, TanReplace);
+            if(posOfTanSign > 0)
+            {
+                AfterTan = (input).substr(posOfTanClsngBrckt+1);
+                formulaInput+=AfterTan;
+            }
+        }
 
-        QMessageBox::critical(this,"Infinity Calculator", "str255 :" + QString::fromStdString(tanValue), QMessageBox::Ok);
+        FormulaElement* formula = FormulaElement::parseFormula(formulaInput);
+        formula->getVariableValues(&variableValues);
 
+        for (int i = 0; i < variableValues.size(); i++)
+        {
+            bool ok;
+            double val = 0;
 
-//        FormulaElement* formula = FormulaElement::parseFormula(formulaInput);
-//        formula->getVariableValues(&variableValues);
+            val = QInputDialog::getDouble(this,tr("Enter variable value"),tr("Please enter a value for the variable ")+variableValues[i]->variable.data(),
+                                          0,-2147483647,2147483647,4,&ok);
+            variableValues[i]->value = val;
+        }
 
-//        for (int i = 0; i < variableValues.size(); i++)
-//        {
-//            bool ok;
-//            double val = 0;
+        formula->setVariableValues(&variableValues);
 
-//            val = QInputDialog::getDouble(this,tr("Enter variable value"),tr("Please enter a value for the variable ")+variableValues[i]->variable.data(),
-//                                          0,-2147483647,2147483647,4,&ok);
-//            variableValues[i]->value = val;
-//        }
-
-//        formula->setVariableValues(&variableValues);
-
-//        this->ui->txtResultsEditor->setText(QString::number(formula->evaluate()));
+        this->ui->txtResultsEditor->setText(QString::number(formula->evaluate()));
     }
 
     catch(...)

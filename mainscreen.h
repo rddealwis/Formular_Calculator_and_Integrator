@@ -161,6 +161,8 @@ private slots:
 
 private:
     double tempMemory = 0;
+    std::string TanReplace = "";
+    std::string AfterTan = "";
     Ui::MainScreen *ui;
 };
 
