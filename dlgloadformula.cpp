@@ -20,11 +20,6 @@ void CopyArrayL(std::string array1[], std::string array2[]);
 
 void CopyArrayL(std::string array1[], std::string array2[])
 {
-    //QMessageBox::information(0, "Infinity Calculator", QString::number(array1->length()), QMessageBox::Ok);
-    /*for(int i = 0; i <= array1->length(); i++)
-    {
-        array2[i] = array1[i];
-    }*/
     for(int i = 0; array1[i]!=""; i++)
     {
         array2[i] = array1[i];
@@ -40,7 +35,6 @@ void dlgLoadFormula::setCurrentMemory(std::string p_formula[], std::string p_for
     CopyArrayL(p_formulaNameOnMemory, formulaNameOnMemory);
     this->filePath = p_filePath;
 
-    //Formulae in the RuntimeMemory will be populated to the table by default
     for (int j=0; formulaNameOnMemory[j] != "";j++)
     {
         QTableWidgetItem *formulaNameItem=new QTableWidgetItem(tr(formulaNameOnMemory[j].c_str()));

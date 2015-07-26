@@ -60,7 +60,6 @@ bool XMLFileHandling::Read(std::string& fileName,std::string formula[],std::stri
     {
         if(!document.setContent(&file))
         {
-            //return false;
         }
         file.close();
     }

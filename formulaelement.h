@@ -24,7 +24,6 @@ public:
 	virtual bool isFullyGrounded() = 0;
 	virtual double evaluate() = 0;
     virtual FormulaElement* simplify() = 0;
-    //static void functionElemetnsInit(std::vector<FormulaElement*> *formElements);
     static void functionElemetns(std::vector<FormulaElement*> *formElements);
     static void toVector(FormulaElement* node, std::vector<FormulaElement*> *formElements);
 

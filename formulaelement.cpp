@@ -29,7 +29,7 @@ bool containNumber(std::string Text);
 void getConstantElements(std::vector<std::string> *tokens, std::vector<ConstantElement*> *constElementsOut);
 void getVariableElements(std::vector<std::string> *tokens, std::vector<VariableElement*> *varElementsOut);
 void getFormulaElements(std::vector<std::string> *tokens, std::vector<FormulaElement*> *formElements,
-    std::vector<VariableElement*> *varElements, std::vector<ConstantElement*> *constElements);
+                        std::vector<VariableElement*> *varElements, std::vector<ConstantElement*> *constElements);
 
 bool constElementExist(std::vector<ConstantElement*> *constElements, double value, int *index);
 bool constElementExist(std::vector<ConstantElement*> *constElements, double value);
@@ -73,22 +73,22 @@ FormulaElement* FormulaElement::parseFormula(std::string formula)
         getFormulaElements(&tokens, &formElements, &varElements, &constElements);
 
         simplifyBrackets(&formElements);
-		functionElemetnsInit(&formElements);
+        functionElemetnsInit(&formElements);
 
         if (formElements.size() == 1)
         {
             return formElements[0];
         }
 
-		functionElemetns(&formElements);
+        functionElemetns(&formElements);
 
 
         if (formElements.size() == 1)
         {
             return formElements[0];
         }
-        else std::cout<<"Error;";
-            //throw new std::exception("Error Parsing!");
+        else
+            throw new std::exception("Error Parsing!");
     }
     catch (std::exception* e)
     {
@@ -99,23 +99,23 @@ FormulaElement* FormulaElement::parseFormula(std::string formula)
 
 void functionElemetnsInit(std::vector<FormulaElement*> *formElements)
 {
-	sineElemetnsInit(formElements);
-	cosElemetnsInit(formElements);
-	powerElemetnsInit(formElements);
-	divideElemetnsInit(formElements);
-	multiplyElemetnsInit(formElements);
-	plusElemetnsInit(formElements);
-	minusElemetnsInit(formElements);
+    sineElemetnsInit(formElements);
+    cosElemetnsInit(formElements);
+    powerElemetnsInit(formElements);
+    divideElemetnsInit(formElements);
+    multiplyElemetnsInit(formElements);
+    plusElemetnsInit(formElements);
+    minusElemetnsInit(formElements);
 }
 void FormulaElement::functionElemetns(std::vector<FormulaElement*> *formElements)
 {
-	sineElemetns(formElements);
-	cosElemetns(formElements);
-	powerElemetns(formElements);
-	divideElemetns(formElements);
-	multiplyElemetns(formElements);
-	plusElemetns(formElements);
-	minusElemetns(formElements);
+    sineElemetns(formElements);
+    cosElemetns(formElements);
+    powerElemetns(formElements);
+    divideElemetns(formElements);
+    multiplyElemetns(formElements);
+    plusElemetns(formElements);
+    minusElemetns(formElements);
 }
 
 void sineElemetnsInit(std::vector<FormulaElement*> *formElements)
@@ -401,9 +401,8 @@ void simplifyBrackets(std::vector<FormulaElement*> *formElements)
 
             if (temp.size() != 1)
                 functionElemetnsInit(&temp);
-            if (temp.size() != 1) std::cout<<"Error";
-
-                //throw new std::exception("Error Simplifying Bracket");
+            if (temp.size() != 1)
+                throw new std::exception("Error Simplifying Bracket");
 
             (*formElements).erase((*formElements).begin() + brakStartEnd[0]->startPos, (*formElements).begin() + brakStartEnd[0]->endPos + 1);
             (*formElements).insert((*formElements).begin() + brakStartEnd[0]->startPos, temp[0]);
@@ -441,8 +440,8 @@ void simplifyBrackets(std::vector<FormulaElement*> *formElements)
 
             if (temp.size() != 1)
                 functionElemetnsInit(&temp);
-            if (temp.size() != 1) std::cout<<"Error";
-                //throw new std::exception("Error Simplifying Bracket");
+            if (temp.size() != 1) \
+                throw new std::exception("Error Simplifying Bracket");
 
             (*formElements).erase((*formElements).begin() + brakStartEnd[0]->startPos, (*formElements).begin() + brakStartEnd[0]->endPos + 1);
             (*formElements).insert((*formElements).begin() + brakStartEnd[0]->startPos, temp[0]);
@@ -473,18 +472,18 @@ int hasInnerBrackets(std::vector<FormulaElement*> *formElements, int startPos)
     Bracket *brakOpen = dynamic_cast<Bracket*>((*formElements)[startPos]);
 
     if (brakOpen != 0 && brakOpen->isOpen())
-    for (int i = startPos; i < (*formElements).size(); i++)
-    {
-        Bracket *brakClose = dynamic_cast<Bracket*>((*formElements)[i]);
-        if (brakClose != 0)
+        for (int i = startPos; i < (*formElements).size(); i++)
         {
-            if (brakClose->isOpen()) count++;
-            else count--;
+            Bracket *brakClose = dynamic_cast<Bracket*>((*formElements)[i]);
+            if (brakClose != 0)
+            {
+                if (brakClose->isOpen()) count++;
+                else count--;
 
-            if (count == 0) return -1;
-            if (count > 1) return i;
+                if (count == 0) return -1;
+                if (count > 1) return i;
+            }
         }
-    }
     return -1;
 }
 
@@ -505,17 +504,17 @@ int findClosingBracket(std::vector<FormulaElement*> *formElements, int startPos)
     Bracket *brakOpen = dynamic_cast<Bracket*>((*formElements)[startPos]);
 
     if (brakOpen != 0 && brakOpen->isOpen())
-    for (int i = startPos; i < (*formElements).size(); i++)
-    {
-        Bracket *brakClose = dynamic_cast<Bracket*>((*formElements)[i]);
-        if (brakClose != 0)
+        for (int i = startPos; i < (*formElements).size(); i++)
         {
-            if (brakClose->isOpen()) count++;
-            else count--;
+            Bracket *brakClose = dynamic_cast<Bracket*>((*formElements)[i]);
+            if (brakClose != 0)
+            {
+                if (brakClose->isOpen()) count++;
+                else count--;
 
-            if (count == 0) return i;
+                if (count == 0) return i;
+            }
         }
-    }
     return -1;
 }
 
@@ -532,7 +531,7 @@ std::vector<std::string> splitString(std::string formulaInput)
         strStream << formulaInput.at(pos);
         strStream >> chkStr;
         if (chkStr.compare("+") == 0 || chkStr.compare("-") == 0 || chkStr.compare("*") == 0 || chkStr.compare("/") == 0 ||
-            chkStr.compare("^") == 0 || chkStr.compare("(") == 0 || chkStr.compare(")") == 0)
+                chkStr.compare("^") == 0 || chkStr.compare("(") == 0 || chkStr.compare(")") == 0)
         {
             if (pos != 0) tokens.push_back(formulaInput.substr(0, pos));
             tokens.push_back(formulaInput.substr(pos, 1));
@@ -587,7 +586,7 @@ std::vector<std::string> getTokens(std::string formulaInput)
             splitTrigFunction(tokens[i], &finalTokenVector);
         }
         if (tokens[i].compare(")") == 0 && (i + 1) < tokens.size() &&
-            (tokens[i + 1].find("cos") != std::string::npos || tokens[i + 1].find("sin") != std::string::npos))
+                (tokens[i + 1].find("cos") != std::string::npos || tokens[i + 1].find("sin") != std::string::npos))
         {
             finalTokenVector.push_back(multiply);
         }
@@ -598,7 +597,7 @@ std::vector<std::string> getTokens(std::string formulaInput)
         }
 
         if ((isVariable(tokens[i]) || containNumber(tokens[i])) && ((i + 1) < tokens.size()) && (tokens[i + 1].compare("(") == 0) &&
-            (sinPos == std::string::npos) && (cosPos == std::string::npos))
+                (sinPos == std::string::npos) && (cosPos == std::string::npos))
         {
             finalTokenVector.push_back(multiply);
         }
@@ -695,9 +694,9 @@ void getVariableElements(std::vector<std::string> *tokens, std::vector<VariableE
 }
 
 void getFormulaElements(std::vector<std::string> *tokens,
-    std::vector<FormulaElement*> *formElements,
-    std::vector<VariableElement*> *varElements,
-    std::vector<ConstantElement*> *constElements)
+                        std::vector<FormulaElement*> *formElements,
+                        std::vector<VariableElement*> *varElements,
+                        std::vector<ConstantElement*> *constElements)
 {
     for (size_t i = 0; i < (*tokens).size(); i++)
     {
@@ -1110,7 +1109,7 @@ void FormulaElement::toVector(FormulaElement* node, std::vector<FormulaElement*>
     FunctionElement* cNode = dynamic_cast<FunctionElement*>(node);
     std::string cNodeType = (cNode != 0) ? typeid(*cNode).name() : "NULL";
     if (cNode != 0 &&
-        (cNodeType == "class MinusFunctionElement" ||  cNodeType == "class PlusFunctionElement"))
+            (cNodeType == "class MinusFunctionElement" ||  cNodeType == "class PlusFunctionElement"))
     {
         std::string typeLHS = typeid(*(cNode->getArgOne())).name();
         std::string typeRHS = typeid(*(cNode->getArgTwo())).name();
