@@ -81,8 +81,11 @@ bool dlgGraphViewer::intializeGraphs(std::string graphEquations[], std::string x
             for (int i=0; i<range; i++)
             {
                 x[i] = xAxis;
-                variableValues[0]->value = xAxis;
-                formula->setVariableValues(&variableValues);
+                if(variableValues.size() == 1)
+                {
+                    variableValues[0]->value = xAxis;
+                    formula->setVariableValues(&variableValues);
+                }
                 currentGraph[i] = (float)formula->evaluate();
 
                 if(x[i] < xAxisRangeTo)

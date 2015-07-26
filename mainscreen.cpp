@@ -204,6 +204,8 @@ void MainScreen::on_pbPlusOrMinus_clicked()
 
 void MainScreen::on_pbEqual_clicked()
 {
+    try
+    {
     std::vector<variableValue*> variableValues;
 
     std::string input = this->ui->txtTextEditor->toPlainText().toStdString();
@@ -227,6 +229,12 @@ void MainScreen::on_pbEqual_clicked()
 
     this->ui->txtResultsEditor->setText(QString::number(formula->evaluate()));
     ui->pbPercentage->setEnabled(false);
+    }
+
+    catch(...)
+    {
+        QMessageBox::critical(this,"Infinity Calculator", "Erroro occured when solvinf the equation", QMessageBox::Ok);
+    }
 }
 
 void MainScreen::on_pbInverse_clicked()
