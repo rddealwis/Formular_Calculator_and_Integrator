@@ -742,8 +742,34 @@ void MainScreen::on_txtEquation_textChanged()
 }
 
 
+void MainScreen::on_pbMC_clicked()
+{
+    this->tempMemory = 0;
+    this->ui->txtTextEditor->setText("");
+}
 
+void MainScreen::on_pbMR_clicked()
+{
+    this->ui->txtTextEditor->setText(QString::number(this->tempMemory, 'f', 2));
+}
 
+void MainScreen::on_pbMS_clicked()
+{
+    this->tempMemory = this->ui->txtTextEditor->toPlainText().toDouble();
+    this->ui->txtResultsEditor->setText(QString::number(this->tempMemory, 'f', 2));
+    this->ui->txtTextEditor->setText("");
+}
 
+void MainScreen::on_pbMPlus_clicked()
+{
+    this->tempMemory += this->ui->txtTextEditor->toPlainText().toDouble();
+    this->ui->txtResultsEditor->setText(QString::number(this->tempMemory, 'f', 2));
+    this->ui->txtTextEditor->setText("");
+}
 
-
+void MainScreen::on_pbMMinus_clicked()
+{
+    this->tempMemory -= this->ui->txtTextEditor->toPlainText().toDouble();
+    this->ui->txtResultsEditor->setText(QString::number(this->tempMemory, 'f', 2));
+    this->ui->txtTextEditor->setText("");
+}

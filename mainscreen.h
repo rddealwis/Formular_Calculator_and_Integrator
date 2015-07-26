@@ -140,7 +140,18 @@ private slots:
 
     double iter_factorial(double n);
 
+    void on_pbMC_clicked();
+
+    void on_pbMR_clicked();
+
+    void on_pbMS_clicked();
+
+    void on_pbMPlus_clicked();
+
+    void on_pbMMinus_clicked();
+
 private:
+    double tempMemory = 0;
     Ui::MainScreen *ui;
 };
 
