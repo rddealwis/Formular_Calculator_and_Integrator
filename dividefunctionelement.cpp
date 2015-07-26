@@ -25,18 +25,7 @@ std::string DivideFunctionElement::toQString()
 	if ((typeLHS == "class ConstantElement")
 		&& (typeRHS == "class ConstantElement")) {
         return getArgOne()->toQString() + "/" + getArgTwo()->toQString();
-        /*ConstantElement* tempLHS = (ConstantElement*)getArgOne();
-        ConstantElement* tempRHS = (ConstantElement*)getArgTwo();
-		double result = tempLHS->GetConstant() / tempRHS->GetConstant();
-
-		char* buffer = new char[100];
-		std::string returnVal;
-		sprintf(buffer, "%g", result);
-		returnVal = buffer;
-		delete buffer;
-
-        return returnVal;*/
-	}
+    }
 
 	if ((typeLHS == "class ConstantElement")
 		&& (typeRHS == "class VariableElement")) {
