@@ -18,6 +18,14 @@ MainScreen::MainScreen(QWidget *parent) :
     ui(new Ui::MainScreen)
 {
     ui->setupUi(this);
+    ui->txtXaxisRangeFrom->setEnabled(false);
+    ui->txtXaxisRangeTo->setEnabled(false);
+    ui->txtYaxisRangeFrom->setEnabled(false);
+    ui->txtYaxisRangeTo->setEnabled(false);
+
+    ui->txtXaxisName->setEnabled(false);
+    ui->txtYaxisName->setEnabled(false);
+
     ui->pbPercentage->setEnabled(false);
     ui->frmAboutCalculator->setVisible(false);
     ui->pbAddGraphFormula->setEnabled(false);
@@ -542,14 +550,30 @@ void MainScreen::on_pbAddGraphFormula_clicked()
     ui->txtEquation->clear();
     ui->pbGenerate->setEnabled(true);
 
+    ui->txtXaxisRangeFrom->setEnabled(true);
+    ui->txtXaxisRangeTo->setEnabled(true);
+    ui->txtYaxisRangeFrom->setEnabled(true);
+    ui->txtYaxisRangeTo->setEnabled(true);
+
+    ui->txtXaxisName->setEnabled(true);
+    ui->txtYaxisName->setEnabled(true);
+
     if(ui->txtXaxisRangeFrom->toPlainText() == "")
+    {
         ui->txtXaxisRangeFrom->setText("-5");
+    }
     if(ui->txtXaxisRangeTo->toPlainText() == "")
+    {
         ui->txtXaxisRangeTo->setText("10");
+    }
     if(ui->txtYaxisRangeFrom->toPlainText() == "")
+    {
         ui->txtYaxisRangeFrom->setText("-5");
+    }
     if(ui->txtYaxisRangeTo->toPlainText() == "")
+    {
         ui->txtYaxisRangeTo->setText("10");
+    }
 
     ui->txtXaxisName->setText("X-Axis");
     ui->txtYaxisName->setText("Y-Axis");
@@ -561,6 +585,14 @@ void MainScreen::on_pbRemoveFormula_clicked()
 
     if(this->ui->lstGraphFormulas->count() == 0)
     {
+        ui->txtXaxisRangeFrom->setEnabled(false);
+        ui->txtXaxisRangeTo->setEnabled(false);
+        ui->txtYaxisRangeFrom->setEnabled(false);
+        ui->txtYaxisRangeTo->setEnabled(false);
+
+        ui->txtXaxisName->setEnabled(false);
+        ui->txtYaxisName->setEnabled(false);
+
         ui->pbCalAreaUndertheCurve->setEnabled(false);
         ui->pbRemoveFormula->setEnabled(false);
         ui->pbGenerate->setEnabled(false);
