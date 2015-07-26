@@ -210,6 +210,14 @@ void MainScreen::on_pbEqual_clicked()
 
     std::string input = this->ui->txtTextEditor->toPlainText().toStdString();
     std::string formulaInput(input);
+
+    //QMessageBox::critical(this,"Infinity Calculator", QString::number(std::count(formulaInput.begin(), formulaInput.end()) +" "+, QMessageBox::Ok);
+    if(std::count(formulaInput.begin(), formulaInput.end(), '(') != std::count(formulaInput.begin(), formulaInput.end(), ')'))
+    {
+        QMessageBox::critical(this,"Infinity Calculator", "Number of opening and closing brackets are not equal.", QMessageBox::Ok);
+        return;
+    }
+
     FormulaElement* formula = FormulaElement::parseFormula(formulaInput);
     formula->getVariableValues(&variableValues);
 
@@ -233,7 +241,7 @@ void MainScreen::on_pbEqual_clicked()
 
     catch(...)
     {
-        QMessageBox::critical(this,"Infinity Calculator", "Erroro occured when solvinf the equation", QMessageBox::Ok);
+        QMessageBox::critical(this,"Infinity Calculator", "Error occured when solving the equation", QMessageBox::Ok);
     }
 }
 
