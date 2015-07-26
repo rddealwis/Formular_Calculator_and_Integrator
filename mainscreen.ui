@@ -1925,6 +1925,9 @@ QPushButton:hover{color:white;}</string>
        </property>
       </widget>
       <widget class="QPushButton" name="pbModulus">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="geometry">
         <rect>
          <x>290</x>
